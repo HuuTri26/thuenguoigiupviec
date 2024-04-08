@@ -36,5 +36,10 @@ public class AccountServiceImpl implements AccountService{
 	public boolean getStatusFromAccount(String email, String password) {
 		return (AccountDAO.getStatusFromAccount(email, password));
 	}
+
+	@Override
+	public Integer getRoleIdFromAccount(String email, String password) {
+		return (AccountDAO.getRoleIdFromAccount(email, password));
+	}
 	
 }

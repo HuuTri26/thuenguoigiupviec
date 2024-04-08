@@ -1,5 +1,6 @@
 package ptithcm.dao;
 
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -56,7 +57,7 @@ public class AccountDaoImpl implements AccountDAO{
 	public boolean isExistAccount(String email, String password) {
 		AccountEntity account = null;
 		Session session = factory.getCurrentSession();
-		String hql = "FROM Account WHERE Email = :email AND Password = :password";
+		String hql = "FROM AccountEntity WHERE email = :email AND password = :password";
 		try {
 			Query query = session.createQuery(hql);
 			query.setParameter("email", email);
@@ -65,7 +66,7 @@ public class AccountDaoImpl implements AccountDAO{
 			account = (AccountEntity) query.uniqueResult();
 			
 		}catch (Exception e) {
-			System.out.println("Error: " + e.toString());
+			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
 		}
 		return (account != null)? true : false;
 	}
@@ -74,7 +75,7 @@ public class AccountDaoImpl implements AccountDAO{
 	public boolean getStatusFromAccount(String email, String password) {
 		AccountEntity account = null;
 		Session session = factory.getCurrentSession();
-		String hql = "FROM Account WHERE Email = :email AND Password = :password";
+		String hql = "FROM AccountEntity WHERE email = :email AND password = :password";
 		try {
 			Query query = session.createQuery(hql);
 			query.setParameter("email", email);
@@ -83,9 +84,29 @@ public class AccountDaoImpl implements AccountDAO{
 			account = (AccountEntity) query.uniqueResult();
 			
 		}catch (Exception e) {
-			System.out.println("Error: " + e.toString());
+			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
 		}
-		return account.getStatus();
+//		System.out.println(account.getStatus().toString());
+		
+		return (account.getStatus());
+	}
+
+	@Override
+	public Integer getRoleIdFromAccount(String email, String password) {
+		Integer roleId = 0;
+		Session session = factory.getCurrentSession();
+		String hql = "SELECT a.roles.roleID FROM AccountEntity a WHERE a.email = :email AND a.password = :password";
+		try {
+			Query query = session.createQuery(hql);
+			query.setParameter("email", email);
+			query.setParameter("password", password);
+			
+			roleId = (Integer) query.uniqueResult();
+		}catch (Exception e) {
+			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
+		}
+//		System.out.println(roleId);
+		return roleId;
 	}
 	
 }
