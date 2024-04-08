@@ -46,16 +46,16 @@
 									</p>
 								</div>
 							</div>
-							<form:form action="adminLogin.htm" class="signin-form" method="POST" modelAttribute="adminAcc">
+							<form:form action="adminLogin.htm" class="signin-form" method="post" modelAttribute="adminAcc">
 							    <div style="color:red;">${message }</div>
 								<div class="form-group mb-3">
 									<label class="label" for="name">Username</label>
-									<form:input type="text" path="email" class="form-control" placeholder="Nhập username(email)" required/>
+									<form:input path="email" class="form-control" placeholder="Nhập username(email)"/>
 									<form:errors path="email"/>
 								</div>
 								<div class="form-group mb-3">
 									<label class="label" for="password">Password</label>
-									<form:input type="password" path="password" class="form-control" placeholder="Nhập password" required/>
+									<form:input type="password" path="password" class="form-control" placeholder="Nhập password"/>
 									<form:errors path = "password"/>
 								</div>
 								<div class="form-group">
