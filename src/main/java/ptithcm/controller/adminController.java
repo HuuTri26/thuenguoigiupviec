@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +32,8 @@ public class adminController {
 
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
-	public String showLoginForm() {
+	public String showLoginForm(Model model) {
+		model.addAttribute("adminAcc", new AccountEntity());
 		return "admin/adminLogin";
 	}
 
@@ -113,7 +115,7 @@ public class adminController {
 //			return "admin/adminLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
 //		}
 		
-		Boolean isValidAcc = Boolean.TRUE;
+		Boolean permission = Boolean.TRUE;
 		
 		if(adminAcc.getEmail().isEmpty()) {
 			errors.rejectValue("email", "adminAcc", "Xin vui lòng nhập username hoặc email!");
@@ -126,17 +128,23 @@ public class adminController {
 		if(!accountService.isExistAccount(adminAcc.getEmail(), adminAcc.getPassword())) {
 			errors.rejectValue("email", "adminAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "adminAcc", "Hoặc mật khẩu bạn nhập không đúng");
-			isValidAcc = Boolean.FALSE;
+			permission = Boolean.FALSE;
 		}else if(!accountService.getStatusFromAccount(adminAcc.getEmail(), adminAcc.getPassword())) {
 			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn đã bị khóa");
-			isValidAcc = Boolean.FALSE;
+			permission = Boolean.FALSE;
+		}else if(accountService.getRoleIdFromAccount(adminAcc.getEmail(), adminAcc.getPassword()) != 1) {
+			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
+			permission = Boolean.FALSE;
 		}
 		
-		if(!isValidAcc) {
+		if(permission) {
+			System.out.println("Login successfully!");
+			return "admin/index";
+		}else {
+			System.out.println("Login unsuccessfully!");
 			return "admin/adminLogin";
 		}
-		return "admin/adminLogin";
-		
+			
 	}
 
 	// Trang dashboard của admin
