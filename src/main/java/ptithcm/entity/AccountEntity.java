@@ -27,9 +27,9 @@ public class AccountEntity {
 	@JoinColumn(name = "RoleId")
 	private RoleEntity roles;
 	
-	@OneToOne
-	@JoinColumn(name = "Email")
-	private EmployeeEntity employee;
+//	@OneToOne
+//	@JoinColumn(name = "Email")
+//	private EmployeeEntity employee;
 	
 	public AccountEntity() {
 		super();
@@ -75,13 +75,13 @@ public class AccountEntity {
 		this.roleID = roleID;
 	}
 
-	public EmployeeEntity getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(EmployeeEntity employee) {
-		this.employee = employee;
-	}
+//	public EmployeeEntity getEmployee() {
+//		return employee;
+//	}
+//
+//	public void setEmployee(EmployeeEntity employee) {
+//		this.employee = employee;
+//	}
 
 	public RoleEntity getRole() {
 		return roles;
