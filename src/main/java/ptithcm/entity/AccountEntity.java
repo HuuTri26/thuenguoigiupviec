@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,12 +21,15 @@ public class AccountEntity {
 	@Column(name = "Status")
 	private Boolean status;
 	
-	@Column(name = "RoleId")
 	private int roleID;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name = "RoleId")
 	private RoleEntity roles;
+	
+	@OneToOne
+	@JoinColumn(name = "Email")
+	private EmployeeEntity employee;
 	
 	public AccountEntity() {
 		super();
@@ -71,12 +75,20 @@ public class AccountEntity {
 		this.roleID = roleID;
 	}
 
-	public RoleEntity getRoles() {
+	public EmployeeEntity getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(EmployeeEntity employee) {
+		this.employee = employee;
+	}
+
+	public RoleEntity getRole() {
 		return roles;
 	}
 
-	public void setRoles(RoleEntity roles) {
-		this.roles = roles;
+	public void setRole(RoleEntity role) {
+		this.roles = role;
 	}
 	
 }

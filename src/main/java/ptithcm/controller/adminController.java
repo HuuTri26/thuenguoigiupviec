@@ -1,16 +1,33 @@
 package ptithcm.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.transaction.Transactional;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import ptithcm.entity.AccountEntity;
+import ptithcm.service.AccountService;
+
+@Transactional
 @Controller
 public class adminController {
+	
+	@Autowired
+	SessionFactory factory;
+	
+	@Autowired
+	AccountService accountService;
 
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
@@ -82,18 +99,44 @@ public class adminController {
 
 	// Xử lý đăng nhập cho admin
 	@RequestMapping(value = "admin/adminLogin", method = RequestMethod.POST)
-	public String adminLogin(HttpServletRequest request) {
-		// Kiểm tra thông tin đăng nhập
-		String userName = request.getParameter("userName");
-		String password = request.getParameter("password");
-		if (userName.equals("admin") && password.equals("123")) {
-			// Đăng nhập thành công
-			return "admin/index"; // Chuyển hướng đến trang dashboard của admin
-		} else {
-			// Đăng nhập không thành công
-			request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
-			return "admin/adminLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
+	public String adminLogin(ModelMap model ,HttpServletRequest request, @ModelAttribute("adminAcc") AccountEntity adminAcc, BindingResult errors) {
+		
+//		// Kiểm tra thông tin đăng nhập
+//		String userName = request.getParameter("userName");
+//		String password = request.getParameter("password");
+//		if (userName.equals("admin") && password.equals("123")) {
+//			// Đăng nhập thành công
+//			return "admin/index"; // Chuyển hướng đến trang dashboard của admin
+//		} else {
+//			// Đăng nhập không thành công
+//			request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
+//			return "admin/adminLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
+//		}
+		
+		Boolean isValidAcc = Boolean.TRUE;
+		
+		if(adminAcc.getEmail().isEmpty()) {
+			errors.rejectValue("email", "adminAcc", "Xin vui lòng nhập username hoặc email!");
+			return "admin/adminLogin";
+		}else if(adminAcc.getPassword().isEmpty()) {
+			errors.rejectValue("password", "adminAcc", "Xin vui lòng nhập mật khẩu!");
+			return "admin/adminLogin";
 		}
+		
+		if(!accountService.isExistAccount(adminAcc.getEmail(), adminAcc.getPassword())) {
+			errors.rejectValue("email", "adminAcc", "Tài khoản không tồn tại");
+			errors.rejectValue("password", "adminAcc", "Hoặc mật khẩu bạn nhập không đúng");
+			isValidAcc = Boolean.FALSE;
+		}else if(!accountService.getStatusFromAccount(adminAcc.getEmail(), adminAcc.getPassword())) {
+			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn đã bị khóa");
+			isValidAcc = Boolean.FALSE;
+		}
+		
+		if(!isValidAcc) {
+			return "admin/adminLogin";
+		}
+		return "admin/adminLogin";
+		
 	}
 
 	// Trang dashboard của admin

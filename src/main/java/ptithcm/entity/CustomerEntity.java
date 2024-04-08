@@ -1,5 +1,5 @@
-package ptithcm.entity;
-
-public class CustomerEntity {
-
-}
+//package ptithcm.entity;
+//
+//public class CustomerEntity {
+//
+//}
