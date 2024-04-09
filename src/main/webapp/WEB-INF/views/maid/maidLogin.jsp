@@ -46,15 +46,17 @@
 									</p>
 								</div>
 							</div>
-							<form action="maidLogin.htm" class="signin-form" method="POST" modelAttribute="user">
+							<form:form action="maidLogin.htm" class="signin-form" method="POST" modelAttribute="maidAcc">
 							    <div style="color:red;">${message }</div>
 								<div class="form-group mb-3">
 									<label class="label" for="name">Username</label>
-									<input type="text" name="userName" class="form-control" placeholder="Nhập username" required>
+									<form:input path="email" class="form-control" placeholder="Nhập username(email)" />
+									<form:errors path="email"/>
 								</div>
 								<div class="form-group mb-3">
 									<label class="label" for="password">Password</label>
-									<input type="password" name="password" class="form-control" placeholder="Nhập password" required>
+									<form:input type="password" path="password" class="form-control" placeholder="Nhập password" />
+									<form:errors path="email"/>
 								</div>
 								<div class="form-group">
 									<button type="submit"
@@ -71,7 +73,7 @@
 										<a href="maidForgotPassword.htm">Quên mật khẩu</a>
 									</div>
 								</div>
-							</form>
+							</form:form>
 							<p class="text-center"><a href="maidSignup.htm">Đăng ký</a></p>
 						</div>
 					</div>

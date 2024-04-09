@@ -97,7 +97,6 @@ public class adminController {
 		public String showBookingList() {
 			return "admin/bookingManagement";
 		}
-	
 
 	// Xử lý đăng nhập cho admin
 	@RequestMapping(value = "admin/adminLogin", method = RequestMethod.POST)
@@ -146,6 +145,14 @@ public class adminController {
 		}
 			
 	}
+	
+	@RequestMapping(value = "admin/adminForgotPassword", method = RequestMethod.POST)
+	public String adminForgotPassword(HttpServletRequest request) {
+		String email = request.getParameter("email");
+		System.out.println(email);
+		return "admin/adminForgotPassword";
+	}
+	
 
 	// Trang dashboard của admin
 	@RequestMapping("admin/index")

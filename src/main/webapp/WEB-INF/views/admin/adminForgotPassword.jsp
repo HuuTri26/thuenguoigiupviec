@@ -43,14 +43,14 @@
 									</p>
 								</div>
 							</div>
-							<form action="adminForgotPassword.htm" class="signin-form">
+							<form action="adminForgotPassword.htm" class="signin-form" method="post">
                                 <div>
                                     Forgot your password? No problem, we will fix it. Just type your email below and we will send you password recovery instructions to your email. Follow easy steps to get back to your account.
                                 </div>
                                 <br />
 								<div class="form-group mb-3">
 									<label class="label" for="name">Email</label>
-									<input type="email" class="form-control" placeholder="Email" required>
+									<input name="email" type="text" class="form-control" placeholder="Email" required>
 								</div>
 								<!-- <div class="form-group mb-3">
 									<label class="label" for="password">Password</label>

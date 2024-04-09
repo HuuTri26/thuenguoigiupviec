@@ -21,8 +21,6 @@ public class AccountEntity {
 	@Column(name = "Status")
 	private Boolean status;
 	
-	private int roleID;
-	
 	@ManyToOne
 	@JoinColumn(name = "RoleId")
 	private RoleEntity roles;
@@ -30,18 +28,6 @@ public class AccountEntity {
 //	@OneToOne
 //	@JoinColumn(name = "Email")
 //	private EmployeeEntity employee;
-	
-	public AccountEntity() {
-		super();
-	}
-
-	public AccountEntity(String email, String password, Boolean status, int roleID) {
-		super();
-		this.email = email;
-		this.password = password;
-		this.status = status;
-		this.roleID = roleID;
-	}
 
 	public String getEmail() {
 		return email;
@@ -65,14 +51,6 @@ public class AccountEntity {
 
 	public void setStatus(Boolean status) {
 		this.status = status;
-	}
-
-	public int getRoleID() {
-		return roleID;
-	}
-
-	public void setRoleID(int roleID) {
-		this.roleID = roleID;
 	}
 
 //	public EmployeeEntity getEmployee() {
