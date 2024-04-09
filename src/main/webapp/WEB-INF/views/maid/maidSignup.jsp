@@ -38,8 +38,8 @@
 						</div>
 						<div class="login-wrap p-4 p-md-5">
 							<div class="d-flex">
-								<div class="w-2000 ">
-									<h4 class="mb-3">Đăng ký Maid</h4>
+								<div class="w-100 ">
+									<h3 class="mb-4">Đăng ký Maid</h3>
 								</div>
 								<div class="w-100">
 									<p class="social-media d-flex justify-content-end">
@@ -48,63 +48,39 @@
 									</p>
 								</div>
 							</div>
-							<form action="maidSignup.htm" class="signin-form">
+							<form action="maidSignUp.htm" class="signin-form">
 								<div class="form-group mb-3">
-									<label class="label" for="name">Họ Tên</label> <input
-										type="text" name="name" class="form-control"
-										placeholder="Name" required>
+									<label class="label" for="name">Họ tên</label> <input
+										type="text" class="form-control" placeholder="fullName: "
+										name="fullName" required>
 
 								</div>
 
 								<div class="form-group mb-3">
 									<label class="label" for="password">Số điện thoại</label> <input
-										type="number" name="phonenumber" class="form-control"
-										placeholder="Mobile No" required>
+										type="text" class="form-control" placeholder="Mobile No"
+										name="phonenumber" required>
 								</div>
 
 								<div class="form-group mb-3">
-									<label class="label" for="password">Email</label> <input
-										type="email" name="email" class="form-control"
-										placeholder="User Name" required>
+									<label class="label" for="password">Địa chỉ</label> <input
+										type="text" class="form-control" placeholder="Địa chỉ: "
+										name="address" required>
 								</div>
 								<div class="form-group mb-3">
-									<label class="label" for="password">Địa chỉ làm việc</label> <input
-										type="text" name="address" class="form-control"
-										placeholder="Mobile No" required>
+									<label class="label" for="password">Kinh nghiệm</label> <input
+										type="number" class="form-control" placeholder="Exp: "
+										name="exp" required>
 								</div>
-								
 								<div class="form-group mb-3">
-									<label class="label">Loại công việc</label> <select
-										class="form-select" aria-label="Default select example">
-										<option selected>Dọn dẹp</option>
-										<option>Nấu ăn</option>
-										<option>Trông trẻ</option>
-										<option>Lái xe</option>
-										<option>Ăn táng</option>
+									<label class="label" for="password">Full/Partime</label>
+									<select class="form-select" id="validationDefault04"
+										name="employmentType" required>
+										<option selected value="">Fulltime</option>
+										<option>Partime</option>
 									</select>
 								</div>
-								<div class="form-group mb-3">
-									<label class="label">Kinh nghiệm làm việc</label> <input
-										type="number" name="exp" class="form-control"
-										placeholder="Exp" required>
-								</div>
-								<div class="form-group mb-3">
-									<label class="label">Thành Phố</label> <select
-										class="form-select" aria-label="Default select example">
-										<option selected>Hồ Chí Minh</option>
-										<option>Hà Nội</option>
-										<option>Đà Nẵng</option>
-										<option>Cần Thơ</option>
-										<option>Bình Định</option>
-									</select>
-								</div>
-								<!-- 	<div class="form-group mb-3">
-									<label class="label" for="password">Vai trò</label> <select
-										class="form-select" aria-label="Default select example">
-										<option selected>maid</option>
-										<option value="3">Maid</option>
-									</select>
-								</div> -->
+
 								<!-- <div class="form-group mb-3">
 									<label class="label" for="password">Teacher Year Of Experience</label>
 									<input type="password" class="form-control" placeholder="Password" required>
@@ -144,21 +120,31 @@
 								</div>
 							</div>
 
+							<!-- 							<div class="form-group mb-3"> -->
+							<!-- 								<label class="label" for="password">Date of Birth</label> -->
+							<!-- 								<input type="date" class="form-control" placeholder="Date of Birth" required> -->
+							<!-- 							</div> -->
 							<div class="form-group mb-3">
-								<label class="label" for="password">Ngày Sinh</label> <input
-									type="date" name="birthday" class="form-control"
-									placeholder="Date of Birth" required>
-							</div>
-							<div class="form-group mb-3">
-								<label class="label" for="password">Password</label> <input
-									type="password" name="password" class="form-control"
-									placeholder="Password" required>
+								<label class="label" for="password">Mức lương</label> <input
+									type="number" class="form-control" placeholder="Salary: "
+									name="salary" required>
 							</div>
 
 							<div class="form-group mb-3">
-								<label class="label" for="password">Nhập lại password</label> <input
-									type="password" class="form-control" name="re-password"
-									placeholder="Re-Enter Password" required>
+								<label class="label" for="password">Email</label> <input
+									type="email" class="form-control" placeholder="Email"
+									name="email" required>
+							</div>
+							<div class="form-group mb-3">
+								<label class="label" for="password">Password</label> <input
+									type="password" class="form-control" placeholder="Password"
+									name="password" required>
+							</div>
+
+							<div class="form-group mb-3">
+								<label class="label" for="password">Re-Enter Password</label> <input
+									type="password" class="form-control"
+									placeholder="Re-Enter Password" name="re-password" required>
 							</div>
 							<!-- <div class="form-group mb-3">
 								<label class="label" for="password">Teacher Qualification</label>

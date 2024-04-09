@@ -116,7 +116,7 @@
 	<!--       </nav>End Icons Navigation -->
 
 	<!--     </header>End Header -->
-	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
+	<%@include file="/WEB-INF/views/maid/include/header.jsp"%>
 
 	<!-- ======= Sidebar ======= -->
 	<!--  <aside id="sidebar" class="sidebar"> -->
@@ -163,7 +163,7 @@
 
 	<!-- </aside>End Sidebar -->
 
-	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
+	<%@include file="/WEB-INF/views/maid/include/sidebar.jsp"%>
 	<main id="main" class="main">
 
 		<div class="pagetitle">
@@ -193,8 +193,9 @@
 									<tr>
 										<th scope="col">Id</th>
 										<th scope="col">Id khách hàng</th>
-										<th scope="col">Id người giúp việc</th>
-										<th scope="col">Id gói dịch vụ</th>
+										<th scope="col">Tên KH</th>
+										<th scope="col">SDT KH</th>
+										<th scope="col">Tên gói dịch vụ</th>
 										<th scope="col">Ngày bắt đầu</th>
 										<th scope="col">Địa chỉ</th>
 										<th scope="col">Ghi chú</th>
@@ -202,35 +203,22 @@
 										<th scope="col">Trạng thái đặt lịch</th>
 										<th scope="col">Trạng thái thanh toán</th>
 										<th scope="col">Id nhân viên</th>
-										<th scope="col">Ratting</th>
-										<th scope="col">Feedback</th>
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
+										<td scope="col">Hữu trí</td>
+										<td scope="col">009238983</td>
+										<td scope="col">Dọn nhà 2h</td>
+										<td scope="col">2022-12-26</td>
 										<td scope="col">97 Man Thiện</td>
 										<td scope="col">Mang máy cắt cỏ</td>
 										<td scope="col">3000$</td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div>
-										</td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
+										<th scope="col">Đang thực hiện</th>
+										<th scope="col">Chưa thanh toán</th>
+										<th scope="col">2</th>
 										<td scope="col"><a href="bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
@@ -238,25 +226,16 @@
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
+										<td scope="col">Hữu trí</td>
+										<td scope="col">009238983</td>
+										<td scope="col">Dọn nhà 2h</td>
+										<td scope="col">2022-12-26</td>
 										<td scope="col">97 Man Thiện</td>
 										<td scope="col">Mang máy cắt cỏ</td>
 										<td scope="col">3000$</td>
-										<td scope="col"><div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div></td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
+										<th scope="col">Đang thực hiện</th>
+										<th scope="col">Chưa thanh toán</th>
+										<th scope="col">3</th>
 										<td scope="col"><a href="bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>

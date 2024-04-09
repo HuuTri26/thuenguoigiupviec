@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Quản lý đặt lịch(part-time)</title>
+<title>Quản lý hợp đồng fulltime</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -167,12 +167,12 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Thông tin đặt dịch vụ</h1>
+			<h1>Thông tin hợp đồng</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
+						href="bookingManagement.htm">Thông tin hợp đồng</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -194,16 +194,13 @@
 										<th scope="col">Id</th>
 										<th scope="col">Id khách hàng</th>
 										<th scope="col">Id người giúp việc</th>
-										<th scope="col">Id gói dịch vụ</th>
-										<th scope="col">Ngày bắt đầu</th>
-										<th scope="col">Địa chỉ</th>
-										<th scope="col">Ghi chú</th>
-										<th scope="col">Giá</th>
-										<th scope="col">Trạng thái đặt lịch</th>
-										<th scope="col">Trạng thái thanh toán</th>
 										<th scope="col">Id nhân viên</th>
-										<th scope="col">Ratting</th>
-										<th scope="col">Feedback</th>
+										<th scope="col">Miêu tả</th>
+										<th scope="col">Ngày bắt có hiệu lực</th>
+										<th scope="col">Ngày hết hạn</th>
+										<th scope="col">Ngày tạo</th>
+										<th scope="col">Ngày cập nhật(Hủy)</th>
+										<th scope="col">Trạng thái hợp đồng</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -212,26 +209,12 @@
 										<td scope="col">3</td>
 										<td scope="col">2</td>
 										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col">3000$</td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div>
-										</td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col">No1</td>
+										<td scope="col">2022-12-26</td>
+										<td scope="col">2023-01-26</td>
+										<td scope="col">2022-12-24</td>
+										<td scope="col">Còn hạn</td>
+										<td scope="col"><a href="contractDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -240,24 +223,12 @@
 										<td scope="col">3</td>
 										<td scope="col">2</td>
 										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col">3000$</td>
-										<td scope="col"><div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div></td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col">No1</td>
+										<td scope="col">2022-12-26</td>
+										<td scope="col">2023-01-26</td>
+										<td scope="col">2022-12-24</td>
+										<td scope="col">Còn hạn</td>
+										<td scope="col"><a href="contractDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>

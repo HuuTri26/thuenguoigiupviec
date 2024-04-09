@@ -58,103 +58,111 @@
 <body>
 
 	<!-- ======= Header ======= -->
-<!-- 	<header id="header" class="header fixed-top d-flex align-items-center"> -->
+	<!-- 	<header id="header" class="header fixed-top d-flex align-items-center"> -->
 
-<!-- 		<div class="d-flex align-items-center justify-content-between"> -->
-<!-- 			<i class="bi bi-list toggle-sidebar-btn"></i> <a href="index.html" -->
-<!-- 				class="logo d-flex align-items-center"> <img -->
-<%-- 				src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" --%>
-<!-- 				alt=""> <span class="d-none d-lg-block">BookMyMaid</span> -->
-<!-- 			</a> -->
+	<!-- 		<div class="d-flex align-items-center justify-content-between"> -->
+	<!-- 			<i class="bi bi-list toggle-sidebar-btn"></i> <a href="index.html" -->
+	<!-- 				class="logo d-flex align-items-center"> <img -->
+	<%-- 				src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" --%>
+	<!-- 				alt=""> <span class="d-none d-lg-block">BookMyMaid</span> -->
+	<!-- 			</a> -->
 
-<!-- 		</div> -->
-<!-- 		<!-- End Logo --> -->
-
-
-<!-- 		<nav class="header-nav ms-auto"> -->
-<!-- 			<ul class="d-flex align-items-center"> -->
+	<!-- 		</div> -->
+	<!-- 		<!-- End Logo -->
+	-->
 
 
+	<!-- 		<nav class="header-nav ms-auto"> -->
+	<!-- 			<ul class="d-flex align-items-center"> -->
 
-<!-- 				<li class="nav-item dropdown pe-3"><a -->
-<!-- 					class="nav-link nav-profile d-flex align-items-center pe-0" -->
-<!-- 					href="#" data-bs-toggle="dropdown"> <img -->
-<%-- 						src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" --%>
-<!-- 						alt="Profile" class="rounded-circle"> <span -->
-<!-- 						class="d-none d-md-block dropdown-toggle ps-2">Profile</span> -->
-<!-- 				</a> -->
-<!-- 				End Profile Iamge Icon -->
 
-<!-- 					<ul -->
-<!-- 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-<!-- 						<li class="dropdown-header"> -->
-<!-- 							<h6>Profile</h6> <span>Web Designer</span> -->
-<!-- 						</li> -->
-<!-- 						<li> -->
-<!-- 							<hr class="dropdown-divider"> -->
-<!-- 						</li> -->
 
-<!-- 						<li><a class="dropdown-item d-flex align-items-center" -->
-<!-- 							href="user-profile.html"> <i class="bi bi-person"></i> <span>My -->
-<!-- 									Profile</span> -->
-<!-- 						</a></li> -->
-<!-- 						<li> -->
-<!-- 							<hr class="dropdown-divider"> -->
-<!-- 						</li> -->
+	<!-- 				<li class="nav-item dropdown pe-3"><a -->
+	<!-- 					class="nav-link nav-profile d-flex align-items-center pe-0" -->
+	<!-- 					href="#" data-bs-toggle="dropdown"> <img -->
+	<%-- 						src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" --%>
+	<!-- 						alt="Profile" class="rounded-circle"> <span -->
+	<!-- 						class="d-none d-md-block dropdown-toggle ps-2">Profile</span> -->
+	<!-- 				</a> -->
+	<!-- 				End Profile Iamge Icon -->
 
-<!-- 						<li><a class="dropdown-item d-flex align-items-center" -->
-<!-- 							href="#"> <i class="bi bi-box-arrow-right"></i> <span>Sign -->
-<!-- 									Out</span> -->
-<!-- 						</a></li> -->
+	<!-- 					<ul -->
+	<!-- 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
+	<!-- 						<li class="dropdown-header"> -->
+	<!-- 							<h6>Profile</h6> <span>Web Designer</span> -->
+	<!-- 						</li> -->
+	<!-- 						<li> -->
+	<!-- 							<hr class="dropdown-divider"> -->
+	<!-- 						</li> -->
 
-<!-- 					</ul> -->
-<!-- 					End Profile Dropdown Items</li> -->
-<!-- 				End Profile Nav -->
+	<!-- 						<li><a class="dropdown-item d-flex align-items-center" -->
+	<!-- 							href="user-profile.html"> <i class="bi bi-person"></i> <span>My -->
+	<!-- 									Profile</span> -->
+	<!-- 						</a></li> -->
+	<!-- 						<li> -->
+	<!-- 							<hr class="dropdown-divider"> -->
+	<!-- 						</li> -->
 
-<!-- 			</ul> -->
-<!-- 		</nav> -->
-<!-- 		<!-- End Icons Navigation --> -->
+	<!-- 						<li><a class="dropdown-item d-flex align-items-center" -->
+	<!-- 							href="#"> <i class="bi bi-box-arrow-right"></i> <span>Sign -->
+	<!-- 									Out</span> -->
+	<!-- 						</a></li> -->
 
-<!-- 	</header> -->
-<!-- 	<!-- End Header --> -->
-<%@include file="/WEB-INF/views/admin/include/header.jsp" %>
+	<!-- 					</ul> -->
+	<!-- 					End Profile Dropdown Items</li> -->
+	<!-- 				End Profile Nav -->
+
+	<!-- 			</ul> -->
+	<!-- 		</nav> -->
+	<!-- 		<!-- End Icons Navigation -->
+	-->
+
+	<!-- 	</header> -->
+	<!-- 	<!-- End Header -->
+	-->
+	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
 
 	<!-- ======= Sidebar ======= -->
-<!-- 	<aside id="sidebar" class="sidebar"> -->
+	<!-- 	<aside id="sidebar" class="sidebar"> -->
 
-<!-- 		<ul class="sidebar-nav" id="sidebar-nav"> -->
+	<!-- 		<ul class="sidebar-nav" id="sidebar-nav"> -->
 
-<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-<!-- 				href="dashboard.htm"> <i class="bi bi-grid"></i> <span>Dashboard</span> -->
-<!-- 			</a></li> -->
-<!-- 			<!-- End Dashboard Nav --> -->
+	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
+	<!-- 				href="dashboard.htm"> <i class="bi bi-grid"></i> <span>Dashboard</span> -->
+	<!-- 			</a></li> -->
+	<!-- 			<!-- End Dashboard Nav -->
+	-->
 
-<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-<!-- 				href="#"> <i class="bi bi-person"></i> <span>Maid</span> -->
-<!-- 			</a></li> -->
-<!-- 			<!-- End Maid Page Nav --> -->
+	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
+	<!-- 				href="#"> <i class="bi bi-person"></i> <span>Maid</span> -->
+	<!-- 			</a></li> -->
+	<!-- 			<!-- End Maid Page Nav -->
+	-->
 
-<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-<!-- 				href="customerManagement.htm"> <i class="bi bi-question-circle"></i> <span>User</span> -->
-<!-- 			</a></li> -->
-<!-- 			<!-- End User Page Nav --> -->
+	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
+	<!-- 				href="customerManagement.htm"> <i class="bi bi-question-circle"></i> <span>User</span> -->
+	<!-- 			</a></li> -->
+	<!-- 			<!-- End User Page Nav -->
+	-->
 
-<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-<!-- 				href="serviceManagement.htm"> <i class="bi bi-envelope"></i> <span>Services</span> -->
-<!-- 			</a></li> -->
-<!-- 			<!-- End Subject Page Nav --> -->
+	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
+	<!-- 				href="serviceManagement.htm"> <i class="bi bi-envelope"></i> <span>Services</span> -->
+	<!-- 			</a></li> -->
+	<!-- 			<!-- End Subject Page Nav -->
+	-->
 
-<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-<!-- 				href="bookingManagement.htm"> <i class="bi bi-box-arrow-in-right"></i> -->
-<!-- 					<span>Booking Details</span> -->
-<!-- 			</a></li> -->
-<!-- 			<!-- End Exam History Page Nav --> -->
+	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
+	<!-- 				href="bookingManagement.htm"> <i class="bi bi-box-arrow-in-right"></i> -->
+	<!-- 					<span>Booking Details</span> -->
+	<!-- 			</a></li> -->
+	<!-- 			<!-- End Exam History Page Nav -->
+	-->
 
 
-<!-- 		</ul> -->
+	<!-- 		</ul> -->
 
-<!-- 	</aside> -->
-<%@include file="/WEB-INF/views/admin/include/sidebar.jsp" %>
+	<!-- 	</aside> -->
+	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
 	<!-- End Sidebar-->
 
 	<main id="main" class="main">
@@ -164,7 +172,8 @@
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="maidManagement.html">Maid Manegement</a></li>
+					<li class="breadcrumb-item active"><a
+						href="maidManagement.html">Maid Manegement</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -172,7 +181,7 @@
 
 		<section class="section">
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-lg-24">
 
 					<div class="card">
 						<div class="card-body">
@@ -185,41 +194,98 @@
 							<!-- Table with stripped rows -->
 							<table class="table datatable ">
 								<thead style="background-color: #37517e; color: white">
-									<th scope="col">Id</th>
-									<th scope="col">Họ tên</th>
-									<th scope="col">Username</th>
-									<th scope="col">Giới tính</th>
-									<th scope="col">Ngày sinh</th>
-									<th scope="col">Phone</th>
-									<th scope="col">Email</th>
-									<th scope="col">Địa chỉ</th>
-<!-- 									<th scope="col">City</th> -->
-<!-- 									<th scope="col">Pincode</th> -->
-<!-- 									<th scope="col">Extra Charges per Room</th> -->
-<!-- 									<th scope="col">Extra Charges per Member</th> -->
-									<th scope="col">Loại công việc</th>
-									<th scope="col">Kinh nghiệm</th>
-									<th scope="col">Trạng thái làm việc</th>
-									<th scope="col">Trạng thái tài khoẻn</th>
+									<tr>
+										<th scope="col">Id</th>
+										<th scope="col">Họ tên</th>
+										<th scope="col">Số điện thoại</th>
+										<!-- 									<th scope="col">Giới tính</th> -->
+										<!-- 									<th scope="col">Ngày sinh</th> -->
+										<th scope="col">Địa chỉ</th>
+										<th scope="col">Kinh nghiệm</th>
+										<th scope="col">Lương</th>
+										<th scope="col">Full/Partime</th>
+										<th scope="col">Id nhân viên</th>
+										<th scope="col">Email</th>
+										<th scope="col">Trạng thái làm việc</th>
+										<th scope="col">Trạng thái tài khoản</th>
+									</tr>
 								</thead>
 								<tbody>
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">Hữu Trí</td>
-										<td scope="col">huutri</td>
-										<td scope="col">Nam</td>
-										<td scope="col">28/9/2078</td>
+										<!-- 										<td scope="col">huutri</td> -->
+										<!-- 										<td scope="col">Nam</td> -->
+										<!-- 										<td scope="col">28/9/2078</td> -->
 										<td scope="col">099978767</td>
-										<td scope="col">admin@gmail.com</td>
 										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Quét dọn</td>
+										<td scope="col">2</td>
+										<td scope="col">730000</td>
+										<td scope="col">Partime</td>
+										<td scope="col">1</td>
+										<td scope="col">maidparrtime@gmail.com</td>
+										<td scope="col">
+											<div class="form-check form-switch"
+												data-switch-text="Rảnh,Đang làm việc">
+												<input class="form-check-input" type="checkbox"
+													role="switch"> <label class="form-check-label"
+													for="{checkboxId}"> <span class="switch-status">Rảnh</span>
+												</label>
+											</div>
+										</td>
+
+										<td scope="col">
+											<div class="form-check form-switch"
+												data-switch-text="Bị chặn,Hoạt động">
+												<input class="form-check-input" type="checkbox"
+													role="switch"> <label class="form-check-label"
+													for="{checkboxId}"> <span class="switch-status">Bị chặn</span>
+												</label>
+											</div>
+										</td>
+
+										<td scope="col"><a href="maidDetail.htm"
+											class="btn btn-primary "><i class="bi bi-eye"></i></a> <!-- 										<a href="updateMaid.htm" -->
+											<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
+											<a href="#" class="btn btn-danger"><i class="bi-trash"></i></a>
+										</td>
+									</tr>
+
+									<tr>
+										<td scope="row">2</td>
+										<td scope="col">Hữu Quân</td>
+										<!-- 										<td scope="col">huutri</td> -->
+										<!-- 										<td scope="col">Nam</td> -->
+										<!-- 										<td scope="col">28/9/2078</td> -->
+										<td scope="col">099978767</td>
+										<td scope="col">97 Man Thiện</td>
 										<td scope="col">3</td>
-										<td scope="col">Đang làm việc</td>
-										<td scope="col">Active</td>
-									
-										<td scope="col"><a href="updateMaid.htm"
-											class="btn btn-primary "><i class="bi-pencil"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+										<td scope="col">730500</td>
+										<td scope="col">Fulltime</td>
+										<td scope="col">1</td>
+										<td scope="col">maidfulltime@gmail.com</td>
+										<td scope="col">
+											<div class="form-check form-switch"
+												data-switch-text="Rảnh,Đang làm việc">
+												<input class="form-check-input" type="checkbox"
+													role="switch"> <label class="form-check-label"
+													for="{checkboxId}"> <span class="switch-status">Rảnh</span>
+												</label>
+											</div>
+										</td>
+										<td scope="col">
+											<div class="form-check form-switch"
+												data-switch-text="Bị chặn,Hoạt động">
+												<input class="form-check-input" type="checkbox"
+													role="switch"> <label class="form-check-label"
+													for="{checkboxId}"> <span class="switch-status">Bị chặn</span>
+												</label>
+											</div>
+										</td>
+										<td scope="col"><a href="maidDetail.htm"
+											class="btn btn-primary "><i class="bi bi-eye"></i></a> <!-- 										<a href="updateMaid.htm" -->
+											<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
+											<a href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
 								</tbody>
 							</table>
@@ -238,7 +304,7 @@
 	<!-- ======= Footer ======= -->
 	<footer id="footer" class="footer">
 		<div class="copyright">
-			&copy; ĐỒ án <strong><span>Nhóm 16</span></strong>Hiring  Maid
+			&copy; ĐỒ án <strong><span>Nhóm 16</span></strong>Hiring Maid
 		</div>
 		<div class="credits">
 			<!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
@@ -251,17 +317,38 @@
 		class="bi bi-arrow-up-short"></i></a>
 
 	<!-- Vendor JS Files -->
-	<script src="<c:url value='/resources/admin/assets/vendor/apexcharts/apexcharts.min.js'/>"></script>
-	<script src="<c:url value='/resources/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
-	<script src="<c:url value='/resources/admin/assets/vendor/chart.js/chart.min.js'/>"></script>
-	<script src="<c:url value='/resources/admin/assets/vendor/echarts/echarts.min.js'/>"></script>
-	<script src="<c:url value='/resources/admin/assets/vendor/quill/quill.min.js'/>"></script>
-	<script src="<c:url value='/resources/admin/assets/vendor/simple-datatables/simple-datatables.js'/>"></script>
-	<script src="<c:url value='/resources/admin/assets/vendor/tinymce/tinymce.min.js'/>"></script>
-	<script src="<c:url value='/resources/admin/assets/vendor/php-email-form/validate.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/apexcharts/apexcharts.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/chart.js/chart.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/echarts/echarts.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/quill/quill.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/simple-datatables/simple-datatables.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/tinymce/tinymce.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/php-email-form/validate.js'/>"></script>
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
+	<script>
+	const switchElements = document.querySelectorAll('.form-check.form-switch');
+
+	switchElements.forEach(switchElement => {
+	  const checkbox = switchElement.querySelector('input[type="checkbox"]');
+	  const statusSpan = switchElement.querySelector('.switch-status');
+	  const switchText = switchElement.dataset.switchText.split(','); // Split text options
+
+	  checkbox.addEventListener('change', function() {
+	    statusSpan.textContent = switchText[this.checked ? 1 : 0];
+	  });
+	});
+	</script>
 
 </body>
 
