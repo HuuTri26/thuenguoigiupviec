@@ -197,37 +197,40 @@
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Họ
 										tên</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="name"
-										placeholder="First name" required>
+										id="validationDefault01" value="" name="fullName"
+										placeholder="Full name" required>
 								</div>
-								<!--                                 <div class="col-md-6"> -->
-								<!--                                     <label for="validationDefault02" class="form-label">Last name</label> -->
-								<!--                                     <input type="text" class="form-control" id="validationDefault02" value="" name="last_name" placeholder="Last name" -->
-								<!--                                         required> -->
-								<!--                                 </div> -->
 								<div class="col-md-6">
 									<label for="validationDefault02" class="form-label">Số
-										điện thoại</label> <input type="number" class="form-control"
+										điện thoại</label> <input type="text" class="form-control"
 										id="validationDefault02" value="" name="phonenumber"
-										placeholder="Moblie No" required>
+										placeholder="Số điện thoại" required>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault02" class="form-label">Ngày
-										sinh</label> <input type="date" class="form-control"
-										id="validationDefault02" value="" name="dob"
-										placeholder="Date of Birth" required>
+									<label for="validationDefault02" class="form-label">Địa
+										chỉ </label> <input type="text" class="form-control"
+										id="validationDefault02" value="" name="address"
+										placeholder="Địa chỉ làm việc" required>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault02" class="form-label">User
-										Name</label> <input type="text" class="form-control"
-										id="validationDefault02" value="" name="userName"
-										placeholder="Enter Your PRN No." required>
+									<label for="validationDefault02" class="form-label">Kinh
+										nghiệm</label> <input type="number" class="form-control"
+										id="validationDefault02" value="" name="exp"
+										placeholder="EXP:" required>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault02" class="form-label">Password</label>
+									<label for="validationDefault02" class="form-label">Lương</label>
 									<input type="password" class="form-control"
-										id="validationDefault02" value="" name="password"
-										placeholder="Password" required>
+										id="validationDefault02" value="" name="salary"
+										placeholder="Lương" required>
+								</div>
+								<div class="col-md-6">
+									<label for="validationDefault04" class="form-label">Fulltime/Partime</label>
+									<select class="form-select" id="validationDefault04"
+										name="employmentType" required>
+										<option selected disabled value="">Fulltime</option>
+										<option>Partime</option>
+									</select>
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault02" class="form-label">Email</label>
@@ -235,82 +238,24 @@
 										id="validationDefault02" value="" name="email"
 										placeholder="Email" required>
 								</div>
-						</div>
-						<div class="col-md-6">
-							<label for="validationDefault02" class="form-label">Địa
-								chỉ làm việc</label> <input type="text" class="form-control"
-								id="validationDefault02" value="" name="address"
-								placeholder="Địa chỉ làm việc: " required>
-						</div>
-						<div class="col-md-6">
-							<label for="validationDefault04" class="form-label">Tỉnh</label>
-							<select class="form-select" multiple id="validationDefault04"
-								required>
-								<option selected disabled value="">Hồ Chí Minh</option>
-								<option>Hà Nội</option>
-								<option>Cần Thơ</option>
-								<option>Hải Phòng</option>
-								<option>Đà Nẵng</option>
-							</select>
-						</div>
+								<div class="col-md-6">
+									<label for="validationDefault04" class="form-label">Trạng
+										thái làm việc</label> <select class="form-select"
+										id="validationDefault04" name="statusWork" required>
+										<option selected disabled value="">Rảnh</option>
+										<option>Bận</option>
+									</select>
+								</div>
 
-						<!-- <div class="col-md-6">
-                                    <label for="validationDefault04" class="form-label">Subject</label>
-                                    <select class="form-select" multiple  id="validationDefault04" required>
-                                        <option selected disabled  value="">Mutiple Select</option>
-                                        <option>OS</option>
-                                        <option>Java</option>
-                                        <option>WPT</option>
-                                        <option>DS</option>
-                                    </select>
-                                </div> -->
-						<div class="col-md-6">
-							<label for="validationDefault02" class="form-label">Kinh
-								nghiệm</label> <input type="number" class="form-control"
-								id="validationDefault02" value="" name="expierience"
-								placeholder="Kinh nghiệm: " required>
+								<div class="col-12">
+									<button class="btn btn-primary" type="submit">Submit</button>
+								</div>
+							</form>
+							<!-- End Browser Default Validation -->
+
 						</div>
-						<div class="col-md-6">
-							<label for="validationDefault02" class="form-label">Mức
-								lương</label> <input type="number" class="form-control"
-								id="validationDefault02" value="" name="salary"
-								placeholder="Lương: " required>
-						</div>
-						<div class="col-md-6">
-							<label for="validationDefault02" class="form-label">Loại
-								công việc</label> <input type="text" class="form-control"
-								id="validationDefault02" value="" name="service"
-								placeholder="Loại công việc: " required>
-						</div>
-						<!--                                 <div class="col-md-6"> -->
-						<!--                                     <label for="validationDefault02" class="form-label">SSC Percentage</label> -->
-						<!--                                     <input type="number" class="form-control" id="validationDefault02" value="" name="qualification" placeholder="SSC Percentage" -->
-						<!--                                         required> -->
-						<!--                                 </div> -->
-						<!--                                 <div class="col-md-6"> -->
-						<!--                                     <label for="validationDefault02" class="form-label">HSC Percentage</label> -->
-						<!--                                     <input type="number" class="form-control" id="validationDefault02" value="" name="qualification" placeholder="HSC Percentage" -->
-						<!--                                         required> -->
-						<!--                                 </div> -->
-
-						<!--                                 <div class="col-md-6"> -->
-						<!--                                     <label for="validationDefault02" class="form-label">Degree Percentage</label> -->
-						<!--                                     <input type="number" class="form-control" id="validationDefault02" value="" name="qualification" placeholder="Degree Percentage" -->
-						<!--                                         required> -->
-						<!--                                 </div> -->
-
-
-
-						<div class="col-12">
-							<button class="btn btn-primary" type="submit">Submit</button>
-						</div>
-						</form>
-						<!-- End Browser Default Validation -->
-
 					</div>
 				</div>
-
-			</div>
 			</div>
 		</section>
 

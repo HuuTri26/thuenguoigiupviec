@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Profile customer</title>
+<title>Profile Maid</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -132,9 +132,9 @@
 	<!--       <li class="nav-item"> -->
 	<!--         <a class="nav-link collapsed" href="student.html"> -->
 	<!--           <i class="bi bi-person"></i> -->
-	<!--           <span>customer</span> -->
+	<!--           <span>Maid</span> -->
 	<!--         </a> -->
-	<!--       </li>End customer Page Nav -->
+	<!--       </li>End Maid Page Nav -->
 
 	<!--       <li class="nav-item"> -->
 	<!--         <a class="nav-link collapsed" href="teacher.html"> -->
@@ -168,12 +168,12 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Profile customer</h1>
+			<h1>Profile Maid</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="detailcustomer">Profile
-							customer</a></li>
+					<li class="breadcrumb-item active"><a href="maidDetail.htm">Profile
+							Maid</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -247,6 +247,17 @@
 									</div>
 
 									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Kinh nghiệm</div>
+										<div class="col-lg-9 col-md-8">1</div>
+									</div>
+
+
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Mức Lương</div>
+										<div class="col-lg-9 col-md-8">3000$</div>
+									</div>
+
+									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
 										<div class="col-lg-9 col-md-8">2022-12-26</div>
 									</div>
@@ -258,9 +269,14 @@
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Email</div>
-										<div class="col-lg-9 col-md-8">customerpartime@gmail.com</div>
+										<div class="col-lg-9 col-md-8">maidpartime@gmail.com</div>
 									</div>
-										<div class="row">
+
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Trạng thái làm việc</div>
+										<div class="col-lg-9 col-md-8">Rảnh</div>
+									</div>
+									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Trạng thái tài khoản</div>
 										<div class="col-lg-9 col-md-8">Hoạt động</div>
 									</div>

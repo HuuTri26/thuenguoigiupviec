@@ -20,11 +20,11 @@
 			p:driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
 			p:url="jdbc:sqlserver://localhost:1433;Database=RENT_MAID;integratedSecurity=false;trustServerCertificate=true;"
 			p:username="sa"
-			p:password="123">
+			p:password="huutri">
 	</bean>
 	
 	<!-- Cấu hình Hibernate -->
-	<bean id="sessionFactory" 
+	<!-- <bean id="sessionFactory" 
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 	    <property name="dataSource" ref="dataSource"/>
 	    <property name="hibernateProperties">
@@ -34,11 +34,11 @@
 	       </props>
 	    </property>
 		<property name="packagesToScan" value="ptithcm.entity"/>
-	</bean>
+	</bean> -->
 	
 	<!-- Transaction Manager -->
-    <bean id="transactionManager" 
-    		class="org.springframework.orm.hibernate4.HibernateTransactionManager" 
-       		p:sessionFactory-ref="sessionFactory" />
+<!--     <bean id="transactionManager"  -->
+<!--     		class="org.springframework.orm.hibernate4.HibernateTransactionManager"  -->
+<!--        		p:sessionFactory-ref="sessionFactory" /> -->
     <tx:annotation-driven transaction-manager="transactionManager" />
 </beans>

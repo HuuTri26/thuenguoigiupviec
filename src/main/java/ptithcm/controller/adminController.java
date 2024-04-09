@@ -42,6 +42,12 @@ public class adminController {
 		return "admin/addMaid";
 	}
 
+	// Hiển thị form thông tin người giúp việc:
+	@RequestMapping("admin/maidDetail")
+	public String showDetailMaidForm() {
+		return "admin/maidDetail";
+	}
+
 	// Hiển thị danh sách khách hàng:
 	@RequestMapping("admin/customerManagement")
 	public String showCustomerList() {
@@ -60,6 +66,12 @@ public class adminController {
 		return "admin/serviceManagement";
 	}
 
+	// Hiển thị thông tin chi tiết dịch vụ:
+	@RequestMapping("admin/serviceDetail")
+	public String showServiceDetail() {
+		return "admin/serviceDetail";
+	}
+
 	// Hiển thị form thêm dịch vụ:
 	@RequestMapping("admin/addService")
 	public String showAddServiceForm() {
@@ -71,14 +83,60 @@ public class adminController {
 	public String showUpdateServiceForm() {
 		return "admin/updateService";
 	}
-	
-	
+
 	// Hiển thị danh sách đặt lịch thuê:
-		@RequestMapping("admin/bookingManagement")
-		public String showBookingList() {
-			return "admin/bookingManagement";
-		}
+	@RequestMapping("admin/bookingManagement")
+	public String showBookingList() {
+		return "admin/bookingManagement";
+	}
+
+	// Hiển thị thông tin đặt lịch thuê:
+	@RequestMapping("admin/bookingDetail")
+	public String showBookingDetail() {
+		return "admin/bookingDetail";
+	}
+
+	// Hiển thị danh sách hợp đồng:
+	@RequestMapping("admin/contractManagement")
+	public String showContractManagement() {
+		return "admin/contractManagement";
+	}
+
+	// Hiển thị thông tin hợp đồng:
+	@RequestMapping("admin/contractDetail")
+	public String showContractDetail() {
+		return "admin/contractDetail";
+	}
+
+	// Hiển thị danh sách bill:
+	@RequestMapping("admin/billManagement")
+	public String showBillManagement() {
+		return "admin/billManagement";
+	}
+
+	// Hiển thị thông tin bill:
+	@RequestMapping("admin/billDetail")
+	public String showBillDetail() {
+		return "admin/billDetail";
+	}
+
+	// Hiển thị danh sách feedback:
+	@RequestMapping("admin/feedbackManagement")
+	public String showfeedbackManagement() {
+		return "admin/feedbackManagement";
+	}
+
+	// Hiển thị thông tin feedback:
+	@RequestMapping("admin/feedbackDetail")
+	public String showfeedbackDetail() {
+		return "admin/feedbackDetail";
+	}
 	
+	// Đăng xuất:
+		@RequestMapping("admin/logout")
+		public String showLogout() {
+			return "redirect:/main";
+		}
 
 	// Xử lý đăng nhập cho admin
 	@RequestMapping(value = "admin/adminLogin", method = RequestMethod.POST)
