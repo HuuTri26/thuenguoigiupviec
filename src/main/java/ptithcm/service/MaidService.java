@@ -12,4 +12,5 @@ import ptithcm.entity.MaidEntity;
 @Transactional
 public interface MaidService {
 	public List<MaidEntity> getListMaid();
+	public void addMaid(MaidEntity maid);
 }

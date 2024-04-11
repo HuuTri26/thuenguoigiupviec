@@ -28,7 +28,7 @@ public class AccountDaoImpl implements AccountDAO{
 			t.commit();
 		}catch (Exception e) {
 			t.rollback();
-			System.out.println("Error: " + e.toString());
+			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
 		}finally {
 			session.close();
 		}
@@ -45,7 +45,7 @@ public class AccountDaoImpl implements AccountDAO{
 			t.commit();
 		}catch (Exception e) {
 			t.rollback();
-			System.out.println("Error: " + e.toString());
+			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
 		}finally {
 			session.close();
 		}
@@ -71,14 +71,13 @@ public class AccountDaoImpl implements AccountDAO{
 	}
 
 	@Override
-	public boolean getStatusFromAccount(String email, String password) {
+	public boolean getStatusFromAccount(String email) {
 		AccountEntity account = null;
 		Session session = factory.getCurrentSession();
-		String hql = "FROM AccountEntity WHERE email = :email AND password = :password";
+		String hql = "FROM AccountEntity WHERE email = :email";
 		try {
 			Query query = session.createQuery(hql);
 			query.setParameter("email", email);
-			query.setParameter("password", password);
 			
 			account = (AccountEntity) query.uniqueResult();
 			
@@ -91,14 +90,13 @@ public class AccountDaoImpl implements AccountDAO{
 	}
 
 	@Override
-	public Integer getRoleIdFromAccount(String email, String password) {
+	public Integer getRoleIdFromAccount(String email) {
 		Integer roleId = 0;
 		Session session = factory.getCurrentSession();
-		String hql = "SELECT a.role.roleID FROM AccountEntity a WHERE a.email = :email AND a.password = :password";
+		String hql = "SELECT a.role.roleID FROM AccountEntity a WHERE a.email = :email";
 		try {
 			Query query = session.createQuery(hql);
 			query.setParameter("email", email);
-			query.setParameter("password", password);
 			
 			roleId = (Integer) query.uniqueResult();
 		}catch (Exception e) {
@@ -106,6 +104,22 @@ public class AccountDaoImpl implements AccountDAO{
 		}
 //		System.out.println(roleId);
 		return roleId;
+	}
+
+	@Override
+	public boolean isExistEmail(String email) {
+		String result = null;
+		Session session = factory.getCurrentSession();
+		String hql = "SELECT a.email FROM AccountEntity a WHERE a.email = :email";
+		try {
+			Query query = session.createQuery(hql);
+			query.setParameter("email", email);
+			
+			result = (String) query.uniqueResult();
+		}catch (Exception e) {
+			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
+		}
+		return (result != null)? true : false;
 	}
 	
 }

@@ -99,10 +99,10 @@ public class maidController {
 			errors.rejectValue("email", "maidAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "maidAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;
-		}else if(!accountService.getStatusFromAccount(maidAcc.getEmail(), maidAcc.getPassword())) {
+		}else if(!accountService.getStatusFromAccount(maidAcc.getEmail())) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản của bạn đã bị khóa");
 			permission = Boolean.FALSE;
-		}else if(accountService.getRoleIdFromAccount(maidAcc.getEmail(), maidAcc.getPassword()) != 2) {
+		}else if(accountService.getRoleIdFromAccount(maidAcc.getEmail()) != 2) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
 			permission = Boolean.FALSE;
 		}

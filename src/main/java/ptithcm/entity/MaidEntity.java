@@ -34,6 +34,8 @@ public class MaidEntity {
 	private String image;
 	@Column(name = "Salary")
 	private Double salary;
+//	@Column(name = "Email")
+//	private String email;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
@@ -121,6 +123,14 @@ public class MaidEntity {
 	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
+
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
 
 	public Date getCreateAt() {
 		return createAt;

@@ -1,5 +1,6 @@
 package ptithcm.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import javax.security.auth.message.callback.SecretKeyCallback.Request;
@@ -24,9 +25,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ptithcm.entity.AccountEntity;
 import ptithcm.entity.EmployeeEntity;
 import ptithcm.entity.MaidEntity;
+import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
 import ptithcm.service.EmployeeService;
 import ptithcm.service.MaidService;
+import ptithcm.service.RoleService;
 
 @Transactional
 @Controller
@@ -43,6 +46,9 @@ public class adminController {
 	
 	@Autowired
 	MaidService maidService;
+	
+	@Autowired
+	RoleService roleService;
 
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
@@ -82,8 +88,10 @@ public class adminController {
 	}
 
 	// Hiển thị form thêm người giúp việc:
-	@RequestMapping("admin/addMaid")
-	public String showAddMaidForm() {
+	@RequestMapping(value = "admin/addMaid", method = RequestMethod.GET)
+	public String showAddMaidForm(Model model) {
+		model.addAttribute("maid", new MaidEntity());
+		System.out.println("==> Open a add maid session");
 		return "admin/addMaid";
 	}
 
@@ -210,27 +218,96 @@ public class adminController {
 			return "admin/adminLogin";
 		}
 		
-		if(!accountService.isExistAccount(adminAcc.getEmail(), adminAcc.getPassword())) {
+		if(!accountService.isExistAccount(adminAcc.getEmail(), accountService.getHashPassword(adminAcc.getPassword()))) {
+//			System.out.println(accountService.getHashPassword(adminAcc.getPassword()));
 			errors.rejectValue("email", "adminAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "adminAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;
-		}else if(!accountService.getStatusFromAccount(adminAcc.getEmail(), adminAcc.getPassword())) {
+		}else if(!accountService.getStatusFromAccount(adminAcc.getEmail())) {
 			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn đã bị khóa");
 			permission = Boolean.FALSE;
-		}else if(accountService.getRoleIdFromAccount(adminAcc.getEmail(), adminAcc.getPassword()) != 1) {
+		}else if(accountService.getRoleIdFromAccount(adminAcc.getEmail()) != 1) {
 			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
 			permission = Boolean.FALSE;
 		}
 		
 		if(permission) {
-			System.out.println("Login successfully!");
+			System.out.println("==> Login successfully!");
 			HttpSession session = request.getSession();
 			session.setAttribute("adminEmail", adminAcc.getEmail());
 			return "admin/index";
 		}else {
-			System.out.println("Login unsuccessfully!");
+			System.out.println("Error: Login unsuccessfully!");
 			return "admin/adminLogin";
 		}
+	}
+	
+	//Xử lý thêm người giúp việc
+	@RequestMapping(value = "admin/addMaid", params = "add", method = RequestMethod.POST)
+	public String addMaid(HttpServletRequest request, Model model, @ModelAttribute("maid") MaidEntity maid, 
+						BindingResult errors) throws ParseException {
+		
+		Boolean isValidMaid = Boolean.TRUE;
+		
+		if(maid.getAccount().getEmail().isEmpty()) {
+			errors.rejectValue("account.email", "maid", "Tài khoản email không được để trống");
+			isValidMaid = Boolean.FALSE;
+		}else if(!accountService.isValidEmail(maid.getAccount().getEmail())) {
+			errors.rejectValue("account.email", "maid", "Tài khoản email nhập sai định dạng");
+			isValidMaid = Boolean.FALSE;
+		}else if(accountService.isExistEmail(maid.getAccount().getEmail())) {
+			errors.rejectValue("account.email", "maid", "Tài khoản email đã tồn tại trên hệ thống vui lòng chọn 1 email khác");
+			isValidMaid = Boolean.FALSE;
+		}
+		
+		if(maid.getFullName().isEmpty()) {
+			errors.rejectValue("fullName", "maid", "Tên người giúp việc không được để trống");
+			isValidMaid = Boolean.FALSE;
+		}else if(accountService.standardize(maid.getFullName()).length() > 30) {
+			errors.rejectValue("fullName", "maid", "Tên người giúp việc không được dài quá 30 ký tự");
+			isValidMaid = Boolean.FALSE;
+		}
+		
+		if(maid.getSalary().isNaN()) {
+			errors.rejectValue("salary", "maid", "Giá trị nhập không hợp lệ");
+			isValidMaid = Boolean.FALSE;
+		}
+		
+		if(!maid.getPhoneNumber().isEmpty() && accountService.isValidPhoneNumber(maid.getPhoneNumber())) {
+			errors.rejectValue("phoneNumber", "maid", "Số điện thoại bạn nhập không đúng định dạng");
+			isValidMaid = Boolean.FALSE;
+		}
+		
+		if(isValidMaid == Boolean.FALSE) {
+			System.out.println("Error: Add maid unsuccessfully! Reason: Maid info is not valid!!");
+			return "admin/addMaid";
+		}
+		
+		RoleEntity maidRole = roleService.getRoleById(2);
+		if(maidRole != null) {
+			//Tạo 1 Maid Account mới với email vừa nhập mật khẩu mặc định là 123
+			AccountEntity newMaidAcc = new AccountEntity(maid.getAccount().getEmail(),
+														accountService.getHashPassword("123"), 
+														Boolean.TRUE, 
+														maidRole);
+			accountService.addAccount(newMaidAcc);
+			maid.setAccount(newMaidAcc);
+			System.out.println("==> Add new maid account successfully!");
+		}else {
+			System.out.println("Error: Add new maid account unsuccessfully!"
+					+ " Reason: RoleEntity with RoleId = 2 does not exist");
+		}
+		
+		maid.setFullName(accountService.standardizeName(maid.getFullName()));
+		maid.setAddress(maid.getAddress());
+		maid.setSalary(maid.getSalary());
+		maid.setEmploymentType(maid.getEmploymentType());
+		maid.setPhoneNumber(maid.getPhoneNumber());
+		maid.setExperience(maid.getExperience());
+		
+		maidService.addMaid(maid);
+		System.out.println("==> Add maid successfully!");
+		return "admin/addMaid";
 	}
 	
 	@RequestMapping(value = "admin/adminForgotPassword", method = RequestMethod.POST)

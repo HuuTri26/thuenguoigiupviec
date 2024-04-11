@@ -72,10 +72,10 @@ public class customerController {
 				errors.rejectValue("email", "customerAcc", "Tài khoản không tồn tại");
 				errors.rejectValue("password", "customerAcc", "Hoặc mật khẩu bạn nhập không đúng");
 				permission = Boolean.FALSE;
-			}else if(!accountService.getStatusFromAccount(customerAcc.getEmail(), customerAcc.getPassword())) {
+			}else if(!accountService.getStatusFromAccount(customerAcc.getEmail())) {
 				errors.rejectValue("email", "customerAcc", "Tài khoản của bạn đã bị khóa");
 				permission = Boolean.FALSE;
-			}else if(accountService.getRoleIdFromAccount(customerAcc.getEmail(), customerAcc.getPassword()) != 3) {
+			}else if(accountService.getRoleIdFromAccount(customerAcc.getEmail()) != 3) {
 				errors.rejectValue("email", "customerAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
 				permission = Boolean.FALSE;
 			}

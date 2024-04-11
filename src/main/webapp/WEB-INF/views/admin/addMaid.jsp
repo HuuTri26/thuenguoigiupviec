@@ -188,69 +188,73 @@
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form class="row g-3">
-								<!-- <div class="col-md-6">
-                                    <label for="validationDefault01" class="form-label">ID</label>
-                                    <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
-                                        required>
-                                </div> -->
+							<form:form class="row g-3" action="addMaid.htm"
+								modelAttribute="maid" method="post">
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Họ
-										tên</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="fullName"
-										placeholder="Full name" required>
+										tên</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault01" path="fullName"
+										placeholder="Full name" />
+									<form:errors path="fullName" />
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault02" class="form-label">Số
-										điện thoại</label> <input type="text" class="form-control"
-										id="validationDefault02" value="" name="phonenumber"
-										placeholder="Số điện thoại" required>
+										điện thoại</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault02" path="phoneNumber"
+										placeholder="Phone number" />
+									<form:errors path="phoneNumber" />
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault02" class="form-label">Địa
-										chỉ </label> <input type="text" class="form-control"
-										id="validationDefault02" value="" name="address"
-										placeholder="Địa chỉ làm việc" required>
+									<label for="validationDefault03" class="form-label">Địa
+										chỉ</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault03" path="address" placeholder="Address" />
+									<form:errors path="address" />
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault02" class="form-label">Kinh
-										nghiệm</label> <input type="number" class="form-control"
-										id="validationDefault02" value="" name="exp"
-										placeholder="EXP:" required>
+									<label for="validationDefault04" class="form-label">Kinh
+										nghiệm</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault04" path="experience"
+										placeholder="Experience" />
+									<form:errors path="experience" />
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault02" class="form-label">Lương</label>
-									<input type="password" class="form-control"
-										id="validationDefault02" value="" name="salary"
-										placeholder="Lương" required>
+									<label for="validationDefault05" class="form-label">Lương</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault05" path="salary" placeholder="Salary" />
+									<form:errors path="salary" />
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Fulltime/Partime</label>
-									<select class="form-select" id="validationDefault04"
-										name="employmentType" required>
-										<option selected disabled value="">Fulltime</option>
-										<option>Partime</option>
-									</select>
+									<label for="validationDefault06" class="form-label">Email</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault06" path="account.email" placeholder="Email" />
+									<form:errors path="account.email" />
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault02" class="form-label">Email</label>
-									<input type="email" class="form-control"
-										id="validationDefault02" value="" name="email"
-										placeholder="Email" required>
+									<label for="validationDefault07" class="form-label">Fulltime/Partime</label>
+									<form:select class="form-select" id="validationDefault07"
+										path="employmentType">
+										<form:option value="0">Fulltime</form:option>
+										<form:option value="1">Partime</form:option>
+									</form:select>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Trạng
-										thái làm việc</label> <select class="form-select"
-										id="validationDefault04" name="statusWork" required>
-										<option selected disabled value="">Rảnh</option>
-										<option>Bận</option>
-									</select>
+									<label for="validationDefault08" class="form-label">Trạng
+										thái làm việc</label>
+									<form:select class="form-select" id="validationDefault08"
+										path="">
+										<form:option value="Available">Rảnh</form:option>
+										<form:option value="Busy">Bận</form:option>
+									</form:select>
 								</div>
-
 								<div class="col-12">
-									<button class="btn btn-primary" type="submit">Submit</button>
+									<button class="btn btn-primary" name="add" type="submit">Submit</button>
 								</div>
-							</form>
+							</form:form>
+
 							<!-- End Browser Default Validation -->
 
 						</div>

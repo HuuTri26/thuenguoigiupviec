@@ -12,6 +12,14 @@ public interface AccountService {
 	public void addAccount(AccountEntity acc);
 	public void updateAccount(AccountEntity acc);
 	public boolean isExistAccount(String email, String password);
-	public boolean getStatusFromAccount(String email, String password);
-	public Integer getRoleIdFromAccount(String email, String password);
+	public boolean getStatusFromAccount(String email);
+	public Integer getRoleIdFromAccount(String email);
+	public boolean isExistEmail(String email);
+	
+	public Boolean isValidEmail(String email);
+	public String standardize(String str);
+	public String standardizeName(String str);
+	public boolean isValidPhoneNumber(String phoneNumber);
+	public String getHashPassword(String password);
+	
 }

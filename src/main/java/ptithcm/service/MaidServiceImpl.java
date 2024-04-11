@@ -21,5 +21,10 @@ public class MaidServiceImpl implements MaidService{
 	public List<MaidEntity> getListMaid() {
 		return MaidDAO.getListMaid();
 	}
+
+	@Override
+	public void addMaid(MaidEntity maid) {
+		MaidDAO.addMaid(maid);
+	}
 	
 }

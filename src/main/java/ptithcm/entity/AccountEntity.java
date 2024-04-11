@@ -31,6 +31,18 @@ public class AccountEntity {
 	
 	@OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
 	private MaidEntity maid;
+	
+	public AccountEntity(String email, String password, Boolean status, RoleEntity role) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.status = status;
+		this.role = role;
+	}
+
+	public AccountEntity() {
+		super();
+	}
 
 	public String getEmail() {
 		return email;

@@ -248,50 +248,13 @@
 											</td>
 	
 											<td scope="col"><a href="maidDetail.htm"
-												class="btn btn-primary "><i class="bi bi-eye"></i></a> <!-- 										<a href="updateMaid.htm" -->
+												class="btn btn-primary "><i class="bi-pencil"></i></a> <!-- 										<a href="updateMaid.htm" -->
 												<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
 												<a href="#" class="btn btn-danger"><i class="bi-trash"></i></a>
 											</td>
 										</tr>
 									</c:forEach>
 									
-
-									<tr>
-										<td scope="row">2</td>
-										<td scope="col">Hữu Quân</td>
-										<!-- 										<td scope="col">huutri</td> -->
-										<!-- 										<td scope="col">Nam</td> -->
-										<!-- 										<td scope="col">28/9/2078</td> -->
-										<td scope="col">099978767</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">3</td>
-										<td scope="col">730500</td>
-										<td scope="col">Fulltime</td>
-										<td scope="col">1</td>
-										<td scope="col">maidfulltime@gmail.com</td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Rảnh,Đang làm việc">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Rảnh</span>
-												</label>
-											</div>
-										</td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Bị chặn,Hoạt động">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Bị chặn</span>
-												</label>
-											</div>
-										</td>
-										<td scope="col"><a href="maidDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a> <!-- 										<a href="updateMaid.htm" -->
-											<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
-											<a href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
 								</tbody>
 							</table>
 							<!-- End Table with stripped rows -->
