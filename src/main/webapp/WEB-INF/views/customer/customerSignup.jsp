@@ -51,7 +51,7 @@
 							<form action="customerSignup.htm" class="signin-form">
 								<div class="form-group mb-3">
 									<label class="label" for="name">Họ Tên</label> <input
-										type="text" name="name" class="form-control"
+										type="text" name="fullName" class="form-control"
 										placeholder="Name" required>
 
 								</div>
@@ -62,26 +62,22 @@
 										placeholder="Mobile No" required>
 								</div>
 
-								<div class="form-group mb-3">
-									<label class="label" for="password">Email</label> <input
-										type="email" name="email" class="form-control"
-										placeholder="User Name" required>
-								</div>
+							
 								<div class="form-group mb-3">
 									<label class="label" for="password">Địa chỉ</label> <input
 										type="text" name="address" class="form-control"
-										placeholder="Mobile No" required>
+										placeholder="Địa chỉ" required>
 								</div>
-								<div class="form-group mb-3">
-									<label class="label">Thành Phố</label> <select
-										class="form-select" aria-label="Default select example">
-										<option selected>Hồ Chí Minh</option>
-										<option>Hà Nội</option>
-										<option>Đà Nẵng</option>
-										<option>Cần Thơ</option>
-										<option>Bình Định</option>
-									</select>
-								</div>
+<!-- 								<div class="form-group mb-3"> -->
+<!-- 									<label class="label">Thành Phố</label> <select -->
+<!-- 										class="form-select" aria-label="Default select example"> -->
+<!-- 										<option selected>Hồ Chí Minh</option> -->
+<!-- 										<option>Hà Nội</option> -->
+<!-- 										<option>Đà Nẵng</option> -->
+<!-- 										<option>Cần Thơ</option> -->
+<!-- 										<option>Bình Định</option> -->
+<!-- 									</select> -->
+<!-- 								</div> -->
 								<!-- 	<div class="form-group mb-3">
 									<label class="label" for="password">Vai trò</label> <select
 										class="form-select" aria-label="Default select example">
@@ -128,11 +124,16 @@
 								</div>
 							</div>
 
-							<div class="form-group mb-3">
-								<label class="label" for="password">Ngày Sinh</label> <input
-									type="date" name="birthday" class="form-control"
-									placeholder="Date of Birth" required>
-							</div>
+<!-- 							<div class="form-group mb-3"> -->
+<!-- 								<label class="label" for="password">Ngày Sinh</label> <input -->
+<!-- 									type="date" name="birthday" class="form-control" -->
+<!-- 									placeholder="Date of Birth" required> -->
+<!-- 							</div> -->
+								<div class="form-group mb-3">
+									<label class="label" for="password">Email</label> <input
+										type="email" name="email" class="form-control"
+										placeholder="Email" required>
+								</div>
 							<div class="form-group mb-3">
 								<label class="label" for="password">Password</label> <input
 									type="password" name="password" class="form-control"

@@ -2,6 +2,7 @@ package ptithcm.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,11 +24,13 @@ public class AccountEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "RoleId")
-	private RoleEntity roles;
+	private RoleEntity role;
 	
-//	@OneToOne
-//	@JoinColumn(name = "Email")
-//	private EmployeeEntity employee;
+	@OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+	private EmployeeEntity employee;
+	
+	@OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+	private MaidEntity maid;
 
 	public String getEmail() {
 		return email;
@@ -53,20 +56,29 @@ public class AccountEntity {
 		this.status = status;
 	}
 
-//	public EmployeeEntity getEmployee() {
-//		return employee;
-//	}
-//
-//	public void setEmployee(EmployeeEntity employee) {
-//		this.employee = employee;
-//	}
+	public EmployeeEntity getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(EmployeeEntity employee) {
+		this.employee = employee;
+	}
 
 	public RoleEntity getRole() {
-		return roles;
+		return role;
 	}
 
 	public void setRole(RoleEntity role) {
-		this.roles = role;
+		this.role = role;
 	}
+
+	public MaidEntity getMaid() {
+		return maid;
+	}
+
+	public void setMaid(MaidEntity maid) {
+		this.maid = maid;
+	}
+	
 	
 }

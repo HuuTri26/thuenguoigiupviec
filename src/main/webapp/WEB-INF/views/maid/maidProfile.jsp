@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Profile</title>
+<title>Profile Maid</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -168,11 +168,12 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Profile</h1>
+			<h1>Profile Maid</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="maidProfile.html">Profile</a></li>
+					<li class="breadcrumb-item active"><a href="maidProfile.html">Profile
+							Maid</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -219,10 +220,6 @@
 										data-bs-target="#profile-edit">Chỉnh sửa Profile</button>
 								</li>
 
-								<!--                   <li class="nav-item"> -->
-								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button> -->
-								<!--                   </li> -->
-
 								<li class="nav-item">
 									<button class="nav-link" data-bs-toggle="tab"
 										data-bs-target="#profile-change-password">Đổi mật
@@ -231,7 +228,7 @@
 
 							</ul>
 							<div class="tab-content pt-2">
-
+								
 								<div class="tab-pane fade show active profile-overview"
 									id="profile-overview">
 									<h5 class="card-title">Giới thiệu</h5>
@@ -245,47 +242,52 @@
 									</div>
 
 									<div class="row">
-										<div class="col-lg-3 col-md-4 label">UserName</div>
-										<div class="col-lg-9 col-md-8">huutri</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Giới tính</div>
-										<div class="col-lg-9 col-md-8">Nữ</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Ngày sinh</div>
-										<div class="col-lg-9 col-md-8">31/02/2099</div>
+										<div class="col-lg-3 col-md-4 label">Số điện thoại</div>
+										<div class="col-lg-9 col-md-8">094387384</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-										<div class="col-lg-9 col-md-8">97 Man Thiện</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Loại công việc</div>
-										<div class="col-lg-9 col-md-8">Boxing</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Kinh nghiệm</div>
-										<div class="col-lg-9 col-md-8">7</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Mức lương</div>
-										<div class="col-lg-9 col-md-8">100930293029</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Phone</div>
-										<div class="col-lg-9 col-md-8">(+84) 486-3538 x29071</div>
+										<div class="col-lg-9 col-md-8">97 Man thiện</div>
 									</div>
 
 									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Kinh nghiệm</div>
+										<div class="col-lg-9 col-md-8">31/02/2099</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Salary</div>
+										<div class="col-lg-9 col-md-8">300$</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
+										<div class="col-lg-9 col-md-8">2022-12-26</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Ngày cập nhật</div>
+										<div class="col-lg-9 col-md-8">2023-01-26</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Full/Partime</div>
+										<div class="col-lg-9 col-md-8">Fulltime</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Id nhân viên</div>
+										<div class="col-lg-9 col-md-8">1</div>
+									</div>
+									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Email</div>
-										<div class="col-lg-9 col-md-8">admin@gmail.com</div>
+										<div class="col-lg-9 col-md-8">maidfulltime@gmail.com</div>
+									</div>
+
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Trạng thái tài
+											khoản</div>
+										<div class="col-lg-9 col-md-8">Hoạt động</div>
 									</div>
 
 								</div>
+								
 
 								<div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
@@ -307,16 +309,6 @@
 												</div>
 											</div>
 										</div>
-
-										<div class="row mb-3">
-											<label for="fullName"
-												class="col-md-4 col-lg-3 col-form-label">Họ tên</label>
-											<div class="col-md-8 col-lg-9">
-												<input name="name" type="text" class="form-control"
-													id="fullName" value="Kevin Anderson">
-											</div>
-										</div>
-
 										<div class="row mb-3">
 											<label for="about" class="col-md-4 col-lg-3 col-form-label">Giới
 												thiệu</label>
@@ -325,80 +317,85 @@
 													style="height: 100px">Hahahahaha</textarea>
 											</div>
 										</div>
+										<div class="row mb-3">
+											<label for="fullName"
+												class="col-md-4 col-lg-3 col-form-label">Họ tên</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="fullName" type="text" class="form-control"
+													id="fullName" value="Kevin Anderson">
+											</div>
+										</div>
+
+
 
 										<div class="row mb-3">
-											<label for="company" class="col-md-4 col-lg-3 col-form-label">UserName</label>
+											<label for="company" class="col-md-4 col-lg-3 col-form-label">Số
+												điện thoại</label>
 											<div class="col-md-8 col-lg-9">
-												<input name="userName" type="text" class="form-control"
-													id="company" value="huutri">
+												<input disabled="disabled" name="phonenumber" type="text"
+													class="form-control" id="company" value="093288728">
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="Job" class="col-md-4 col-lg-3 col-form-label">Giới
-												tính</label>
-											<div class="col-md-8 col-lg-9">
-												<input name="gender" type="text" class="form-control"
-													id="Job" value="Nữ">
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Ngày
-												sinh</label>
-											<div class="col-md-8 col-lg-9">
-												<input name="dob" type="text" class="form-control"
-													id="Country" value="31/02/2099">
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="Address" class="col-md-4 col-lg-3 col-form-label">Địa
+											<label for="Job" class="col-md-4 col-lg-3 col-form-label">Địa
 												chỉ</label>
 											<div class="col-md-8 col-lg-9">
 												<input name="address" type="text" class="form-control"
-													id="Address" value="97 Man Thiện">
+													id="Job" value="91 Man Thiện">
 											</div>
 										</div>
 
 										<div class="row mb-3">
-											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số
-												điện thoại</label>
-											<div class="col-md-8 col-lg-9">
-												<input name="phone" type="text" class="form-control"
-													id="Phone" value="(436) 486-3538 x29071">
-											</div>
-										</div>
-										<div class="row mb-3">
-											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Loại
-												công việc</label>
-											<div class="col-md-8 col-lg-9">
-												<input name="service" type="text" class="form-control"
-													id="Phone" value="Boxing">
-											</div>
-										</div>
-										<div class="row mb-3">
-											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Kinh
-												ngiệm</label>
+											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Kinh
+												nghiệm</label>
 											<div class="col-md-8 col-lg-9">
 												<input name="exp" type="number" class="form-control"
-													id="Phone" value="6">
+													id="Country" value="2">
 											</div>
 										</div>
+
 										<div class="row mb-3">
-											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Mức Lương</label>
+											<label for="Address" class="col-md-4 col-lg-3 col-form-label">Salary</label>
 											<div class="col-md-8 col-lg-9">
 												<input name="salary" type="number" class="form-control"
-													id="Phone" value="3000$">
+													id="Address" value="3000">
+											</div>
+										</div>
+
+										<div class="row mb-3">
+											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Id
+												nhân viên</label>
+											<div class="col-md-8 col-lg-9">
+												<input name="employmentId" disabled="disabled" type="number"
+													class="form-control" id="Phone" value="1">
 											</div>
 										</div>
 										<div class="row mb-3">
-											<label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
+											<label for="validationDefault04"
+												class="col-md-4 col-lg-3 col-form-label">Full/Partime</label>
+											<select class="form-select" id="validationDefault04"
+												name="employmentType" required>
+												<option selected value="">Fulltime</option>
+												<option>Partime</option>
+											</select>
+										</div>
+										<div class="row mb-3">
+											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Email</label>
 											<div class="col-md-8 col-lg-9">
-												<input name="email" type="email" class="form-control"
-													id="Email" value="k.anderson@example.com">
+												<input disabled="disabled" name="email" type="email" class="form-control"
+													id="Phone" value="maidfulltime@gmail.com">
 											</div>
 										</div>
+										<div class="row mb-3">
+											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Trạng
+												thái tài khoản</label>
+											<div class="col-md-8 col-lg-9">
+												<input disabled="disabled" name="status" type="text" class="form-control"
+													id="Phone" value="Hoạt động">
+											</div>
+										</div>
+
 
 										<!-- <div class="row mb-3">
                         <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>

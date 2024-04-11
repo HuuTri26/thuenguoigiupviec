@@ -227,7 +227,7 @@
 													class="mx-auto d-block" height="30%" width="30%"
 													style="text-align: center;">
 												<div class="card-body" style="align-items: center;">
-													<h5 class="card-title" style="text-align: center;">Số lượng dịch vụ</h5>
+													<h5 class="card-title" style="text-align: center;">Số lượng Hợp Đồng</h5>
 													<h5 class="card-text" style="text-align: center;">10</h5>
 												</div>
 											</div>

@@ -1,6 +1,5 @@
 package ptithcm.dao;
 
-import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -95,7 +94,7 @@ public class AccountDaoImpl implements AccountDAO{
 	public Integer getRoleIdFromAccount(String email, String password) {
 		Integer roleId = 0;
 		Session session = factory.getCurrentSession();
-		String hql = "SELECT a.roles.roleID FROM AccountEntity a WHERE a.email = :email AND a.password = :password";
+		String hql = "SELECT a.role.roleID FROM AccountEntity a WHERE a.email = :email AND a.password = :password";
 		try {
 			Query query = session.createQuery(hql);
 			query.setParameter("email", email);

@@ -19,7 +19,7 @@ public class RoleEntity {
 	@Column(name = "RoleName")
 	private String roleName;
 	
-	@OneToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
 	private List<AccountEntity> accounts;
 	
 	public RoleEntity() {

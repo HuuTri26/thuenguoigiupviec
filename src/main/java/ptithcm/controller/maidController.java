@@ -46,7 +46,30 @@ public class maidController {
 	public String showMaidProfile() {
 		return "maid/maidProfile";
 	}
+	
+	// Trang danh sách đặt lịch thuê cho maid:
+	@RequestMapping("maid/bookingManagement")
+	public String showMaidBookingManagement() {
+		return "maid/bookingManagement";
+	}
+	
+	// Trang danh sách đặt lịch thuê cho maid:
+	@RequestMapping("maid/bookingDetail")
+	public String showMaidBookingDetail() {
+		return "maid/bookingDetail";
+	}
+	
+	// Trang danh sách đặt hợp đồng cho maid:
+	@RequestMapping("maid/contractManagement")
+	public String showMaidContractManagement() {
+		return "maid/contractManagement";
+	}
 
+	// Trang thông tin hợp đồng  cho maid:
+	@RequestMapping("maid/contractDetail")
+	public String showMaidContractDetail() {
+		return "maid/contractDetail";
+	}
 	// Xử lý đăng nhập cho maid
 	@RequestMapping(value = "maid/maidLogin", method = RequestMethod.POST)
 	public String maidLogin(Model model, HttpServletRequest request, @ModelAttribute("maidAcc") AccountEntity maidAcc, BindingResult errors) {
