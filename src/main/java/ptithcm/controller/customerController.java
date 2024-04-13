@@ -18,18 +18,19 @@ import ptithcm.service.AccountService;
 @Transactional
 @Controller
 public class customerController {
-	@Autowired
-	SessionFactory factory;
-
-	@Autowired
-	AccountService accountService;
-
-// Trang đăng nhập cho customer
-	@RequestMapping("customer/customerLogin")
-	public String showCustomerLoginForm(Model model) {
-		model.addAttribute("customerAcc", new AccountEntity());
-		return "customer/customerLogin";
-	}
+	
+		@Autowired
+		SessionFactory factory;
+	
+		@Autowired
+		AccountService accountService;
+	
+	// Trang đăng nhập cho customer
+		@RequestMapping("customer/customerLogin")
+		public String showCustomerLoginForm(Model model) {
+			model.addAttribute("customerAcc", new AccountEntity());
+			return "customer/customerLogin";
+		}
 		
 		@RequestMapping("customer/customerSignup")
 		public String showCustomerSignupForm() {

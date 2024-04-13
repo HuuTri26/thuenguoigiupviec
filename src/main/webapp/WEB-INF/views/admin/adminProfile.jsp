@@ -180,27 +180,7 @@
 
 		<section class="section profile">
 			<div class="row">
-				<div class="col-xl-4">
 
-					<div class="card">
-						<div
-							class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-							<img
-								src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
-								alt="Profile" class="rounded-circle">
-							<h2>Hữu</h2>
-							<h3>huutri</h3>
-							<!-- <div class="social-links mt-2">
-                  <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                  <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                  <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                  <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                </div> -->
-						</div>
-					</div>
-
-				</div>
 
 				<div class="col-xl-8">
 
@@ -232,52 +212,90 @@
 							</ul>
 							<div class="tab-content pt-2">
 
-								<div class="tab-pane fade show active profile-overview"
-									id="profile-overview">
-									<h5 class="card-title">Giới thiệu</h5>
-									<p class="small fst-italic">Hahahahahahaa</p>
+								<form:form class="adminInfo" modelAttribute="employeeInfo"
+									method="get">
 
-									<h5 class="card-title">Thông tin Profile</h5>
+									<div class="col-xl-4">
 
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Họ tên</div>
-										<div class="col-lg-9 col-md-8">Hữu Trí</div>
+										<div class="card">
+											<div
+												class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+												<img
+													src="<c:url value='/resources/admin/assets/img/${employeeInfo.image }'/>"
+													alt="Profile" class="rounded-circle">
+												<h2>${employeeInfo.fullName }</h2>
+												<h3>Admin</h3>
+												<!-- <div class="social-links mt-2">
+                  <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                  <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                  <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                  <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div> -->
+											</div>
+										</div>
+
 									</div>
 
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-										<div class="col-lg-9 col-md-8">97 Man Thiện</div>
+									<div class="tab-pane fade show active profile-overview"
+										id="profile-overview">
+										<h5 class="card-title">Giới thiệu</h5>
+										<p class="small fst-italic">Hahahahahahaa</p>
+
+										<h5 class="card-title">Thông tin Profile</h5>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label ">Họ tên</div>
+											<div class="col-lg-9 col-md-8">
+												<span>${employeeInfo.fullName }</span>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
+											<div class="col-lg-9 col-md-8">
+												<span>${employeeInfo.address }</span>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Phone</div>
+											<div class="col-lg-9 col-md-8">
+												<span>${employeeInfo.phoneNumber }</span>
+											</div>
+										</div>
+
+										<%-- <div class="row">
+											<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
+											<div class="col-lg-9 col-md-8"><span>${employee.fullName }</span></div>
+										</div>
+
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Ngày cập nhật</div>
+											<div class="col-lg-9 col-md-8"><span>${employee.fullName }</span></div>
+										</div> --%>
+
+
+										<%-- <div class="row">
+											<div class="col-lg-3 col-md-4 label">Trạng thái tài
+												khoản</div>
+											<div class="col-lg-9 col-md-8">
+												<span>${employeeInfo.fullName }</span>
+											</div>
+										</div> --%>
+
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Email</div>
+											<div class="col-lg-9 col-md-8">
+												<span>${employeeInfo.email }</span>
+											</div>
+										</div>
+
 									</div>
 
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Phone</div>
-										<div class="col-lg-9 col-md-8">(+84) 486-3538 x29071</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
-									</div>
-
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Ngày cập nhật</div>
-										<div class="col-lg-9 col-md-8">2023-01-26</div>
-									</div>
-
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Trạng thái tài khoản</div>
-										<div class="col-lg-9 col-md-8">Hoạt động</div>
-									</div>
-
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Email</div>
-										<div class="col-lg-9 col-md-8">admin@gmail.com</div>
-									</div>
-
-								</div>
+								</form:form>
 
 								<div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 

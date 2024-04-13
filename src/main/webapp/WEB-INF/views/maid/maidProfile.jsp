@@ -228,7 +228,7 @@
 
 							</ul>
 							<div class="tab-content pt-2">
-
+								
 								<div class="tab-pane fade show active profile-overview"
 									id="profile-overview">
 									<h5 class="card-title">Giới thiệu</h5>
@@ -287,6 +287,7 @@
 									</div>
 
 								</div>
+								
 
 
 

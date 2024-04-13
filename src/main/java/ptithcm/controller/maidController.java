@@ -16,13 +16,13 @@ import ptithcm.service.AccountService;
 
 @Controller
 public class maidController {
-
+	
 	@Autowired
 	SessionFactory factory;
 
 	@Autowired
 	AccountService accountService;
-
+	
 	// Trang đăng nhập cho maid
 	@RequestMapping("maid/maidLogin")
 	public String showMaidLoginForm(Model model) {
@@ -46,6 +46,16 @@ public class maidController {
 	public String showMaidProfile() {
 		return "maid/maidProfile";
 	}
+	
+
+	
+
+	
+	// Trang danh sách đặt hợp đồng cho maid:
+	@RequestMapping("maid/contractManagement")
+	public String showMaidContractManagement() {
+		return "maid/contractManagement";
+	}
 
 	// Trang danh sách đặt lịch thuê cho maid:
 	@RequestMapping("maid/bookingManagement")
@@ -59,60 +69,52 @@ public class maidController {
 		return "maid/bookingDetail";
 	}
 
-	// Trang danh sách đặt hợp đồng cho maid:
-	@RequestMapping("maid/contractManagement")
-	public String showMaidContractManagement() {
-		return "maid/contractManagement";
-	}
-
 	// Trang thông tin hợp đồng cho maid:
 	@RequestMapping("maid/contractDetail")
 	public String showMaidContractDetail() {
 		return "maid/contractDetail";
 	}
-
 	// Xử lý đăng nhập cho maid
 	@RequestMapping(value = "maid/maidLogin", method = RequestMethod.POST)
-	public String maidLogin(Model model, HttpServletRequest request, @ModelAttribute("maidAcc") AccountEntity maidAcc,
-			BindingResult errors) {
-//			// Kiểm tra thông tin đăng nhập
-//			String userName = request.getParameter("userName");
-//			String password = request.getParameter("password");
-//			if (userName.equals("maid") && password.equals("123")) {
-//				// Đăng nhập thành công
-//				return "maid/index"; // Chuyển hướng đến trang dashboard của maid
-//			} else {
-//				// Đăng nhập không thành công
-//				request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
-//				return "maid/maidLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
-//			}
-
+	public String maidLogin(Model model, HttpServletRequest request, @ModelAttribute("maidAcc") AccountEntity maidAcc, BindingResult errors) {
+//		// Kiểm tra thông tin đăng nhập
+//		String userName = request.getParameter("userName");
+//		String password = request.getParameter("password");
+//		if (userName.equals("maid") && password.equals("123")) {
+//			// Đăng nhập thành công
+//			return "maid/index"; // Chuyển hướng đến trang dashboard của maid
+//		} else {
+//			// Đăng nhập không thành công
+//			request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
+//			return "maid/maidLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
+//		}
+		
 		Boolean permission = Boolean.TRUE;
-
-		if (maidAcc.getEmail().isEmpty()) {
+		
+		if(maidAcc.getEmail().isEmpty()) {
 			errors.rejectValue("email", "maidAcc", "Xin vui lòng nhập username hoặc email!");
 			return "admin/adminLogin";
-		} else if (maidAcc.getPassword().isEmpty()) {
+		}else if(maidAcc.getPassword().isEmpty()) {
 			errors.rejectValue("password", "maidAcc", "Xin vui lòng nhập mật khẩu!");
 			return "admin/adminLogin";
 		}
-
-		if (!accountService.isExistAccount(maidAcc.getEmail(), maidAcc.getPassword())) {
+		
+		if(!accountService.isExistAccount(maidAcc.getEmail(), maidAcc.getPassword())) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "maidAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;
-		} else if (!accountService.getStatusFromAccount(maidAcc.getEmail(), maidAcc.getPassword())) {
+		}else if(!accountService.getStatusFromAccount(maidAcc.getEmail(), maidAcc.getPassword())) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản của bạn đã bị khóa");
 			permission = Boolean.FALSE;
-		} else if (accountService.getRoleIdFromAccount(maidAcc.getEmail(), maidAcc.getPassword()) != 2) {
+		}else if(accountService.getRoleIdFromAccount(maidAcc.getEmail(), maidAcc.getPassword()) != 2) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
 			permission = Boolean.FALSE;
 		}
-
-		if (permission) {
+		
+		if(permission) {
 			System.out.println("Login successfully!");
 			return "maid/index";
-		} else {
+		}else {
 			System.out.println("Login unsuccessfully!");
 			return "maid/maidLogin";
 		}

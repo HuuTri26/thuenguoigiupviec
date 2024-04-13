@@ -1,8 +1,12 @@
 package ptithcm.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +18,9 @@ public class RoleEntity {
 	
 	@Column(name = "RoleName")
 	private String roleName;
+	
+	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+	private List<AccountEntity> accounts;
 	
 	public RoleEntity() {
 		super();
@@ -39,6 +46,14 @@ public class RoleEntity {
 
 	public void setRoleName(String roleName) {
 		this.roleName = roleName;
+	}
+
+	public List<AccountEntity> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<AccountEntity> accounts) {
+		this.accounts = accounts;
 	}
 		
 }

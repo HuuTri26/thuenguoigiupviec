@@ -74,6 +74,9 @@
 									</div>
 								</div>
 							</form:form>
+							<p class="text-center"><a href="signup.htm">Đăng ký</a></p>
+
+							</form>
 <!-- 							<p class="text-center"><a href="signup.htm">Đăng ký</a></p> -->
 						</div>
 					</div>
