@@ -219,8 +219,11 @@
 												<div class="form-check form-switch"
 													data-switch-text="Bị chặn,Hoạt động">
 													<input class="form-check-input" type="checkbox"
-														role="switch" disabled="disabled"> <label class="form-check-label"
-														for="{checkboxId}"> <span class="switch-status">Bị chặn</span>
+														role="switch" id="statusSwitch"
+														${customer.account.status ? 'checked' : ''}
+														disabled="disabled"> <label
+														class="form-check-label" for="statusSwitch"> <span
+														class="switch-status">${customer.account.status ? 'Hoạt động' : 'Bị chặn'}</span>
 													</label>
 												</div>
 											</td>
@@ -281,19 +284,6 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
-	<script>
-	const switchElements = document.querySelectorAll('.form-check.form-switch');
-
-	switchElements.forEach(switchElement => {
-	  const checkbox = switchElement.querySelector('input[type="checkbox"]');
-	  const statusSpan = switchElement.querySelector('.switch-status');
-	  const switchText = switchElement.dataset.switchText.split(','); // Split text options
-
-	  checkbox.addEventListener('change', function() {
-	    statusSpan.textContent = switchText[this.checked ? 1 : 0];
-	  });
-	});
-	</script>
 
 </body>
 

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.validator.constraints.Email;
@@ -26,11 +27,13 @@ import ptithcm.entity.AccountEntity;
 import ptithcm.entity.CustomerEntity;
 import ptithcm.entity.EmployeeEntity;
 import ptithcm.entity.MaidEntity;
+import ptithcm.entity.ServiceEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
 import ptithcm.service.CustomerService;
 import ptithcm.service.EmployeeService;
 import ptithcm.service.MaidService;
+import ptithcm.service.MaidServiceService;
 import ptithcm.service.RoleService;
 
 @Transactional
@@ -54,6 +57,9 @@ public class adminController {
 
 	@Autowired
 	CustomerService customerService;
+	
+	@Autowired
+	MaidServiceService maidServiceService;
 
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
@@ -146,7 +152,10 @@ public class adminController {
 
 	// Hiển thị danh sách dịch vụ:
 	@RequestMapping("admin/serviceManagement")
-	public String showServiceList() {
+	public String showServiceList(Model model) {
+		List<ServiceEntity> serviceList = maidServiceService.getListService();
+		model.addAttribute("serviceList", serviceList);
+		
 		return "admin/serviceManagement";
 	}
 

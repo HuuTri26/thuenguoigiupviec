@@ -211,9 +211,9 @@
 									</tr>
 								</thead>
 								<tbody id="table_maids">
-								
+
 									<c:forEach var="maid" items="${maidList }">
-									
+
 										<tr>
 											<td scope="row">${maid.id }</td>
 											<td scope="col">${maid.fullName }</td>
@@ -224,38 +224,44 @@
 											<td scope="col">${maid.address }</td>
 											<td scope="col">${maid.experience }</td>
 											<td scope="col">${maid.salary }</td>
-											<td scope="col">${maid.employmentType }</td>
+											<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
 											<%-- <td scope="col">${maid.employee.Id }</td> --%>
 											<td scope="col">${maid.account.email }</td>
 											<td scope="col">
 												<div class="form-check form-switch"
 													data-switch-text="Rảnh,Đang làm việc">
 													<input class="form-check-input" type="checkbox"
-														role="switch" disabled="disabled"> <label class="form-check-label"
-														for="{checkboxId}"> <span class="switch-status">Rảnh</span>
+														role="switch" disabled="disabled"> <label
+														class="form-check-label" for="{checkboxId}"> <span
+														class="switch-status">Rảnh</span>
 													</label>
 												</div>
 											</td>
-	
+
 											<td scope="col">
 												<div class="form-check form-switch"
 													data-switch-text="Bị chặn,Hoạt động">
 													<input class="form-check-input" type="checkbox"
-														role="switch"> <label class="form-check-label"
-														for="{checkboxId}"> <span class="switch-status">Bị chặn</span>
+														role="switch" id="statusSwitch"
+														${maid.account.status ? 'checked' : ''}
+														disabled="disabled"> <label
+														class="form-check-label" for="statusSwitch"> <span
+														class="switch-status">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}</span>
 													</label>
 												</div>
 											</td>
-	
-											<td scope="col"><a href="admin/edit/${maid.id}.htm?linkEdit"
-												class="btn btn-primary "><i class="bi-pencil" data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" -->
+
+											<td scope="col"><a
+												href="admin/edit/${maid.id}.htm?linkEdit"
+												class="btn btn-primary "><i class="bi-pencil"
+													data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" -->
 												<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
-												<a href="/index/${maid.id}?linkDelete" class="btn btn-danger" 
-													data-action="delete" data-id="${maid.id}"><i class="bi-trash"></i></a>
-											</td>
+												<a href="/index/${maid.id}?linkDelete"
+												class="btn btn-danger" data-action="delete"
+												data-id="${maid.id}"><i class="bi-trash"></i></a></td>
 										</tr>
 									</c:forEach>
-									
+
 								</tbody>
 							</table>
 							<!-- End Table with stripped rows -->
@@ -305,19 +311,6 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
-	<script>
-	const switchElements = document.querySelectorAll('.form-check.form-switch');
-
-	switchElements.forEach(switchElement => {
-	  const checkbox = switchElement.querySelector('input[type="checkbox"]');
-	  const statusSpan = switchElement.querySelector('.switch-status');
-	  const switchText = switchElement.dataset.switchText.split(','); // Split text options
-
-	  checkbox.addEventListener('change', function() {
-	    statusSpan.textContent = switchText[this.checked ? 1 : 0];
-	  });
-	});
-	</script>
 
 </body>
 
