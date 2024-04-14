@@ -205,27 +205,32 @@
 
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">Hữu Trí</td>
-										<td scope="col">089848748</td>
-										<td scope="col">92 Man Thiện</td>
-										<td scope="col">customer1@gmail.com</td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Bị chặn,Hoạt động">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Bị chặn</span>
-												</label>
-											</div>
-										</td>
-										<td scope="col"><a href="customerDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a><a
-											href="customerDetail.htm" class="btn btn-danger"><i
-												class="bi-trash"></i></a></td>
-									</tr>
+								<tbody id="table_customers">
+
+									<c:forEach var="customer" items="${customerList }">
+
+										<tr>
+											<td scope="row">${customer.id }</td>
+											<td scope="col">${customer.fullName }</td>
+											<td scope="col">${customer.phoneNumber }</td>
+											<td scope="col">${customer.address }</td>
+											<td scope="col">${customer.account.email }</td>
+											<td scope="col">
+												<div class="form-check form-switch"
+													data-switch-text="Bị chặn,Hoạt động">
+													<input class="form-check-input" type="checkbox"
+														role="switch" disabled="disabled"> <label class="form-check-label"
+														for="{checkboxId}"> <span class="switch-status">Bị chặn</span>
+													</label>
+												</div>
+											</td>
+											<td scope="col"><a href="customerDetail.htm"
+												class="btn btn-primary "><i class="bi bi-eye"></i></a><a
+												href="customerDetail.htm" class="btn btn-danger"><i
+													class="bi-trash"></i></a></td>
+										</tr>
+
+									</c:forEach>
 
 								</tbody>
 							</table>

@@ -225,13 +225,13 @@
 											<td scope="col">${maid.experience }</td>
 											<td scope="col">${maid.salary }</td>
 											<td scope="col">${maid.employmentType }</td>
-											<%-- <td scope="col">${maid.employee.iD }</td> --%>
+											<%-- <td scope="col">${maid.employee.Id }</td> --%>
 											<td scope="col">${maid.account.email }</td>
 											<td scope="col">
 												<div class="form-check form-switch"
 													data-switch-text="Rảnh,Đang làm việc">
 													<input class="form-check-input" type="checkbox"
-														role="switch"> <label class="form-check-label"
+														role="switch" disabled="disabled"> <label class="form-check-label"
 														for="{checkboxId}"> <span class="switch-status">Rảnh</span>
 													</label>
 												</div>
@@ -247,10 +247,11 @@
 												</div>
 											</td>
 	
-											<td scope="col"><a href="maidDetail.htm"
-												class="btn btn-primary "><i class="bi-pencil"></i></a> <!-- 										<a href="updateMaid.htm" -->
+											<td scope="col"><a href="admin/edit/${maid.id}.htm?linkEdit"
+												class="btn btn-primary "><i class="bi-pencil" data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" -->
 												<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
-												<a href="#" class="btn btn-danger"><i class="bi-trash"></i></a>
+												<a href="/index/${maid.id}?linkDelete" class="btn btn-danger" 
+													data-action="delete" data-id="${maid.id}"><i class="bi-trash"></i></a>
 											</td>
 										</tr>
 									</c:forEach>

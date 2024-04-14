@@ -32,6 +32,9 @@ public class AccountEntity {
 	@OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
 	private MaidEntity maid;
 	
+	@OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+	private CustomerEntity customer;
+	
 	public AccountEntity(String email, String password, Boolean status, RoleEntity role) {
 		super();
 		this.email = email;
@@ -91,6 +94,12 @@ public class AccountEntity {
 	public void setMaid(MaidEntity maid) {
 		this.maid = maid;
 	}
-	
-	
+
+	public CustomerEntity getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(CustomerEntity customer) {
+		this.customer = customer;
+	}
 }

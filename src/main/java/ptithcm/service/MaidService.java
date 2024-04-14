@@ -1,7 +1,6 @@
 package ptithcm.service;
 
 import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
@@ -13,4 +12,5 @@ import ptithcm.entity.MaidEntity;
 public interface MaidService {
 	public List<MaidEntity> getListMaid();
 	public void addMaid(MaidEntity maid);
+	public MaidEntity getMaidById(Integer id);
 }

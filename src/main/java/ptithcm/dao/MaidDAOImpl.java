@@ -45,4 +45,14 @@ public class MaidDAOImpl implements MaidDAO {
 		}
 	}
 
+	@Override
+	public MaidEntity getMaidById(Integer id) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MaidEntity WHERE id = :id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		MaidEntity maid = (MaidEntity) query.uniqueResult();
+		return maid;
+	}
+
 }
