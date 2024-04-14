@@ -44,6 +44,25 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
+               <li>
+                <a class="dropdown-item d-flex align-items-center" href="adminEditProfile.htm">
+                  <i class="bi bi-person"></i>
+                  <span>Chỉnh sửa trang cá nhân</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              
+                <li>
+                <a class="dropdown-item d-flex align-items-center" href="adminChangePassword.htm">
+                  <i class="bi bi-person"></i>
+                  <span>Đổi mật khẩu</span>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
   
               <li>
                 <a class="dropdown-item d-flex align-items-center" href="main.htm">

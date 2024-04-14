@@ -10,7 +10,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>main</title>
+  <title>Khách hàng</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -43,43 +43,7 @@
 <body>
 
   <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex justify-content-between">
-
-      <div class="logo">
-        <h1><a href="index.html">BookMyMaid</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-           
-          <li class="dropdown"><a href="#"><span>Login</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="admin/adminLogin.htm">Admin</a></li>
-              <li><a href="maid/maidLogin.htm">Maid</a></li>
-              <li><a href="customer/customerLogin.htm">User</a></li>
-               
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-<!--              <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a> -->
-<!--                <ul> -->
-<!--               <li><a href="profile.htm">Trang cá nhân</a></li> -->
-<!--               <li><a href="index.htm">Log out</a></li> -->
-               
-<!--             </ul> -->
-<!--           </li> -->
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
+ 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
 
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
@@ -180,8 +144,8 @@
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
             <div class="icon-box icon-box-pink">
-              <div class="icon"><i class="bx bx-b"></i></div>
-              <h4 class="title"><a href="">Cleaning</a></h4>
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4 class="title"><a href="serviceList.htm">Cleaning</a></h4>
               <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate</p>
             </div>
           </div>
@@ -189,15 +153,15 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="100">
             <div class="icon-box icon-box-cyan">
               <div class="icon"><i class="bx bx-file"></i></div>
-              <h4 class="title"><a href="">Cooking</a></h4>
+              <h4 class="title"><a href="serviceList.htm">Cooking</a></h4>
               <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-green">
-              <div class="icon"><i class="bx bx-bucket"></i></div>
-              <h4 class="title"><a href="">Washing</a></h4>
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4 class="title"><a href="serviceList.htm">Washing</a></h4>
               <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>
             </div>
           </div>
@@ -205,7 +169,7 @@
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box icon-box-blue">
               <div class="icon"><i class="bx bx-world"></i></div>
-              <h4 class="title"><a href="">Laundry</a></h4>
+              <h4 class="title"><a href="serviceList.htm">Laundry</a></h4>
               <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum</p>
             </div>
           </div>
@@ -457,79 +421,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h3>BookMyMaid</h3>
-              <p>
-                <p>A-123 MG Road, <br>
-                  Pune, PU 535022 
-                  <br>
-                <strong>Phone:</strong> +91 9988452631<br>
-                <strong>Email:</strong> bookmymaid@gmail.com<br>
-              </p>
-               
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Design by</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">AkshayKumar Girmal</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Atharva Bondre</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Tejas Jawale</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Mayur Nigade</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Pankaj Desai</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Ruchita Patil</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h3>BookMyMaid</h3>
-            <p>A web-based application that provides facility to book maid online. 
-              It provides a common platform where user can book maid according to need and maid can get a job assigned.</p>
-            <h4>Our Social Networks</h4>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="copyright">
-        &copy; Đồ án <strong><span>Nhóm 16</span></strong> Maid Hiring
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">Developers</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+  	<%@include file="/WEB-INF/views/customer/include/footer.jsp"%>
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

@@ -15,38 +15,58 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ptithcm.entity.AccountEntity;
 import ptithcm.service.AccountService;
+
 @Transactional
 @Controller
 public class customerController {
-	
-		@Autowired
-		SessionFactory factory;
-	
-		@Autowired
-		AccountService accountService;
-	
-	// Trang đăng nhập cho customer
-		@RequestMapping("customer/customerLogin")
-		public String showCustomerLoginForm(Model model) {
-			model.addAttribute("customerAcc", new AccountEntity());
-			return "customer/customerLogin";
-		}
-		
-		@RequestMapping("customer/customerSignup")
-		public String showCustomerSignupForm() {
-			return "customer/customerSignup";
-		}
-		
-		//Trang quên mật khẩu cho customer:
-		@RequestMapping("customer/customerForgotPassword")
-		public String showCustomerForgotPasswordForm() {
-			return "customer/customerForgotPassword";
-		}
 
-		// Xử lý đăng nhập cho customer
-		@RequestMapping(value = "customer/customerLogin", method = RequestMethod.POST)
-		public String customerLogin(ModelMap model ,HttpServletRequest request, @ModelAttribute("customerAcc") AccountEntity customerAcc, BindingResult errors) {
-			
+	@Autowired
+	SessionFactory factory;
+
+	@Autowired
+	AccountService accountService;
+
+	// Trang đăng nhập cho customer
+	@RequestMapping("customer/customerLogin")
+	public String showCustomerLoginForm(Model model) {
+		model.addAttribute("customerAcc", new AccountEntity());
+		return "customer/customerLogin";
+	}
+
+	@RequestMapping("customer/customerSignup")
+	public String showCustomerSignupForm() {
+		return "customer/customerSignup";
+	}
+
+	// Trang quên mật khẩu cho customer:
+	@RequestMapping("customer/customerForgotPassword")
+	public String showCustomerForgotPasswordForm() {
+		return "customer/customerForgotPassword";
+	}
+
+	// Trang danh sách người giúp việc fulltime cho customer:
+	@RequestMapping("customer/maidList")
+	public String showMaidList() {
+		return "customer/maidList";
+	}
+
+	// Trang thông tin người giúp việc fulltime cho customer:
+	@RequestMapping("customer/maidDetail")
+	public String showMaidDetail() {
+		return "customer/maidDetail";
+	}
+
+	// Trang danh sách người giúp việc fulltime cho customer:
+	@RequestMapping("customer/serviceList")
+	public String showServiceList() {
+		return "customer/serviceList";
+	}
+
+	// Xử lý đăng nhập cho customer
+	@RequestMapping(value = "customer/customerLogin", method = RequestMethod.POST)
+	public String customerLogin(ModelMap model, HttpServletRequest request,
+			@ModelAttribute("customerAcc") AccountEntity customerAcc, BindingResult errors) {
+
 //			// Kiểm tra thông tin đăng nhập
 //			String userName = request.getParameter("userName");
 //			String password = request.getParameter("password");
@@ -58,41 +78,41 @@ public class customerController {
 //				request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
 //				return "customer/customerLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
 //			}
-			Boolean permission = Boolean.TRUE;
-			
-			if(customerAcc.getEmail().isEmpty()) {
-				errors.rejectValue("email", "customerAcc", "Xin vui lòng nhập username hoặc email!");
-				return "admin/adminLogin";
-			}else if(customerAcc.getPassword().isEmpty()) {
-				errors.rejectValue("password", "customerAcc", "Xin vui lòng nhập mật khẩu!");
-				return "admin/adminLogin";
-			}
-			
-			if(!accountService.isExistAccount(customerAcc.getEmail(), customerAcc.getPassword())) {
-				errors.rejectValue("email", "customerAcc", "Tài khoản không tồn tại");
-				errors.rejectValue("password", "customerAcc", "Hoặc mật khẩu bạn nhập không đúng");
-				permission = Boolean.FALSE;
-			}else if(!accountService.getStatusFromAccount(customerAcc.getEmail())) {
-				errors.rejectValue("email", "customerAcc", "Tài khoản của bạn đã bị khóa");
-				permission = Boolean.FALSE;
-			}else if(accountService.getRoleIdFromAccount(customerAcc.getEmail()) != 3) {
-				errors.rejectValue("email", "customerAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
-				permission = Boolean.FALSE;
-			}
-			
-			if(permission) {
-				System.out.println("Login successfully!");
-				return "main";
-			}else {
-				System.out.println("Login unsuccessfully!");
-				return "customer/customerLogin";
-			}
-			
+		Boolean permission = Boolean.TRUE;
+
+		if (customerAcc.getEmail().isEmpty()) {
+			errors.rejectValue("email", "customerAcc", "Xin vui lòng nhập username hoặc email!");
+			return "admin/adminLogin";
+		} else if (customerAcc.getPassword().isEmpty()) {
+			errors.rejectValue("password", "customerAcc", "Xin vui lòng nhập mật khẩu!");
+			return "admin/adminLogin";
 		}
 
-		// Trang dashboard của customer
-		@RequestMapping("customer/index")
-		public String customerIndex() {
-			return "main";
+		if (!accountService.isExistAccount(customerAcc.getEmail(), customerAcc.getPassword())) {
+			errors.rejectValue("email", "customerAcc", "Tài khoản không tồn tại");
+			errors.rejectValue("password", "customerAcc", "Hoặc mật khẩu bạn nhập không đúng");
+			permission = Boolean.FALSE;
+		} else if (!accountService.getStatusFromAccount(customerAcc.getEmail())) {
+			errors.rejectValue("email", "customerAcc", "Tài khoản của bạn đã bị khóa");
+			permission = Boolean.FALSE;
+		} else if (accountService.getRoleIdFromAccount(customerAcc.getEmail()) != 3) {
+			errors.rejectValue("email", "customerAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
+			permission = Boolean.FALSE;
 		}
+
+		if (permission) {
+			System.out.println("Login successfully!");
+			return "customer/index";
+		} else {
+			System.out.println("Login unsuccessfully!");
+			return "customer/customerLogin";
+		}
+
+	}
+
+	// Trang dashboard của customer
+	@RequestMapping("customer/index")
+	public String customerIndex() {
+		return "customer/index";
+	}
 }

@@ -230,7 +230,8 @@
 								<div class="col-md-6">
 									<label for="validationDefault06" class="form-label">Email</label>
 									<form:input type="text" class="form-control"
-										id="validationDefault06" path="account.email" placeholder="Email" />
+										id="validationDefault06" path="account.email"
+										placeholder="Email" />
 									<form:errors path="account.email" />
 								</div>
 								<div class="col-md-6">

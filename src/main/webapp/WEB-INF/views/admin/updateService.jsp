@@ -194,14 +194,28 @@
                                     <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
                                         required>
                                 </div> -->
-					
+								<div class="row mb-3">
+									<label for="profileImage"
+										class="col-md-4 col-lg-3 col-form-label">Ảnh</label>
+									<div class="col-md-8 col-lg-9">
+										<img
+											src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
+											alt="Profile" style="max-width: 120px;">
+										<div class="pt-2">
+											<a href="#" class="btn btn-primary btn-sm"
+												title="Upload new profile image"><i class="bi bi-upload"></i></a>
+											<a href="#" class="btn btn-danger btn-sm"
+												title="Remove my profile image"><i class="bi bi-trash"></i></a>
+										</div>
+									</div>
+								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Tên
 										dịch vụ</label> <input type="text" class="form-control"
 										id="validationDefault01" value="" name="name"
 										placeholder="Subject name" required>
 								</div>
-					
+
 								<div class="col-md-6">
 									<label for="validationDefault04" class="form-label">Loại
 									</label> <select class="form-select" id="validationDefault04"
@@ -212,21 +226,21 @@
 										<option>Chăm sóc người bệnh</option>
 									</select>
 								</div>
-					
+
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Giá
 										tiền</label> <input type="number" class="form-control"
 										id="validationDefault01" value="" name="price"
 										placeholder="Subject name" required>
 								</div>
-						
+
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Thời
 										gian gói</label> <input type="number" class="form-control"
 										id="validationDefault01" value="" name="time"
 										placeholder="Subject name" required>
 								</div>
-							
+
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Số
 										lượng giúp việc</label> <input type="number" class="form-control"
@@ -239,17 +253,17 @@
                                         required>
                                         </textarea>
                                 </div> -->
-					
+
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Miêu
 										tả</label>
 									<textarea class="form-control" style="height: 100px"></textarea>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Trạng thái</label>
-									<select class="form-select" id="validationDefault04"
+									<label for="validationDefault04" class="form-label">Trạng
+										thái</label> <select class="form-select" id="validationDefault04"
 										name="status" required>
-										<option selected  value="">Hoạt động</option>
+										<option selected value="">Hoạt động</option>
 										<option>Ngưng hoạt động</option>
 									</select>
 								</div>
