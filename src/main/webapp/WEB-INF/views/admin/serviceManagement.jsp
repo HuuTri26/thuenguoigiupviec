@@ -204,58 +204,38 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">Dọn nhà 2h</td>
-										<td scope="col">Dọn dẹp</td>
-										<td scope="col">2h</td>
-										<td scope="col">350000</td>
-										<td scope="col">no1</td>
-										<td scope="col">3</td>
-										<td scope="col">
-										<div class="form-check form-switch"
-												data-switch-text="Ngưng hoạt động, Hoạt động">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Ngưng hoạt động</span>
-												</label>
-											</div></td>
 
-										<td scope="col">
-										<a href="serviceDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a>
-										<a href="updateService.htm"
-											class="btn btn-primary "><i class="bi-pencil"></i></a>
-											<a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a>
-											</td>
-									</tr>
-									<tr>
-										<td scope="row">2</td>
-										<td scope="col">Chăm trẻ 2h</td>
-										<td scope="col">Chăm trẻ</td>
-										<td scope="col">2h</td>
-										<td scope="col">150000</td>
-										<td scope="col">no2</td>
-										<td scope="col">1</td>
-										<td scope="col">
-										<div class="form-check form-switch"
-												data-switch-text="Ngưng hoạt động, Hoạt động">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Ngưng hoạt động</span>
-												</label>
-											</div></td>
+									<c:forEach var="service" items="${serviceList }">
 
-										<td scope="col">
-										<a href="serviceDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a>
-										<a href="updateService.htm"
-											class="btn btn-primary "><i class="bi-pencil"></i></a>
-											<a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a>
+										<tr>
+											<td scope="row">${service.id }</td>
+											<td scope="col">${service.name }</td>
+											<td scope="col">${service.category.name }</td>
+											<td scope="col">${service.time }</td>
+											<td scope="col">${service.servicePrices[0].price }</td>
+											<td scope="col">${service.description }</td>
+											<td scope="col">${service.maidQuantity }</td>
+											<td scope="col">
+												<div class="form-check form-switch"
+													data-switch-text="Bị chặn,Hoạt động">
+													<input class="form-check-input" type="checkbox"
+														role="switch" id="statusSwitch"
+														${service.status ? 'checked' : ''}
+														disabled="disabled"> <label
+														class="form-check-label" for="statusSwitch"> <span
+														class="switch-status">${service.status ? 'Hoạt động' : 'Ngưng hoạt động'}</span>
+													</label>
+												</div>
 											</td>
-									</tr>
+
+											<td scope="col"><a href="serviceDetail.htm"
+												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
+												href="updateService.htm" class="btn btn-primary "><i
+													class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
+													class="bi-trash"></i></a></td>
+										</tr>
+
+									</c:forEach>
 
 								</tbody>
 							</table>
@@ -304,19 +284,7 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
-<script>
-	const switchElements = document.querySelectorAll('.form-check.form-switch');
-
-	switchElements.forEach(switchElement => {
-	  const checkbox = switchElement.querySelector('input[type="checkbox"]');
-	  const statusSpan = switchElement.querySelector('.switch-status');
-	  const switchText = switchElement.dataset.switchText.split(','); // Split text options
-
-	  checkbox.addEventListener('change', function() {
-	    statusSpan.textContent = switchText[this.checked ? 1 : 0];
-	  });
-	});
-	</script>
+	
 </body>
 
 </html>
