@@ -19,7 +19,7 @@ public class EmployeeEntity {
 	@Id
 	@Column(name = "Id")
 	@GeneratedValue
-	private Integer Id;
+	private Integer id;
 	
 	@Column(name = "FullName")
 	private String fullName;
@@ -41,11 +41,11 @@ public class EmployeeEntity {
 //	private List<MaidEntity> maids;
 
 	public Integer getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(Integer id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getFullName() {

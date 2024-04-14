@@ -57,7 +57,7 @@ public class MaidEntity {
     private AccountEntity account;
 	
 //	@ManyToOne
-//	@JoinColumn(name = "Id")
+//	@JoinColumn(name = "id")
 //    private EmployeeEntity employee;
 	
 //	@OneToOne(mappedBy = "maid", fetch = FetchType.LAZY)

@@ -26,5 +26,10 @@ public class MaidServiceImpl implements MaidService{
 	public void addMaid(MaidEntity maid) {
 		MaidDAO.addMaid(maid);
 	}
+
+	@Override
+	public MaidEntity getMaidById(Integer id) {
+		return MaidDAO.getMaidById(id);
+	}
 	
 }

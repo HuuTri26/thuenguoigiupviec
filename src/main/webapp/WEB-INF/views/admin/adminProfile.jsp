@@ -289,7 +289,7 @@
 										<div class="row">
 											<div class="col-lg-3 col-md-4 label">Email</div>
 											<div class="col-lg-9 col-md-8">
-												<span>${employeeInfo.email }</span>
+												<span>${employeeInfo.account.email }</span>
 											</div>
 										</div>
 

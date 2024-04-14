@@ -3,7 +3,6 @@ package ptithcm.controller;
 import java.text.ParseException;
 import java.util.List;
 
-import javax.security.auth.message.callback.SecretKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -18,15 +17,18 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.CustomerEntity;
 import ptithcm.entity.EmployeeEntity;
 import ptithcm.entity.MaidEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.CustomerService;
 import ptithcm.service.EmployeeService;
 import ptithcm.service.MaidService;
 import ptithcm.service.RoleService;
@@ -49,6 +51,9 @@ public class adminController {
 	
 	@Autowired
 	RoleService roleService;
+	
+	@Autowired
+	CustomerService customerService;
 
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
@@ -73,7 +78,7 @@ public class adminController {
 		
 		model.addAttribute("employeeInfo", employeeInfo);
 		
-//		System.out.println(adminEmail);
+		System.out.println(adminEmail);
 		
 		return "admin/adminProfile";
 	}
@@ -94,6 +99,17 @@ public class adminController {
 		System.out.println("==> Open a add maid session");
 		return "admin/addMaid";
 	}
+	
+	@RequestMapping(value = "admin/edit/{id}", method = RequestMethod.GET)
+	public String editMaid(HttpServletRequest request, ModelMap model, @PathVariable("id") Integer id) {
+		System.out.println(id);
+		MaidEntity maid = maidService.getMaidById(id);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("maid", maid);
+		
+		return "admin/addMaid";
+	}
 
 	// Hiển thị form thông tin người giúp việc:
 	@RequestMapping("admin/maidDetail")
@@ -103,7 +119,10 @@ public class adminController {
 
 	// Hiển thị danh sách khách hàng:
 	@RequestMapping("admin/customerManagement")
-	public String showCustomerList() {
+	public String showCustomerList(Model model) {
+		List<CustomerEntity> customerList = customerService.getListCustomer();
+		model.addAttribute("customerList", customerList);
+		
 		return "admin/customerManagement";
 	}
 
