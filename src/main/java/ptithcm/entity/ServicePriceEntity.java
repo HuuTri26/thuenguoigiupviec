@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -30,7 +31,7 @@ public class ServicePriceEntity {
 	@Column(name = "Price")
 	private Double price;
 	
-	@OneToOne()
+	@ManyToOne()
 	@JoinColumn(name = "id")
 	private ServiceEntity service;
 

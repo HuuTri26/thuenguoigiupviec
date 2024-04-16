@@ -1,6 +1,8 @@
 package ptithcm.controller;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -24,10 +26,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.CustomerEntity;
 import ptithcm.entity.EmployeeEntity;
 import ptithcm.entity.MaidEntity;
 import ptithcm.entity.ServiceEntity;
+import ptithcm.entity.ServicePriceEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
 import ptithcm.service.CustomerService;
@@ -102,7 +106,7 @@ public class adminController {
 	@RequestMapping(value = "admin/addMaid", method = RequestMethod.GET)
 	public String showAddMaidForm(Model model) {
 		model.addAttribute("maid", new MaidEntity());
-		System.out.println("==> Open a add maid session");
+		System.out.println("==> Open an add maid session");
 		return "admin/addMaid";
 	}
 	
@@ -154,8 +158,13 @@ public class adminController {
 	}
 
 	// Hiển thị form thêm dịch vụ:
-	@RequestMapping("admin/addService")
-	public String showAddServiceForm() {
+	@RequestMapping(value = "admin/addService", method = RequestMethod.GET)
+	public String showAddServiceForm(Model model) {
+		model.addAttribute("service", new ServiceEntity());
+		List<CategoryEntity> categories = maidServiceService.getListCategory();
+		model.addAttribute("categories", categories);
+		System.out.println("==> Open an add service session");
+		
 		return "admin/addService";
 	}
 
@@ -272,7 +281,7 @@ public class adminController {
 	
 	//Xử lý thêm người giúp việc
 	@RequestMapping(value = "admin/addMaid", params = "add", method = RequestMethod.POST)
-	public String addMaid(HttpServletRequest request, Model model, @ModelAttribute("maid") MaidEntity maid, 
+	public String addMaid(@ModelAttribute("maid") MaidEntity maid, 
 						BindingResult errors) throws ParseException {
 		
 		Boolean isValidMaid = Boolean.TRUE;
@@ -336,6 +345,64 @@ public class adminController {
 		maidService.addMaid(maid);
 		System.out.println("==> Add maid successfully!");
 		return "admin/addMaid";
+	}
+	
+	@RequestMapping(value = "admin/addService", params = "add" ,method = RequestMethod.POST)
+	public String addService(@ModelAttribute("service") ServiceEntity service, 
+			BindingResult errors) throws ParseException {
+		
+		Boolean isValidService = Boolean.TRUE;
+		
+		if(service.getName().isEmpty()) {
+			errors.rejectValue("name", "service", "Tên dịch vụ không được để trống");
+			isValidService = Boolean.FALSE;
+		}
+		
+		if(service.getServicePrices().get(0).getPrice() <= 0) {
+			errors.rejectValue("servicePrices.price", "service", "Giá tiền dịch vụ không thể <= 0");
+			isValidService = Boolean.FALSE;
+		}
+		
+		if(service.getMaidQuantity() <= 0) {
+			errors.rejectValue("maidQuantity", "service", "Số lượng người giúp việc không thể <= 0");
+			isValidService = Boolean.FALSE;
+		}
+		
+		if(service.getTime() <= 0) {
+			errors.rejectValue("time", "service", "Thời gian của dịch vụ không thể <= 0");
+			isValidService = Boolean.FALSE;
+		}
+		
+		if(isValidService == Boolean.FALSE) {
+			System.out.println("Error: Add new service unsuccessfully! Reason: Service info is not valid!");
+			return "admin/addService";
+		}
+		
+		service.setName(service.getName());
+		service.setMaidQuantity(service.getMaidQuantity());
+		service.setStatus(service.getStatus());
+		service.setCategory(maidServiceService.getCategoryById(service.getCategory().getId()));
+		service.setTime(service.getTime());
+		service.setDescription(service.getDescription());
+		
+		maidServiceService.addService(service);
+		System.out.println("==> Add new service successfully!");
+		
+		ServicePriceEntity servicePrice = new ServicePriceEntity();
+		
+		servicePrice.setPrice(service.getServicePrices().get(0).getPrice());
+		
+		Date currentDate = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
+		String formattedDate = sdf.format(currentDate);
+		
+		servicePrice.setAppliedDate(sdf.parse(formattedDate));
+		servicePrice.setService(service);
+		
+		maidServiceService.addServicePrice(servicePrice);
+		System.out.println("==> Add new service price successfully!");
+		
+		return "admin/addService";
 	}
 	
 	@RequestMapping(value = "admin/adminForgotPassword", method = RequestMethod.POST)

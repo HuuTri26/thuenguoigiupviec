@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ptithcm.dao.MaidDAO;
+import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.MaidEntity;
 
 @Service
@@ -31,5 +32,7 @@ public class MaidServiceImpl implements MaidService{
 	public MaidEntity getMaidById(Integer id) {
 		return MaidDAO.getMaidById(id);
 	}
+	
+	
 	
 }

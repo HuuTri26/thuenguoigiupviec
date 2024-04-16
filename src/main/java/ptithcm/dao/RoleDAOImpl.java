@@ -18,13 +18,13 @@ public class RoleDAOImpl implements RoleDAO{
 	SessionFactory factory;
 
 	@Override
-	public RoleEntity getRoleById(int Id) {
+	public RoleEntity getRoleById(int id) {
 		RoleEntity role = null;
 		Session session = factory.getCurrentSession();
-		String hql = "FROM RoleEntity WHERE roleID = :Id";
+		String hql = "FROM CategoryEntity WHERE id = :id";
 		try {
 			Query query = session.createQuery(hql);
-			query.setParameter("Id", Id);
+			query.setParameter("id", id);
 			
 			role = (RoleEntity) query.uniqueResult();
 			
