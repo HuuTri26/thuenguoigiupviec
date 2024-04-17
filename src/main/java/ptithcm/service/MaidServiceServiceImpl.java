@@ -20,21 +20,10 @@ public class MaidServiceServiceImpl implements MaidServiceService {
 	
 	@Autowired
 	ServiceDAO MaidServiceDAO;
-	
-	@Autowired
-	CategoryDAO CategoryDAO;
-	
-	@Autowired
-	ServicePriceDAO ServicePriceDAO;
 
 	@Override
 	public List<ServiceEntity> getListService() {
 		return MaidServiceDAO.getListService();
-	}
-
-	@Override
-	public List<CategoryEntity> getListCategory() {
-		return CategoryDAO.getListCategory();
 	}
 
 	@Override
@@ -45,23 +34,6 @@ public class MaidServiceServiceImpl implements MaidServiceService {
 	@Override
 	public void updateService(ServiceEntity service) {
 		MaidServiceDAO.updateService(service);
-	}
-
-	@Override
-	public void addServicePrice(ServicePriceEntity servicePrice) {
-		ServicePriceDAO.addServicePrice(servicePrice);
-		
-	}
-
-	@Override
-	public void updateServicePrice(ServicePriceEntity servicePrice) {
-		ServicePriceDAO.updateServicePrice(servicePrice);
-		
-	}
-
-	@Override
-	public CategoryEntity getCategoryById(Integer id) {
-		return CategoryDAO.getCategoryById(id);
 	}
 
 }

@@ -17,9 +17,4 @@ public interface MaidServiceService {
 	public void addService(ServiceEntity service);
 	public void updateService(ServiceEntity service);
 	
-	public void addServicePrice(ServicePriceEntity servicePrice);
-	public void updateServicePrice(ServicePriceEntity servicePrice);
-	
-	public List<CategoryEntity> getListCategory();
-	public CategoryEntity getCategoryById(Integer id);
 }

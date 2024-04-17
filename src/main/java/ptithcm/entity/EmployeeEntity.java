@@ -37,8 +37,8 @@ public class EmployeeEntity {
 	@JoinColumn(name = "email")
 	private AccountEntity account;
 	
-//	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
-//	private List<MaidEntity> maids;
+	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+	private List<MaidEntity> maids;
 
 	public Integer getId() {
 		return id;
@@ -88,12 +88,12 @@ public class EmployeeEntity {
 		this.account = account;
 	}
 
-//	public List<MaidEntity> getMaids() {
-//		return maids;
-//	}
-//
-//	public void setMaids(List<MaidEntity> maids) {
-//		this.maids = maids;
-//	}
+	public List<MaidEntity> getMaids() {
+		return maids;
+	}
+
+	public void setMaids(List<MaidEntity> maids) {
+		this.maids = maids;
+	}
 	
 }

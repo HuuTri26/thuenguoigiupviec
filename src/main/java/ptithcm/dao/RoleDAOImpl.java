@@ -21,7 +21,7 @@ public class RoleDAOImpl implements RoleDAO{
 	public RoleEntity getRoleById(int id) {
 		RoleEntity role = null;
 		Session session = factory.getCurrentSession();
-		String hql = "FROM CategoryEntity WHERE id = :id";
+		String hql = "FROM RoleEntity WHERE id = :id";
 		try {
 			Query query = session.createQuery(hql);
 			query.setParameter("id", id);

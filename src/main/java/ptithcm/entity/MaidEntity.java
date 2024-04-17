@@ -4,6 +4,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -20,7 +21,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class MaidEntity {
 	@Id
 	@Column(name = "Id")
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name = "Fullname")
 	private String fullName;
@@ -56,9 +57,9 @@ public class MaidEntity {
 	@JoinColumn(name = "email")
     private AccountEntity account;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "id")
-//    private EmployeeEntity employee;
+	@ManyToOne
+	@JoinColumn(name = "employeeId")
+    private EmployeeEntity employee;
 	
 //	@OneToOne(mappedBy = "maid", fetch = FetchType.LAZY)
 //	@JoinColumn(name = "id")
@@ -164,13 +165,13 @@ public class MaidEntity {
 		this.account = account;
 	}
 
-//	public EmployeeEntity getEmployee() {
-//		return employee;
-//	}
-//
-//	public void setEmployee(EmployeeEntity employee) {
-//		this.employee = employee;
-//	}
+	public EmployeeEntity getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(EmployeeEntity employee) {
+		this.employee = employee;
+	}
 
 //	public String getContract() {
 //		return contract;

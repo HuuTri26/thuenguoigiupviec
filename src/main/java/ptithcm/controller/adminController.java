@@ -34,11 +34,13 @@ import ptithcm.entity.ServiceEntity;
 import ptithcm.entity.ServicePriceEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.CategoryService;
 import ptithcm.service.CustomerService;
 import ptithcm.service.EmployeeService;
 import ptithcm.service.MaidService;
 import ptithcm.service.MaidServiceService;
 import ptithcm.service.RoleService;
+import ptithcm.service.ServicePriceService;
 
 @Transactional
 @Controller
@@ -64,7 +66,13 @@ public class adminController {
 	
 	@Autowired
 	MaidServiceService maidServiceService;
-
+	
+	@Autowired
+	CategoryService categoryService;
+	
+	@Autowired
+	ServicePriceService servicePriceService;
+	
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
 	public String showLoginForm(Model model) {
@@ -161,7 +169,7 @@ public class adminController {
 	@RequestMapping(value = "admin/addService", method = RequestMethod.GET)
 	public String showAddServiceForm(Model model) {
 		model.addAttribute("service", new ServiceEntity());
-		List<CategoryEntity> categories = maidServiceService.getListCategory();
+		List<CategoryEntity> categories = categoryService.getListCategory();
 		model.addAttribute("categories", categories);
 		System.out.println("==> Open an add service session");
 		
@@ -272,6 +280,9 @@ public class adminController {
 			System.out.println("==> Login successfully!");
 			HttpSession session = request.getSession();
 			session.setAttribute("adminEmail", adminAcc.getEmail());
+			EmployeeEntity employee =  employeeService.getEmployeeByEmail(adminAcc.getEmail());
+			session.setAttribute("employee", employee);
+			
 			return "admin/index";
 		}else {
 			System.out.println("Error: Login unsuccessfully!");
@@ -281,7 +292,7 @@ public class adminController {
 	
 	//Xử lý thêm người giúp việc
 	@RequestMapping(value = "admin/addMaid", params = "add", method = RequestMethod.POST)
-	public String addMaid(@ModelAttribute("maid") MaidEntity maid, 
+	public String addMaid(HttpServletRequest request ,@ModelAttribute("maid") MaidEntity maid, 
 						BindingResult errors) throws ParseException {
 		
 		Boolean isValidMaid = Boolean.TRUE;
@@ -323,10 +334,13 @@ public class adminController {
 		RoleEntity maidRole = roleService.getRoleById(2);
 		if(maidRole != null) {
 			//Tạo 1 Maid Account mới với email vừa nhập mật khẩu mặc định là 123
-			AccountEntity newMaidAcc = new AccountEntity(maid.getAccount().getEmail(),
-														accountService.getHashPassword("123"), 
-														Boolean.TRUE, 
-														maidRole);
+			AccountEntity newMaidAcc = new AccountEntity();
+			
+			newMaidAcc.setEmail(maid.getAccount().getEmail());
+			newMaidAcc.setPassword(accountService.getHashPassword("123"));
+			newMaidAcc.setRole(maidRole);
+			newMaidAcc.setStatus(false);
+			
 			accountService.addAccount(newMaidAcc);
 			maid.setAccount(newMaidAcc);
 			System.out.println("==> Add new maid account successfully!");
@@ -335,15 +349,25 @@ public class adminController {
 					+ " Reason: RoleEntity with RoleId = 2 does not exist");
 		}
 		
-		maid.setFullName(accountService.standardizeName(maid.getFullName()));
-		maid.setAddress(maid.getAddress());
-		maid.setSalary(maid.getSalary());
-		maid.setEmploymentType(maid.getEmploymentType());
-		maid.setPhoneNumber(maid.getPhoneNumber());
-		maid.setExperience(maid.getExperience());
+		try {
+			maid.setFullName(accountService.standardizeName(maid.getFullName()));
+			maid.setAddress(maid.getAddress());
+			maid.setSalary(maid.getSalary());
+			maid.setEmploymentType(maid.getEmploymentType());
+			maid.setPhoneNumber(maid.getPhoneNumber());
+			maid.setExperience(maid.getExperience());
+			
+			HttpSession session = request.getSession();
+			EmployeeEntity employee = (EmployeeEntity) session.getAttribute("employee");
+			maid.setEmployee(employee);
+			
+			maidService.addMaid(maid);
+			System.out.println("==> Add maid successfully!");
+		} catch (Exception e) {
+			System.out.println("Error: Add maid unsuccessfully!");
+		}
 		
-		maidService.addMaid(maid);
-		System.out.println("==> Add maid successfully!");
+		
 		return "admin/addMaid";
 	}
 	
@@ -377,32 +401,34 @@ public class adminController {
 			System.out.println("Error: Add new service unsuccessfully! Reason: Service info is not valid!");
 			return "admin/addService";
 		}
+		try {
+			service.setName(service.getName());
+			service.setMaidQuantity(service.getMaidQuantity());
+			service.setStatus(service.getStatus());
+			service.setCategory(categoryService.getCategoryById(service.getCategory().getId()));
+			service.setTime(service.getTime());
+			service.setDescription(service.getDescription());
+			
+			maidServiceService.addService(service);
+			System.out.println("==> Add new service successfully!");
+			
+			addServicePriceForService(service);
+		} catch (Exception e) {
+			System.out.println("Error: Add new service unsuccessfully!");
+		}
 		
-		service.setName(service.getName());
-		service.setMaidQuantity(service.getMaidQuantity());
-		service.setStatus(service.getStatus());
-		service.setCategory(maidServiceService.getCategoryById(service.getCategory().getId()));
-		service.setTime(service.getTime());
-		service.setDescription(service.getDescription());
 		
-		maidServiceService.addService(service);
-		System.out.println("==> Add new service successfully!");
-		
-		ServicePriceEntity servicePrice = new ServicePriceEntity();
-		
-		servicePrice.setPrice(service.getServicePrices().get(0).getPrice());
-		
-		Date currentDate = new Date();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd");
-		String formattedDate = sdf.format(currentDate);
-		
-		servicePrice.setAppliedDate(sdf.parse(formattedDate));
-		servicePrice.setService(service);
-		
-		maidServiceService.addServicePrice(servicePrice);
-		System.out.println("==> Add new service price successfully!");
-		
-		return "admin/addService";
+		return "admin/serviceManagement";
+	}
+	
+	private void addServicePriceForService(ServiceEntity service) {
+	    ServicePriceEntity servicePrice = new ServicePriceEntity();
+	    
+	    servicePrice.setPrice(service.getServicePrices().get(0).getPrice());
+	    servicePrice.setService(service);
+	    
+	    servicePriceService.addServicePrice(servicePrice);
+	    System.out.println("==> Add new service price successfully!");
 	}
 	
 	@RequestMapping(value = "admin/adminForgotPassword", method = RequestMethod.POST)
