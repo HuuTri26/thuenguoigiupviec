@@ -39,6 +39,9 @@ public class EmployeeEntity {
 	
 	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
 	private List<MaidEntity> maids;
+	
+//	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+//	private List<BookingEntity> bookings;
 
 	public Integer getId() {
 		return id;
@@ -95,5 +98,14 @@ public class EmployeeEntity {
 	public void setMaids(List<MaidEntity> maids) {
 		this.maids = maids;
 	}
+
+//	public List<BookingEntity> getBookings() {
+//		return bookings;
+//	}
+//
+//	public void setBookings(List<BookingEntity> bookings) {
+//		this.bookings = bookings;
+//	}
+	
 	
 }

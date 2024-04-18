@@ -1,10 +1,14 @@
 package ptithcm.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -22,20 +26,13 @@ public class CustomerEntity {
 	private String phoneNumber;
 	@Column(name = "Address")
 	private String address;
-//	@Column(name = "Email")
-//	private String email;
-	
+
 	@OneToOne()
 	@JoinColumn(name = "email")
     private AccountEntity account;
 	
 //	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-//	@JoinColumn(name = "id")
-//    private String booking;
-//	
-//	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-//	@JoinColumn(name = "id")
-//    private String contract;
+//	List<BookingEntity> bookings;
 
 	public Integer getId() {
 		return id;
@@ -69,14 +66,6 @@ public class CustomerEntity {
 		this.address = address;
 	}
 
-//	public String getEmail() {
-//		return email;
-//	}
-//
-//	public void setEmail(String email) {
-//		this.email = email;
-//	}
-
 	public AccountEntity getAccount() {
 		return account;
 	}
@@ -84,21 +73,13 @@ public class CustomerEntity {
 	public void setAccount(AccountEntity account) {
 		this.account = account;
 	}
-	
-//	public String getBookingDetail() {
-//		return booking;
+
+//	public List<BookingEntity> getBookings() {
+//		return bookings;
 //	}
 //
-//	public void setBookingDetail(String bookingDetail) {
-//		this.booking = bookingDetail;
-//	}
-//
-//	public String getContract() {
-//		return contract;
-//	}
-//
-//	public void setContract(String contract) {
-//		this.contract = contract;
+//	public void setBookings(List<BookingEntity> bookings) {
+//		this.bookings = bookings;
 //	}
 
 }
