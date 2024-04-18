@@ -16,13 +16,13 @@ import ptithcm.service.AccountService;
 
 @Controller
 public class maidController {
-	
+
 	@Autowired
 	SessionFactory factory;
 
 	@Autowired
 	AccountService accountService;
-	
+
 	// Trang đăng nhập cho maid
 	@RequestMapping("maid/maidLogin")
 	public String showMaidLoginForm(Model model) {
@@ -40,39 +40,54 @@ public class maidController {
 	public String showMaidForgotPasswordForm() {
 		return "maid/maidForgotPassword";
 	}
-	
+
 	// Trang profile cho maid:
 	@RequestMapping("maid/maidProfile")
 	public String showMaidProfile() {
 		return "maid/maidProfile";
 	}
 	
+	// Trang cập nhật profile cho maid:
+	@RequestMapping("maid/maidEditProfile")
+	public String showMaidEditProfile() {
+		return "maid/maidEditProfile";
+	}
+
+	//Trang thay đổi password cho maid:
+	
+		@RequestMapping("maid/maidChangePassword")
+		public String showMaidChangePassword() {
+			return "maid/maidChangePassword";
+		}
+
 	// Trang danh sách đặt lịch thuê cho maid:
 	@RequestMapping("maid/bookingManagement")
 	public String showMaidBookingManagement() {
 		return "maid/bookingManagement";
 	}
-	
+
 	// Trang danh sách đặt lịch thuê cho maid:
 	@RequestMapping("maid/bookingDetail")
 	public String showMaidBookingDetail() {
 		return "maid/bookingDetail";
 	}
-	
+
 	// Trang danh sách đặt hợp đồng cho maid:
 	@RequestMapping("maid/contractManagement")
 	public String showMaidContractManagement() {
 		return "maid/contractManagement";
 	}
 
-	// Trang thông tin hợp đồng  cho maid:
+	// Trang thông tin hợp đồng cho maid:
 	@RequestMapping("maid/contractDetail")
 	public String showMaidContractDetail() {
 		return "maid/contractDetail";
 	}
+
 	// Xử lý đăng nhập cho maid
 	@RequestMapping(value = "maid/maidLogin", method = RequestMethod.POST)
-	public String maidLogin(Model model, HttpServletRequest request, @ModelAttribute("maidAcc") AccountEntity maidAcc, BindingResult errors) {
+	public String maidLogin(Model model, HttpServletRequest request, @ModelAttribute("maidAcc") AccountEntity maidAcc,
+			BindingResult errors) {
 //		// Kiểm tra thông tin đăng nhập
 //		String userName = request.getParameter("userName");
 //		String password = request.getParameter("password");
@@ -84,33 +99,33 @@ public class maidController {
 //			request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
 //			return "maid/maidLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
 //		}
-		
+
 		Boolean permission = Boolean.TRUE;
-		
-		if(maidAcc.getEmail().isEmpty()) {
+
+		if (maidAcc.getEmail().isEmpty()) {
 			errors.rejectValue("email", "maidAcc", "Xin vui lòng nhập username hoặc email!");
 			return "admin/adminLogin";
-		}else if(maidAcc.getPassword().isEmpty()) {
+		} else if (maidAcc.getPassword().isEmpty()) {
 			errors.rejectValue("password", "maidAcc", "Xin vui lòng nhập mật khẩu!");
 			return "admin/adminLogin";
 		}
-		
-		if(!accountService.isExistAccount(maidAcc.getEmail(), maidAcc.getPassword())) {
+
+		if (!accountService.isExistAccount(maidAcc.getEmail(), maidAcc.getPassword())) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "maidAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;
-		}else if(!accountService.getStatusFromAccount(maidAcc.getEmail())) {
+		} else if (!accountService.getStatusFromAccount(maidAcc.getEmail())) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản của bạn đã bị khóa");
 			permission = Boolean.FALSE;
-		}else if(accountService.getRoleIdFromAccount(maidAcc.getEmail()) != 2) {
+		} else if (accountService.getRoleIdFromAccount(maidAcc.getEmail()) != 2) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
 			permission = Boolean.FALSE;
 		}
-		
-		if(permission) {
+
+		if (permission) {
 			System.out.println("Login successfully!");
 			return "maid/index";
-		}else {
+		} else {
 			System.out.println("Login unsuccessfully!");
 			return "maid/maidLogin";
 		}

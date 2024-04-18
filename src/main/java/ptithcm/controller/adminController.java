@@ -45,22 +45,22 @@ import ptithcm.service.ServicePriceService;
 @Transactional
 @Controller
 public class adminController {
-	
+
 	@Autowired
 	SessionFactory factory;
-	
+
 	@Autowired
 	AccountService accountService;
-	
+
 	@Autowired
 	EmployeeService employeeService;
-	
+
 	@Autowired
 	MaidService maidService;
-	
+
 	@Autowired
 	RoleService roleService;
-	
+
 	@Autowired
 	CustomerService customerService;
 	
@@ -87,18 +87,29 @@ public class adminController {
 	}
 
 	// Hiển thị trang cá nhân admin:
-	@RequestMapping(value ="admin/adminProfile", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/adminProfile", method = RequestMethod.GET)
 	public String showAdminProfile(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String adminEmail = (String) session.getAttribute("adminEmail");
-		
+
 		EmployeeEntity employeeInfo = employeeService.getEmployeeByEmail(adminEmail);
-		
+
 		model.addAttribute("employeeInfo", employeeInfo);
-		
+
 		System.out.println(adminEmail);
-		
+
 		return "admin/adminProfile";
+	}
+	
+	//Hiển thị trang cập nhật thông tin admin:
+	@RequestMapping("admin/adminEditProfile")
+	public String showadminEditProfile() {
+		return "admin/adminEditProfile";
+	}
+	//Hiển thị form chamge password admin:
+	@RequestMapping("admin/adminChangePassword")
+	public String showAdminChangePassword() {
+		return "admin/adminChangePassword";
 	}
 
 	// Hiển thị danh sách người giúp việc:
@@ -106,7 +117,7 @@ public class adminController {
 	public String showMaidList(Model model) {
 		List<MaidEntity> maidList = maidService.getListMaid();
 		model.addAttribute("maidList", maidList);
-		
+
 		return "admin/maidManagement";
 	}
 
@@ -117,15 +128,15 @@ public class adminController {
 		System.out.println("==> Open an add maid session");
 		return "admin/addMaid";
 	}
-	
+
 	@RequestMapping(value = "admin/edit/{id}", method = RequestMethod.GET)
 	public String editMaid(HttpServletRequest request, ModelMap model, @PathVariable("id") Integer id) {
 		System.out.println(id);
 		MaidEntity maid = maidService.getMaidById(id);
-		
+
 		HttpSession session = request.getSession();
 		session.setAttribute("maid", maid);
-		
+
 		return "admin/addMaid";
 	}
 
@@ -135,12 +146,18 @@ public class adminController {
 		return "admin/maidDetail";
 	}
 
+	// Hiển thị form update thông tin người giúp việc:
+	@RequestMapping("admin/updateMaid")
+	public String updateDetailMaidForm() {
+		return "admin/updateMaid";
+	}
+
 	// Hiển thị danh sách khách hàng:
 	@RequestMapping("admin/customerManagement")
 	public String showCustomerList(Model model) {
 		List<CustomerEntity> customerList = customerService.getListCustomer();
 		model.addAttribute("customerList", customerList);
-		
+
 		return "admin/customerManagement";
 	}
 
@@ -183,10 +200,10 @@ public class adminController {
 	}
 
 	// Hiển thị danh sách đặt lịch thuê:
-		@RequestMapping("admin/bookingManagement")
-		public String showBookingList() {
-			return "admin/bookingManagement";
-		}
+	@RequestMapping("admin/bookingManagement")
+	public String showBookingList() {
+		return "admin/bookingManagement";
+	}
 
 	// Hiển thị thông tin đặt lịch thuê:
 	@RequestMapping("admin/bookingDetail")
@@ -229,18 +246,19 @@ public class adminController {
 	public String showfeedbackDetail() {
 		return "admin/feedbackDetail";
 	}
-	
+
 	// Đăng xuất:
-		@RequestMapping("admin/logout")
-		public String showLogout() {
-			return "redirect:/main";
+	@RequestMapping("admin/logout")
+	public String showLogout() {
+		return "redirect:/main";
 //>>>>>>> branch 'main' of https://github.com/HuuTri26/thuenguoigiupviec
-		}
+	}
 
 	// Xử lý đăng nhập cho admin
 	@RequestMapping(value = "admin/adminLogin", method = RequestMethod.POST)
-	public String adminLogin(ModelMap model ,HttpServletRequest request, @ModelAttribute("adminAcc") AccountEntity adminAcc, BindingResult errors) {
-		
+	public String adminLogin(ModelMap model, HttpServletRequest request,
+			@ModelAttribute("adminAcc") AccountEntity adminAcc, BindingResult errors) {
+
 //		// Kiểm tra thông tin đăng nhập
 //		String userName = request.getParameter("userName");
 //		String password = request.getParameter("password");
@@ -252,31 +270,32 @@ public class adminController {
 //			request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
 //			return "admin/adminLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
 //		}
-		
+
 		Boolean permission = Boolean.TRUE;
-		
-		if(adminAcc.getEmail().isEmpty()) {
+
+		if (adminAcc.getEmail().isEmpty()) {
 			errors.rejectValue("email", "adminAcc", "Xin vui lòng nhập username hoặc email!");
 			return "admin/adminLogin";
-		}else if(adminAcc.getPassword().isEmpty()) {
+		} else if (adminAcc.getPassword().isEmpty()) {
 			errors.rejectValue("password", "adminAcc", "Xin vui lòng nhập mật khẩu!");
 			return "admin/adminLogin";
 		}
-		
-		if(!accountService.isExistAccount(adminAcc.getEmail(), accountService.getHashPassword(adminAcc.getPassword()))) {
+
+		if (!accountService.isExistAccount(adminAcc.getEmail(),
+				accountService.getHashPassword(adminAcc.getPassword()))) {
 //			System.out.println(accountService.getHashPassword(adminAcc.getPassword()));
 			errors.rejectValue("email", "adminAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "adminAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;
-		}else if(!accountService.getStatusFromAccount(adminAcc.getEmail())) {
+		} else if (!accountService.getStatusFromAccount(adminAcc.getEmail())) {
 			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn đã bị khóa");
 			permission = Boolean.FALSE;
-		}else if(accountService.getRoleIdFromAccount(adminAcc.getEmail()) != 1) {
+		} else if (accountService.getRoleIdFromAccount(adminAcc.getEmail()) != 1) {
 			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
 			permission = Boolean.FALSE;
 		}
-		
-		if(permission) {
+
+		if (permission) {
 			System.out.println("==> Login successfully!");
 			HttpSession session = request.getSession();
 			session.setAttribute("adminEmail", adminAcc.getEmail());
@@ -284,12 +303,12 @@ public class adminController {
 			session.setAttribute("employee", employee);
 			
 			return "admin/index";
-		}else {
+		} else {
 			System.out.println("Error: Login unsuccessfully!");
 			return "admin/adminLogin";
 		}
 	}
-	
+
 	//Xử lý thêm người giúp việc
 	@RequestMapping(value = "admin/addMaid", params = "add", method = RequestMethod.POST)
 	public String addMaid(HttpServletRequest request ,@ModelAttribute("maid") MaidEntity maid, 
@@ -437,7 +456,6 @@ public class adminController {
 		System.out.println(email);
 		return "admin/adminForgotPassword";
 	}
-	
 
 	// Trang dashboard của admin
 	@RequestMapping("admin/index")

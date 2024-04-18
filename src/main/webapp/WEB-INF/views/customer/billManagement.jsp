@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Quản lý phản hồi</title>
+<title>Profile customer</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -54,20 +54,59 @@
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="<c:url value='/resources/main/assets/img/favicon.png'/>"
+	rel="icon">
+<link
+	href="<c:url value='/resources/main/assets/img/apple-touch-icon.png'/>"
+	rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="<c:url value='/resources/main/assets/vendor/aos/aos.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap-icons/bootstrap-icons.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/boxicons/css/boxicons.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/glightbox/css/glightbox.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/swiper/swiper-bundle.min.css'/>"
+	rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="<c:url value='/resources/main/assets/css/style.css'/>"
+	rel="stylesheet">
+
 </head>
 
 <body>
-	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
-	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
-	<main id="main" class="main">
 
-		<div class="pagetitle">
-			<h1>Thông tin phản hồi</h1>
+	<!-- ======= Header ======= -->
+	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
+
+	<main>
+			<div class="pagetitle">
+			<h1>Thông tin Bill</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin phản hồi</a></li>
+						href="bookingManagement.htm">Thông tin bill</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -82,31 +121,25 @@
 							<table class="table datatable">
 								<thead style="background-color: #37517e; color: white">
 									<tr>
-										<th scope="col">Id</th>
-										<th scope="col">Id đặt lịch</th>
-										<th scope="col">Rating</th>
-										<th scope="col">Feedback</th>
-										<th scope="col">Ngày tạo</th>
+										<th scope="col">Id đơn đặt lịch</th>
+										<th scope="col">Ngày thanh toán</th>
+										<th scope="col">Tổng tiền</th>
 									</tr>
 								</thead>
-								<tbody id="table_feedbacks">
+								<tbody id="table_bills">
 									<tr>
 										<td scope="row">1</td>
-										<td scope="row">1</td>
-										<td scope="row">4</td>
-										<td scope="col">Rất tốt</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col"><a href="feedbackDetail.htm"
+										<td scope="col">2022-12-24</td>
+										<td scope="col">300$</td>
+										<td scope="col"><a href="billDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
 									<tr>
 										<td scope="row">1</td>
-										<td scope="row">1</td>
-										<td scope="row">4</td>
-										<td scope="col">Rất tốt</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col"><a href="feedbackDetail.htm"
+										<td scope="col">2022-12-24</td>
+										<td scope="col">300$</td>
+										<td scope="col"><a href="billDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -127,10 +160,9 @@
 				</div>
 			</div>
 		</section>
-
 	</main>
 	<!-- End #main -->
-
+	<%@include file="/WEB-INF/views/customer/include/footer.jsp"%>
 	<!-- ======= Footer ======= 
   <footer id="footer" class="footer">
     <div class="copyright">
@@ -144,9 +176,30 @@
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
+
+	<!-- Vendor JS Files -->
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/apexcharts/apexcharts.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/chart.js/chart.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/echarts/echarts.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/quill/quill.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/simple-datatables/simple-datatables.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/tinymce/tinymce.min.js'/>"></script>
+	<script
+		src="<c:url value='/resources/admin/assets/vendor/php-email-form/validate.js'/>"></script>
+
+	<!-- Template Main JS File -->
+	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
 	<script>
 	// Lấy dữ liệu từ bảng
-	const tableRows = document.querySelectorAll("#table_feedbacks tr");
+	const tableRows = document.querySelectorAll("#table_bills tr");
 	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang
 	let currentPage = 1;
 
@@ -154,7 +207,7 @@
 	function displayPage(page) {
 	  const startIndex = (page - 1) * itemsPerPage;
 	  const endIndex = startIndex + itemsPerPage;
-	  const tableBody = document.getElementById("table_feedbacks");
+	  const tableBody = document.getElementById("table_bills");
 	  tableBody.innerHTML = "";
 
 	  for (let i = startIndex; i < endIndex && i < tableRows.length; i++) {
@@ -186,26 +239,7 @@
 	// Hiển thị trang đầu tiên
 	displayPage(currentPage);
 	</script>
-	<!-- Vendor JS Files -->
-	<script
-		src="<c:url value='/resources/admin/assets/vendor/apexcharts/apexcharts.min.js'/>"></script>
-	<script
-		src="<c:url value='/resources/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js'/>"></script>
-	<script
-		src="<c:url value='/resources/admin/assets/vendor/chart.js/chart.min.js'/>"></script>
-	<script
-		src="<c:url value='/resources/admin/assets/vendor/echarts/echarts.min.js'/>"></script>
-	<script
-		src="<c:url value='/resources/admin/assets/vendor/quill/quill.min.js'/>"></script>
-	<script
-		src="<c:url value='/resources/admin/assets/vendor/simple-datatables/simple-datatables.js'/>"></script>
-	<script
-		src="<c:url value='/resources/admin/assets/vendor/tinymce/tinymce.min.js'/>"></script>
-	<script
-		src="<c:url value='/resources/admin/assets/vendor/php-email-form/validate.js'/>"></script>
 
-	<!-- Template Main JS File -->
-	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
 </body>
 
 </html>

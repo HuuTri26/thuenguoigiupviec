@@ -53,7 +53,73 @@
 <!-- Template Main CSS File -->
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
+<style>
+body {
+	background: rgb(99, 39, 120)
+}
 
+.form-control:focus {
+	box-shadow: none;
+	border-color: #BA68C8
+}
+
+.profile-button {
+	background: rgb(99, 39, 120);
+	box-shadow: none;
+	border: none
+}
+
+.profile-button:hover {
+	background: #682773
+}
+
+.profile-button:focus {
+	background: #682773;
+	box-shadow: none
+}
+
+.profile-button:active {
+	background: #682773;
+	box-shadow: none
+}
+
+.back:hover {
+	color: #682773;
+	cursor: pointer
+}
+
+.labels {
+	font-size: 11px
+}
+
+.add-experience:hover {
+	background: #BA68C8;
+	color: #fff;
+	cursor: pointer;
+	border: solid 1px #BA68C8
+}
+
+.form-control, .form-select {
+	border: 0;
+}
+
+.form-control:focus, .form-select:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.bg-form {
+	background-color: #383434;
+}
+
+.bg-button-submit {
+	background-color: #282828;
+}
+
+#contract-form {
+	display: block;
+}
+</style>
 </head>
 
 <body>
@@ -165,320 +231,196 @@
 	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
 
 
-	<main id="main" class="main">
+	<main id="main" style="background-color: gray;" class="mt-10">
 
-		<div class="pagetitle">
-			<h1>Profile contract</h1>
-			<nav>
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="contractDetail.htm">Profile
-							contract</a></li>
-				</ol>
-			</nav>
-		</div>
-		<!-- End Page Title -->
-
-		<section class="section profile">
+		<!-- created by @BrCodeSnippets -->
+		<div class="container mt-5 pt-3" id="contract-form">
 			<div class="row">
-				<div class="col-xl-4">
-
-					<div class="card">
-						<div
-							class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-							<img
-								src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
-								alt="Profile" class="rounded-circle">
-							<h2>Hữu</h2>
-							<h3>huutri</h3>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-xl-8">
-
-					<div class="card">
-						<div class="card-body pt-3">
-							<!-- Bordered Tabs -->
-							<ul class="nav nav-tabs nav-tabs-bordered">
-
-								<li class="nav-item">
-									<button class="nav-link active" data-bs-toggle="tab"
-										data-bs-target="#profile-overview">Xem thông tin</button>
-								</li>
-
-								<!--                   <li class="nav-item"> -->
-								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh sửa Profile</button> -->
-								<!--                   </li> -->
-
-								<!--                   <li class="nav-item"> -->
-								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button> -->
-								<!--                   </li> -->
-
-								<!--                   <li class="nav-item"> -->
-								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Đổi mật khẩu</button> -->
-								<!--                   </li> -->
-
-							</ul>
-							<div class="tab-content pt-2">
-
-								<div class="tab-pane fade show active profile-overview"
-									id="profile-overview">
-									<h5 class="card-title">Miêu tả</h5>
-									<p class="small fst-italic">Hahahahahahaa</p>
-
-									<h5 class="card-title">Thông tin contract</h5>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Id hợp đồng</div>
-										<div class="col-lg-9 col-md-8">1</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Id Khách hàng</div>
-										<div class="col-lg-9 col-md-8">1</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Id người giúp việc</div>
-										<div class="col-lg-9 col-md-8">2</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Id nhân viên</div>
-										<div class="col-lg-9 col-md-8">1</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Mô tả</div>
-										<div class="col-lg-9 col-md-8">No1</div>
-									</div>
-
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Ngày bắt đầu</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Ngày kết thúc</div>
-										<div class="col-lg-9 col-md-8">2023-01-26</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
-										<div class="col-lg-9 col-md-8">2022-12-24</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Ngày cập nhật(Hủy)</div>
-										<div class="col-lg-9 col-md-8"></div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Trạng thái hợp đồng</div>
-										<div class="col-lg-9 col-md-8">Còn hạn</div>
-									</div>
-									<div class="text-center">
-										<button href="index.htm" class="btn btn-primary">Thoát</button>
-									</div>
-								</div>
-
-								<!-- 								<div class="tab-pane fade profile-edit pt-3" id="profile-edit"> -->
-
-								<!-- 									Profile Edit Form -->
-								<%-- 									<form> --%>
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="profileImage" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Ảnh</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<img -->
-								<%-- 													src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" --%>
-								<!-- 													alt="Profile"> -->
-								<!-- 												<div class="pt-2"> -->
-								<!-- 													<a href="#" class="btn btn-primary btn-sm" -->
-								<!-- 														title="Upload new profile image"><i -->
-								<!-- 														class="bi bi-upload"></i></a> <a href="#" -->
-								<!-- 														class="btn btn-danger btn-sm" -->
-								<!-- 														title="Remove my profile image"><i class="bi bi-trash"></i></a> -->
-								<!-- 												</div> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="fullName" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Họ tên</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="name" type="text" class="form-control" -->
-								<!-- 													id="fullName" value="Kevin Anderson"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="about" class="col-md-4 col-lg-3 col-form-label">Giới -->
-								<!-- 												thiệu</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<textarea name="about" class="form-control" id="about" -->
-								<!-- 													style="height: 100px">Hahahahaha</textarea> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="company" class="col-md-4 col-lg-3 col-form-label">UserName</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="userName" type="text" class="form-control" -->
-								<!-- 													id="company" value="huutri"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Job" class="col-md-4 col-lg-3 col-form-label">Giới -->
-								<!-- 												tính</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="gender" type="text" class="form-control" -->
-								<!-- 													id="Job" value="Nữ"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Ngày -->
-								<!-- 												sinh</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="dob" type="text" class="form-control" -->
-								<!-- 													id="Country" value="31/02/2099"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Address" class="col-md-4 col-lg-3 col-form-label">Địa -->
-								<!-- 												chỉ</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="address" type="text" class="form-control" -->
-								<!-- 													id="Address" value="97 Man Thiện"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số -->
-								<!-- 												điện thoại</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="phone" type="text" class="form-control" -->
-								<!-- 													id="Phone" value="(436) 486-3538 x29071"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="email" type="email" class="form-control" -->
-								<!-- 													id="Email" value="k.anderson@example.com"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-
-								<!-- 										<div class="text-center"> -->
-								<!-- 											<button type="submit" class="btn btn-primary">Cập -->
-								<!-- 												nhật</button> -->
-								<!-- 										</div> -->
-								<%-- 									</form> --%>
-								<!-- 									End Profile Edit Form -->
-
-								<!-- 								</div> -->
-
-								<!-- 								<div class="tab-pane fade pt-3" id="profile-settings"> -->
-
-								<!-- 									Settings Form -->
-								<%-- 									<form> --%>
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="fullName" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Email -->
-								<!-- 												Notifications</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<div class="form-check"> -->
-								<!-- 													<input class="form-check-input" type="checkbox" -->
-								<!-- 														id="changesMade" checked> <label -->
-								<!-- 														class="form-check-label" for="changesMade"> -->
-								<!-- 														Changes made to your account </label> -->
-								<!-- 												</div> -->
-								<!-- 												<div class="form-check"> -->
-								<!-- 													<input class="form-check-input" type="checkbox" -->
-								<!-- 														id="newProducts" checked> <label -->
-								<!-- 														class="form-check-label" for="newProducts"> -->
-								<!-- 														Information on new products and services </label> -->
-								<!-- 												</div> -->
-								<!-- 												<div class="form-check"> -->
-								<!-- 													<input class="form-check-input" type="checkbox" -->
-								<!-- 														id="proOffers"> <label class="form-check-label" -->
-								<!-- 														for="proOffers"> Marketing and promo offers </label> -->
-								<!-- 												</div> -->
-								<!-- 												<div class="form-check"> -->
-								<!-- 													<input class="form-check-input" type="checkbox" -->
-								<!-- 														id="securityNotify" checked disabled> <label -->
-								<!-- 														class="form-check-label" for="securityNotify"> -->
-								<!-- 														Security alerts </label> -->
-								<!-- 												</div> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="text-center"> -->
-								<!-- 											<button type="submit" class="btn btn-primary">Save -->
-								<!-- 												Changes</button> -->
-								<!-- 										</div> -->
-								<%-- 									</form> --%>
-								<!-- 									End settings Form -->
-
-								<!-- 								</div> -->
-
-								<!-- 								<div class="tab-pane fade pt-3" id="profile-change-password"> -->
-								<!-- 									Change Password Form -->
-								<%-- 									<form> --%>
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="currentPassword" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
-								<!-- 												hiện tại</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="password" type="password" class="form-control" -->
-								<!-- 													id="currentPassword"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="newPassword" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
-								<!-- 												mới</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="newpassword" type="password" -->
-								<!-- 													class="form-control" id="newPassword"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="renewPassword" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Nhập lại -->
-								<!-- 												mật khẩu</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="renewpassword" type="password" -->
-								<!-- 													class="form-control" id="renewPassword"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="text-center"> -->
-								<!-- 											<button type="submit" class="btn btn-primary">Đổi -->
-								<!-- 												mật khẩu</button> -->
-								<!-- 										</div> -->
-								<%-- 									</form> --%>
-								<!-- 									End Change Password Form -->
-
-								<!-- 								</div> -->
-
-								<!-- 							</div> -->
-								<!-- End Bordered Tabs -->
-
+				<div class="col-12">
+					<div class="card p-3 bg-form">
+						<form class="row g-3  mt-5">
+							<div class="col-12">
+								<h1 class="text-center fw-bolder text-white mt-3">Hợp đồng</h1>
+								<hr>
 							</div>
-						</div>
+							<div class="col-12">
+								<div
+									class="p-3 mb-3 text-white fw-bolder fs-3 border-5 border-start">
+									Bên A</div>
+							</div>
+							<div class="col-12">
+								<div class="form-floating">
+									<input type="text" autocomplete="off"
+										class="form-control bg-light " id="inputName"
+										placeholder="Name" name="fullName"> <label
+										for="inputName">Họ tên</label>
+								</div>
+							</div>
+							<div class="col-12 ">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light "
+										id="inputEmail4" placeholder="Số điện thoại: "
+										name="phonenumber"> <label for="inputEmail4">Số
+										điện thoại</label>
+								</div>
+							</div>
+							<!-- 							<div class="col-md-6"> -->
+							<!-- 								<div class="form-floating"> -->
+							<!-- 									<input type="password" class="form-control bg-light border-0 " -->
+							<!-- 										id="inputPassword4" placeholder="Informe uma senha segura"> -->
+							<!-- 									<label for="inputPassword4" class="form-label">Password</label> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<div class="col-12">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light "
+										id="inputAddress" placeholder="1234 Main St" name="address">
+									<label for="inputAddress" class="form-label">Địa chỉ</label>
+								</div>
+							</div>
 
+							<div class="col-md-6">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light "
+										id="inputCity" placeholder="Cidade" name="exp"> <label
+										for="inputCity" class="form-label">Kinh nghiệm</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-floating">
+									<select id="inputState" class="form-select bg-light">
+										<option selected>Dọn nhà</option>
+										<option selected>Dọn nhà</option>
+										<option selected>Dọn nhà</option>
+										<option selected>Dọn nhà</option>
+									</select> <label for="inputState" class="form-label">Loại công
+										việc</label>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light" id="inputZip"
+										placeholder="Cep"> <label for="inputZip"
+										class="form-label">Tên nhân viên ghi nhận</label>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light" id="inputZip"
+										placeholder="Cep" value="fulltime" disabled="disabled">
+									<label for="inputZip" class="form-label">Nhân viên
+										fulltime</label>
+								</div>
+							</div>
+							<!-- 							<div class="col-12"> -->
+							<!-- 								<div class="form-floating"> -->
+							<!-- 									<textarea class="form-control" -->
+							<!-- 										placeholder="Leave a comment here" id="floatingTextarea" -->
+							<!-- 										style="height: 100px"></textarea> -->
+							<!-- 									<label for="floatingTextarea">Ghi chú</label> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							<div class="col-12"> -->
+							<!-- 								<div class="form-check"> -->
+							<!-- 									<input class="form-check-input" type="checkbox" id="gridCheck"> -->
+							<!-- 									<label class="form-check-label shadow-sm text-white" -->
+							<!-- 										for="gridCheck"> Tôi đồng ý với các điều khỏa sau.<a -->
+							<!-- 										class="legacy illigla">Privacy</a> -->
+							<!-- 									</label> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<div class="col-12">
+								<div
+									class="p-3 mb-3 text-white fw-bolder fs-3 border-5 border-start">
+									Bên B</div>
+							</div>
+							<div class="col-12">
+								<div class="form-floating">
+									<input type="date" autocomplete="off"
+										class="form-control bg-light " id="inputName"
+										placeholder="Name" name="startAt"> <label
+										for="inputName">Ngày bắt đầu</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-floating">
+									<input type="date" autocomplete="off"
+										class="form-control bg-light " id="inputName"
+										placeholder="Name" name="startAt"> <label
+										for="inputName">Ngày hết hạn</label>
+								</div>
+							</div>
+							<div class="col-12 ">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light "
+										id="inputEmail4" placeholder="Số điện thoại: "
+										name="phonenumber"> <label for="inputEmail4">Số
+										điện thoại</label>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-floating">
+									<select id="inputState" class="form-select bg-light">
+										<option selected>Dọn nhà</option>
+										<option selected>Dọn nhà</option>
+										<option selected>Dọn nhà</option>
+										<option selected>Dọn nhà</option>
+									</select> <label for="inputState" class="form-label">Loại công
+										việc</label>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light" id="inputZip"
+										placeholder="Cep"> <label for="inputZip"
+										class="form-label">Tên nhân viên ghi nhận</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-floating">
+									<textarea class="form-control"
+										placeholder="Leave a comment here" id="floatingTextarea"
+										style="height: 100px"></textarea>
+									<label for="floatingTextarea">Ghi chú</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" id="gridCheck">
+									<label class="form-check-label shadow-sm text-white"
+										for="gridCheck"> Tôi đồng ý với các điều khỏa sau.<a
+										class="legacy illigla">Privacy</a>
+									</label>
+								</div>
+							</div>
+							<div class="col-12 text-end">
+								<button type="submit"
+									class="btn bg-button-submit w-100 bg-gradient p-3 text-center mb-2 text-white fw-bolder fs-3">Xác
+									nhận hợp đồng</button>
+								<a href="#" class="text-primary shadow-sm">.</a>
+							</div>
+						</form>
 					</div>
 				</div>
-		</section>
+			</div>
+		</div>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+			crossorigin="anonymous"></script>
+
+		<script>
+			const sc = document.getElementById('sign-contract');
+			const cf = document.getElementById('contract-form');
+
+			button.addEventListener('click', function() {
+				if (cf.style.display === 'none') {
+					cf.style.display = 'block';
+				} else {
+					cf.style.display = 'none';
+				}
+			});
+		</script>
 
 	</main>
 	<!-- End #main -->

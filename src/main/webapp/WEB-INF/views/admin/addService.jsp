@@ -195,6 +195,21 @@
                                     <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
                                         required>
                                 </div> -->
+								<div class="row mb-3">
+									<label for="profileImage"
+										class="col-md-4 col-lg-3 col-form-label">Ảnh</label>
+									<div class="col-md-8 col-lg-9">
+										<img
+											src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
+											alt="Profile" style="max-width: 120px;">
+										<div class="pt-2">
+											<a href="#" class="btn btn-primary btn-sm"
+												title="Upload new profile image"><i class="bi bi-upload"></i></a>
+											<a href="#" class="btn btn-danger btn-sm"
+												title="Remove my profile image"><i class="bi bi-trash"></i></a>
+										</div>
+									</div>
+								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Tên
 										dịch vụ</label>

@@ -41,12 +41,24 @@
                   <span>Trang cá nhân</span>
                 </a>
               </li>
+                <li>
+                <a class="dropdown-item d-flex align-items-center" href="maidEditProfile.htm">
+                  <i class="bi bi-person"></i>
+                  <span>Chỉnh sửa trang cá nhân</span>
+                </a>
+              </li>
+                <li>
+                <a class="dropdown-item d-flex align-items-center" href="maidChangePassword.htm">
+                  <i class="bi bi-person"></i>
+                  <span>Đổi mật khẩu</span>
+                </a>
+              </li>
               <li>
                 <hr class="dropdown-divider">
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="index.htm">
+                <a class="dropdown-item d-flex align-items-center" href="maidLogin.htm">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Thoát</span>
                 </a>

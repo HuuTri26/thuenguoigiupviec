@@ -203,7 +203,7 @@
 										<th scope="col">Trạng thái hợp đồng</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="table_contracts">
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
@@ -234,6 +234,12 @@
 									</tr>
 								</tbody>
 							</table>
+							<div class="pagination-container pt-5"
+								style="align-items: center; justify-content: center; text-align: center;">
+								<button class="btn btn-primary prev-page">Trước</button>
+								<span class="page-number"></span>
+								<button class="btn btn-primary next-page">Sau</button>
+							</div>
 							<!-- End Table with stripped rows -->
 
 						</div>
@@ -292,6 +298,49 @@
 	    statusSpan.textContent = switchText[this.checked ? 1 : 0];
 	  });
 	});
+	</script>
+	
+		<script>
+	// Lấy dữ liệu từ bảng
+	const tableRows = document.querySelectorAll("#table_contracts tr");
+	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang
+	let currentPage = 1;
+
+	// Hàm hiển thị dữ liệu trên trang
+	function displayPage(page) {
+	  const startIndex = (page - 1) * itemsPerPage;
+	  const endIndex = startIndex + itemsPerPage;
+	  const tableBody = document.getElementById("table_contracts");
+	  tableBody.innerHTML = "";
+
+	  for (let i = startIndex; i < endIndex && i < tableRows.length; i++) {
+	    tableBody.appendChild(tableRows[i].cloneNode(true));
+	  }
+	// Cập nhật số thứ tự trang
+	  const pageNumberElement = document.querySelector(".page-number");
+	  pageNumberElement.textContent ="   " + page +"   ";
+	}
+	
+	
+
+
+	// Xử lý sự kiện click nút chuyển trang
+	document.querySelector(".prev-page").addEventListener("click", () => {
+	  if (currentPage > 1) {
+	    currentPage--;
+	    displayPage(currentPage);
+	  }
+	});
+
+	document.querySelector(".next-page").addEventListener("click", () => {
+	  if (currentPage * itemsPerPage < tableRows.length) {
+	    currentPage++;
+	    displayPage(currentPage);
+	  }
+	});
+
+	// Hiển thị trang đầu tiên
+	displayPage(currentPage);
 	</script>
 </body>
 

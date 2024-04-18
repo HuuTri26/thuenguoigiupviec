@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Profile Maid</title>
+<title>Profile customer</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -54,126 +54,60 @@
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="<c:url value='/resources/main/assets/img/favicon.png'/>"
+	rel="icon">
+<link
+	href="<c:url value='/resources/main/assets/img/apple-touch-icon.png'/>"
+	rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="<c:url value='/resources/main/assets/vendor/aos/aos.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap-icons/bootstrap-icons.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/boxicons/css/boxicons.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/glightbox/css/glightbox.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/swiper/swiper-bundle.min.css'/>"
+	rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="<c:url value='/resources/main/assets/css/style.css'/>"
+	rel="stylesheet">
+
 </head>
 
 <body>
 
 	<!-- ======= Header ======= -->
-	<%@include file="/WEB-INF/views/maid/include/header.jsp"%>
-	<!--   <header id="header" class="header fixed-top d-flex align-items-center"> -->
+	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
 
-	<!--     <div class="d-flex align-items-center justify-content-between"> -->
-	<!--       <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--       <a href="index.html" class="logo d-flex align-items-center"> -->
-	<!--         <img src="assets/img/EPariksha.png" alt=""> -->
-	<!--         <span class="d-none d-lg-block">E-Pariksha</span> -->
-	<!--       </a> -->
-
-	<!--     </div>End Logo -->
-
-
-	<!--     <nav class="header-nav ms-auto"> -->
-	<!--       <ul class="d-flex align-items-center"> -->
-
-	<!--         <li class="nav-item dropdown pe-3"> -->
-
-	<!--           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<!--             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
-	<!--             <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span> -->
-	<!--           </a>End Profile Iamge Icon -->
-
-	<!--           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--             <li class="dropdown-header"> -->
-	<!--               <h6>XYZ</h6> -->
-	<!--               <span>Web Designer</span> -->
-	<!--             </li> -->
-	<!--             <li> -->
-	<!--               <hr class="dropdown-divider"> -->
-	<!--             </li> -->
-
-	<!--             <li> -->
-	<!--               <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                 <i class="bi bi-person"></i> -->
-	<!--                 <span>My Profile</span> -->
-	<!--               </a> -->
-	<!--             </li> -->
-	<!--             <li> -->
-	<!--               <hr class="dropdown-divider"> -->
-	<!--             </li> -->
-
-	<!--             <li> -->
-	<!--               <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                 <i class="bi bi-box-arrow-right"></i> -->
-	<!--                 <span>Sign Out</span> -->
-	<!--               </a> -->
-	<!--             </li> -->
-
-	<!--           </ul>End Profile Dropdown Items -->
-	<!--         </li>End Profile Nav -->
-
-	<!--       </ul> -->
-	<!--     </nav>End Icons Navigation -->
-
-	<!--   </header>End Header -->
-
-
-	<!-- ======= Sidebar ======= -->
-	<!--    <aside id="sidebar" class="sidebar"> -->
-
-	<!--     <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="index.html"> -->
-	<!--           <i class="bi bi-grid"></i> -->
-	<!--           <span>Dashboard</span> -->
-	<!--         </a> -->
-	<!--       </li>End Dashboard Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="student.html"> -->
-	<!--           <i class="bi bi-person"></i> -->
-	<!--           <span>Maid</span> -->
-	<!--         </a> -->
-	<!--       </li>End Maid Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="teacher.html"> -->
-	<!--           <i class="bi bi-question-circle"></i> -->
-	<!--           <span>User</span> -->
-	<!--         </a> -->
-	<!--       </li>End User Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="subject.html"> -->
-	<!--           <i class="bi bi-envelope"></i> -->
-	<!--           <span>Services</span> -->
-	<!--         </a> -->
-	<!--       </li>End Subject Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="examhistory.html"> -->
-	<!--           <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--           <span>Booking Details</span> -->
-	<!--         </a> -->
-	<!--       </li>End Exam History Page Nav -->
-
-
-	<!--     </ul> -->
-
-	<!--   </aside>End Sidebar -->
-
-	<%@include file="/WEB-INF/views/maid/include/sidebar.jsp"%>
-
-
-	<main id="main" class="main">
+	<main >
 
 		<div class="pagetitle">
-			<h1>Profile Maid</h1>
+			<h1>Profile customer</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="maidProfile.html">Profile
-							Maid</a></li>
+					<li class="breadcrumb-item active"><a
+						href="customerProfile.html">Profile customer</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -250,15 +184,6 @@
 										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
 										<div class="col-lg-9 col-md-8">97 Man thiện</div>
 									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Kinh nghiệm</div>
-										<div class="col-lg-9 col-md-8">31/02/2099</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Salary</div>
-										<div class="col-lg-9 col-md-8">300$</div>
-									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
 										<div class="col-lg-9 col-md-8">2022-12-26</div>
@@ -268,16 +193,8 @@
 										<div class="col-lg-9 col-md-8">2023-01-26</div>
 									</div>
 									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Full/Partime</div>
-										<div class="col-lg-9 col-md-8">Fulltime</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Id nhân viên</div>
-										<div class="col-lg-9 col-md-8">1</div>
-									</div>
-									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Email</div>
-										<div class="col-lg-9 col-md-8">maidfulltime@gmail.com</div>
+										<div class="col-lg-9 col-md-8">customerfulltime@gmail.com</div>
 									</div>
 
 									<div class="row">
@@ -346,85 +263,24 @@
 													id="Job" value="91 Man Thiện">
 											</div>
 										</div>
-
-										<div class="row mb-3">
-											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Kinh
-												nghiệm</label>
-											<div class="col-md-8 col-lg-9">
-												<input name="exp" type="number" class="form-control"
-													id="Country" value="2">
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="Address" class="col-md-4 col-lg-3 col-form-label">Salary</label>
-											<div class="col-md-8 col-lg-9">
-												<input name="salary" type="number" class="form-control"
-													id="Address" value="3000">
-											</div>
-										</div>
-
-										<div class="row mb-3">
-											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Id
-												nhân viên</label>
-											<div class="col-md-8 col-lg-9">
-												<input name="employmentId" disabled="disabled" type="number"
-													class="form-control" id="Phone" value="1">
-											</div>
-										</div>
-										<div class="row mb-3">
-											<label for="validationDefault04"
-												class="col-md-4 col-lg-3 col-form-label">Full/Partime</label>
-											<select class="form-select" id="validationDefault04"
-												name="employmentType" required>
-												<option selected value="">Fulltime</option>
-												<option>Partime</option>
-											</select>
-										</div>
 										<div class="row mb-3">
 											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Email</label>
 											<div class="col-md-8 col-lg-9">
-												<input disabled="disabled" name="email" type="email" class="form-control"
-													id="Phone" value="maidfulltime@gmail.com">
+												<input disabled="disabled" name="email" type="email"
+													class="form-control" id="Phone"
+													value="customerfulltime@gmail.com">
 											</div>
 										</div>
 										<div class="row mb-3">
 											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Trạng
 												thái tài khoản</label>
 											<div class="col-md-8 col-lg-9">
-												<input disabled="disabled" name="status" type="text" class="form-control"
-													id="Phone" value="Hoạt động">
+												<input disabled="disabled" name="status" type="text"
+													class="form-control" id="Phone" value="Hoạt động">
 											</div>
 										</div>
 
 
-										<!-- <div class="row mb-3">
-                        <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                        <div class="col-md-8 col-lg-9">
-                          <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
-                        </div>
-                      </div>
-  
-                      <div class="row mb-3">
-                        <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                        <div class="col-md-8 col-lg-9">
-                          <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
-                        </div>
-                      </div>
-  
-                      <div class="row mb-3">
-                        <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                        <div class="col-md-8 col-lg-9">
-                          <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-                        </div>
-                      </div>
-  
-                      <div class="row mb-3">
-                        <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                        <div class="col-md-8 col-lg-9">
-                          <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
-                        </div>
-                      </div> -->
 
 										<div class="text-center">
 											<button type="submit" class="btn btn-primary">Cập
@@ -535,7 +391,7 @@
 
 	</main>
 	<!-- End #main -->
-
+	<%@include file="/WEB-INF/views/customer/include/footer.jsp"%>
 	<!-- ======= Footer ======= 
   <footer id="footer" class="footer">
     <div class="copyright">

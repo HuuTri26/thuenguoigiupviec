@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Cập nhật dịch vụ</title>
+<title>Profile customer</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -54,125 +54,59 @@
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="<c:url value='/resources/main/assets/img/favicon.png'/>"
+	rel="icon">
+<link
+	href="<c:url value='/resources/main/assets/img/apple-touch-icon.png'/>"
+	rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="<c:url value='/resources/main/assets/vendor/aos/aos.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap-icons/bootstrap-icons.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/boxicons/css/boxicons.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/glightbox/css/glightbox.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/swiper/swiper-bundle.min.css'/>"
+	rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="<c:url value='/resources/main/assets/css/style.css'/>"
+	rel="stylesheet">
+
 </head>
 
 <body>
 
 	<!-- ======= Header ======= -->
-	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
-	<!--     <header id="header" class="header fixed-top d-flex align-items-center"> -->
+	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
 
-	<!--         <div class="d-flex align-items-center justify-content-between"> -->
-	<!--             <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--             <a href="index.html" class="logo d-flex align-items-center"> -->
-	<%--                 <img src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" alt=""> --%>
-	<!--                 <span class="d-none d-lg-block">E-Pariksha</span> -->
-	<!--             </a> -->
-
-	<!--         </div>End Logo -->
-
-
-	<!--         <nav class="header-nav ms-auto"> -->
-	<!--             <ul class="d-flex align-items-center"> -->
-
-
-
-	<!--                 <li class="nav-item dropdown pe-3"> -->
-
-	<!--                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<%--                         <img src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" alt="Profile" class="rounded-circle"> --%>
-	<!--                         <span class="d-none d-md-block dropdown-toggle ps-2">Sumit</span> -->
-	<!--                     </a>End Profile Iamge Icon -->
-
-	<!--                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--                         <li class="dropdown-header"> -->
-	<!--                             <h6>Sumit</h6> -->
-	<!--                             <span>Web Designer</span> -->
-	<!--                         </li> -->
-	<!--                         <li> -->
-	<!--                             <hr class="dropdown-divider"> -->
-	<!--                         </li> -->
-
-	<!--                         <li> -->
-	<!--                             <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                                 <i class="bi bi-person"></i> -->
-	<!--                                 <span>My Profile</span> -->
-	<!--                             </a> -->
-	<!--                         </li> -->
-	<!--                         <li> -->
-	<!--                             <hr class="dropdown-divider"> -->
-	<!--                         </li> -->
-
-	<!--                         <li> -->
-	<!--                             <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                                 <i class="bi bi-box-arrow-right"></i> -->
-	<!--                                 <span>Sign Out</span> -->
-	<!--                             </a> -->
-	<!--                         </li> -->
-
-	<!--                     </ul>End Profile Dropdown Items -->
-	<!--                 </li>End Profile Nav -->
-
-	<!--             </ul> -->
-	<!--         </nav>End Icons Navigation -->
-
-	<!--     </header>End Header -->
-
-	<!-- ======= Sidebar ======= -->
-	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
-	<!--     <aside id="sidebar" class="sidebar"> -->
-
-	<!--         <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="index.html"> -->
-	<!--               <i class="bi bi-grid"></i> -->
-	<!--               <span>Dashboard</span> -->
-	<!--             </a> -->
-	<!--           </li>End Dashboard Nav -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="student.html"> -->
-	<!--               <i class="bi bi-person"></i> -->
-	<!--               <span>Maid</span> -->
-	<!--             </a> -->
-	<!--           </li>End Maid Page Nav -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="teacher.html"> -->
-	<!--               <i class="bi bi-question-circle"></i> -->
-	<!--               <span>User</span> -->
-	<!--             </a> -->
-	<!--           </li>End User Page Nav -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="subject.html"> -->
-	<!--               <i class="bi bi-envelope"></i> -->
-	<!--               <span>Services</span> -->
-	<!--             </a> -->
-	<!--           </li>End Subject Page Nav -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="examhistory.html"> -->
-	<!--               <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--               <span>Booking Details</span> -->
-	<!--             </a> -->
-	<!--           </li>End Exam History Page Nav -->
-
-
-	<!--         </ul> -->
-
-	<!--       </aside>End Sidebar -->
-
-	<main id="main" class="main">
-
+	<main>
 		<div class="pagetitle">
-			<h1>Dịch vụ</h1>
+			<h1>customer</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="serviceManagement.html">Dịch vụ</a></li>
+						href="customerManagement.html">customer</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -184,10 +118,11 @@
 
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title">Cập nhật dịch vụ</h5>
+							<h5 class="card-title">Cập nhật customer</h5>
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
+
 							<form class="row g-3">
 								<!-- <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">ID</label>
@@ -210,43 +145,58 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Tên
-										dịch vụ</label> <input type="text" class="form-control"
+									<label for="validationDefault01" class="form-label">Họ
+										tên</label> <input type="text" class="form-control"
 										id="validationDefault01" value="" name="name"
 										placeholder="Subject name" required>
 								</div>
 
-								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Loại
-									</label> <select class="form-select" id="validationDefault04"
-										name="category" required>
-										<option selected value="">Dọn dẹp</option>
-										<option>Nấu ăn</option>
-										<option>Chăm trẻ</option>
-										<option>Chăm sóc người bệnh</option>
-									</select>
-								</div>
+								<!-- 								<div class="col-md-6"> -->
+								<!-- 									<label for="validationDefault04" class="form-label">Loại -->
+								<!-- 									</label> <select class="form-select" id="validationDefault04" -->
+								<!-- 										name="category" required> -->
+								<!-- 										<option selected value="">Dọn dẹp</option> -->
+								<!-- 										<option>Nấu ăn</option> -->
+								<!-- 										<option>Chăm trẻ</option> -->
+								<!-- 										<option>Chăm sóc người bệnh</option> -->
+								<!-- 									</select> -->
+								<!-- 								</div> -->
 
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Giá
-										tiền</label> <input type="number" class="form-control"
+									<label for="validationDefault01" class="form-label">Số
+										điện thoại</label> <input type="number" class="form-control"
 										id="validationDefault01" value="" name="price"
 										placeholder="Subject name" required>
 								</div>
 
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Thời
-										gian gói</label> <input type="number" class="form-control"
+									<label for="validationDefault01" class="form-label">Địa
+										chỉ</label> <input type="text" class="form-control"
 										id="validationDefault01" value="" name="time"
 										placeholder="Subject name" required>
 								</div>
 
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Số
-										lượng giúp việc</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="maidQuantity"
+									<label for="validationDefault01" class="form-label">Kinh
+										nghiệm</label> <input type="number" class="form-control"
+										id="validationDefault01" value="" name="customerQuantity"
 										placeholder="Subject name" required>
 								</div>
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Email</label>
+									<input type="email" class="form-control"
+										id="validationDefault01" value="" name="email"
+										placeholder="Subject name" required>
+								</div>
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Mức
+										Lương</label> <input type="number" class="form-control"
+										id="validationDefault01" value="" name="customerQuantity"
+										placeholder="Subject name" required>
+								</div>
+
 								<!-- <div class="col-md-6">
                                     <label class="form-label">Description</label>
                                     <textarea  class="form-control" name="last_name" style="height:100px"
@@ -254,17 +204,18 @@
                                         </textarea>
                                 </div> -->
 
+								<!-- 								<div class="col-md-6"> -->
+								<!-- 									<label for="validationDefault01" class="form-label">Miêu -->
+								<!-- 										tả</label> -->
+								<!-- 									<textarea class="form-control" style="height: 100px"></textarea> -->
+								<!-- 								</div> -->
+
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Miêu
-										tả</label>
-									<textarea class="form-control" style="height: 100px"></textarea>
-								</div>
-								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Trạng
-										thái</label> <select class="form-select" id="validationDefault04"
+									<label for="validationDefault04" class="form-label">Fulltime/partime</label>
+									<select class="form-select" id="validationDefault04"
 										name="status" required>
-										<option selected value="">Hoạt động</option>
-										<option>Ngưng hoạt động</option>
+										<option selected value="">Fulltime</option>
+										<option>Partime</option>
 									</select>
 								</div>
 
@@ -297,17 +248,16 @@
 
 	</main>
 	<!-- End #main -->
-
-	<!-- ======= Footer ======= -->
-	<footer id="footer" class="footer">
-		<div class="copyright">
-			&copy; Đồ án <strong><span>Nhóm 16 </span></strong>Maid Hiring
-		</div>
-		<div class="credits">
-			<!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-		</div>
-	</footer>
-	<!-- End Footer -->
+	<%@include file="/WEB-INF/views/customer/include/footer.jsp"%>
+	<!-- ======= Footer ======= 
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>E-Pariksha</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> 
+    </div>
+  </footer>End Footer -->
 
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center"><i

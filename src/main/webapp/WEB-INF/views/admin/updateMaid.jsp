@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Cập nhật dịch vụ</title>
+<title>Cập nhật Maid</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -148,7 +148,7 @@
 	<!--           <li class="nav-item"> -->
 	<!--             <a class="nav-link collapsed" href="subject.html"> -->
 	<!--               <i class="bi bi-envelope"></i> -->
-	<!--               <span>Services</span> -->
+	<!--               <span>Maids</span> -->
 	<!--             </a> -->
 	<!--           </li>End Subject Page Nav -->
 
@@ -167,12 +167,12 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Dịch vụ</h1>
+			<h1>Maid</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="serviceManagement.html">Dịch vụ</a></li>
+						href="MaidManagement.html">Maid</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -184,10 +184,11 @@
 
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title">Cập nhật dịch vụ</h5>
+							<h5 class="card-title">Cập nhật Maid</h5>
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
+
 							<form class="row g-3">
 								<!-- <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">ID</label>
@@ -200,7 +201,9 @@
 									<div class="col-md-8 col-lg-9">
 										<img
 											src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
-											alt="Profile" style="max-width: 120px;">
+											alt="Profile" 
+											style="max-width: 120px;"
+											>
 										<div class="pt-2">
 											<a href="#" class="btn btn-primary btn-sm"
 												title="Upload new profile image"><i class="bi bi-upload"></i></a>
@@ -210,43 +213,58 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Tên
-										dịch vụ</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="name"
-										placeholder="Subject name" required>
+									<label for="validationDefault01" class="form-label">Họ
+										tên</label> <input  type="text"
+										class="form-control" id="validationDefault01" value=""
+										name="name" placeholder="Subject name" required>
 								</div>
 
-								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Loại
-									</label> <select class="form-select" id="validationDefault04"
-										name="category" required>
-										<option selected value="">Dọn dẹp</option>
-										<option>Nấu ăn</option>
-										<option>Chăm trẻ</option>
-										<option>Chăm sóc người bệnh</option>
-									</select>
-								</div>
+								<!-- 								<div class="col-md-6"> -->
+								<!-- 									<label for="validationDefault04" class="form-label">Loại -->
+								<!-- 									</label> <select class="form-select" id="validationDefault04" -->
+								<!-- 										name="category" required> -->
+								<!-- 										<option selected value="">Dọn dẹp</option> -->
+								<!-- 										<option>Nấu ăn</option> -->
+								<!-- 										<option>Chăm trẻ</option> -->
+								<!-- 										<option>Chăm sóc người bệnh</option> -->
+								<!-- 									</select> -->
+								<!-- 								</div> -->
 
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Giá
-										tiền</label> <input type="number" class="form-control"
+									<label for="validationDefault01" class="form-label">Số
+										điện thoại</label> <input type="number" class="form-control"
 										id="validationDefault01" value="" name="price"
 										placeholder="Subject name" required>
 								</div>
 
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Thời
-										gian gói</label> <input type="number" class="form-control"
+									<label for="validationDefault01" class="form-label">Địa
+										chỉ</label> <input type="text" class="form-control"
 										id="validationDefault01" value="" name="time"
 										placeholder="Subject name" required>
 								</div>
 
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Số
-										lượng giúp việc</label> <input type="number" class="form-control"
+									<label for="validationDefault01" class="form-label">Kinh
+										nghiệm</label> <input type="number" class="form-control"
 										id="validationDefault01" value="" name="maidQuantity"
 										placeholder="Subject name" required>
 								</div>
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Email</label>
+									<input type="email" class="form-control"
+										id="validationDefault01" value="" name="email"
+										placeholder="Subject name" required>
+								</div>
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Mức
+										Lương</label> <input type="number" class="form-control"
+										id="validationDefault01" value="" name="maidQuantity"
+										placeholder="Subject name" required>
+								</div>
+
 								<!-- <div class="col-md-6">
                                     <label class="form-label">Description</label>
                                     <textarea  class="form-control" name="last_name" style="height:100px"
@@ -254,17 +272,18 @@
                                         </textarea>
                                 </div> -->
 
+								<!-- 								<div class="col-md-6"> -->
+								<!-- 									<label for="validationDefault01" class="form-label">Miêu -->
+								<!-- 										tả</label> -->
+								<!-- 									<textarea class="form-control" style="height: 100px"></textarea> -->
+								<!-- 								</div> -->
+
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Miêu
-										tả</label>
-									<textarea class="form-control" style="height: 100px"></textarea>
-								</div>
-								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Trạng
-										thái</label> <select class="form-select" id="validationDefault04"
+									<label for="validationDefault04" class="form-label">Fulltime/partime</label>
+									<select class="form-select" id="validationDefault04"
 										name="status" required>
-										<option selected value="">Hoạt động</option>
-										<option>Ngưng hoạt động</option>
+										<option selected value="">Fulltime</option>
+										<option>Partime</option>
 									</select>
 								</div>
 
