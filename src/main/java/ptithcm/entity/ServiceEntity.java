@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -60,6 +61,9 @@ public class ServiceEntity {
 	
 	@OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
 	private List<ServicePriceEntity> servicePrices;
+	
+//	@OneToOne(mappedBy = "service", fetch = FetchType.LAZY)
+//	private BookingEntity booking;
 
 	public Integer getId() {
 		return id;
@@ -148,6 +152,14 @@ public class ServiceEntity {
 	public void setCategory(CategoryEntity category) {
 		this.category = category;
 	}
-	
+
+//	public BookingEntity getBooking() {
+//		return booking;
+//	}
+//
+//	public void setBooking(BookingEntity booking) {
+//		this.booking = booking;
+//	}
+//	
 	
 }
