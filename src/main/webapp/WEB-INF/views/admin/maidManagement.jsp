@@ -211,7 +211,7 @@
 										<th scope="col">Kinh nghiệm</th>
 										<th scope="col">Lương</th>
 										<th scope="col">Full/Partime</th>
-										<!-- <th scope="col">Id nhân viên</th> -->
+										<th scope="col">Id nhân viên</th>
 										<th scope="col">Email</th>
 										<th scope="col">Trạng thái làm việc</th>
 										<th scope="col">Trạng thái tài khoản</th>
@@ -232,7 +232,7 @@
 											<td scope="col">${maid.experience }</td>
 											<td scope="col">${maid.salary }</td>
 											<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
-											<%-- <td scope="col">${maid.employee.Id }</td> --%>
+											<td scope="col">${maid.employee.id }</td>
 											<td scope="col">${maid.account.email }</td>
 											<td scope="col">
 												<div class="form-check form-switch"

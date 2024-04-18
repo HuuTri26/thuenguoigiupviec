@@ -188,7 +188,8 @@
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form class="row g-3">
+							<form:form action="addService.htm" modelAttribute="service"
+								method="post" class="row g-3">
 								<!-- <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">ID</label>
                                     <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
@@ -211,41 +212,46 @@
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Tên
-										dịch vụ</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="name"
-										placeholder="Subject name" required>
+										dịch vụ</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault01" path="name" value=""
+										placeholder="Subject name" />
+									<form:errors path="name" />
 								</div>
 
 								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Loại
-									</label> <select class="form-select" id="validationDefault04"
-										name="category" required>
-										<option selected value="">Dọn dẹp</option>
-										<option>Nấu ăn</option>
-										<option>Chăm trẻ</option>
-										<option>Chăm sóc người bệnh</option>
-									</select>
+									<label for="validationDefault04" class="form-label">Loại</label>
+									<form:select class="form-select" id="validationDefault04"
+										path="category.id">
+										<c:forEach var="category" items="${categories}">
+											<option value="${category.id}">${category.name}</option>
+										</c:forEach>
+									</form:select>
 								</div>
+
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Giá
-										tiền</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="price"
-										placeholder="Subject name" required>
+										tiền</label>
+									<form:input type="number" class="form-control"
+										id="validationDefault01" value=""
+										path="servicePrices[0].price" placeholder="Subject name" />
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Thời
-										gian gói</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="time"
-										placeholder="Subject name" required>
+										gian gói</label>
+									<form:input type="number" class="form-control"
+										id="validationDefault01" value="" path="time"
+										placeholder="Subject name" />
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Số
-										lượng giúp việc</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="maidQuantity"
-										placeholder="Subject name" required>
+										lượng giúp việc</label>
+									<form:input type="number" class="form-control"
+										id="validationDefault01" value="" path="maidQuantity"
+										placeholder="Subject name" />
 								</div>
 								<!-- <div class="col-md-6">
                                     <label class="form-label">Description</label>
@@ -257,15 +263,18 @@
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Miêu
 										tả</label>
-									<textarea class="form-control" style="height: 100px"></textarea>
+									<form:textarea class="form-control" style="height: 100px"
+										path="description"></form:textarea>
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault04" class="form-label">Trạng
-										thái</label> <select class="form-select" id="validationDefault04"
-										name="status" required>
-										<option selected value="">Hoạt động</option>
-										<option>Ngưng hoạt động</option>
-									</select>
+										thái</label>
+									<form:select class="form-select" id="validationDefault04"
+										name="status" path="status">
+										<option selected value="true">Hoạt động</option>
+										<option value="false">Ngưng hoạt động</option>
+									</form:select>
+
 								</div>
 
 
@@ -285,9 +294,9 @@
 
 
 								<div class="col-12">
-									<button class="btn btn-primary" type="submit">Thêm</button>
+									<button class="btn btn-primary" type="submit" name="add">Thêm</button>
 								</div>
-							</form>
+							</form:form>
 							<!-- End Browser Default Validation -->
 
 						</div>
