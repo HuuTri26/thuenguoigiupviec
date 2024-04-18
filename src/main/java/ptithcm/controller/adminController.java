@@ -94,6 +94,11 @@ public class adminController {
 	public String showadminEditProfile() {
 		return "admin/adminEditProfile";
 	}
+	//Hiển thị form chamge password admin:
+	@RequestMapping("admin/adminChangePassword")
+	public String showAdminChangePassword() {
+		return "admin/adminChangePassword";
+	}
 
 	// Hiển thị danh sách người giúp việc:
 	@RequestMapping("admin/maidManagement")

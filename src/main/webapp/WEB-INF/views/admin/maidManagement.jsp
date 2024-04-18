@@ -53,6 +53,14 @@
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<!-- 	Phân trang -->
+<!-- Thêm các file CSS và JS của DataTables -->
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
 </head>
 
 <body>
@@ -166,7 +174,6 @@
 	<!-- End Sidebar-->
 
 	<main id="main" class="main">
-
 		<div class="pagetitle">
 			<h1>Maid Management</h1>
 			<nav>
@@ -179,13 +186,13 @@
 		</div>
 		<!-- End Page Title -->
 
-		<section class="section">
-			<div class="row">
-				<div class="col-lg-24">
+		<section class="section" style="max-width: 100%;">
+			<div class="row" >
+				<div class="col-lg-24" >
 
-					<div class="card">
-						<div class="card-body">
-							<div class="card-title">
+					<div class="card" >
+						<div class="card-body " >
+							<div class="card-title" >
 								<a href="addMaid.htm" class="btn btn-primary">Add Maid</a>
 							</div>
 							<!--  <h5 class="card-title">Datatables</h5>
@@ -264,6 +271,12 @@
 
 								</tbody>
 							</table>
+							<div class="pagination-container pt-5"
+								style="align-items: center; justify-content: center; text-align: center;">
+								<button class="btn btn-primary prev-page">Trước</button>
+								<span class="page-number"></span>
+								<button class="btn btn-primary next-page">Sau</button>
+							</div>
 							<!-- End Table with stripped rows -->
 
 						</div>
@@ -311,6 +324,63 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('.datatable').DataTable({
+				"pageLength" : 5, // Hiển thị 5 dòng mỗi trang
+				"pagingType" : "simple_numbers", // Hiển thị nút "Trước" và "Sau" cùng với số trang
+				"language" : {
+					"paginate" : {
+						"previous" : "Trước",
+						"next" : "Sau"
+					}
+				}
+			});
+		});
+	</script>
+	<script>
+	// Lấy dữ liệu từ bảng
+	const tableRows = document.querySelectorAll("#table_maids tr");
+	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang
+	let currentPage = 1;
+
+	// Hàm hiển thị dữ liệu trên trang
+	function displayPage(page) {
+	  const startIndex = (page - 1) * itemsPerPage;
+	  const endIndex = startIndex + itemsPerPage;
+	  const tableBody = document.getElementById("table_maids");
+	  tableBody.innerHTML = "";
+
+	  for (let i = startIndex; i < endIndex && i < tableRows.length; i++) {
+	    tableBody.appendChild(tableRows[i].cloneNode(true));
+	  }
+	// Cập nhật số thứ tự trang
+	  const pageNumberElement = document.querySelector(".page-number");
+	  pageNumberElement.textContent ="   " + page +"   ";
+	}
+	
+	
+
+
+	// Xử lý sự kiện click nút chuyển trang
+	document.querySelector(".prev-page").addEventListener("click", () => {
+	  if (currentPage > 1) {
+	    currentPage--;
+	    displayPage(currentPage);
+	  }
+	});
+
+	document.querySelector(".next-page").addEventListener("click", () => {
+	  if (currentPage * itemsPerPage < tableRows.length) {
+	    currentPage++;
+	    displayPage(currentPage);
+	  }
+	});
+
+	// Hiển thị trang đầu tiên
+	displayPage(currentPage);
+	</script>
 
 </body>
 

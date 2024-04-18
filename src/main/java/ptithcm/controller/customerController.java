@@ -44,6 +44,69 @@ public class customerController {
 		return "customer/customerForgotPassword";
 	}
 
+	// Hiển thị trang thông tin cá nhân của customer:
+	@RequestMapping("customer/customerProfile")
+	public String showCustomerProfile() {
+		return "customer/customerProfile";
+
+	}
+
+	// Hiển thị form cập nhật thông tin cho customer:
+	@RequestMapping("customer/updateCustomer")
+	public String showCustomerUpdateProfile() {
+		return "customer/updateCustomer";
+
+	}
+
+	// Hiển thị form change password:
+	@RequestMapping("customer/customerChangePassword")
+	public String showCustomerChangePassword() {
+		return "customer/customerChangePassword";
+
+	}
+
+	// Hiển thị danh sách các đặt dịch vụ :
+	@RequestMapping("customer/bookingManagement")
+	public String showBookingList() {
+		return "customer/bookingManagement";
+
+	}
+
+	// Hiển thị thông tin các đặt dịch vụ :
+	@RequestMapping("customer/bookingDetail")
+	public String showBookingDetail() {
+		return "customer/bookingDetail";
+
+	}
+
+	// Hiển thị danh sách hợp đồng
+	@RequestMapping("customer/contractManagement")
+	public String showContractList() {
+		return "customer/contractManagement";
+
+	}
+
+	// Hiển thị thông tin hợp đồng hợp đồng
+	@RequestMapping("customer/contractDetail")
+	public String showContractDetail() {
+		return "customer/contractDetail";
+
+	}
+
+	// Hiển thị danh sách hợp đồng
+	@RequestMapping("customer/billDetail")
+	public String showBillDetail() {
+		return "customer/billDetail";
+
+	}
+
+	// Hiển thị danh sách hợp đồng
+	@RequestMapping("customer/billManagement")
+	public String showBillList() {
+		return "customer/billManagement";
+
+	}
+
 	// Trang danh sách người giúp việc fulltime cho customer:
 	@RequestMapping("customer/maidList")
 	public String showMaidList() {
@@ -60,6 +123,12 @@ public class customerController {
 	@RequestMapping("customer/serviceList")
 	public String showServiceList() {
 		return "customer/serviceList";
+	}
+
+	// Trang danh sách người giúp việc fulltime cho customer:
+	@RequestMapping("customer/serviceDetail")
+	public String showServiceDetail() {
+		return "customer/serviceDetail";
 	}
 
 	// Xử lý đăng nhập cho customer

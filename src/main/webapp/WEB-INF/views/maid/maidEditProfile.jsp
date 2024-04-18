@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Thêm người giúp việc</title>
+<title>Cập nhật admin</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -23,7 +23,6 @@
 
 <!-- Google Fonts -->
 <link href="https://fonts.gstatic.com" rel="preconnect">
-
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet">
@@ -56,10 +55,11 @@
 	rel="stylesheet">
 
 </head>
+
 <body>
 
 	<!-- ======= Header ======= -->
-	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
+	<%@include file="/WEB-INF/views/maid/include/header.jsp"%>
 	<!--     <header id="header" class="header fixed-top d-flex align-items-center"> -->
 
 	<!--         <div class="d-flex align-items-center justify-content-between"> -->
@@ -119,6 +119,7 @@
 	<!--     </header>End Header -->
 
 	<!-- ======= Sidebar ======= -->
+	<%@include file="/WEB-INF/views/maid/include/sidebar.jsp"%>
 	<!--     <aside id="sidebar" class="sidebar"> -->
 
 	<!--         <ul class="sidebar-nav" id="sidebar-nav"> -->
@@ -133,9 +134,9 @@
 	<!--           <li class="nav-item"> -->
 	<!--             <a class="nav-link collapsed" href="student.html"> -->
 	<!--               <i class="bi bi-person"></i> -->
-	<!--               <span>Maid</span> -->
+	<!--               <span>admin</span> -->
 	<!--             </a> -->
-	<!--           </li>End Maid Page Nav -->
+	<!--           </li>End admin Page Nav -->
 
 	<!--           <li class="nav-item"> -->
 	<!--             <a class="nav-link collapsed" href="teacher.html"> -->
@@ -147,7 +148,7 @@
 	<!--           <li class="nav-item"> -->
 	<!--             <a class="nav-link collapsed" href="subject.html"> -->
 	<!--               <i class="bi bi-envelope"></i> -->
-	<!--               <span>Services</span> -->
+	<!--               <span>admins</span> -->
 	<!--             </a> -->
 	<!--           </li>End Subject Page Nav -->
 
@@ -162,17 +163,15 @@
 	<!--         </ul> -->
 
 	<!--       </aside>End Sidebar -->
-	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
 
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Người giúp việc</h1>
+			<h1>admin</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-					<li class="breadcrumb-item active"><a href="student.html">Người
-							giúp việc</a></li>
+					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item active"><a href="index.html">admin</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -184,12 +183,17 @@
 
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title">Thêm người giúp việc</h5>
+							<h5 class="card-title">Cập nhật maid</h5>
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form:form class="row g-3" action="addMaid.htm"
-								modelAttribute="maid" method="post">
+
+							<form class="row g-3">
+								<!-- <div class="col-md-6">
+                                    <label for="validationDefault01" class="form-label">ID</label>
+                                    <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
+                                        required>
+                                </div> -->
 								<div class="row mb-3">
 									<label for="profileImage"
 										class="col-md-4 col-lg-3 col-form-label">Ảnh</label>
@@ -207,74 +211,124 @@
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Họ
-										tên</label>
-									<form:input type="text" class="form-control"
-										id="validationDefault01" path="fullName"
-										placeholder="Full name" />
-									<form:errors path="fullName" />
+										tên</label> <input type="text" class="form-control"
+										id="validationDefault01" value="" name="name"
+										placeholder="Subject name" required>
 								</div>
-								<div class="col-md-6">
-									<label for="validationDefault02" class="form-label">Số
-										điện thoại</label>
-									<form:input type="text" class="form-control"
-										id="validationDefault02" path="phoneNumber"
-										placeholder="Phone number" />
-									<form:errors path="phoneNumber" />
-								</div>
-								<div class="col-md-6">
-									<label for="validationDefault03" class="form-label">Địa
-										chỉ</label>
-									<form:input type="text" class="form-control"
-										id="validationDefault03" path="address" placeholder="Address" />
-									<form:errors path="address" />
-								</div>
-								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Kinh
-										nghiệm</label>
-									<form:input type="text" class="form-control"
-										id="validationDefault04" path="experience"
-										placeholder="Experience" />
-									<form:errors path="experience" />
-								</div>
-								<div class="col-md-6">
-									<label for="validationDefault05" class="form-label">Lương</label>
-									<form:input type="text" class="form-control"
-										id="validationDefault05" path="salary" placeholder="Salary" />
-									<form:errors path="salary" />
-								</div>
-								<div class="col-md-6">
-									<label for="validationDefault06" class="form-label">Email</label>
-									<form:input type="text" class="form-control"
-										id="validationDefault06" path="account.email"
-										placeholder="Email" />
-									<form:errors path="account.email" />
-								</div>
-								<div class="col-md-6">
-									<label for="validationDefault07" class="form-label">Fulltime/Partime</label>
-									<form:select class="form-select" id="validationDefault07"
-										path="employmentType">
-										<form:option value="0">Fulltime</form:option>
-										<form:option value="1">Partime</form:option>
-									</form:select>
-								</div>
-								<div class="col-md-6">
-									<label for="validationDefault08" class="form-label">Trạng
-										thái làm việc</label>
-									<form:select class="form-select" id="validationDefault08"
-										path="">
-										<form:option value="Available">Rảnh</form:option>
-										<form:option value="Busy">Bận</form:option>
-									</form:select>
-								</div>
-								<div class="col-12">
-									<button class="btn btn-primary" name="add" type="submit">Submit</button>
-								</div>
-							</form:form>
 
+								<!-- 								<div class="col-md-6"> -->
+								<!-- 									<label for="validationDefault04" class="form-label">Loại -->
+								<!-- 									</label> <select class="form-select" id="validationDefault04" -->
+								<!-- 										name="category" required> -->
+								<!-- 										<option selected value="">Dọn dẹp</option> -->
+								<!-- 										<option>Nấu ăn</option> -->
+								<!-- 										<option>Chăm trẻ</option> -->
+								<!-- 										<option>Chăm sóc người bệnh</option> -->
+								<!-- 									</select> -->
+								<!-- 								</div> -->
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Số
+										điện thoại</label> <input type="number" class="form-control"
+										id="validationDefault01" value="" name="price"
+										placeholder="Subject name" required>
+								</div>
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Địa
+										chỉ</label> <input type="text" class="form-control"
+										id="validationDefault01" value="" name="time"
+										placeholder="Subject name" required>
+								</div>
+
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Email</label>
+									<input type="email" class="form-control"
+										id="validationDefault01" value="" name="email"
+										placeholder="Subject name" required>
+								</div>
+
+								<div class="row mb-3">
+									<label for="Country" class="col-md-4 col-lg-3 col-form-label">Kinh
+										nghiệm</label>
+									<div class="col-md-8 col-lg-9">
+										<input name="exp" type="number" class="form-control"
+											id="Country" value="2">
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<label for="Address" class="col-md-4 col-lg-3 col-form-label">Salary</label>
+									<div class="col-md-8 col-lg-9">
+										<input name="salary" type="number" class="form-control"
+											id="Address" value="3000">
+									</div>
+								</div>
+
+								<div class="row mb-3">
+									<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Id
+										nhân viên</label>
+									<div class="col-md-8 col-lg-9">
+										<input name="employmentId" disabled="disabled" type="number"
+											class="form-control" id="Phone" value="1">
+									</div>
+								</div>
+								<div class="row mb-3">
+									<label for="validationDefault04"
+										class="col-md-4 col-lg-3 col-form-label">Full/Partime</label>
+									<select class="form-select" id="validationDefault04"
+										name="employmentType" required>
+										<option selected value="">Fulltime</option>
+										<option>Partime</option>
+									</select>
+								</div>
+								<div class="row mb-3">
+									<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Trạng
+										thái tài khoản</label>
+									<div class="col-md-8 col-lg-9">
+										<input disabled="disabled" name="status" type="text"
+											class="form-control" id="Phone" value="Hoạt động">
+									</div>
+								</div>
+
+
+								<!-- <div class="col-md-6">
+                                    <label class="form-label">Description</label>
+                                    <textarea  class="form-control" name="last_name" style="height:100px"
+                                        required>
+                                        </textarea>
+                                </div> -->
+
+								<!-- 								<div class="col-md-6"> -->
+								<!-- 									<label for="validationDefault01" class="form-label">Miêu -->
+								<!-- 										tả</label> -->
+								<!-- 									<textarea class="form-control" style="height: 100px"></textarea> -->
+								<!-- 								</div> -->
+
+								<!-- <div class="col-md-6">
+                                    <label for="validationDefault04" class="form-label">Subject</label>
+                                    <select class="form-select" multiple  id="validationDefault04" required>
+                                        <option selected disabled  value="">Mutiple Select</option>
+                                        <option>OS</option>
+                                        <option>Java</option>
+                                        <option>WPT</option>
+                                        <option>DS</option>
+                                    </select>
+                                </div> -->
+
+
+
+
+								<div class="col-12">
+									<button class="btn btn-primary" type="submit">Update</button>
+								</div>
+							</form>
 							<!-- End Browser Default Validation -->
 
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</section>
@@ -285,8 +339,7 @@
 	<!-- ======= Footer ======= -->
 	<footer id="footer" class="footer">
 		<div class="copyright">
-			&copy; Nhóm 16 <strong><span>Phầm mềm </span></strong>. cho thuê giúp
-			việc tại nhà.
+			&copy; Đồ án <strong><span>Nhóm 16 </span></strong>admin Hiring
 		</div>
 		<div class="credits">
 			<!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->

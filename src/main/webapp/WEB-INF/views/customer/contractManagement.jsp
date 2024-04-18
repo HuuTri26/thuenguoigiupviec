@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Quản lý đặt lịch(part-time)</title>
+<title>Profile customer</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -54,125 +54,59 @@
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="<c:url value='/resources/main/assets/img/favicon.png'/>"
+	rel="icon">
+<link
+	href="<c:url value='/resources/main/assets/img/apple-touch-icon.png'/>"
+	rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="<c:url value='/resources/main/assets/vendor/aos/aos.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap-icons/bootstrap-icons.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/boxicons/css/boxicons.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/glightbox/css/glightbox.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/swiper/swiper-bundle.min.css'/>"
+	rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="<c:url value='/resources/main/assets/css/style.css'/>"
+	rel="stylesheet">
+
 </head>
 
 <body>
 
 	<!-- ======= Header ======= -->
-	<!--     <header id="header" class="header fixed-top d-flex align-items-center"> -->
+	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
 
-	<!--       <div class="d-flex align-items-center justify-content-between"> -->
-	<!--         <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--         <a href="index.html" class="logo d-flex align-items-center"> -->
-	<%--           <img src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" alt=""> --%>
-	<!--           <span class="d-none d-lg-block">BookMyMaid</span> -->
-	<!--         </a> -->
-
-	<!--       </div>End Logo -->
-
-
-	<!--       <nav class="header-nav ms-auto"> -->
-	<!--         <ul class="d-flex align-items-center"> -->
-
-
-
-	<!--           <li class="nav-item dropdown pe-3"> -->
-
-	<!--             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<%--               <img src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" alt="Profile" class="rounded-circle"> --%>
-	<!--               <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span> -->
-	<!--             </a>End Profile Iamge Icon -->
-
-	<!--             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--               <li class="dropdown-header"> -->
-	<!--                 <h6>Ram</h6> -->
-	<!--                 <span>PRN-111</span> -->
-	<!--               </li> -->
-	<!--               <li> -->
-	<!--                 <hr class="dropdown-divider"> -->
-	<!--               </li> -->
-
-	<!--               <li> -->
-	<!--                 <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                   <i class="bi bi-person"></i> -->
-	<!--                   <span>My Profile</span> -->
-	<!--                 </a> -->
-	<!--               </li> -->
-	<!--               <li> -->
-	<!--                 <hr class="dropdown-divider"> -->
-	<!--               </li> -->
-
-	<!--               <li> -->
-	<!--                 <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                   <i class="bi bi-box-arrow-right"></i> -->
-	<!--                   <span>Sign Out</span> -->
-	<!--                 </a> -->
-	<!--               </li> -->
-
-	<!--             </ul>End Profile Dropdown Items -->
-	<!--           </li>End Profile Nav -->
-
-	<!--         </ul> -->
-	<!--       </nav>End Icons Navigation -->
-
-	<!--     </header>End Header -->
-	<%@include file="/WEB-INF/views/maid/include/header.jsp"%>
-
-	<!-- ======= Sidebar ======= -->
-	<!--  <aside id="sidebar" class="sidebar"> -->
-
-	<!--   <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="dashboard.htm"> -->
-	<!--         <i class="bi bi-grid"></i> -->
-	<!--         <span>Dashboard</span> -->
-	<!--       </a> -->
-	<!--     </li>End Dashboard Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="maidManagement.htm"> -->
-	<!--         <i class="bi bi-person"></i> -->
-	<!--         <span>Maid</span> -->
-	<!--       </a> -->
-	<!--     </li>End Maid Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="customerManagement.htm"> -->
-	<!--         <i class="bi bi-question-circle"></i> -->
-	<!--         <span>User</span> -->
-	<!--       </a> -->
-	<!--     </li>End User Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="serviceManagement.htm"> -->
-	<!--         <i class="bi bi-envelope"></i> -->
-	<!--         <span>Services</span> -->
-	<!--       </a> -->
-	<!--     </li>End Subject Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="#"> -->
-	<!--         <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--         <span>Booking Details</span> -->
-	<!--       </a> -->
-	<!--     </li>End Exam History Page Nav -->
-
-
-	<!--   </ul> -->
-
-	<!-- </aside>End Sidebar -->
-
-	<%@include file="/WEB-INF/views/maid/include/sidebar.jsp"%>
-	<main id="main" class="main">
-
-		<div class="pagetitle">
-			<h1>Thông tin đặt dịch vụ</h1>
+	<main >
+			<div class="pagetitle">
+			<h1>Thông tin hợp đồng</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
+						href="bookingManagement.htm">Thông tin hợp đồng</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -193,55 +127,53 @@
 									<tr>
 										<th scope="col">Id</th>
 										<th scope="col">Id khách hàng</th>
-										<th scope="col">Tên KH</th>
-										<th scope="col">SDT KH</th>
-										<th scope="col">Tên gói dịch vụ</th>
-										<th scope="col">Ngày bắt đầu</th>
-										<th scope="col">Địa chỉ</th>
-										<th scope="col">Ghi chú</th>
-										<th scope="col">Giá</th>
-										<th scope="col">Trạng thái đặt lịch</th>
-										<th scope="col">Trạng thái thanh toán</th>
+										<th scope="col">Id người giúp việc</th>
 										<th scope="col">Id nhân viên</th>
+										<th scope="col">Miêu tả</th>
+										<th scope="col">Ngày bắt có hiệu lực</th>
+										<th scope="col">Ngày hết hạn</th>
+										<th scope="col">Ngày tạo</th>
+										<th scope="col">Ngày cập nhật(Hủy)</th>
+										<th scope="col">Trạng thái hợp đồng</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="table_contracts">
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
-										<td scope="col">Hữu trí</td>
-										<td scope="col">009238983</td>
-										<td scope="col">Dọn nhà 2h</td>
+										<td scope="col">2</td>
+										<td scope="col">5</td>
+										<td scope="col">No1</td>
 										<td scope="col">2022-12-26</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col">3000$</td>
-										<th scope="col">Đang thực hiện</th>
-										<th scope="col">Chưa thanh toán</th>
-										<th scope="col">2</th>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col">2023-01-26</td>
+										<td scope="col">2022-12-24</td>
+										<td scope="col">Còn hạn</td>
+										<td scope="col"><a href="contractDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
-										<td scope="col">Hữu trí</td>
-										<td scope="col">009238983</td>
-										<td scope="col">Dọn nhà 2h</td>
+										<td scope="col">2</td>
+										<td scope="col">5</td>
+										<td scope="col">No1</td>
 										<td scope="col">2022-12-26</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col">3000$</td>
-										<th scope="col">Đang thực hiện</th>
-										<th scope="col">Chưa thanh toán</th>
-										<th scope="col">3</th>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col">2023-01-26</td>
+										<td scope="col">2022-12-24</td>
+										<td scope="col">Còn hạn</td>
+										<td scope="col"><a href="contractDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
 								</tbody>
 							</table>
+							<div class="pagination-container pt-5"
+								style="align-items: center; justify-content: center; text-align: center;">
+								<button class="btn btn-primary prev-page">Trước</button>
+								<span class="page-number"></span>
+								<button class="btn btn-primary next-page">Sau</button>
+							</div>
 							<!-- End Table with stripped rows -->
 
 						</div>
@@ -250,10 +182,9 @@
 				</div>
 			</div>
 		</section>
-
 	</main>
 	<!-- End #main -->
-
+	<%@include file="/WEB-INF/views/customer/include/footer.jsp"%>
 	<!-- ======= Footer ======= 
   <footer id="footer" class="footer">
     <div class="copyright">
@@ -288,7 +219,7 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
-<script>
+	<script>
 	const switchElements = document.querySelectorAll('.form-check.form-switch');
 
 	switchElements.forEach(switchElement => {
@@ -301,10 +232,10 @@
 	  });
 	});
 	</script>
-
-	<script>
+	
+		<script>
 	// Lấy dữ liệu từ bảng
-	const tableRows = document.querySelectorAll("#table_bookings tr");
+	const tableRows = document.querySelectorAll("#table_contracts tr");
 	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang
 	let currentPage = 1;
 
@@ -312,7 +243,7 @@
 	function displayPage(page) {
 	  const startIndex = (page - 1) * itemsPerPage;
 	  const endIndex = startIndex + itemsPerPage;
-	  const tableBody = document.getElementById("table_bookings");
+	  const tableBody = document.getElementById("table_contracts");
 	  tableBody.innerHTML = "";
 
 	  for (let i = startIndex; i < endIndex && i < tableRows.length; i++) {
@@ -344,6 +275,7 @@
 	// Hiển thị trang đầu tiên
 	displayPage(currentPage);
 	</script>
+
 </body>
 
 </html>

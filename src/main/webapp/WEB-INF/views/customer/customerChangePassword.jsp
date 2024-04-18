@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Quản lý phản hồi</title>
+<title>Profile customer</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -54,20 +54,59 @@
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<meta content="" name="description">
+<meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="<c:url value='/resources/main/assets/img/favicon.png'/>"
+	rel="icon">
+<link
+	href="<c:url value='/resources/main/assets/img/apple-touch-icon.png'/>"
+	rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="<c:url value='/resources/main/assets/vendor/aos/aos.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/bootstrap-icons/bootstrap-icons.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/boxicons/css/boxicons.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/glightbox/css/glightbox.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='/resources/main/assets/vendor/swiper/swiper-bundle.min.css'/>"
+	rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="<c:url value='/resources/main/assets/css/style.css'/>"
+	rel="stylesheet">
+
 </head>
 
 <body>
-	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
-	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
-	<main id="main" class="main">
 
+	<!-- ======= Header ======= -->
+	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
+
+	<main>
 		<div class="pagetitle">
-			<h1>Thông tin phản hồi</h1>
+			<h1>customer</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin phản hồi</a></li>
+						href="customerManagement.html">customer</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -79,47 +118,52 @@
 
 					<div class="card">
 						<div class="card-body">
-							<table class="table datatable">
-								<thead style="background-color: #37517e; color: white">
-									<tr>
-										<th scope="col">Id</th>
-										<th scope="col">Id đặt lịch</th>
-										<th scope="col">Rating</th>
-										<th scope="col">Feedback</th>
-										<th scope="col">Ngày tạo</th>
-									</tr>
-								</thead>
-								<tbody id="table_feedbacks">
-									<tr>
-										<td scope="row">1</td>
-										<td scope="row">1</td>
-										<td scope="row">4</td>
-										<td scope="col">Rất tốt</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col"><a href="feedbackDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="row">1</td>
-										<td scope="row">4</td>
-										<td scope="col">Rất tốt</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col"><a href="feedbackDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-								</tbody>
-							</table>
+							<h5 class="card-title">Cập nhật customer</h5>
+							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
+   -->
+							<!-- Browser Default Validation -->
 
-							<div class="pagination-container pt-5"
-								style="align-items: center; justify-content: center; text-align: center;">
-								<button class="btn btn-primary prev-page">Trước</button>
-								<span class="page-number"></span>
-								<button class="btn btn-primary next-page">Sau</button>
+							<div>
+								<!-- Change Password Form -->
+								<form>
+
+									<div class="row mb-3">
+										<label for="currentPassword"
+											class="col-md-4 col-lg-3 col-form-label">Mật khẩu
+											hiện tại</label>
+										<div class="col-md-8 col-lg-9">
+											<input name="password" type="password" class="form-control"
+												id="currentPassword">
+										</div>
+									</div>
+
+									<div class="row mb-3">
+										<label for="newPassword"
+											class="col-md-4 col-lg-3 col-form-label">Mật khẩu mới</label>
+										<div class="col-md-8 col-lg-9">
+											<input name="newpassword" type="password"
+												class="form-control" id="newPassword">
+										</div>
+									</div>
+
+									<div class="row mb-3">
+										<label for="renewPassword"
+											class="col-md-4 col-lg-3 col-form-label">Nhập lại mật
+											khẩu</label>
+										<div class="col-md-8 col-lg-9">
+											<input name="renewpassword" type="password"
+												class="form-control" id="renewPassword">
+										</div>
+									</div>
+
+									<div class="text-center">
+										<button type="submit" class="btn btn-primary">Đổi mật
+											khẩu</button>
+									</div>
+								</form>
+								<!-- End Change Password Form -->
+
 							</div>
-							<!-- End Table with stripped rows -->
 
 						</div>
 					</div>
@@ -130,7 +174,7 @@
 
 	</main>
 	<!-- End #main -->
-
+	<%@include file="/WEB-INF/views/customer/include/footer.jsp"%>
 	<!-- ======= Footer ======= 
   <footer id="footer" class="footer">
     <div class="copyright">
@@ -144,48 +188,7 @@
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
-	<script>
-	// Lấy dữ liệu từ bảng
-	const tableRows = document.querySelectorAll("#table_feedbacks tr");
-	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang
-	let currentPage = 1;
 
-	// Hàm hiển thị dữ liệu trên trang
-	function displayPage(page) {
-	  const startIndex = (page - 1) * itemsPerPage;
-	  const endIndex = startIndex + itemsPerPage;
-	  const tableBody = document.getElementById("table_feedbacks");
-	  tableBody.innerHTML = "";
-
-	  for (let i = startIndex; i < endIndex && i < tableRows.length; i++) {
-	    tableBody.appendChild(tableRows[i].cloneNode(true));
-	  }
-	// Cập nhật số thứ tự trang
-	  const pageNumberElement = document.querySelector(".page-number");
-	  pageNumberElement.textContent ="   " + page +"   ";
-	}
-	
-	
-
-
-	// Xử lý sự kiện click nút chuyển trang
-	document.querySelector(".prev-page").addEventListener("click", () => {
-	  if (currentPage > 1) {
-	    currentPage--;
-	    displayPage(currentPage);
-	  }
-	});
-
-	document.querySelector(".next-page").addEventListener("click", () => {
-	  if (currentPage * itemsPerPage < tableRows.length) {
-	    currentPage++;
-	    displayPage(currentPage);
-	  }
-	});
-
-	// Hiển thị trang đầu tiên
-	displayPage(currentPage);
-	</script>
 	<!-- Vendor JS Files -->
 	<script
 		src="<c:url value='/resources/admin/assets/vendor/apexcharts/apexcharts.min.js'/>"></script>
@@ -206,6 +209,7 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
+
 </body>
 
 </html>

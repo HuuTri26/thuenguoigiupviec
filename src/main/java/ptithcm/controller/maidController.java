@@ -46,6 +46,19 @@ public class maidController {
 	public String showMaidProfile() {
 		return "maid/maidProfile";
 	}
+	
+	// Trang cập nhật profile cho maid:
+	@RequestMapping("maid/maidEditProfile")
+	public String showMaidEditProfile() {
+		return "maid/maidEditProfile";
+	}
+
+	//Trang thay đổi password cho maid:
+	
+		@RequestMapping("maid/maidChangePassword")
+		public String showMaidChangePassword() {
+			return "maid/maidChangePassword";
+		}
 
 	// Trang danh sách đặt lịch thuê cho maid:
 	@RequestMapping("maid/bookingManagement")
