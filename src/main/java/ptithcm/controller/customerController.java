@@ -179,6 +179,18 @@ public class customerController {
 
 	}
 
+	// Trang đăng ký gmail của customer
+	@RequestMapping("customer/customerSignupEmail")
+	public String customerSignupEmail() {
+		return "customer/customerSignupEmail";
+	}
+
+	// Trang xác thực gmail của customer
+	@RequestMapping("customer/verifyOTP")
+	public String customerVerifyOTP() {
+		return "customer/verifyOTP";
+	}
+
 	// Trang dashboard của customer
 	@RequestMapping("customer/index")
 	public String customerIndex() {

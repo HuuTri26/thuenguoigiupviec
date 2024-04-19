@@ -204,12 +204,25 @@ public class adminController {
 	public String showBookingList() {
 		return "admin/bookingManagement";
 	}
+	
+	// Hiển thị danh sách maid để chọn:
+		@RequestMapping("admin/bookingMaidList")
+		public String showBookingMaidList() {
+			return "admin/bookingMaidList";
+		}
 
 	// Hiển thị thông tin đặt lịch thuê:
 	@RequestMapping("admin/bookingDetail")
 	public String showBookingDetail() {
 		return "admin/bookingDetail";
 	}
+	
+	// Hiển thị danh sách maid để chọn:
+	@RequestMapping("admin/bookingMaidChecked")
+	public String showBookingMaidChecked() {
+		return "admin/bookingMaidChecked";
+	}
+
 
 	// Hiển thị danh sách hợp đồng:
 	@RequestMapping("admin/contractManagement")
