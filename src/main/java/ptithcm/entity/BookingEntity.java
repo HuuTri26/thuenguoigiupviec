@@ -1,13 +1,16 @@
 package ptithcm.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -48,17 +51,20 @@ public class BookingEntity {
 	@Column(name = "CreateAt")
 	private Date createAt;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "customerId")
-//	private CustomerEntity customer;
-//	
-//	@OneToOne
-//	@JoinColumn(name = "id")
-//	private ServiceEntity service;
-//	
-//	@ManyToOne
-//	@JoinColumn(name = "employeeId")
-//	private EmployeeEntity employee;
+	@ManyToOne
+	@JoinColumn(name = "customerId")
+	private CustomerEntity customer;
+	
+	@OneToOne
+	@JoinColumn(name = "id")
+	private ServiceEntity service;
+	
+	@ManyToOne
+	@JoinColumn(name = "employeeId")
+	private EmployeeEntity employee;
+	
+	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
+	private List<BookingDetailEntity> bookingDetails;
 
 	public Integer getId() {
 		return id;
@@ -124,28 +130,28 @@ public class BookingEntity {
 		this.createAt = createAt;
 	}
 
-//	public CustomerEntity getCustomer() {
-//		return customer;
-//	}
-//
-//	public void setCustomer(CustomerEntity customer) {
-//		this.customer = customer;
-//	}
-//
-//	public ServiceEntity getService() {
-//		return service;
-//	}
-//
-//	public void setService(ServiceEntity service) {
-//		this.service = service;
-//	}
-//
-//	public EmployeeEntity getEmployee() {
-//		return employee;
-//	}
-//
-//	public void setEmployee(EmployeeEntity employee) {
-//		this.employee = employee;
-//	}
+	public CustomerEntity getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(CustomerEntity customer) {
+		this.customer = customer;
+	}
+
+	public ServiceEntity getService() {
+		return service;
+	}
+
+	public void setService(ServiceEntity service) {
+		this.service = service;
+	}
+
+	public EmployeeEntity getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(EmployeeEntity employee) {
+		this.employee = employee;
+	}
 	
 }

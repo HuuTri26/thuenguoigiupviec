@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import ptithcm.entity.AccountEntity;
 import ptithcm.entity.CategoryEntity;
+import ptithcm.entity.ContractEntity;
 import ptithcm.entity.CustomerEntity;
 import ptithcm.entity.EmployeeEntity;
 import ptithcm.entity.MaidEntity;
@@ -35,6 +36,7 @@ import ptithcm.entity.ServicePriceEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
 import ptithcm.service.CategoryService;
+import ptithcm.service.ContractService;
 import ptithcm.service.CustomerService;
 import ptithcm.service.EmployeeService;
 import ptithcm.service.MaidService;
@@ -72,6 +74,9 @@ public class adminController {
 	
 	@Autowired
 	ServicePriceService servicePriceService;
+	
+	@Autowired
+	ContractService contractService;
 	
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
@@ -226,7 +231,10 @@ public class adminController {
 
 	// Hiển thị danh sách hợp đồng:
 	@RequestMapping("admin/contractManagement")
-	public String showContractManagement() {
+	public String showContractManagement(Model model) {
+		List<ContractEntity> contractList = contractService.getListContract();
+		model.addAttribute("contractList", contractList);
+		
 		return "admin/contractManagement";
 	}
 

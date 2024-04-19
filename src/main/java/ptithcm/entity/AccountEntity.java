@@ -26,13 +26,13 @@ public class AccountEntity {
 	@JoinColumn(name = "RoleId")
 	private RoleEntity role;
 	
-	@OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "account", fetch = FetchType.LAZY)
 	private EmployeeEntity employee;
 	
-	@OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "account", fetch = FetchType.LAZY)
 	private MaidEntity maid;
 	
-	@OneToOne(mappedBy = "account", fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "account", fetch = FetchType.LAZY)
 	private CustomerEntity customer;
 	
 	public AccountEntity(String email, String password, Boolean status, RoleEntity role) {

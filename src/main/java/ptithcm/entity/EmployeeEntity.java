@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "EMPLOYEE")
 public class EmployeeEntity {
@@ -37,11 +40,16 @@ public class EmployeeEntity {
 	@JoinColumn(name = "email")
 	private AccountEntity account;
 	
-	@OneToMany(mappedBy = "employee", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
 	private List<MaidEntity> maids;
 	
-//	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-//	private List<BookingEntity> bookings;
+	@OneToMany(mappedBy = "employee")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<BookingEntity> bookings;
+	
+	@OneToMany(mappedBy = "employee")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<ContractEntity> contracts;
 
 	public Integer getId() {
 		return id;
@@ -99,13 +107,13 @@ public class EmployeeEntity {
 		this.maids = maids;
 	}
 
-//	public List<BookingEntity> getBookings() {
-//		return bookings;
-//	}
-//
-//	public void setBookings(List<BookingEntity> bookings) {
-//		this.bookings = bookings;
-//	}
+	public List<BookingEntity> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<BookingEntity> bookings) {
+		this.bookings = bookings;
+	}
 	
 	
 }
