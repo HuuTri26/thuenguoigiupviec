@@ -180,21 +180,21 @@
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="maidManagement.html">Maid Manegement</a></li>
+						href="maidManagement.html">Phân công maid</a></li>
 				</ol>
 			</nav>
 		</div>
 		<!-- End Page Title -->
 
 		<section class="section" style="max-width: 100%;">
-			<div class="row" >
-				<div class="col-lg-24" >
+			<div class="row">
+				<div class="col-lg-24">
 
-					<div class="card" >
-						<div class="card-body " >
-							<div class="card-title" >
-								<a href="addMaid.htm" class="btn btn-primary">Add Maid</a>
-							</div>
+					<div class="card">
+						<div class="card-body ">
+							<!-- 							<div class="card-title"> -->
+							<!-- 								<a href="addMaid.htm" class="btn btn-primary">Add Maid</a> -->
+							<!-- 							</div> -->
 							<!--  <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
  -->
@@ -202,6 +202,7 @@
 							<table class="table datatable ">
 								<thead style="background-color: #37517e; color: white">
 									<tr>
+										<th></th>
 										<th scope="col">Id</th>
 										<th scope="col">Họ tên</th>
 										<th scope="col">Số điện thoại</th>
@@ -219,61 +220,110 @@
 								</thead>
 								<tbody id="table_maids">
 
-									<c:forEach var="maid" items="${maidList }">
 
-										<tr>
-											<td scope="row">${maid.id }</td>
-											<td scope="col">${maid.fullName }</td>
-											<!-- 										<td scope="col">huutri</td> -->
-											<!-- 										<td scope="col">Nam</td> -->
-											<!-- 										<td scope="col">28/9/2078</td> -->
-											<td scope="col">${maid.phoneNumber }</td>
-											<td scope="col">${maid.address }</td>
-											<td scope="col">${maid.experience }</td>
-											<td scope="col">${maid.salary }</td>
-											<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
-											<td scope="col">${maid.employee.id }</td>
-											<td scope="col">${maid.account.email }</td>
-											<td scope="col">
-												<div class="form-check form-switch"
-													data-switch-text="Rảnh,Đang làm việc">
-													<input class="form-check-input" type="checkbox"
-														role="switch" disabled="disabled"> <label
-														class="form-check-label" for="{checkboxId}"> <span
-														class="switch-status">Rảnh</span>
-													</label>
-												</div>
-											</td>
+									<tr>
+										<td><input style="cursor: pointer;" type="checkbox"
+											name="group-checkbox" value="option"></td>
+										<td scope="row">${maid.id }</td>
+										<td scope="col">${maid.fullName }</td>
+										<!-- 										<td scope="col">huutri</td> -->
+										<!-- 										<td scope="col">Nam</td> -->
+										<!-- 										<td scope="col">28/9/2078</td> -->
+										<td scope="col">${maid.phoneNumber }</td>
+										<td scope="col">${maid.address }</td>
+										<td scope="col">${maid.experience }</td>
+										<td scope="col">${maid.salary }</td>
+										<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
+										<td scope="col">${maid.employee.id }</td>
+										<td scope="col">${maid.account.email }</td>
+										<td scope="col">
+											<div class="form-check form-switch"
+												data-switch-text="Rảnh,Đang làm việc">
+												<input class="form-check-input" type="checkbox"
+													role="switch" disabled="disabled"> <label
+													class="form-check-label" for="{checkboxId}"> <span
+													class="switch-status">Rảnh</span>
+												</label>
+											</div>
+										</td>
 
-											<td scope="col">
-												<div class="form-check form-switch"
-													data-switch-text="Bị chặn,Hoạt động">
-													<input class="form-check-input" type="checkbox"
-														role="switch" id="statusSwitch"
-														${maid.account.status ? 'checked' : ''}
-														disabled="disabled"> <label
-														class="form-check-label" for="statusSwitch"> <span
-														class="switch-status">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}</span>
-													</label>
-												</div>
-											</td>
+										<td scope="col">
+											<div class="form-check form-switch"
+												data-switch-text="Bị chặn,Hoạt động">
+												<input class="form-check-input" type="checkbox"
+													role="switch" id="statusSwitch"
+													${maid.account.status ? 'checked' : ''} disabled="disabled">
+												<label class="form-check-label" for="statusSwitch">
+													<span class="switch-status">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}</span>
+												</label>
+											</div>
+										</td>
 
-											<td scope="col">
-											<a href="maidDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a>
-											<a
-												href="admin/edit/${maid.id}.htm?linkEdit"
-												class="btn btn-primary "><i class="bi-pencil"
-													data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" -->
-												<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
-												<a href="/index/${maid.id}?linkDelete"
-												class="btn btn-danger" data-action="delete"
-												data-id="${maid.id}"><i class="bi-trash"></i></a></td>
-										</tr>
-									</c:forEach>
+										<td scope="col"><a href="maidDetail.htm"
+											class="btn btn-primary"><i class="bi bi-eye"></i></a> <a
+											href="admin/edit/${maid.id}.htm?linkEdit"
+											class="btn btn-primary "><i class="bi-pencil"
+												data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" -->
+											<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
+											<a href="/index/${maid.id}?linkDelete" class="btn btn-danger"
+											data-action="delete" data-id="${maid.id}"><i
+												class="bi-trash"></i></a></td>
+									</tr>
+									<tr>
+										<td><input style="cursor: pointer;" type="checkbox"
+											name="group-checkbox" value="option"></td>
+										<td scope="row">${maid.id }</td>
+										<td scope="col">${maid.fullName }</td>
+										<!-- 										<td scope="col">huutri</td> -->
+										<!-- 										<td scope="col">Nam</td> -->
+										<!-- 										<td scope="col">28/9/2078</td> -->
+										<td scope="col">${maid.phoneNumber }</td>
+										<td scope="col">${maid.address }</td>
+										<td scope="col">${maid.experience }</td>
+										<td scope="col">${maid.salary }</td>
+										<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
+										<td scope="col">${maid.employee.id }</td>
+										<td scope="col">${maid.account.email }</td>
+										<td scope="col">
+											<div class="form-check form-switch"
+												data-switch-text="Rảnh,Đang làm việc">
+												<input class="form-check-input" type="checkbox"
+													role="switch" disabled="disabled"> <label
+													class="form-check-label" for="{checkboxId}"> <span
+													class="switch-status">Rảnh</span>
+												</label>
+											</div>
+										</td>
+
+										<td scope="col">
+											<div class="form-check form-switch"
+												data-switch-text="Bị chặn,Hoạt động">
+												<input class="form-check-input" type="checkbox"
+													role="switch" id="statusSwitch"
+													${maid.account.status ? 'checked' : ''} disabled="disabled">
+												<label class="form-check-label" for="statusSwitch">
+													<span class="switch-status">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}</span>
+												</label>
+											</div>
+										</td>
+
+										<td scope="col"><a href="maidDetail.htm"
+											class="btn btn-primary"><i class="bi bi-eye"></i></a> <a
+											href="admin/edit/${maid.id}.htm?linkEdit"
+											class="btn btn-primary "><i class="bi-pencil"
+												data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" -->
+											<!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
+											<a href="/index/${maid.id}?linkDelete" class="btn btn-danger"
+											data-action="delete" data-id="${maid.id}"><i
+												class="bi-trash"></i></a></td>
+									</tr>
 
 								</tbody>
 							</table>
+							<button class="btn btn-primary prev-page mb-3 mt-3">
+								<a href="bookingManagement.htm" style="color: white;">Phân
+									công</a>
+							</button>
 							<div class="pagination-container pt-5"
 								style="align-items: center; justify-content: center; text-align: center;">
 								<button class="btn btn-primary prev-page">Trước</button>

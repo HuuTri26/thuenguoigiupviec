@@ -44,8 +44,11 @@
 			<input class="input" type="text" inputmode="numeric" maxlength="1" />
 			<input class="input" type="text" inputmode="numeric" maxlength="1" />
 			<input class="input" type="text" inputmode="numeric" maxlength="1" />
+			<input class="input" type="text" inputmode="numeric" maxlength="1" />
+			<input class="input" type="text" inputmode="numeric" maxlength="1" />
 		</div>
 	</div>
+	<a style="align-content: center; text-align: center; justify-content: center;" href="customerSignup.htm">Xác nhận</a>
 	<script>
 		// script.js
 		const inputs = document.getElementById("inputs");

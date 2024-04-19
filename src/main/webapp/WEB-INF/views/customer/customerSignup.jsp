@@ -153,8 +153,8 @@
 							<div class="form-group mb-3">
 								<label class="label" style="padding-top: 18px;"></label>
 								<button type="submit"
-									class="form-control btn btn-primary rounded submit px-3">Đăng
-									ký</button>
+									class="form-control btn btn-primary rounded submit px-3"><a href="customerLogin.htm">Đăng
+									ký</a></button>
 							</div>
 							<!-- <div class="form-group">
 								<button type="submit"

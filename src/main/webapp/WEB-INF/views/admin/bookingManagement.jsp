@@ -54,6 +54,8 @@
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<script src="https://kit.fontawesome.com/b5d1d70480.js"
+	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -193,7 +195,7 @@
 									<tr>
 										<th scope="col">Id</th>
 										<th scope="col">Id khách hàng</th>
-										<th scope="col">Id người giúp việc</th>
+										<!-- 										<th scope="col">Id người giúp việc</th> -->
 										<th scope="col">Id gói dịch vụ</th>
 										<th scope="col">Ngày bắt đầu</th>
 										<th scope="col">Địa chỉ</th>
@@ -210,7 +212,7 @@
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
-										<td scope="col">2</td>
+										<!-- 										<td scope="col">2</td> -->
 										<td scope="col">5</td>
 										<td scope="col">28/10/2024</td>
 										<td scope="col">97 Man Thiện</td>
@@ -231,14 +233,18 @@
 										<td scope="col">5</td>
 										<td scope="col">Tốt</td>
 
-										<td scope="col"><a href="bookingDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+										<td scope="col">
+										
+										<a href="bookingDetail.htm"
+											class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
+											href="bookingMaidList.htm" class="btn btn-primary"><i
+												class="fa fa-list-ul" ></i></a> <a href="#"
+											class="btn btn-danger "><i class="bi-trash"></i></a></td>
 									</tr>
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
-										<td scope="col">2</td>
+										<!-- 										<td scope="col">2</td> -->
 										<td scope="col">5</td>
 										<td scope="col">28/10/2024</td>
 										<td scope="col">97 Man Thiện</td>
@@ -329,7 +335,7 @@
 	  });
 	});
 	</script>
-	
+
 	<script>
 	// Lấy dữ liệu từ bảng
 	const tableRows = document.querySelectorAll("#table_bookings tr");
@@ -372,7 +378,7 @@
 	// Hiển thị trang đầu tiên
 	displayPage(currentPage);
 	</script>
-	
+
 </body>
 
 </html>

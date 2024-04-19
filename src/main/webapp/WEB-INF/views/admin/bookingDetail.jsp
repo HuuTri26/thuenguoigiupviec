@@ -236,8 +236,8 @@
 										<div class="col-lg-9 col-md-8">1</div>
 									</div>
 									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Id người giúp việc</div>
-										<div class="col-lg-9 col-md-8">1</div>
+										<div class="col-lg-3 col-md-4 label ">Danh sách người giúp việc</div>
+										<div class="col-lg-9 col-md-8"><a href="bookingMaidChecked.htm">Xem danh sách</a></div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Id gói dịch vụ</div>

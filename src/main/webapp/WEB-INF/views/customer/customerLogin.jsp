@@ -74,7 +74,7 @@
 									</div>
 								</div>
 							</form:form>
-							<p class="text-center"><a href="customerSignup.htm">Đăng ký</a></p>
+							<p class="text-center"><a href="customerSignupEmail.htm">Đăng ký</a></p>
 						</div>
 					</div>
 				</div>

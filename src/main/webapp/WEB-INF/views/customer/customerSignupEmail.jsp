@@ -2,22 +2,27 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-	<title>Đăng Ký Tài Khoản</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Đăng Ký Tài Khoản</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="<c:url value='/resources/login/css/style.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/resources/login/css/style.css'/>">
 
 </head>
 
@@ -32,8 +37,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-12">
 					<div class="wrap d-md-flex">
-						<div class="img">
-						</div>
+						<div class="img"></div>
 						<div class="login-wrap p-4 p-md-4">
 							<div class="d-flex">
 								<div class="w-100 ">
@@ -46,29 +50,35 @@
 									</p>
 								</div>
 							</div>
-							<form:form action="customerLogin.htm" class="signin-form" method="POST" modelAttribute="customerAcc">
-							    <div style="color:red;">${message }</div>
+							<form:form  class="signin-form"
+								>
+								<div style="color: red;">.</div>
 								<div class="form-group mb-3">
 									<label class="label" for="name">Gmail</label>
-									<form:input path="email" class="form-control" placeholder="Nhập username(email)" />
-									<form:errors path="email"/>
+									<!-- 									<input type="email" placeholder="Nhập email cần đăng ký"/> -->
+									<input type="email" class="form-control" placeholder="Nhập username(email)" />
+									<%-- 									<form:errors path="email" /> --%>
 								</div>
-								<div class="form-group mb-3">
-									<label class="label" for="password">Password</label>
-									<form:input type="password" path="password" class="form-control" placeholder="Nhập password" />
-									<form:errors path="email"/>
-								</div>
-								<div class="form-group mb-3">
-									<label class="label" for="password">Nhập lại password</label>
-									<form:input type="password" path="re-password" class="form-control" placeholder="Nhập lại password" />
-									<form:errors path="email"/>
-								</div>
+								<!-- 								<div class="form-group mb-3"> -->
+								<!-- 									<label class="label" for="password">Password</label> -->
+								<%-- 									<form:input type="password" path="password" --%>
+								<%-- 										class="form-control" placeholder="Nhập password" /> --%>
+								<%-- 									<form:errors path="email" /> --%>
+								<!-- 								</div> -->
+								<!-- 								<div class="form-group mb-3"> -->
+								<!-- 									<label class="label" for="password">Nhập lại password</label> -->
+								<%-- 									<form:input type="password" path="re-password" --%>
+								<%-- 										class="form-control" placeholder="Nhập lại password" /> --%>
+								<%-- 									<form:errors path="email" /> --%>
+								<!-- 								</div> -->
 								<div class="form-group">
 									<button type="submit"
-										class="form-control btn btn-primary rounded submit px-3">Đăng Ký</button>
+										class="form-control btn btn-primary rounded submit px-3">
+										<a href="verifyOTP.htm" style="color: white;">Đăng Ký</a>
+									</button>
 								</div>
 							</form:form>
-<!-- 							<p class="text-center"><a href="customerSignup.htm">Đăng ký</a></p> -->
+							<!-- 							<p class="text-center"><a href="customerSignup.htm">Đăng ký</a></p> -->
 						</div>
 					</div>
 				</div>
