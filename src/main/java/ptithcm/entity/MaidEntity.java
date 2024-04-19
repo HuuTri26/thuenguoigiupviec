@@ -1,12 +1,17 @@
 package ptithcm.entity;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -35,8 +40,6 @@ public class MaidEntity {
 	private String image;
 	@Column(name = "Salary")
 	private Double salary;
-//	@Column(name = "Email")
-//	private String email;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-mm-dd")
@@ -61,13 +64,11 @@ public class MaidEntity {
 	@JoinColumn(name = "employeeId")
     private EmployeeEntity employee;
 	
-//	@OneToOne(mappedBy = "maid", fetch = FetchType.LAZY)
-//	@JoinColumn(name = "id")
-//    private String contract;
-//	
-//	@OneToMany(mappedBy = "maid", fetch = FetchType.LAZY)
-//	@JoinColumn(name = "id")
-//    private String bookingDetail;
+	@OneToMany(mappedBy = "maid", fetch = FetchType.LAZY)
+	private List<ContractEntity> contracts;
+	
+	@ManyToMany(mappedBy = "maids")
+	private Set<BookingDetailEntity> bookingDetails;
 	
 	public Integer getId() {
 		return id;
@@ -125,14 +126,6 @@ public class MaidEntity {
 		this.salary = salary;
 	}
 
-//	public String getEmail() {
-//		return email;
-//	}
-//
-//	public void setEmail(String email) {
-//		this.email = email;
-//	}
-
 	public Date getCreateAt() {
 		return createAt;
 	}
@@ -173,25 +166,13 @@ public class MaidEntity {
 		this.employee = employee;
 	}
 
-//	public String getContract() {
-//		return contract;
-//	}
-//
-//	public void setContract(String contract) {
-//		this.contract = contract;
-//	}
-//
-//	public String getBookingDetail() {
-//		return bookingDetail;
-//	}
-//
-//	public void setBookingDetail(String bookingDetail) {
-//		this.bookingDetail = bookingDetail;
-//	}
+	public Set<BookingDetailEntity> getBookingDetails() {
+		return bookingDetails;
+	}
 
-	
-	
+	public void setBookingDetails(Set<BookingDetailEntity> bookingDetails) {
+		this.bookingDetails = bookingDetails;
+	}
 
-	
     
 }

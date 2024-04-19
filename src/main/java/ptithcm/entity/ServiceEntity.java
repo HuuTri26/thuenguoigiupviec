@@ -17,6 +17,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -62,8 +64,9 @@ public class ServiceEntity {
 	@OneToMany(mappedBy = "service", fetch = FetchType.EAGER)
 	private List<ServicePriceEntity> servicePrices;
 	
-//	@OneToOne(mappedBy = "service", fetch = FetchType.LAZY)
-//	private BookingEntity booking;
+	@OneToOne(mappedBy = "service")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private BookingEntity booking;
 
 	public Integer getId() {
 		return id;
@@ -153,13 +156,13 @@ public class ServiceEntity {
 		this.category = category;
 	}
 
-//	public BookingEntity getBooking() {
-//		return booking;
-//	}
-//
-//	public void setBooking(BookingEntity booking) {
-//		this.booking = booking;
-//	}
-//	
+	public BookingEntity getBooking() {
+		return booking;
+	}
+
+	public void setBooking(BookingEntity booking) {
+		this.booking = booking;
+	}
+	
 	
 }

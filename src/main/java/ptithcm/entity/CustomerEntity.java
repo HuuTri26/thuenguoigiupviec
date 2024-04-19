@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "CUSTOMER")
 public class CustomerEntity {
@@ -31,8 +34,13 @@ public class CustomerEntity {
 	@JoinColumn(name = "email")
     private AccountEntity account;
 	
-//	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
-//	List<BookingEntity> bookings;
+	@OneToMany(mappedBy = "customer")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<BookingEntity> bookings;
+	
+	@OneToMany(mappedBy = "customer")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<ContractEntity> contracts;
 
 	public Integer getId() {
 		return id;
@@ -74,12 +82,12 @@ public class CustomerEntity {
 		this.account = account;
 	}
 
-//	public List<BookingEntity> getBookings() {
-//		return bookings;
-//	}
-//
-//	public void setBookings(List<BookingEntity> bookings) {
-//		this.bookings = bookings;
-//	}
+	public List<BookingEntity> getBookings() {
+		return bookings;
+	}
+
+	public void setBookings(List<BookingEntity> bookings) {
+		this.bookings = bookings;
+	}
 
 }

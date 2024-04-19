@@ -157,7 +157,7 @@ public class customerController {
 			return "admin/adminLogin";
 		}
 
-		if (!accountService.isExistAccount(customerAcc.getEmail(), customerAcc.getPassword())) {
+		if (!accountService.isExistAccount(customerAcc.getEmail(), accountService.getHashPassword(customerAcc.getPassword()))) {
 			errors.rejectValue("email", "customerAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "customerAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;

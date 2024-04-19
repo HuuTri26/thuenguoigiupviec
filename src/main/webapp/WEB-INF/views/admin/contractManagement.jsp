@@ -204,34 +204,28 @@
 									</tr>
 								</thead>
 								<tbody id="table_contracts">
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
+
+									<c:forEach var="contract" items="${contractList }">
+
+										<tr>
+											<td scope="row">${contract.id }</td>
+											<td scope="col">${contract.customer.id }</td>
+											<td scope="col">${contract.maid.id }</td>
+											<td scope="col">${contract.employee.id }</td>
+											<td scope="col">${contract.description }</td>
+											<td scope="col">${contract.startAt }</td>
+											<td scope="col">${contract.endAt }</td>
+											<td scope="col">${contract.createAt }</td>
+											<td scope="col">${contract.updateAt }</td>
+											<td scope="col">${contract.status }</td>
+											<td scope="col"><a href="contractDetail.htm"
+												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
+												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+										</tr>
+
+									</c:forEach>
+
+
 								</tbody>
 							</table>
 							<div class="pagination-container pt-5"
@@ -299,8 +293,8 @@
 	  });
 	});
 	</script>
-	
-		<script>
+
+	<script>
 	// Lấy dữ liệu từ bảng
 	const tableRows = document.querySelectorAll("#table_contracts tr");
 	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang
