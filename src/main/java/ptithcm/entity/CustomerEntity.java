@@ -34,12 +34,10 @@ public class CustomerEntity {
 	@JoinColumn(name = "email")
     private AccountEntity account;
 	
-	@OneToMany(mappedBy = "customer")
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private List<BookingEntity> bookings;
 	
-	@OneToMany(mappedBy = "customer")
-	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
 	private List<ContractEntity> contracts;
 
 	public Integer getId() {
@@ -82,6 +80,14 @@ public class CustomerEntity {
 		this.account = account;
 	}
 
+	public List<ContractEntity> getContracts() {
+		return contracts;
+	}
+
+	public void setContracts(List<ContractEntity> contracts) {
+		this.contracts = contracts;
+	}
+	
 	public List<BookingEntity> getBookings() {
 		return bookings;
 	}

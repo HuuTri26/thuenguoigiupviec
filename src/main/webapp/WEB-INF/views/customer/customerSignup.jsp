@@ -42,125 +42,68 @@
 									<h4 class="mb-3">Đăng ký Khách Hàng</h4>
 								</div>
 								<div class="w-100">
-									<p class="social-media d-flex justify-content-end">
-										<!-- <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a> -->
-									</p>
+									<p class="social-media d-flex justify-content-end"></p>
 								</div>
 							</div>
-							<form action="customerSignup.htm" class="signin-form">
+							<form:form action="customerSignup.htm" method="post"
+								modelAttribute="newCustomer" class="signin-form">
+								
 								<div class="form-group mb-3">
-									<label class="label" for="name">Họ Tên</label> <input
-										type="text" name="fullName" class="form-control"
-										placeholder="Name" required>
+									<label class="label" for="name">Email</label>
+									<input type="text" value="${email }" class="form-control" readonly="readonly"/>
+								</div>
+								
+								<div class="form-group mb-3">
+									<label class="label" for="name">Họ Tên</label>
+									<form:input type="text" path="fullName" class="form-control"
+										placeholder="Tên của bạn" />
+									<form:errors path="fullName"/>
 
 								</div>
 
 								<div class="form-group mb-3">
-									<label class="label" for="password">Số điện thoại</label> <input
-										type="number" name="phonenumber" class="form-control"
-										placeholder="Mobile No" required>
+									<label class="label" for="password">Số điện thoại</label>
+									<form:input type="text" path="phoneNumber" class="form-control"
+										placeholder="Số điện thoại" />
+									<form:errors path="phoneNumber"/>
 								</div>
 
-							
+
 								<div class="form-group mb-3">
-									<label class="label" for="password">Địa chỉ</label> <input
-										type="text" name="address" class="form-control"
-										placeholder="Địa chỉ" required>
+									<label class="label" for="password">Địa chỉ</label>
+									<form:input type="text" path="address" class="form-control"
+										placeholder="Địa chỉ" />
+									<form:errors path="address"/>
 								</div>
+
 <!-- 								<div class="form-group mb-3"> -->
-<!-- 									<label class="label">Thành Phố</label> <select -->
-<!-- 										class="form-select" aria-label="Default select example"> -->
-<!-- 										<option selected>Hồ Chí Minh</option> -->
-<!-- 										<option>Hà Nội</option> -->
-<!-- 										<option>Đà Nẵng</option> -->
-<!-- 										<option>Cần Thơ</option> -->
-<!-- 										<option>Bình Định</option> -->
-<!-- 									</select> -->
+<!-- 									<label class="label" for="password">Email</label> -->
+<%-- 									<form:input type="text" path="email" class="form-control" --%>
+<%-- 										placeholder="Email" /> --%>
 <!-- 								</div> -->
-								<!-- 	<div class="form-group mb-3">
-									<label class="label" for="password">Vai trò</label> <select
-										class="form-select" aria-label="Default select example">
-										<option selected>Customer</option>
-										<option value="3">Maid</option>
-									</select>
-								</div> -->
-								<!-- <div class="form-group mb-3">
-									<label class="label" for="password">Teacher Year Of Experience</label>
-									<input type="password" class="form-control" placeholder="Password" required>
-								</div> -->
-
-
-								<!-- <div class="form-group d-md-flex">
-									<div class="w-50 text-left">
-										<label class="checkbox-wrap checkbox-primary mb-0">Remember Me
-											<input type="checkbox" checked>
-											<span class="checkmark"></span>
-										</label>
-									</div>
-									<div class="w-50 text-md-right">
-										<a href="#">Forgot Password</a>
-									</div>
-								</div> -->
-							</form>
-							<!-- <p class="text-center"><a data-toggle="tab" href="#signup">Sign Up</a></p> -->
-
-
-
-
-						</div>
-						<div class="login-wrap p-4 p-md-5">
-							<div class="d-flex">
-								<div class="w-100 ">
-									<h3 class="mb-4">
-										<br />
-									</h3>
-								</div>
-								<div class="w-100">
-									<p class="social-media d-flex justify-content-end">
-										<!-- <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a> -->
-									</p>
-								</div>
-							</div>
-
-<!-- 							<div class="form-group mb-3"> -->
-<!-- 								<label class="label" for="password">Ngày Sinh</label> <input -->
-<!-- 									type="date" name="birthday" class="form-control" -->
-<!-- 									placeholder="Date of Birth" required> -->
-<!-- 							</div> -->
 								<div class="form-group mb-3">
-									<label class="label" for="password">Email</label> <input
-										type="email" name="email" class="form-control"
-										placeholder="Email" required>
+									<label class="label" for="password">Password</label>
+									<form:input type="password" path="account.password"
+										class="form-control" placeholder="Password" />
 								</div>
-							<div class="form-group mb-3">
-								<label class="label" for="password">Password</label> <input
-									type="password" name="password" class="form-control"
-									placeholder="Password" required>
-							</div>
 
-							<div class="form-group mb-3">
-								<label class="label" for="password">Nhập lại password</label> <input
-									type="password" class="form-control" name="re-password"
-									placeholder="Re-Enter Password" required>
-							</div>
-							<!-- <div class="form-group mb-3">
-								<label class="label" for="password">Teacher Qualification</label>
-								<input type="password" class="form-control" placeholder="Password" required>
-							</div> -->
+								<div class="form-group mb-3">
+									<label class="label" for="password">Nhập lại password</label> <input
+										type="password" class="form-control" name="re-password"
+										placeholder="Re-Enter Password" required>
+									<form:errors path="account.password"/>
+								</div>
+								<div class="form-group mb-3">
+									<label class="label" style="padding-top: 18px;"></label>
+									<button type="submit"
+										class="form-control btn btn-primary rounded submit px-3"
+										name="signup">Đăng ký</button>
+								</div>
 
-							<div class="form-group mb-3">
-								<label class="label" style="padding-top: 18px;"></label>
-								<button type="submit"
-									class="form-control btn btn-primary rounded submit px-3"><a href="customerLogin.htm">Đăng
-									ký</a></button>
-							</div>
-							<!-- <div class="form-group">
-								<button type="submit"
-									class="form-control btn btn-primary rounded submit px-3">Log In</button>
-							</div> -->
+							</form:form>
+
 						</div>
+
 					</div>
 				</div>
 			</div>

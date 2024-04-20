@@ -2,6 +2,7 @@ package ptithcm.service;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -119,6 +120,19 @@ public class AccountServiceImpl implements AccountService{
             e.printStackTrace();
             return null;
         }
+	}
+
+	@Override
+	public String generateOTP() {
+		String alphabelt = "0123456789qwertyuiopasdfghjkzxcvbnmQWERTYUOPLKJHGFDSAZXCVBNM";
+
+		String otp = "";
+		Random random = new Random();
+		for (int i = 0; i < 6; i++) {
+			otp += alphabelt.charAt(random.nextInt(60));
+		}
+
+		return otp;
 	}
 	
 }

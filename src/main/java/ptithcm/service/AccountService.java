@@ -21,5 +21,6 @@ public interface AccountService {
 	public String standardizeName(String str);
 	public boolean isValidPhoneNumber(String phoneNumber);
 	public String getHashPassword(String password);
+	public String generateOTP();
 	
 }
