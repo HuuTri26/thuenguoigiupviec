@@ -50,32 +50,22 @@
 									</p>
 								</div>
 							</div>
-							<form:form  class="signin-form"
-								>
-								<div style="color: red;">.</div>
+							<form:form class="signin-form" action="verifyOTP.htm"
+								modelAttribute="customerAcc">
+								${message }
+								
 								<div class="form-group mb-3">
 									<label class="label" for="name">Gmail</label>
-									<!-- 									<input type="email" placeholder="Nhập email cần đăng ký"/> -->
-									<input type="email" class="form-control" placeholder="Nhập username(email)" />
-									<%-- 									<form:errors path="email" /> --%>
+									
+									<form:input type="email" class="form-control" path="email"
+										placeholder="Nhập username(email)" />
+									<form:errors path="email" />
 								</div>
-								<!-- 								<div class="form-group mb-3"> -->
-								<!-- 									<label class="label" for="password">Password</label> -->
-								<%-- 									<form:input type="password" path="password" --%>
-								<%-- 										class="form-control" placeholder="Nhập password" /> --%>
-								<%-- 									<form:errors path="email" /> --%>
-								<!-- 								</div> -->
-								<!-- 								<div class="form-group mb-3"> -->
-								<!-- 									<label class="label" for="password">Nhập lại password</label> -->
-								<%-- 									<form:input type="password" path="re-password" --%>
-								<%-- 										class="form-control" placeholder="Nhập lại password" /> --%>
-								<%-- 									<form:errors path="email" /> --%>
-								<!-- 								</div> -->
+								
 								<div class="form-group">
 									<button type="submit"
-										class="form-control btn btn-primary rounded submit px-3">
-										<a href="verifyOTP.htm" style="color: white;">Đăng Ký</a>
-									</button>
+										class="form-control btn btn-primary rounded submit px-3"
+										name="sendOTP">Gửi OTP</button>
 								</div>
 							</form:form>
 							<!-- 							<p class="text-center"><a href="customerSignup.htm">Đăng ký</a></p> -->

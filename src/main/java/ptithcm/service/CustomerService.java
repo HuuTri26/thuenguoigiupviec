@@ -12,4 +12,6 @@ import ptithcm.entity.CustomerEntity;
 @Transactional
 public interface CustomerService {
 	public List<CustomerEntity> getListCustomer();
+	public void addCustomer(CustomerEntity customer);
+	public void updateCustomer(CustomerEntity customer);
 }

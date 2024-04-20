@@ -37,18 +37,27 @@
 </style>
 </head>
 <body>
-	<div class="container">
-		<h1>Nhập mã OTP từ email</h1>
-		<div id="inputs" class="inputs">
-			<input class="input" type="text" inputmode="numeric" maxlength="1" />
-			<input class="input" type="text" inputmode="numeric" maxlength="1" />
-			<input class="input" type="text" inputmode="numeric" maxlength="1" />
-			<input class="input" type="text" inputmode="numeric" maxlength="1" />
-			<input class="input" type="text" inputmode="numeric" maxlength="1" />
-			<input class="input" type="text" inputmode="numeric" maxlength="1" />
+
+	<form class="verify-form" action="customerSignup.htm" method="post">
+			<h1>
+				Hãy nhập mã OTP mà hệ thống vừa gửi tới email: <span>${email }</span>
+			</h1>
+			<span class="messenger">${message}</span>
+		<div class="container">
+			
+			<div id="inputs" class="inputs">
+				<input class="input" type="text" name="a" maxlength="1" autocomplete="off" /> 
+				<input class="input" type="text" name="b" maxlength="1" autocomplete="off" /> 
+				<input class="input" type="text" name="c" maxlength="1" autocomplete="off" /> 
+				<input class="input" type="text" name="d" maxlength="1" autocomplete="off" />
+				<input class="input" type="text" name="e" maxlength="1" autocomplete="off" /> 
+				<input class="input" type="text" name="f" maxlength="1" autocomplete="off" />
+			</div>
 		</div>
-	</div>
-	<a style="align-content: center; text-align: center; justify-content: center;" href="customerSignup.htm">Xác nhận</a>
+		<button id="btn-veri" name="verify">Xác Nhận</button>
+		<button id="btn-again" name="again">Gửi lại mã</button>
+	</form>
+
 	<script>
 		// script.js
 		const inputs = document.getElementById("inputs");
@@ -56,11 +65,6 @@
 		inputs.addEventListener("input", function(e) {
 			const target = e.target;
 			const val = target.value;
-
-			if (isNaN(val)) {
-				target.value = "";
-				return;
-			}
 
 			if (val != "") {
 				const next = target.nextElementSibling;
