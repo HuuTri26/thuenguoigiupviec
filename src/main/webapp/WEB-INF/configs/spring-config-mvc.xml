@@ -35,7 +35,7 @@
 
 	<!-- Cấu hình package chứa các controller -->
 	<context:component-scan
-		base-package="ptithcm.controller,ptithcm.dao,ptithcm.service,ptithcm.entity" />
+		base-package="ptithcm.controller,ptithcm.bean,ptithcm.dao,ptithcm.service,ptithcm.entity" />
 <!-- 		,ptithcm.bean,ptithcm.dao,ptithcm.service,ptithcm.intercepter -->
 
 </beans>
