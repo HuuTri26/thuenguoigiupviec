@@ -483,4 +483,11 @@ public class adminController {
 	public String adminIndex() {
 		return "admin/index";
 	}
+	
+
+	// Test sort
+	@RequestMapping("admin/maid")
+	public String adminMaid() {
+		return "admin/maid";
+	}
 }
