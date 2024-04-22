@@ -190,17 +190,56 @@
 							<!--  <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>-->
 							<!-- Table with stripped rows -->
+							<!-- Thêm ô tìm kiếm -->
+							<div class="search-container" style="float: right;">
+								<select id="searchSelect" class="form-select"
+									aria-label="Default select example">
+									<option value="all">Tất cả</option>
+									<option value="id">Id</option>
+									<option value="name">Tên gói dịch vụ</option>
+									<option value="category">Loại dịch vụ</option>
+									<option value="time">Thời gian gói</option>
+									<option value="price">Giá gói</option>
+									<option value="description">Miêu tả</option>
+									<option value="maidQuantity">Số lượng maid</option>
+									<option value="status">Trạng thái</option>
+
+								</select> <input type="text" id="searchInput" placeholder="Tìm kiếm..."
+									class="m-2">
+								<button id="searchButton">Search</button>
+							</div>
 							<table class="table datatable">
 								<thead style="background-color: #37517e; color: white">
 									<tr>
-										<th scope="col">Id</th>
-										<th scope="col">Tên gói dịch vụ</th>
-										<th scope="col">Loại dịch vụ</th>
-										<th scope="col">Thời gian gói</th>
-										<th scope="col">Giá gói</th>
-										<th scope="col">Miêu tả</th>
-										<th scope="col">Số lượng giúp việc</th>
-										<th scope="col">Trạng thái</th>
+										<th scope="col">Id <i class="bi bi-arrow-up-short"
+											data-sort="id" data-order="asc"></i>
+										</th>
+										<th scope="col">Tên gói dịch vụ <i
+											class="bi bi-arrow-up-short" data-sort="name"
+											data-order="asc"></i>
+										</th>
+										<th scope="col">Loại dịch vụ <i
+											class="bi bi-arrow-up-short" data-sort="category"
+											data-order="asc"></i>
+										</th>
+										<th scope="col">Thời gian gói <i
+											class="bi bi-arrow-up-short" data-sort="time"
+											data-order="asc"></i>
+										</th>
+										<th scope="col">Giá gói <i class="bi bi-arrow-up-short"
+											data-sort="price" data-order="asc"></i>
+										</th>
+										<th scope="col">Miêu tả <i class="bi bi-arrow-up-short"
+											data-sort="description" data-order="asc"></i>
+										</th>
+										<th scope="col">Số lượng giúp việc <i
+											class="bi bi-arrow-up-short" data-sort="maidQuantity"
+											data-order="asc"></i>
+										</th>
+										<th scope="col">Trạng thái <i
+											class="bi bi-arrow-up-short" data-sort="status"
+											data-order="asc"></i>
+										</th>
 									</tr>
 								</thead>
 								<tbody id="table_services">
@@ -291,47 +330,263 @@
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
 
 	<script>
-	// Lấy dữ liệu từ bảng
-	const tableRows = document.querySelectorAll("#table_services tr");
-	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang
-	let currentPage = 1;
+//Lấy tất cả các phần tử i (biểu tượng mũi tên)
+const arrows = document.querySelectorAll('i[data-sort]');
+let tableRows = Array.from(document.querySelectorAll("#table_services tr"));
+let sortedRows = tableRows.slice(0); // Lấy dữ liệu từ hàng thứ 2 trở đi
+let filteredRows = tableRows.slice(0); // Sao chép dữ liệu từ tableRows vào filteredRows
+const itemsPerPage = 5; // Số dòng hiển thị mỗi trang
+let currentPage = 1;
 
-	// Hàm hiển thị dữ liệu trên trang
-	function displayPage(page) {
-	  const startIndex = (page - 1) * itemsPerPage;
-	  const endIndex = startIndex + itemsPerPage;
-	  const tableBody = document.getElementById("table_services");
-	  tableBody.innerHTML = "";
+// Thêm sự kiện click cho mỗi phần tử mũi tên
+arrows.forEach(arrow => {
+  arrow.addEventListener('click', () => {
+    const column = arrow.dataset.sort; // Lấy tên cột cần sắp xếp
+    const order = arrow.dataset.order === 'asc' ? 'desc' : 'asc'; // Đảo ngược thứ tự sắp xếp
+    sortTable(column, order);
 
-	  for (let i = startIndex; i < endIndex && i < tableRows.length; i++) {
-	    tableBody.appendChild(tableRows[i].cloneNode(true));
-	  }
-	// Cập nhật số thứ tự trang
-	  const pageNumberElement = document.querySelector(".page-number");
-	  pageNumberElement.textContent ="   " + page +"   ";
-	}
-	
-	
+    // Cập nhật thuộc tính data-order của phần tử mũi tên
+    arrow.dataset.order = order;
+    // Đổi chiều mũi tên
+    toggleArrowDirection(arrow, order);
+    // Hiển thị trang đầu tiên sau khi sắp xếp
+    currentPage = 1;
+    displayPage(currentPage);
+  });
+});
+
+// Hàm đổi chiều mũi tên
+function toggleArrowDirection(arrow, order) {
+  const arrowClass = order === 'asc' ? 'bi-arrow-up-short' : 'bi-arrow-down-short';
+  arrow.classList.remove('bi-arrow-up-short', 'bi-arrow-down-short');
+  arrow.classList.add(arrowClass);
+}
+
+//Hàm sắp xếp dữ liệu
+function sortTable(column, order) {
+  sortedRows.sort((a, b) => {
+    const aRow = a.querySelectorAll('td');
+    const bRow = b.querySelectorAll('td');
+    let aValue, bValue;
+
+    switch (column) {
+      case 'id':
+        aValue = aRow[0].textContent.trim();
+        bValue = bRow[0].textContent.trim();
+        break;
+      case 'name':
+        aValue = aRow[1].textContent.trim();
+        bValue = bRow[1].textContent.trim();
+        break;
+      case 'category':
+        aValue = aRow[2].textContent.trim();
+        bValue = bRow[2].textContent.trim();
+        break;
+      case 'time':
+          aValue = aRow[3].textContent.trim();
+          bValue = bRow[3].textContent.trim();
+          break;
+        case 'price':
+          aValue = aRow[4].textContent.trim();
+          bValue = bRow[4].textContent.trim();
+          break;
+        case 'description':
+            aValue = aRow[5].textContent.trim();
+            bValue = bRow[5].textContent.trim();
+            break;
+          case 'maidQuantity':
+            aValue = aRow[6].textContent.trim();
+            bValue = bRow[6].textContent.trim();
+            break;
+          case 'status':
+              aValue = aRow[7].textContent.trim();
+              bValue = bRow[7].textContent.trim();
+              break;
+    }
+
+    if (order === 'asc') {
+      return aValue.localeCompare(bValue, undefined, { numeric: true });
+    } else {
+      return bValue.localeCompare(aValue, undefined, { numeric: true });
+    }
+  });
+
+  // Cập nhật lại sortedRows sau mỗi lần sắp xếp
+  filteredRows = sortedRows.slice(0);
+}
+
+// Hàm hiển thị dữ liệu trên trang
+function displayPage(page) {
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const tableBody = document.getElementById("table_services");
+
+  tableBody.innerHTML = "";
+
+  for (let i = startIndex; i < endIndex && i < sortedRows.length; i++) {
+    tableBody.appendChild(sortedRows[i]);
+  }
+
+  // Cập nhật số thứ tự trang
+  const pageNumberElement = document.querySelector(".page-number");
+  pageNumberElement.textContent = " " + page + " ";
+}
+
+// Xử lý sự kiện click nút chuyển trang
+// document.querySelector(".prev-page").addEventListener("click", () => {
+//   if (currentPage > 1) {
+//     currentPage--;
+//     displayPage(currentPage);
+//   }
+// });
+
+// document.querySelector(".next-page").addEventListener("click", () => {
+//   if (currentPage * itemsPerPage < sortedRows.length) {
+//     currentPage++;
+//     displayPage(currentPage);
+//   }
+// });
+
+//Hàm hiển thị dữ liệu trên trang sau khi tìm kiếm
+function displayFilteredPage(page) {
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const tableBody = document.getElementById("table_services");
+
+  tableBody.innerHTML = "";
+
+  for (let i = startIndex; i < endIndex && i < filteredRows.length; i++) {
+    tableBody.appendChild(filteredRows[i]);
+  }
+
+  // Cập nhật số thứ tự trang
+  const pageNumberElement = document.querySelector(".page-number");
+  pageNumberElement.textContent = " " + page + " ";
+}
+
+// Xử lý sự kiện click nút chuyển trang sau khi tìm kiếm
+document.querySelector(".prev-page").addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    displayFilteredPage(currentPage);
+  }
+});
+
+document.querySelector(".next-page").addEventListener("click", () => {
+  const totalPages = Math.ceil(filteredRows.length / itemsPerPage);
+  if (currentPage < totalPages) {
+    currentPage++;
+    displayFilteredPage(currentPage);
+  }
+});
+
+// Hàm hiển thị trang đầu tiên sau khi tìm kiếm
+function displayFilteredFirstPage() {
+  currentPage = 1;
+  displayFilteredPage(currentPage);
+}
+
+//Xử lý sự kiện khi nhập ký tự vào ô tìm kiếm
+document.getElementById('searchButton').addEventListener('click', () => {
+    // Lấy giá trị nhập vào ô input và thuộc tính đã chọn từ combobox
+    const searchText = document.getElementById('searchInput').value.trim().toLowerCase();
+    const searchAttribute = document.getElementById('searchSelect').value;
+
+    // Lọc dữ liệu dựa trên giá trị nhập và thuộc tính đã chọn
+    filteredRows = tableRows.filter(row => {
+        // Lấy dữ liệu của từng ô trong hàng và chuyển đổi thành chữ thường
+        const rowData = Array.from(row.querySelectorAll('td')).map(cell => cell.textContent.trim().toLowerCase());
+
+        // Lọc dữ liệu dựa trên thuộc tính đã chọn từ combobox
+        switch (searchAttribute) {
+            case 'all':
+                return rowData.some(data => data.includes(searchText));
+            case 'id':
+                return rowData[0].includes(searchText);
+            case 'name':
+                return rowData[1].includes(searchText);
+            case 'category':
+                return rowData[2].includes(searchText);
+            case 'time':
+                return rowData[3].includes(searchText);
+            case 'price':
+                return rowData[4].includes(searchText);
+            case 'description':
+                return rowData[5].includes(searchText);
+            case 'maidQuantity':
+                return rowData[6].includes(searchText);
+            case 'status':
+                return rowData[7].includes(searchText);
+            default:
+                return false;
+        }
+    });
+
+    // Hiển thị dữ liệu lọc
+    if (filteredRows.length === 0) {
+        // Nếu không có kết quả, hiển thị thông báo "Không tìm thấy kết quả"
+        const noResultRow = document.createElement('tr');
+        noResultRow.innerHTML = '<td colspan="3">Không tìm thấy kết quả</td>';
+        document.getElementById('table_services').innerHTML = '';
+        document.getElementById('table_services').appendChild(noResultRow);
+    } else {
+        // Nếu có kết quả, hiển thị trang đầu tiên của kết quả
+        displayFilteredFirstPage();
+    }
+});
+
+// Hiển thị trang đầu tiên
+displayPage(currentPage);
+
+function resetTable() {
+    // Hiển thị lại toàn bộ dữ liệu ban đầu
+    document.getElementById('table_services').innerHTML = '';
+    originalTableRows.forEach(row => document.getElementById('table_services').appendChild(row));
+}
+
+</script>
+	<!-- 	<script> -->
+	<!-- // 	// Lấy dữ liệu từ bảng -->
+	<!-- // 	const tableRows = document.querySelectorAll("#table_services tr"); -->
+	<!-- // 	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang -->
+	<!-- // 	let currentPage = 1; -->
+
+	<!-- // 	// Hàm hiển thị dữ liệu trên trang -->
+	<!-- // 	function displayPage(page) { -->
+	<!-- // 	  const startIndex = (page - 1) * itemsPerPage; -->
+	<!-- // 	  const endIndex = startIndex + itemsPerPage; -->
+	<!-- // 	  const tableBody = document.getElementById("table_services"); -->
+	<!-- // 	  tableBody.innerHTML = ""; -->
+
+	<!-- // 	  for (let i = startIndex; i < endIndex && i < tableRows.length; i++) { -->
+	<!-- // 	    tableBody.appendChild(tableRows[i].cloneNode(true)); -->
+	<!-- // 	  } -->
+	<!-- // 	// Cập nhật số thứ tự trang -->
+	<!-- // 	  const pageNumberElement = document.querySelector(".page-number"); -->
+	<!-- // 	  pageNumberElement.textContent ="   " + page +"   "; -->
+	<!-- // 	} -->
 
 
-	// Xử lý sự kiện click nút chuyển trang
-	document.querySelector(".prev-page").addEventListener("click", () => {
-	  if (currentPage > 1) {
-	    currentPage--;
-	    displayPage(currentPage);
-	  }
-	});
 
-	document.querySelector(".next-page").addEventListener("click", () => {
-	  if (currentPage * itemsPerPage < tableRows.length) {
-	    currentPage++;
-	    displayPage(currentPage);
-	  }
-	});
 
-	// Hiển thị trang đầu tiên
-	displayPage(currentPage);
-	</script>
+	<!-- // 	// Xử lý sự kiện click nút chuyển trang -->
+	<!-- // 	document.querySelector(".prev-page").addEventListener("click", () => { -->
+	<!-- // 	  if (currentPage > 1) { -->
+	<!-- // 	    currentPage--; -->
+	<!-- // 	    displayPage(currentPage); -->
+	<!-- // 	  } -->
+	<!-- // 	}); -->
+
+	<!-- // 	document.querySelector(".next-page").addEventListener("click", () => { -->
+	<!-- // 	  if (currentPage * itemsPerPage < tableRows.length) { -->
+	<!-- // 	    currentPage++; -->
+	<!-- // 	    displayPage(currentPage); -->
+	<!-- // 	  } -->
+	<!-- // 	}); -->
+
+	<!-- // 	// Hiển thị trang đầu tiên -->
+	<!-- // 	displayPage(currentPage); -->
+	<!-- 	</script> -->
 
 
 </body>

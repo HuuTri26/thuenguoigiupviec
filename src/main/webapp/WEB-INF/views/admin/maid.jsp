@@ -174,27 +174,27 @@
 	<!-- End Sidebar-->
 
 	<main id="main" class="main">
+
 		<div class="pagetitle">
-			<h1>Maid Management</h1>
+			<h1>Maid</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a
-						href="maidManagement.html"> maid được phân công</a></li>
+					<li class="breadcrumb-item active"><a href="student.html">Maid</a></li>
 				</ol>
 			</nav>
 		</div>
 		<!-- End Page Title -->
 
-		<section class="section" style="max-width: 100%;">
+		<section class="section">
 			<div class="row">
-				<div class="col-lg-24">
+				<div class="col-lg-12">
 
 					<div class="card">
-						<div class="card-body ">
-							<!-- 							<div class="card-title"> -->
-							<!-- 								<a href="addMaid.htm" class="btn btn-primary">Add Maid</a> -->
-							<!-- 							</div> -->
+						<div class="card-body">
+							<div class="card-title">
+								<a href="add_student.html" class="btn btn-primary">Add Maid</a>
+							</div>
 							<!--  <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
  -->
@@ -202,129 +202,212 @@
 							<table class="table datatable ">
 								<thead style="background-color: #37517e; color: white">
 									<tr>
-										
 										<th scope="col">Id</th>
-										<th scope="col">Họ tên</th>
-										<th scope="col">Số điện thoại</th>
-										<!-- 									<th scope="col">Giới tính</th> -->
-										<!-- 									<th scope="col">Ngày sinh</th> -->
-										<th scope="col">Địa chỉ</th>
-										<th scope="col">Kinh nghiệm</th>
-										<th scope="col">Lương</th>
-										<th scope="col">Full/Partime</th>
-										<th scope="col">Id nhân viên</th>
-										<th scope="col">Email</th>
-										<th scope="col">Trạng thái làm việc</th>
-										<th scope="col">Trạng thái tài khoản</th>
+										<th scope="col">Name</th>
+										<th scope="col">Username</th>
+										<th scope="col">Password</th>
+										<th scope="col">Age</th>
+										<th scope="col">Mobile No</th>
+										<th scope="col">Email Id</th>
+										<th scope="col">Address</th>
+										<th scope="col">City</th>
+										<th scope="col">Pincode</th>
+										<th scope="col">Extra Charges per Room</th>
+										<th scope="col">Extra Charges per Member</th>
+										<th scope="col">Maid Experience</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody id="table_maids">
-
-
 									<tr>
-										
-										<td scope="row">${maid.id }</td>
-										<td scope="col">${maid.fullName }</td>
-										<!-- 										<td scope="col">huutri</td> -->
-										<!-- 										<td scope="col">Nam</td> -->
-										<!-- 										<td scope="col">28/9/2078</td> -->
-										<td scope="col">${maid.phoneNumber }</td>
-										<td scope="col">${maid.address }</td>
-										<td scope="col">${maid.experience }</td>
-										<td scope="col">${maid.salary }</td>
-										<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
-										<td scope="col">${maid.employee.id }</td>
-										<td scope="col">${maid.account.email }</td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Rảnh,Đang làm việc">
-												<input class="form-check-input" type="checkbox"
-													role="switch" disabled="disabled"> <label
-													class="form-check-label" for="{checkboxId}"> <span
-													class="switch-status">Rảnh</span>
-												</label>
-											</div>
-										</td>
-
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Bị chặn,Hoạt động">
-												<input class="form-check-input" type="checkbox"
-													role="switch" id="statusSwitch"
-													${maid.account.status ? 'checked' : ''} disabled="disabled">
-												<label class="form-check-label" for="statusSwitch">
-													<span class="switch-status">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}</span>
-												</label>
-											</div>
-										</td>
-
-<!-- 										<td scope="col"><a href="maidDetail.htm" -->
-<!-- 											class="btn btn-primary"><i class="bi bi-eye"></i></a> <a -->
-<%-- 											href="admin/edit/${maid.id}.htm?linkEdit" --%>
-<!-- 											class="btn btn-primary "><i class="bi-pencil" -->
-<%-- 												data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" --> --%>
-<!-- 																						class="btn btn-primary "><i class="bi-pencil"></i></a> -->
-<%-- 											<a href="/index/${maid.id}?linkDelete" class="btn btn-danger" --%>
-<%-- 											data-action="delete" data-id="${maid.id}"><i --%>
-<!-- 												class="bi-trash"></i></a></td> -->
+										<td scope="row">1</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
 									</tr>
 									<tr>
-										
-										<td scope="row">${maid.id }</td>
-										<td scope="col">${maid.fullName }</td>
-										<!-- 										<td scope="col">huutri</td> -->
-										<!-- 										<td scope="col">Nam</td> -->
-										<!-- 										<td scope="col">28/9/2078</td> -->
-										<td scope="col">${maid.phoneNumber }</td>
-										<td scope="col">${maid.address }</td>
-										<td scope="col">${maid.experience }</td>
-										<td scope="col">${maid.salary }</td>
-										<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
-										<td scope="col">${maid.employee.id }</td>
-										<td scope="col">${maid.account.email }</td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Rảnh,Đang làm việc">
-												<input class="form-check-input" type="checkbox"
-													role="switch" disabled="disabled"> <label
-													class="form-check-label" for="{checkboxId}"> <span
-													class="switch-status">Rảnh</span>
-												</label>
-											</div>
-										</td>
-
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Bị chặn,Hoạt động">
-												<input class="form-check-input" type="checkbox"
-													role="switch" id="statusSwitch"
-													${maid.account.status ? 'checked' : ''} disabled="disabled">
-												<label class="form-check-label" for="statusSwitch">
-													<span class="switch-status">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}</span>
-												</label>
-											</div>
-										</td>
-
-										<td scope="col"><a href="maidDetail.htm" 
-									class="btn btn-primary"><i class="bi bi-eye"></i></a> <a 
-									href="admin/edit/${maid.id}.htm?linkEdit" 
-									class="btn btn-primary "><i class="bi-pencil" 
-									data-action="edit" data-id="${maid.id }"></i></a> 								<a href="maid.htm" 
-																				class="btn btn-primary "><i class="bi-pencil"></i></a>
-										<a href="/index/${maid.id}?linkDelete" class="btn btn-danger" 
-										data-action="delete" data-id="${maid.id}"><i 
-											class="bi-trash"></i></a></td> 
+										<td scope="row">2</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
 									</tr>
-
+									<tr>
+										<td scope="row">3</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
+									</tr>
+									<tr>
+										<td scope="row">4</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
+									</tr>
+									<tr>
+										<td scope="row">5</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
+									</tr>
+									<tr>
+										<td scope="row">6</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
+									</tr>
+									<tr>
+										<td scope="row">7</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
+									</tr>
+									<tr>
+										<td scope="row">8</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
+									</tr>
+									<tr>
+										<td scope="row">9</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
+									</tr>
+									<tr>
+										<td scope="row">10</td>
+										<td scope="col">Name</td>
+										<td scope="col">Username</td>
+										<td scope="col">Password</td>
+										<td scope="col">Age</td>
+										<td scope="col">Mobile No</td>
+										<td scope="col">Email Id</td>
+										<td scope="col">Address</td>
+										<td scope="col">City</td>
+										<td scope="col">Pincode</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Rs</td>
+										<td scope="col">Years</td>
+										<td scope="col"><a href="update_student.html"
+											class="btn btn-primary">Update</a><a href="#"
+											class="btn btn-danger">delete</a></td>
+									</tr>
 								</tbody>
 							</table>
+							<!-- End Table with stripped rows -->
 							<div class="pagination-container pt-5"
 								style="align-items: center; justify-content: center; text-align: center;">
 								<button class="btn btn-primary prev-page">Trước</button>
 								<span class="page-number"></span>
 								<button class="btn btn-primary next-page">Sau</button>
 							</div>
-							<!-- End Table with stripped rows -->
 
 						</div>
 					</div>
@@ -334,6 +417,7 @@
 		</section>
 
 	</main>
+	<!-- End #main -->
 	<!-- End #main -->
 
 	<!-- ======= Footer ======= -->
