@@ -251,15 +251,15 @@
 											<td scope="col">${customer.phoneNumber }</td>
 											<td scope="col">${customer.address }</td>
 											<td scope="col">${customer.account.email }</td>
-											<td scope="col" class="accountStatus" id="accountStatus-${customer.id}">
+											<td scope="col" class="accountStatus"
+												id="accountStatus-${customer.id}">
 
 												${customer.account.status ? 'Hoạt động' : 'Bị chặn'}</td>
-											<td scope="col"><a href="customerDetail.htm"
-												class="btn btn-primary "><i class="bi bi-eye"></i></a><a
-												href="customerDetail.htm" class="btn btn-danger"><i
-													class="bi-trash"></i></a>
-												<button onclick="confirmBlock(${customer.id})">Block</button>
-												<button onclick="confirmActive(${customer.id})">Active</button>
+											<td scope="col">
+												<a href="customerDetail/${customer.id }.htm" class="btn btn-primary "><i class="bi bi-eye"></i></a>
+												<a href="blockCustomer/${customer.id }.htm"><button>Block</button></a>
+												<a href="activeCustomer/${customer.id }.htm"><button>Active</button></a>
+												
 											</td>
 
 										</tr>
@@ -321,10 +321,10 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
-	
+
 	<!-- 	CHuyển trạng thái -->
 	<script>
-    function confirmBlock(customerId) {
+    /* function confirmBlock(customerId) {
         if (confirm("Bạn có chắc chắn muốn chặn tài khoản này?")) {
             // Nếu người dùng nhấn 'OK' trong dialog xác nhận
             // Gửi yêu cầu đến máy chủ để chặn tài khoản với mã người giúp việc là 'maidId'
@@ -343,7 +343,7 @@
             // Ví dụ:
             document.getElementById("accountStatus-" + customerId).textContent = "Hoạt động";
         }
-    }
+    } */
 </script>
 	<!-- sắp xếp , phân trang, tìm kiếm -->
 	<script>

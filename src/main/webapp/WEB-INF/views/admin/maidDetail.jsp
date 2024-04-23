@@ -188,10 +188,9 @@
 							class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
 							<img
-								src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
+								src="<c:url value='/resources/admin/assets/img/${maid.image }'/>"
 								alt="Profile" class="rounded-circle">
-							<h2>Hữu</h2>
-							<h3>huutri</h3>
+							<h2>${maid.fullName }</h2>
 						</div>
 					</div>
 
@@ -209,276 +208,79 @@
 										data-bs-target="#profile-overview">Xem thông tin</button>
 								</li>
 
-								<!--                   <li class="nav-item"> -->
-								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh sửa Profile</button> -->
-								<!--                   </li> -->
-
-								<!--                   <li class="nav-item"> -->
-								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button> -->
-								<!--                   </li> -->
-
-								<!--                   <li class="nav-item"> -->
-								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Đổi mật khẩu</button> -->
-								<!--                   </li> -->
-
 							</ul>
-							<div class="tab-content pt-2">
 
-								<div class="tab-pane fade show active profile-overview"
-									id="profile-overview">
-									<h5 class="card-title">Giới thiệu</h5>
-									<p class="small fst-italic">Hahahahahahaa</p>
+							<form:form>
+								<div class="tab-content pt-2">
 
-									<h5 class="card-title">Thông tin Profile</h5>
+									<div class="tab-pane fade show active profile-overview"
+										id="profile-overview">
+										<h5 class="card-title">Giới thiệu</h5>
+										<p class="small fst-italic">Hahahahahahaa</p>
 
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Họ tên</div>
-										<div class="col-lg-9 col-md-8">Hữu Trí</div>
+										<h5 class="card-title">Thông tin Profile</h5>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label ">Họ tên</div>
+											<div class="col-lg-9 col-md-8">${maid.fullName }</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Số điện thoại</div>
+											<div class="col-lg-9 col-md-8">${maid.phoneNumber }</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
+											<div class="col-lg-9 col-md-8">${maid.address }</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Kinh nghiệm</div>
+											<div class="col-lg-9 col-md-8">${maid.experience }</div>
+										</div>
+
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Mức Lương</div>
+											<div class="col-lg-9 col-md-8">${maid.salary }</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
+											<div class="col-lg-9 col-md-8">${maid.createAt }</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Ngày Cập nhật</div>
+											<div class="col-lg-9 col-md-8">${maid.updateAt }</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Email</div>
+											<div class="col-lg-9 col-md-8">${maid.account.email }</div>
+										</div>
+
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Trạng thái làm
+												việc</div>
+											<div class="col-lg-9 col-md-8">Rảnh</div>
+										</div>
+										<div class="row">
+											<div class="col-lg-3 col-md-4 label">Trạng thái tài
+												khoản</div>
+											<div class="col-lg-9 col-md-8">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}</div>
+										</div>
 									</div>
 
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Số điện thoại</div>
-										<div class="col-lg-9 col-md-8">0984937438</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-										<div class="col-lg-9 col-md-8">65 Man Thiện</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Kinh nghiệm</div>
-										<div class="col-lg-9 col-md-8">1</div>
-									</div>
-
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Mức Lương</div>
-										<div class="col-lg-9 col-md-8">3000$</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Ngày Cập nhật</div>
-										<div class="col-lg-9 col-md-8">2023-12-26</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Email</div>
-										<div class="col-lg-9 col-md-8">maidpartime@gmail.com</div>
-									</div>
-
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Trạng thái làm việc</div>
-										<div class="col-lg-9 col-md-8">Rảnh</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Trạng thái tài khoản</div>
-										<div class="col-lg-9 col-md-8">Hoạt động</div>
-									</div>
 								</div>
 
-<!-- 								<div class="tab-pane fade profile-edit pt-3" id="profile-edit"> -->
-
-<!-- 									Profile Edit Form -->
-<%-- 									<form> --%>
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="profileImage" -->
-<!-- 												class="col-md-4 col-lg-3 col-form-label">Ảnh</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<img -->
-<%-- 													src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" --%>
-<!-- 													alt="Profile"> -->
-<!-- 												<div class="pt-2"> -->
-<!-- 													<a href="#" class="btn btn-primary btn-sm" -->
-<!-- 														title="Upload new profile image"><i -->
-<!-- 														class="bi bi-upload"></i></a> <a href="#" -->
-<!-- 														class="btn btn-danger btn-sm" -->
-<!-- 														title="Remove my profile image"><i class="bi bi-trash"></i></a> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="fullName" -->
-<!-- 												class="col-md-4 col-lg-3 col-form-label">Họ tên</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="name" type="text" class="form-control" -->
-<!-- 													id="fullName" value="Kevin Anderson"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="about" class="col-md-4 col-lg-3 col-form-label">Giới -->
-<!-- 												thiệu</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<textarea name="about" class="form-control" id="about" -->
-<!-- 													style="height: 100px">Hahahahaha</textarea> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="company" class="col-md-4 col-lg-3 col-form-label">UserName</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="userName" type="text" class="form-control" -->
-<!-- 													id="company" value="huutri"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="Job" class="col-md-4 col-lg-3 col-form-label">Giới -->
-<!-- 												tính</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="gender" type="text" class="form-control" -->
-<!-- 													id="Job" value="Nữ"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Ngày -->
-<!-- 												sinh</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="dob" type="text" class="form-control" -->
-<!-- 													id="Country" value="31/02/2099"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="Address" class="col-md-4 col-lg-3 col-form-label">Địa -->
-<!-- 												chỉ</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="address" type="text" class="form-control" -->
-<!-- 													id="Address" value="97 Man Thiện"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số -->
-<!-- 												điện thoại</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="phone" type="text" class="form-control" -->
-<!-- 													id="Phone" value="(436) 486-3538 x29071"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="email" type="email" class="form-control" -->
-<!-- 													id="Email" value="k.anderson@example.com"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-
-<!-- 										<div class="text-center"> -->
-<!-- 											<button type="submit" class="btn btn-primary">Cập -->
-<!-- 												nhật</button> -->
-<!-- 										</div> -->
-<%-- 									</form> --%>
-<!-- 									End Profile Edit Form -->
-
-<!-- 								</div> -->
-
-<!-- 								<div class="tab-pane fade pt-3" id="profile-settings"> -->
-
-<!-- 									Settings Form -->
-<%-- 									<form> --%>
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="fullName" -->
-<!-- 												class="col-md-4 col-lg-3 col-form-label">Email -->
-<!-- 												Notifications</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<div class="form-check"> -->
-<!-- 													<input class="form-check-input" type="checkbox" -->
-<!-- 														id="changesMade" checked> <label -->
-<!-- 														class="form-check-label" for="changesMade"> -->
-<!-- 														Changes made to your account </label> -->
-<!-- 												</div> -->
-<!-- 												<div class="form-check"> -->
-<!-- 													<input class="form-check-input" type="checkbox" -->
-<!-- 														id="newProducts" checked> <label -->
-<!-- 														class="form-check-label" for="newProducts"> -->
-<!-- 														Information on new products and services </label> -->
-<!-- 												</div> -->
-<!-- 												<div class="form-check"> -->
-<!-- 													<input class="form-check-input" type="checkbox" -->
-<!-- 														id="proOffers"> <label class="form-check-label" -->
-<!-- 														for="proOffers"> Marketing and promo offers </label> -->
-<!-- 												</div> -->
-<!-- 												<div class="form-check"> -->
-<!-- 													<input class="form-check-input" type="checkbox" -->
-<!-- 														id="securityNotify" checked disabled> <label -->
-<!-- 														class="form-check-label" for="securityNotify"> -->
-<!-- 														Security alerts </label> -->
-<!-- 												</div> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="text-center"> -->
-<!-- 											<button type="submit" class="btn btn-primary">Save -->
-<!-- 												Changes</button> -->
-<!-- 										</div> -->
-<%-- 									</form> --%>
-<!-- 									End settings Form -->
-
-<!-- 								</div> -->
-
-<!-- 								<div class="tab-pane fade pt-3" id="profile-change-password"> -->
-<!-- 									Change Password Form -->
-<%-- 									<form> --%>
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="currentPassword" -->
-<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
-<!-- 												hiện tại</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="password" type="password" class="form-control" -->
-<!-- 													id="currentPassword"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="newPassword" -->
-<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
-<!-- 												mới</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="newpassword" type="password" -->
-<!-- 													class="form-control" id="newPassword"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="row mb-3"> -->
-<!-- 											<label for="renewPassword" -->
-<!-- 												class="col-md-4 col-lg-3 col-form-label">Nhập lại -->
-<!-- 												mật khẩu</label> -->
-<!-- 											<div class="col-md-8 col-lg-9"> -->
-<!-- 												<input name="renewpassword" type="password" -->
-<!-- 													class="form-control" id="renewPassword"> -->
-<!-- 											</div> -->
-<!-- 										</div> -->
-
-<!-- 										<div class="text-center"> -->
-<!-- 											<button type="submit" class="btn btn-primary">Đổi -->
-<!-- 												mật khẩu</button> -->
-<!-- 										</div> -->
-<%-- 									</form> --%>
-<!-- 									End Change Password Form -->
-
-<!-- 								</div> -->
-
-<!-- 							</div> -->
-							<!-- End Bordered Tabs -->
+							</form:form>
 
 						</div>
-					</div>
 
+					</div>
 				</div>
-			</div>
 		</section>
 
 	</main>

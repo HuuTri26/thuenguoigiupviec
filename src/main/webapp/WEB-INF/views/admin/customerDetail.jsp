@@ -188,10 +188,9 @@
 							class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
 							<img
-								src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
+								src="<c:url value='/resources/admin/assets/img/download.jpg'/>"
 								alt="Profile" class="rounded-circle">
-							<h2>Hữu</h2>
-							<h3>huutri</h3>
+							<h2>${customer.fullName }</h2>
 						</div>
 					</div>
 
@@ -233,36 +232,36 @@
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label ">Họ tên</div>
-										<div class="col-lg-9 col-md-8">Hữu Trí</div>
+										<div class="col-lg-9 col-md-8">${customer.fullName }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Số điện thoại</div>
-										<div class="col-lg-9 col-md-8">0984937438</div>
+										<div class="col-lg-9 col-md-8">${customer.phoneNumber }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-										<div class="col-lg-9 col-md-8">65 Man Thiện</div>
+										<div class="col-lg-9 col-md-8">${customer.address }</div>
 									</div>
 
-									<div class="row">
+									<%-- <div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
+										<div class="col-lg-9 col-md-8">${customer.createAt }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày Cập nhật</div>
-										<div class="col-lg-9 col-md-8">2023-12-26</div>
-									</div>
+										<div class="col-lg-9 col-md-8">${customer.updateAt }</div>
+									</div> --%>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Email</div>
-										<div class="col-lg-9 col-md-8">customerpartime@gmail.com</div>
+										<div class="col-lg-9 col-md-8">${customer.account.email }</div>
 									</div>
 										<div class="row">
 										<div class="col-lg-3 col-md-4 label">Trạng thái tài khoản</div>
-										<div class="col-lg-9 col-md-8">Hoạt động</div>
+										<div class="col-lg-9 col-md-8">${customer.account.status ? 'Hoạt động' : 'Bị chặn'}</div>
 									</div>
 								</div>
 

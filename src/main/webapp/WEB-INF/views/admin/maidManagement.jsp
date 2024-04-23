@@ -292,21 +292,17 @@
 												</div>
 											</td>
 
-											<td scope="col" id="accountStatus-${maid.id}" class="accountStatus">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}
+											<td scope="col" id="accountStatus-${maid.id}"
+												class="accountStatus">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}
 
 											</td>
 
-											<td scope="col"><a href="maidDetail.htm"
-												class="btn btn-primary"><i class="bi bi-eye"></i> </a> <!-- 												 <a -->
-												<%-- 												href="admin/edit/${maid.id}.htm?linkEdit" --%>
-												<!-- 												class="btn btn-primary "><i class="bi-pencil" -->
-												<%-- 													data-action="edit" data-id="${maid.id }"></i></a>  --%>
-												<!-- 										<a href="updateMaid.htm" --> <!-- 											class="btn btn-primary "><i class="bi-pencil"></i></a> -->
-												<a href="/index/${maid.id}?linkDelete"
-												class="btn btn-danger" data-action="delete"
-												data-id="${maid.id}"><i class="bi-trash"></i></a>
-												<button onclick="confirmBlock(${maid.id})">Block</button>
-												<button onclick="confirmActive(${maid.id})">Active</button>
+											<td scope="col">
+												<a href="maidDetail/${maid.id }.htm" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+												<a href="blockMaid/${maid.id }.htm"><button>Block</button></a>
+												<a href="activeMaid/${maid.id }.htm"><button>Active</button></a>
+
+												<%-- 	<button name="active" onclick="confirmActive(${maid.id})">Active</button> --%>
 											</td>
 										</tr>
 									</c:forEach>
@@ -368,15 +364,14 @@
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
 	<!-- 	CHuyển trạng thái -->
 	<script>
-    function confirmBlock(maidId) {
+	/* function confirmBlock(maidId) {
         if (confirm("Bạn có chắc chắn muốn chặn tài khoản này?")) {
             // Nếu người dùng nhấn 'OK' trong dialog xác nhận
             // Gửi yêu cầu đến máy chủ để chặn tài khoản với mã người giúp việc là 'maidId'
             // Sau khi nhận phản hồi từ máy chủ, thay đổi trạng thái tài khoản trong bảng HTML nếu cần
             // Ví dụ:
-            document.getElementById("accountStatus-" + maidId).textContent = "Bị chặn";
-        }
-    }
+    	}
+	}
 
     function confirmActive(maidId) {
         // Xử lý sự kiện Active tương tự như Block
@@ -387,10 +382,46 @@
             // Ví dụ:
             document.getElementById("accountStatus-" + maidId).textContent = "Hoạt động";
         }
+    } */
+    
+    /* function blockMaid(maidId) {
+    	 if (confirm("Bạn có chắc chắn muốn chặn tài khoản này?")) {
+    		 sendRequest('admin/blockMaid/' + maidId);
+     	}
     }
+
+    function activeMaid(maidId) {
+    	if (confirm("Bạn có chắc chắn muốn kích hoạt tài khoản này?")) {
+    		  sendRequest('admin/activeMaid/' + maidId);
+        }
+    }
+
+    function sendRequest(url) {
+        fetch(url, {
+            method: 'post'
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.text();
+        })
+        .then(data => {
+            console.log('Response:', data);
+            // load lại "maidManagement" view
+            reloadMaidManagement();
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    function reloadMaidManagement() {
+        location.reload();
+    } */
 </script>
 
-<!-- Phân trang - tìm kiếm- sắp xếp -->
+	<!-- Phân trang - tìm kiếm- sắp xếp -->
 	<script>
 // Lấy tất cả các phần tử i (biểu tượng mũi tên)
 const arrows = document.querySelectorAll('i[data-sort]');

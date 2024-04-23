@@ -32,7 +32,11 @@ public class MaidServiceImpl implements MaidService{
 	public MaidEntity getMaidById(Integer id) {
 		return MaidDAO.getMaidById(id);
 	}
-	
-	
+
+	@Override
+	public void updateMaid(MaidEntity maid) {
+		MaidDAO.updateMaid(maid);
+		
+	}
 	
 }

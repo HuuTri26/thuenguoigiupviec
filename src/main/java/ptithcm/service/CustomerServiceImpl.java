@@ -33,5 +33,10 @@ public class CustomerServiceImpl implements CustomerService{
 		CustomerDAO.updateCustomer(customer);
 		
 	}
+
+	@Override
+	public CustomerEntity getCustomerById(Integer id) {
+		return CustomerDAO.getCustomerById(id);
+	}
 	
 }

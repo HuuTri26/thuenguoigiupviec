@@ -29,21 +29,11 @@ public class MaidDAOImpl implements MaidDAO {
 		return maidList;
 	}
 
-	@Override
-	public void addMaid(MaidEntity maid) {
-		Session session = factory.openSession();
-		Transaction t = session.beginTransaction();
-		
-		try {
-			session.save(maid);
-			t.commit();
-		}catch (Exception e) {
-			t.rollback();
-			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
-		}finally {
-			session.close();
-		}
-	}
+	   @Override
+	    public void addMaid(MaidEntity maid) {
+	        Session session = factory.getCurrentSession();
+	        session.save(maid);
+	    }
 
 	@Override
 	public MaidEntity getMaidById(Integer id) {
@@ -54,5 +44,11 @@ public class MaidDAOImpl implements MaidDAO {
 		MaidEntity maid = (MaidEntity) query.uniqueResult();
 		return maid;
 	}
+
+	  @Override
+	    public void updateMaid(MaidEntity maid) {
+	        Session session = factory.getCurrentSession();
+	        session.update(maid);
+	    }
 
 }
