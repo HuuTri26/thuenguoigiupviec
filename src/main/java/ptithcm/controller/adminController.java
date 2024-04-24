@@ -9,21 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import ptithcm.entity.AccountEntity;
 import ptithcm.entity.CategoryEntity;
@@ -65,19 +63,19 @@ public class adminController {
 
 	@Autowired
 	CustomerService customerService;
-	
+
 	@Autowired
 	MaidServiceService maidServiceService;
-	
+
 	@Autowired
 	CategoryService categoryService;
-	
+
 	@Autowired
 	ServicePriceService servicePriceService;
-	
+
 	@Autowired
 	ContractService contractService;
-	
+
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
 	public String showLoginForm(Model model) {
@@ -105,13 +103,14 @@ public class adminController {
 
 		return "admin/adminProfile";
 	}
-	
-	//Hiển thị trang cập nhật thông tin admin:
+
+	// Hiển thị trang cập nhật thông tin admin:
 	@RequestMapping("admin/adminEditProfile")
 	public String showadminEditProfile() {
 		return "admin/adminEditProfile";
 	}
-	//Hiển thị form chamge password admin:
+
+	// Hiển thị form chamge password admin:
 	@RequestMapping("admin/adminChangePassword")
 	public String showAdminChangePassword() {
 		return "admin/adminChangePassword";
@@ -145,12 +144,6 @@ public class adminController {
 		return "admin/addMaid";
 	}
 
-	// Hiển thị form thông tin người giúp việc:
-	@RequestMapping("admin/maidDetail")
-	public String showDetailMaidForm() {
-		return "admin/maidDetail";
-	}
-
 	// Hiển thị form update thông tin người giúp việc:
 	@RequestMapping("admin/updateMaid")
 	public String updateDetailMaidForm() {
@@ -166,9 +159,40 @@ public class adminController {
 		return "admin/customerManagement";
 	}
 
+	@RequestMapping("admin/blockCustomer/{id}")
+	public String blockCustomerAccount(@PathVariable("id") Integer id) {
+		CustomerEntity customer = customerService.getCustomerById(id);
+
+		if (customer != null) {
+			customer.getAccount().setStatus(false);
+			customerService.updateCustomer(customer);
+			System.out.println("==> Set maid account status to 'false' successfully!");
+		} else
+			System.out.println("Error: Set maid account status to 'false' unsuccessfully!");
+
+		return "redirect:/admin/customerManagement";
+	}
+
+	@RequestMapping("admin/activeCustomer/{id}")
+	public String activeCustomerAccount(@PathVariable("id") Integer id) {
+		CustomerEntity customer = customerService.getCustomerById(id);
+
+		if (customer != null) {
+			customer.getAccount().setStatus(true);
+			customerService.updateCustomer(customer);
+			System.out.println("==> Set maid account status to 'true' successfully!");
+		} else
+			System.out.println("Error: Set maid account status to 'true' unsuccessfully!");
+
+		return "redirect:/admin/customerManagement";
+	}
+
 	// Hiển thị form xem thông tin khách hàng:
-	@RequestMapping("admin/customerDetail")
-	public String showCustomerDetail() {
+	@RequestMapping("admin/customerDetail/{id}")
+	public String showCustomerDetail(Model model, @PathVariable("id") Integer id) {
+		CustomerEntity customer = customerService.getCustomerById(id);
+		model.addAttribute("customer", customer);
+		
 		return "admin/customerDetail";
 	}
 
@@ -177,7 +201,7 @@ public class adminController {
 	public String showServiceList(Model model) {
 		List<ServiceEntity> serviceList = maidServiceService.getListService();
 		model.addAttribute("serviceList", serviceList);
-		
+
 		return "admin/serviceManagement";
 	}
 
@@ -194,7 +218,7 @@ public class adminController {
 		List<CategoryEntity> categories = categoryService.getListCategory();
 		model.addAttribute("categories", categories);
 		System.out.println("==> Open an add service session");
-		
+
 		return "admin/addService";
 	}
 
@@ -209,32 +233,31 @@ public class adminController {
 	public String showBookingList() {
 		return "admin/bookingManagement";
 	}
-	
+
 	// Hiển thị danh sách maid để chọn:
-		@RequestMapping("admin/bookingMaidList")
-		public String showBookingMaidList() {
-			return "admin/bookingMaidList";
-		}
+	@RequestMapping("admin/bookingMaidList")
+	public String showBookingMaidList() {
+		return "admin/bookingMaidList";
+	}
 
 	// Hiển thị thông tin đặt lịch thuê:
 	@RequestMapping("admin/bookingDetail")
 	public String showBookingDetail() {
 		return "admin/bookingDetail";
 	}
-	
+
 	// Hiển thị danh sách maid để chọn:
 	@RequestMapping("admin/bookingMaidChecked")
 	public String showBookingMaidChecked() {
 		return "admin/bookingMaidChecked";
 	}
 
-
 	// Hiển thị danh sách hợp đồng:
 	@RequestMapping("admin/contractManagement")
 	public String showContractManagement(Model model) {
 		List<ContractEntity> contractList = contractService.getListContract();
 		model.addAttribute("contractList", contractList);
-		
+
 		return "admin/contractManagement";
 	}
 
@@ -320,9 +343,9 @@ public class adminController {
 			System.out.println("==> Login successfully!");
 			HttpSession session = request.getSession();
 			session.setAttribute("adminEmail", adminAcc.getEmail());
-			EmployeeEntity employee =  employeeService.getEmployeeByEmail(adminAcc.getEmail());
+			EmployeeEntity employee = employeeService.getEmployeeByEmail(adminAcc.getEmail());
 			session.setAttribute("employee", employee);
-			
+
 			return "admin/index";
 		} else {
 			System.out.println("Error: Login unsuccessfully!");
@@ -330,65 +353,66 @@ public class adminController {
 		}
 	}
 
-	//Xử lý thêm người giúp việc
+	// Xử lý thêm người giúp việc
 	@RequestMapping(value = "admin/addMaid", params = "add", method = RequestMethod.POST)
-	public String addMaid(HttpServletRequest request ,@ModelAttribute("maid") MaidEntity maid, 
-						BindingResult errors) throws ParseException {
-		
+	public String addMaid(HttpServletRequest request, @ModelAttribute("maid") MaidEntity maid, BindingResult errors)
+			throws ParseException {
+
 		Boolean isValidMaid = Boolean.TRUE;
-		
-		if(maid.getAccount().getEmail().isEmpty()) {
+
+		if (maid.getAccount().getEmail().isEmpty()) {
 			errors.rejectValue("account.email", "maid", "Tài khoản email không được để trống");
 			isValidMaid = Boolean.FALSE;
-		}else if(!accountService.isValidEmail(maid.getAccount().getEmail())) {
+		} else if (!accountService.isValidEmail(maid.getAccount().getEmail())) {
 			errors.rejectValue("account.email", "maid", "Tài khoản email nhập sai định dạng");
 			isValidMaid = Boolean.FALSE;
-		}else if(accountService.isExistEmail(maid.getAccount().getEmail())) {
-			errors.rejectValue("account.email", "maid", "Tài khoản email đã tồn tại trên hệ thống vui lòng chọn 1 email khác");
+		} else if (accountService.isExistEmail(maid.getAccount().getEmail())) {
+			errors.rejectValue("account.email", "maid",
+					"Tài khoản email đã tồn tại trên hệ thống vui lòng chọn 1 email khác");
 			isValidMaid = Boolean.FALSE;
 		}
-		
-		if(maid.getFullName().isEmpty()) {
+
+		if (maid.getFullName().isEmpty()) {
 			errors.rejectValue("fullName", "maid", "Tên người giúp việc không được để trống");
 			isValidMaid = Boolean.FALSE;
-		}else if(accountService.standardize(maid.getFullName()).length() > 30) {
+		} else if (accountService.standardize(maid.getFullName()).length() > 30) {
 			errors.rejectValue("fullName", "maid", "Tên người giúp việc không được dài quá 30 ký tự");
 			isValidMaid = Boolean.FALSE;
 		}
-		
-		if(maid.getSalary().isNaN()) {
+
+		if (maid.getSalary().isNaN()) {
 			errors.rejectValue("salary", "maid", "Giá trị nhập không hợp lệ");
 			isValidMaid = Boolean.FALSE;
 		}
-		
-		if(!maid.getPhoneNumber().isEmpty() && accountService.isValidPhoneNumber(maid.getPhoneNumber())) {
+
+		if (!maid.getPhoneNumber().isEmpty() && accountService.isValidPhoneNumber(maid.getPhoneNumber())) {
 			errors.rejectValue("phoneNumber", "maid", "Số điện thoại bạn nhập không đúng định dạng");
 			isValidMaid = Boolean.FALSE;
 		}
-		
-		if(isValidMaid == Boolean.FALSE) {
+
+		if (isValidMaid == Boolean.FALSE) {
 			System.out.println("Error: Add maid unsuccessfully! Reason: Maid info is not valid!!");
 			return "admin/addMaid";
 		}
-		
+
 		RoleEntity maidRole = roleService.getRoleById(2);
-		if(maidRole != null) {
-			//Tạo 1 Maid Account mới với email vừa nhập mật khẩu mặc định là 123
+		if (maidRole != null) {
+			// Tạo 1 Maid Account mới với email vừa nhập mật khẩu mặc định là 123
 			AccountEntity newMaidAcc = new AccountEntity();
-			
+
 			newMaidAcc.setEmail(maid.getAccount().getEmail());
 			newMaidAcc.setPassword(accountService.getHashPassword("123"));
 			newMaidAcc.setRole(maidRole);
 			newMaidAcc.setStatus(false);
-			
+
 			accountService.addAccount(newMaidAcc);
 			maid.setAccount(newMaidAcc);
 			System.out.println("==> Add new maid account successfully!");
-		}else {
+		} else {
 			System.out.println("Error: Add new maid account unsuccessfully!"
 					+ " Reason: RoleEntity with RoleId = 2 does not exist");
 		}
-		
+
 		try {
 			maid.setFullName(accountService.standardizeName(maid.getFullName()));
 			maid.setAddress(maid.getAddress());
@@ -396,48 +420,84 @@ public class adminController {
 			maid.setEmploymentType(maid.getEmploymentType());
 			maid.setPhoneNumber(maid.getPhoneNumber());
 			maid.setExperience(maid.getExperience());
-			
+
 			HttpSession session = request.getSession();
 			EmployeeEntity employee = (EmployeeEntity) session.getAttribute("employee");
 			maid.setEmployee(employee);
-			
+
 			maidService.addMaid(maid);
 			System.out.println("==> Add maid successfully!");
 		} catch (Exception e) {
 			System.out.println("Error: Add maid unsuccessfully!");
 		}
-		
-		
+
 		return "admin/addMaid";
 	}
-	
-	@RequestMapping(value = "admin/addService", params = "add" ,method = RequestMethod.POST)
-	public String addService(@ModelAttribute("service") ServiceEntity service, 
-			BindingResult errors) throws ParseException {
-		
+
+	@RequestMapping("admin/blockMaid/{id}")
+	public String blockMaidAccount(@PathVariable("id") Integer id) {
+		MaidEntity maid = maidService.getMaidById(id);
+
+		if (maid != null) {
+			maid.getAccount().setStatus(false);
+			maidService.updateMaid(maid);
+			System.out.println("==> Set maid account status to 'false' successfully!");
+		} else
+			System.out.println("Error: Set maid account status to 'false' unsuccessfully!");
+
+		return "redirect:/admin/maidManagement";
+	}
+
+	@RequestMapping("admin/activeMaid/{id}")
+	public String activeMaidAccount(@PathVariable("id") Integer id) {
+		MaidEntity maid = maidService.getMaidById(id);
+
+		if (maid != null) {
+			maid.getAccount().setStatus(true);
+			maidService.updateMaid(maid);
+			System.out.println("==> Set maid account status to 'true' successfully!");
+		} else
+			System.out.println("Error: Set maid account status to 'true' unsuccessfully!");
+
+		// Redirect the user back to the maidManagement page
+		return "redirect:/admin/maidManagement";
+	}
+
+	// Hiển thị form thông tin người giúp việc:
+	@RequestMapping("admin/maidDetail/{id}")
+	public String showDetailMaidForm(Model model, @PathVariable("id") Integer id) {
+		MaidEntity maid = maidService.getMaidById(id);
+		model.addAttribute("maid", maid);
+		return "admin/maidDetail";
+	}
+
+	@RequestMapping(value = "admin/addService", params = "add", method = RequestMethod.POST)
+	public String addService(@ModelAttribute("service") ServiceEntity service, BindingResult errors)
+			throws ParseException {
+
 		Boolean isValidService = Boolean.TRUE;
-		
-		if(service.getName().isEmpty()) {
+
+		if (service.getName().isEmpty()) {
 			errors.rejectValue("name", "service", "Tên dịch vụ không được để trống");
 			isValidService = Boolean.FALSE;
 		}
-		
-		if(service.getServicePrices().get(0).getPrice() <= 0) {
+
+		if (service.getServicePrices().get(0).getPrice() <= 0) {
 			errors.rejectValue("servicePrices.price", "service", "Giá tiền dịch vụ không thể <= 0");
 			isValidService = Boolean.FALSE;
 		}
-		
-		if(service.getMaidQuantity() <= 0) {
+
+		if (service.getMaidQuantity() <= 0) {
 			errors.rejectValue("maidQuantity", "service", "Số lượng người giúp việc không thể <= 0");
 			isValidService = Boolean.FALSE;
 		}
-		
-		if(service.getTime() <= 0) {
+
+		if (service.getTime() <= 0) {
 			errors.rejectValue("time", "service", "Thời gian của dịch vụ không thể <= 0");
 			isValidService = Boolean.FALSE;
 		}
-		
-		if(isValidService == Boolean.FALSE) {
+
+		if (isValidService == Boolean.FALSE) {
 			System.out.println("Error: Add new service unsuccessfully! Reason: Service info is not valid!");
 			return "admin/addService";
 		}
@@ -448,29 +508,28 @@ public class adminController {
 			service.setCategory(categoryService.getCategoryById(service.getCategory().getId()));
 			service.setTime(service.getTime());
 			service.setDescription(service.getDescription());
-			
+
 			maidServiceService.addService(service);
 			System.out.println("==> Add new service successfully!");
-			
+
 			addServicePriceForService(service);
 		} catch (Exception e) {
 			System.out.println("Error: Add new service unsuccessfully!");
 		}
-		
-		
+
 		return "admin/serviceManagement";
 	}
-	
+
 	private void addServicePriceForService(ServiceEntity service) {
-	    ServicePriceEntity servicePrice = new ServicePriceEntity();
-	    
-	    servicePrice.setPrice(service.getServicePrices().get(0).getPrice());
-	    servicePrice.setService(service);
-	    
-	    servicePriceService.addServicePrice(servicePrice);
-	    System.out.println("==> Add new service price successfully!");
+		ServicePriceEntity servicePrice = new ServicePriceEntity();
+
+		servicePrice.setPrice(service.getServicePrices().get(0).getPrice());
+		servicePrice.setService(service);
+
+		servicePriceService.addServicePrice(servicePrice);
+		System.out.println("==> Add new service price successfully!");
 	}
-	
+
 	@RequestMapping(value = "admin/adminForgotPassword", method = RequestMethod.POST)
 	public String adminForgotPassword(HttpServletRequest request) {
 		String email = request.getParameter("email");
@@ -483,7 +542,6 @@ public class adminController {
 	public String adminIndex() {
 		return "admin/index";
 	}
-	
 
 	// Test sort
 	@RequestMapping("admin/maid")

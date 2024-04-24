@@ -14,4 +14,5 @@ public interface CustomerService {
 	public List<CustomerEntity> getListCustomer();
 	public void addCustomer(CustomerEntity customer);
 	public void updateCustomer(CustomerEntity customer);
+	public CustomerEntity getCustomerById(Integer id);
 }

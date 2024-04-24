@@ -12,5 +12,6 @@ import ptithcm.entity.MaidEntity;
 public interface MaidService {
 	public List<MaidEntity> getListMaid();
 	public void addMaid(MaidEntity maid);
+	public void updateMaid(MaidEntity maid);
 	public MaidEntity getMaidById(Integer id);
 }

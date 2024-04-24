@@ -30,36 +30,26 @@ public class CustomerDAOImpl implements CustomerDAO{
 
 	@Override
 	public void addCustomer(CustomerEntity customer) {
-		Session session = factory.openSession();
-		Transaction t = session.beginTransaction();
-		
-		try {
-			session.save(customer);
-			t.commit();
-		}catch (Exception e) {
-			t.rollback();
-			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
-		}finally {
-			session.close();
-		}
+		Session session = factory.getCurrentSession();
+		session.save(customer);
 		
 	}
 
 	@Override
 	public void updateCustomer(CustomerEntity customer) {
-		Session session = factory.openSession();
-		Transaction t = session.beginTransaction();
+		Session session = factory.getCurrentSession();
+		session.update(customer);
 		
-		try {
-			session.update(customer);
-			t.commit();
-		}catch (Exception e) {
-			t.rollback();
-			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		
+	}
+
+	@Override
+	public CustomerEntity getCustomerById(Integer id) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM CustomerEntity WHERE id = :id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		CustomerEntity customer = (CustomerEntity) query.uniqueResult();
+		return customer;
 	}
 
 }
