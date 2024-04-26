@@ -121,5 +121,23 @@ public class AccountDaoImpl implements AccountDAO{
 		}
 		return (result != null)? true : false;
 	}
+
+	@Override
+	public AccountEntity getAccountByEmail(String email) {
+		AccountEntity account = null;
+		Session session = factory.getCurrentSession();
+		String hql = "FROM AccountEntity WHERE email = :email";
+		try {
+			Query query = session.createQuery(hql);
+			query.setParameter("email", email);
+			
+			account = (AccountEntity) query.uniqueResult();
+			
+		}catch (Exception e) {
+			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
+		}
+		
+		return account;
+	}
 	
 }

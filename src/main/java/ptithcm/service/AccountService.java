@@ -15,6 +15,7 @@ public interface AccountService {
 	public boolean getStatusFromAccount(String email);
 	public Integer getRoleIdFromAccount(String email);
 	public boolean isExistEmail(String email);
+	public AccountEntity getAccountByEmail(String email);
 	
 	public Boolean isValidEmail(String email);
 	public String standardize(String str);

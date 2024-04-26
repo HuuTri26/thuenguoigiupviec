@@ -10,4 +10,5 @@ import ptithcm.entity.EmployeeEntity;
 @Transactional
 public interface EmployeeService {
 	public EmployeeEntity getEmployeeByEmail(String email);
+	public void updateEmployee(EmployeeEntity employee);
 }

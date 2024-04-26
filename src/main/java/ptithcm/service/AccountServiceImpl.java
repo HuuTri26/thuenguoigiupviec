@@ -134,5 +134,10 @@ public class AccountServiceImpl implements AccountService{
 
 		return otp;
 	}
+
+	@Override
+	public AccountEntity getAccountByEmail(String email) {
+		return AccountDAO.getAccountByEmail(email);
+	}
 	
 }

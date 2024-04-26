@@ -99,15 +99,59 @@ public class adminController {
 
 		model.addAttribute("employeeInfo", employeeInfo);
 
-		System.out.println(adminEmail);
+//		System.out.println(adminEmail);
 
 		return "admin/adminProfile";
 	}
 
 	// Hiển thị trang cập nhật thông tin admin:
 	@RequestMapping("admin/adminEditProfile")
-	public String showadminEditProfile() {
+	public String showadminEditProfile(HttpServletRequest request ,Model model) {
+		HttpSession session = request.getSession();
+		String adminEmail = (String) session.getAttribute("adminEmail");
+		model.addAttribute("empEditContent", employeeService.getEmployeeByEmail(adminEmail));
+		model.addAttribute("employeeInfo", new EmployeeEntity());
+		
+		System.out.println("==> Open edit admin profile session");
+		
 		return "admin/adminEditProfile";
+	}
+	
+	@RequestMapping(value = "admin/adminEditProfile", method = RequestMethod.POST)
+	public String editAdminProfile(@ModelAttribute("employeeInfo") EmployeeEntity employeeInfo, BindingResult errors) {
+		
+		Boolean isValidInfo = Boolean.TRUE;
+		
+		if(employeeInfo.getFullName().isEmpty()) {
+			errors.rejectValue("fullName", "employeeInfo", "Tên người dùng không được để trống!");
+			isValidInfo = Boolean.FALSE;
+		}else if(employeeInfo.getPhoneNumber().isEmpty()) {
+			errors.rejectValue("phoneNumber", "employeeInfo", "Số điện thoại không được để trống!");
+			isValidInfo = Boolean.FALSE;
+		}
+		
+		if(accountService.standardize(employeeInfo.getFullName()).length() > 30) {
+			errors.rejectValue("fullName", "employeeInfo", "Tên người dùng không được dài quá 30 ký tự!");
+			isValidInfo = Boolean.FALSE;
+		}else if(!accountService.isValidPhoneNumber(employeeInfo.getPhoneNumber())) {
+			errors.rejectValue("phoneNumber", "employeeInfo", "Số điện thoại nhập không hợp lệ, vui lòng nhập lại!");
+			isValidInfo = Boolean.FALSE;
+		}
+		
+		if(isValidInfo) {
+			employeeInfo.setFullName(accountService.standardizeName(employeeInfo.getFullName()));
+			employeeInfo.setPhoneNumber(employeeInfo.getPhoneNumber());
+			employeeInfo.setAddress(employeeInfo.getAddress());
+			
+			AccountEntity account = accountService.getAccountByEmail(employeeInfo.getAccount().getEmail());
+			employeeInfo.setAccount(account);
+			
+			employeeService.updateEmployee(employeeInfo);
+			System.out.println("==> Employee info updated successfully!");
+		}else
+			System.out.println("Error: Employee info updated unsuccessfully!");
+		
+		return "admin/index";
 	}
 
 	// Hiển thị form chamge password admin:

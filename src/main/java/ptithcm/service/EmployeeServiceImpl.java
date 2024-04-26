@@ -20,4 +20,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return EmployeeDAO.getEmployeeByEmail(email);
 	}
 
+	@Override
+	public void updateEmployee(EmployeeEntity employee) {
+		EmployeeDAO.updateEmployee(employee);
+		
+	}
+
 }
