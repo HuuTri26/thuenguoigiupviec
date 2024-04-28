@@ -206,6 +206,15 @@
 										</div>
 									</div>
 								</div>
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Id</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault01"
+										value="${empEditContent.id }" path="id"
+										readonly="true" />
+								</div>
+
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Họ
 										tên</label>
@@ -236,7 +245,7 @@
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Email</label>
-									<form:input type="email" class="form-control"
+									<form:input type="text" class="form-control"
 										id="validationDefault01"
 										value="${empEditContent.account.email }" path="account.email"
 										readonly="true" />

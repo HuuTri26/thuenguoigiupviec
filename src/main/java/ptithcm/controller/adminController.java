@@ -106,58 +106,119 @@ public class adminController {
 
 	// Hiển thị trang cập nhật thông tin admin:
 	@RequestMapping("admin/adminEditProfile")
-	public String showadminEditProfile(HttpServletRequest request ,Model model) {
+	public String showadminEditProfile(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String adminEmail = (String) session.getAttribute("adminEmail");
 		model.addAttribute("empEditContent", employeeService.getEmployeeByEmail(adminEmail));
 		model.addAttribute("employeeInfo", new EmployeeEntity());
-		
+
 		System.out.println("==> Open edit admin profile session");
-		
+
 		return "admin/adminEditProfile";
 	}
-	
+
 	@RequestMapping(value = "admin/adminEditProfile", method = RequestMethod.POST)
 	public String editAdminProfile(@ModelAttribute("employeeInfo") EmployeeEntity employeeInfo, BindingResult errors) {
-		
 		Boolean isValidInfo = Boolean.TRUE;
-		
-		if(employeeInfo.getFullName().isEmpty()) {
+
+		if (employeeInfo.getFullName().isEmpty()) {
 			errors.rejectValue("fullName", "employeeInfo", "Tên người dùng không được để trống!");
 			isValidInfo = Boolean.FALSE;
-		}else if(employeeInfo.getPhoneNumber().isEmpty()) {
+		} else if (employeeInfo.getPhoneNumber().isEmpty()) {
 			errors.rejectValue("phoneNumber", "employeeInfo", "Số điện thoại không được để trống!");
 			isValidInfo = Boolean.FALSE;
 		}
-		
-		if(accountService.standardize(employeeInfo.getFullName()).length() > 30) {
+
+		if (accountService.standardize(employeeInfo.getFullName()).length() > 30) {
 			errors.rejectValue("fullName", "employeeInfo", "Tên người dùng không được dài quá 30 ký tự!");
 			isValidInfo = Boolean.FALSE;
-		}else if(!accountService.isValidPhoneNumber(employeeInfo.getPhoneNumber())) {
+		} else if (!accountService.isValidPhoneNumber(employeeInfo.getPhoneNumber())) {
 			errors.rejectValue("phoneNumber", "employeeInfo", "Số điện thoại nhập không hợp lệ, vui lòng nhập lại!");
 			isValidInfo = Boolean.FALSE;
 		}
-		
-		if(isValidInfo) {
+
+		if (!isValidInfo) {
+			System.out.println("Error: Employee info updated unsuccessfully!");
+			return "redirect:/admin/adminEditProfile.htm";
+		}
+
+		try {
+			employeeInfo.setId(employeeInfo.getId());
 			employeeInfo.setFullName(accountService.standardizeName(employeeInfo.getFullName()));
 			employeeInfo.setPhoneNumber(employeeInfo.getPhoneNumber());
 			employeeInfo.setAddress(employeeInfo.getAddress());
-			
+
 			AccountEntity account = accountService.getAccountByEmail(employeeInfo.getAccount().getEmail());
 			employeeInfo.setAccount(account);
-			
+
 			employeeService.updateEmployee(employeeInfo);
 			System.out.println("==> Employee info updated successfully!");
-		}else
+
+		} catch (Exception e) {
 			System.out.println("Error: Employee info updated unsuccessfully!");
-		
+		}
 		return "admin/index";
 	}
 
 	// Hiển thị form chamge password admin:
 	@RequestMapping("admin/adminChangePassword")
-	public String showAdminChangePassword() {
+	public String showAdminChangePassword(Model model) {
+		model.addAttribute("adminAcc", new AccountEntity());
+		System.out.println("==> Open an admin change password session");
 		return "admin/adminChangePassword";
+	}
+	
+	@RequestMapping(value = "admin/adminChangePassword", method = RequestMethod.POST)
+	public String adminChangePassword(HttpServletRequest request, @ModelAttribute("employeeAcc") AccountEntity adminAcc,
+			BindingResult errors) {
+
+		Boolean isValidPass = Boolean.TRUE;
+
+		HttpSession session = request.getSession();
+
+		String adminEmail = (String) session.getAttribute("adminEmail");
+		String newPass = request.getParameter("new-password");
+		String reEnterNewPass = request.getParameter("re-enter-new-password");
+
+		if (adminAcc.getPassword().isEmpty()) {
+			errors.rejectValue("employeeAcc", "password", "Vui lòng nhập mật khẩu hiện tại!");
+			isValidPass = Boolean.FALSE;
+		} else if (newPass.isEmpty()) {
+			errors.rejectValue("employeeAcc", "password", "Vui lòng nhập mật khẩu mới!");
+			isValidPass = Boolean.FALSE;
+		} else if (reEnterNewPass.isEmpty()) {
+			errors.rejectValue("employeeAcc", "password", "Vui lòng nhập lại mật khẩu mới!");
+			isValidPass = Boolean.FALSE;
+		}
+
+		if(!accountService.isExistAccount(adminEmail, accountService.getHashPassword(adminAcc.getPassword()))) {
+			errors.rejectValue("employeeAcc", "password", "Mật khẩu hiện tại nhập ko đúng, vui lòng nhập lại!");
+			isValidPass = Boolean.FALSE;
+		}else if(!newPass.equals(reEnterNewPass)) {
+			errors.rejectValue("employeeAcc", "password", "Mật khẩu bạn nhập lại không trùng khớp, vui lòng nhập lại!");
+			isValidPass = Boolean.FALSE;
+		}
+		
+		if(isValidPass) {
+			try {
+				RoleEntity adminRole = roleService.getRoleById(1);
+				if(adminRole != null) {
+					adminAcc.setEmail(adminEmail);
+					adminAcc.setPassword(accountService.getHashPassword(newPass));
+					adminAcc.setRole(adminRole);
+					adminAcc.setStatus(true);
+				}else
+					System.out.println("Error: RoleEntity with RoleId = 1 does not exist!");
+				accountService.updateAccount(adminAcc);
+				System.out.println("==> Admin account password updated successfully!");
+			} catch (Exception e) {
+				System.out.println("Error: Admin account password updated unsuccessfully!");
+			}
+		}else {
+			System.out.println("Error: Admin account password updated unsuccessfully!");
+			return "redirect:/admin/adminChangePassword.htm";
+		}
+		return "admin/index";
 	}
 
 	// Hiển thị danh sách người giúp việc:
@@ -236,7 +297,7 @@ public class adminController {
 	public String showCustomerDetail(Model model, @PathVariable("id") Integer id) {
 		CustomerEntity customer = customerService.getCustomerById(id);
 		model.addAttribute("customer", customer);
-		
+
 		return "admin/customerDetail";
 	}
 
@@ -371,7 +432,7 @@ public class adminController {
 
 		if (!accountService.isExistAccount(adminAcc.getEmail(),
 				accountService.getHashPassword(adminAcc.getPassword()))) {
-//			System.out.println(accountService.getHashPassword(adminAcc.getPassword()));
+			System.out.println(accountService.getHashPassword(adminAcc.getPassword()));
 			errors.rejectValue("email", "adminAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "adminAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;

@@ -30,10 +30,10 @@ public class EmployeeEntity {
 	@Column(name = "PhoneNumber")
 	private String phoneNumber;
 	
-	@Column(name = "Address")
+	@Column(name = "Address", nullable = true)
 	private String address;
 	
-	@Column(name = "Image")
+	@Column(name = "Image", nullable = true)
 	private String image;
 	
 	@OneToOne

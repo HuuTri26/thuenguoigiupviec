@@ -37,20 +37,15 @@ public class AccountDaoImpl implements AccountDAO{
 
 	@Override
 	public void updateAccount(AccountEntity acc) {
-		Session session = factory.openSession();
-		Transaction t = session.beginTransaction();
-		
-		try {
-			session.update(acc);
-			t.commit();
-		}catch (Exception e) {
-			t.rollback();
-			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		
+	    Session session = factory.getCurrentSession();
+	    try {
+	        session.merge(acc);
+	    } catch (Exception e) {
+	        System.out.println("Error: " + e.toString() + "\nStacktrace:");
+	        e.printStackTrace();
+	    }
 	}
+
 
 	@Override
 	public boolean isExistAccount(String email, String password) {

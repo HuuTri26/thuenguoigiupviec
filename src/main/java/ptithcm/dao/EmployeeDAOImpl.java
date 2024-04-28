@@ -37,18 +37,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public void updateEmployee(EmployeeEntity employee) {
-		Session session = factory.openSession();
-		Transaction t = session.beginTransaction();
-		
-		try {
-			session.update(employee);
-			t.commit();
-		}catch (Exception e) {
-			t.rollback();
-			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
-		}finally {
-			session.close();
-		}
+		Session session = factory.getCurrentSession();
+		session.merge(employee);
 	}
 	
 }

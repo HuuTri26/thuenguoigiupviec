@@ -225,15 +225,17 @@
 
 							<div>
 								<!-- Change Password Form -->
-								<form>
+								<form:form action="adminChangePassword.htm" method="post"
+									modelAttribute="adminAcc">
 
 									<div class="row mb-3">
 										<label for="currentPassword"
 											class="col-md-4 col-lg-3 col-form-label">Mật khẩu
 											hiện tại</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="password" type="password" class="form-control"
-												id="currentPassword">
+											<form:input path="password" type="password"
+												class="form-control" id="currentPassword" />
+											<form:errors path="password" />
 										</div>
 									</div>
 
@@ -241,8 +243,9 @@
 										<label for="newPassword"
 											class="col-md-4 col-lg-3 col-form-label">Mật khẩu mới</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="newpassword" type="password"
+											<input name="new-password" type="password"
 												class="form-control" id="newPassword">
+											<form:errors path="password" />
 										</div>
 									</div>
 									<div class="row mb-3">
@@ -250,8 +253,9 @@
 											class="col-md-4 col-lg-3 col-form-label">Nhập lại mật
 											khẩu</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="renewpassword" type="password"
+											<input name="re-enter-new-password" type="password"
 												class="form-control" id="renewPassword">
+											<form:errors path="password" />
 										</div>
 									</div>
 
@@ -259,7 +263,7 @@
 										<button type="submit" class="btn btn-primary">Đổi mật
 											khẩu</button>
 									</div>
-								</form>
+								</form:form>
 								<!-- End Change Password Form -->
 
 							</div>
