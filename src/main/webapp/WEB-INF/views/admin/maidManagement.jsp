@@ -52,7 +52,9 @@
 <!-- Template Main CSS File -->
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
-
+<!-- 	font-awersome-5 -->
+<script src="https://kit.fontawesome.com/7e7516ee77.js"
+	crossorigin="anonymous"></script>
 <!-- 	Phân trang -->
 <!-- Thêm các file CSS và JS của DataTables -->
 <link rel="stylesheet" type="text/css"
@@ -297,12 +299,12 @@
 
 											</td>
 
-											<td scope="col">
-												<a href="maidDetail/${maid.id }.htm" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-												<a href="blockMaid/${maid.id }.htm"><button>Block</button></a>
-												<a href="activeMaid/${maid.id }.htm"><button>Active</button></a>
-
-												<%-- 	<button name="active" onclick="confirmActive(${maid.id})">Active</button> --%>
+											<td scope="col"><a href="maidDetail/${maid.id }.htm"
+												class="btn btn-primary"><i class="bi bi-eye"></i></a> <a
+												href="blockMaid/${maid.id }.htm" class="btn btn-danger "><i
+													class="fa-solid fa-ban"></i></a> <a
+												href="activeMaid/${maid.id }.htm" class="btn btn-primary "><i
+													class="fa-solid fa-check"></i></a> <%-- 	<button name="active" onclick="confirmActive(${maid.id})">Active</button> --%>
 											</td>
 										</tr>
 									</c:forEach>

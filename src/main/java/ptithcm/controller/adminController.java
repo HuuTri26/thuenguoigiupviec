@@ -170,7 +170,7 @@ public class adminController {
 		} else
 			System.out.println("Error: Set maid account status to 'false' unsuccessfully!");
 
-		return "redirect:/admin/customerManagement";
+		return "redirect:/admin/customerManagement.htm";
 	}
 
 	@RequestMapping("admin/activeCustomer/{id}")
@@ -184,7 +184,7 @@ public class adminController {
 		} else
 			System.out.println("Error: Set maid account status to 'true' unsuccessfully!");
 
-		return "redirect:/admin/customerManagement";
+		return "redirect:/admin/customerManagement.htm";
 	}
 
 	// Hiển thị form xem thông tin khách hàng:
@@ -259,6 +259,12 @@ public class adminController {
 		model.addAttribute("contractList", contractList);
 
 		return "admin/contractManagement";
+	}
+	
+	//Thêm thông tin hợp đồng:
+	@RequestMapping("admin/addContract")
+	public String showAddContractForm() {
+		return "admin/addContract";
 	}
 
 	// Hiển thị thông tin hợp đồng:
@@ -445,7 +451,7 @@ public class adminController {
 		} else
 			System.out.println("Error: Set maid account status to 'false' unsuccessfully!");
 
-		return "redirect:/admin/maidManagement";
+		return "redirect:/admin/maidManagement.htm";
 	}
 
 	@RequestMapping("admin/activeMaid/{id}")
@@ -460,7 +466,7 @@ public class adminController {
 			System.out.println("Error: Set maid account status to 'true' unsuccessfully!");
 
 		// Redirect the user back to the maidManagement page
-		return "redirect:/admin/maidManagement";
+		return "redirect:/admin/maidManagement.htm";
 	}
 
 	// Hiển thị form thông tin người giúp việc:
@@ -536,6 +542,18 @@ public class adminController {
 		System.out.println(email);
 		return "admin/adminForgotPassword";
 	}
+	
+	// Trang nhập OTP quên mật khẩu:
+		@RequestMapping("admin/forgotPasswordOTP")
+		public String showForgotPasswordOTP() {
+			return "admin/forgotPasswordOTP";
+		}
+		
+		// Trang nhập đặt lại quên mật khẩu:
+		@RequestMapping("admin/changeForgotPassword")
+		public String showChangeForgotPassword() {
+			return "admin/changeForgotPassword";
+		}
 
 	// Trang dashboard của admin
 	@RequestMapping("admin/index")

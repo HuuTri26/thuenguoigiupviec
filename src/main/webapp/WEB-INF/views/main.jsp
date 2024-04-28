@@ -180,7 +180,7 @@
         <div class="row">
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up">
             <div class="icon-box icon-box-pink">
-              <div class="icon"><i class="bx bx-b"></i></div>
+              <div class="icon"><i class="bx bx-file"></i></div>
               <h4 class="title"><a href="">Cleaning</a></h4>
               <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate</p>
             </div>
@@ -196,7 +196,7 @@
 
           <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="fade-up" data-aos-delay="200">
             <div class="icon-box icon-box-green">
-              <div class="icon"><i class="bx bx-bucket"></i></div>
+              <div class="icon"><i class="bx bx-world"></i></div>
               <h4 class="title"><a href="">Washing</a></h4>
               <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim</p>
             </div>

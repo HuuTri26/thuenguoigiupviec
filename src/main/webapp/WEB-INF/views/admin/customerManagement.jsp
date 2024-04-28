@@ -54,6 +54,9 @@
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
 
+
+<script src="https://kit.fontawesome.com/7e7516ee77.js"
+	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -255,12 +258,14 @@
 												id="accountStatus-${customer.id}">
 
 												${customer.account.status ? 'Hoạt động' : 'Bị chặn'}</td>
-											<td scope="col">
-												<a href="customerDetail/${customer.id }.htm" class="btn btn-primary "><i class="bi bi-eye"></i></a>
-												<a href="blockCustomer/${customer.id }.htm"><button>Block</button></a>
-												<a href="activeCustomer/${customer.id }.htm"><button>Active</button></a>
-												
-											</td>
+											<td scope="col"><a
+												href="customerDetail/${customer.id }.htm"
+												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
+												href="blockCustomer/${customer.id }.htm"
+												class="btn btn-danger "><i class="fa-solid fa-ban"></i></a>
+												<a href="activeCustomer/${customer.id }.htm"
+												class="btn btn-primary "><i
+													class="fa-solid fa-check"></i></a></td>
 
 										</tr>
 
