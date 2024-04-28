@@ -206,9 +206,9 @@
 												class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
 												<img
-													src="<c:url value='/resources/admin/assets/img/${employeeInfo.image }'/>"
+													src="<c:url value='/resources/admin/assets/img/${employee.image }'/>"
 													alt="Profile" class="rounded-circle">
-												<h2>${employeeInfo.fullName }</h2>
+												<h2>${employee.fullName }</h2>
 												<h3>Admin</h3>
 												<!-- <div class="social-links mt-2">
                   <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
@@ -226,7 +226,7 @@
 							<div>
 								<!-- Change Password Form -->
 								<form:form action="adminChangePassword.htm" method="post"
-									modelAttribute="adminAcc">
+									modelAttribute="adminPass">
 
 									<div class="row mb-3">
 										<label for="currentPassword"

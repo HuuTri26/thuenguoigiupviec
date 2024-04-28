@@ -207,13 +207,13 @@
 									</div>
 								</div>
 
-								<div class="col-md-6">
+								<%-- <div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Id</label>
 									<form:input type="text" class="form-control"
 										id="validationDefault01"
 										value="${empEditContent.id }" path="id"
 										readonly="true" />
-								</div>
+								</div> --%>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Họ

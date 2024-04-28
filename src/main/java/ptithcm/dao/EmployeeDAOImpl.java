@@ -38,7 +38,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public void updateEmployee(EmployeeEntity employee) {
 		Session session = factory.getCurrentSession();
-		session.merge(employee);
+		session.update(employee);
 	}
 	
 }
