@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import org.apache.tomcat.util.log.UserDataHelper.Mode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
+import ptithcm.bean.Mailer;
 import ptithcm.entity.AccountEntity;
 import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.ContractEntity;
@@ -77,6 +79,9 @@ public class adminController {
 	@Autowired
 	ContractService contractService;
 
+	@Autowired
+	Mailer mailer;
+
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
 	public String showLoginForm(Model model) {
@@ -84,10 +89,191 @@ public class adminController {
 		return "admin/adminLogin";
 	}
 
+	// Xử lý đăng nhập cho admin
+	@RequestMapping(value = "admin/adminLogin", method = RequestMethod.POST)
+	public String adminLogin(ModelMap model, HttpServletRequest request,
+			@ModelAttribute("adminAcc") AccountEntity adminAcc, BindingResult errors) {
+
+//				// Kiểm tra thông tin đăng nhập
+//				String userName = request.getParameter("userName");
+//				String password = request.getParameter("password");
+//				if (userName.equals("admin") && password.equals("123")) {
+//					// Đăng nhập thành công
+//					return "admin/index"; // Chuyển hướng đến trang dashboard của admin
+//				} else {
+//					// Đăng nhập không thành công
+//					request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
+//					return "admin/adminLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
+//				}
+
+		Boolean permission = Boolean.TRUE;
+
+		if (adminAcc.getEmail().isEmpty()) {
+			errors.rejectValue("email", "adminAcc", "Xin vui lòng nhập username hoặc email!");
+			return "admin/adminLogin";
+		} else if (adminAcc.getPassword().isEmpty()) {
+			errors.rejectValue("password", "adminAcc", "Xin vui lòng nhập mật khẩu!");
+			return "admin/adminLogin";
+		}
+
+		if (!accountService.isExistAccount(adminAcc.getEmail(),
+				accountService.getHashPassword(adminAcc.getPassword()))) {
+			System.out.println(accountService.getHashPassword(adminAcc.getPassword()));
+			errors.rejectValue("email", "adminAcc", "Tài khoản không tồn tại");
+			errors.rejectValue("password", "adminAcc", "Hoặc mật khẩu bạn nhập không đúng");
+			permission = Boolean.FALSE;
+		} else if (!accountService.getStatusFromAccount(adminAcc.getEmail())) {
+			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn đã bị khóa");
+			permission = Boolean.FALSE;
+		} else if (accountService.getRoleIdFromAccount(adminAcc.getEmail()) != 1) {
+			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
+			permission = Boolean.FALSE;
+		}
+
+		if (permission) {
+			System.out.println("==> Login successfully!");
+			HttpSession session = request.getSession();
+
+			// Tạo adminAccount dùng cho cả session
+			RoleEntity adminRole = roleService.getRoleById(1);
+			adminAcc.setRole(adminRole);
+			adminAcc.setStatus(true);
+			session.setAttribute("adminAcc", adminAcc);
+			System.out.println("==> Session's memories: 'adminAcc' has been allocated");
+
+			// Tạo employee dùng cho cả session
+			EmployeeEntity employee = employeeService.getEmployeeByEmail(adminAcc.getEmail());
+			session.setAttribute("employee", employee);
+			System.out.println("==> Session's memories: 'employee' has been allocated");
+
+			return "admin/index";
+		} else {
+			System.out.println("Error: Login unsuccessfully!");
+			return "admin/adminLogin";
+		}
+	}
+
+	// Đăng xuất:
+	@RequestMapping("admin/logout")
+	public String Logout(HttpServletRequest request, SessionStatus sessionStatus) {
+		request.getSession().invalidate(); // Giải phóng vùng nhớ của session
+		System.out.println("==> Invalidate the session");
+
+		sessionStatus.setComplete(); // Giải phóng vùng nhớ của các model attribute
+		System.out.println("==> Clear model attributes ");
+
+		System.out.println("==> Logout");
+		return "redirect:/";
+	}
+
 	// Trang quên mật khẩu cho admin:
 	@RequestMapping("admin/adminForgotPassword")
-	public String showForgotPasswordForm() {
+	public String showForgotPasswordForm(Model model) {
+		model.addAttribute("adminAcc", new AccountEntity());
+		
 		return "admin/adminForgotPassword";
+	}
+
+	@RequestMapping(value = "admin/adminForgotPassword", method = RequestMethod.POST)
+	public String adminForgotPassword(HttpServletRequest request, @ModelAttribute("adminAcc") AccountEntity adminAcc,
+			BindingResult errors) {
+		
+		Boolean continueVerify = Boolean.TRUE;
+		
+		if(adminAcc.getEmail().isEmpty()) {
+			errors.rejectValue("email", "adminAcc", "Vui lòng nhập email mà bạn thiết lập làm tài khoản!");
+			continueVerify = Boolean.FALSE;
+		}else if(!accountService.isValidEmail(adminAcc.getEmail())) {
+			errors.rejectValue("email", "adminAcc", "Email mà bạn vừa nhập không hợp lệ, vui lòng nhập lại!");
+			continueVerify = Boolean.FALSE;
+		}else if(!accountService.isExistEmail(adminAcc.getEmail())) {
+			errors.rejectValue("email", "adminAcc", "Email mà bạn vừa nhập không tồn tại trong hệ thống, vui lòng kiểm tra lại!");
+			continueVerify = Boolean.FALSE;
+		}
+		
+		if(continueVerify == Boolean.TRUE) {
+			HttpSession session = request.getSession();
+			String otp = accountService.generateOTP();
+			session.setAttribute("otp", otp);
+			session.setAttribute("email", adminAcc.getEmail());
+			mailer.sendMailAsync("DichVuQuanLyMaid", adminAcc.getEmail(), "OTP Forgot Password", "Mã OTP của bạn là: " + otp);
+			return "admin/forgotPasswordOTP";
+		}else
+			return "admin/adminForgotPassword";
+	}
+
+	// Trang nhập OTP quên mật khẩu:
+	@RequestMapping("admin/forgotPasswordOTP")
+	public String showForgotPasswordOTP() {
+		return "admin/forgotPasswordOTP";
+	}
+	
+	@RequestMapping(value = "admin/forgotPasswordOTP", params = "verify", method = RequestMethod.GET)
+	public String verifyForgotPassOTP(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+
+		String a = request.getParameter("a");
+		String b = request.getParameter("b");
+		String c = request.getParameter("c");
+		String d = request.getParameter("d");
+		String e = request.getParameter("e");
+		String f = request.getParameter("f");
+		
+		String otp = session.getAttribute("otp").toString();
+		String otpInput = a + b + c + d + e + f;
+		
+		if(otp.equals(otpInput)) {
+			return "admin/changeForgotPassword";
+		}else {
+			model.addAttribute("message", "Mã OTP bạn nhập không đúng vui lòng đúng vui lòng nhập lại!");
+			return "admin/ForgotPasswordOTP";
+		}
+	}
+
+	// Trang nhập đặt lại quên mật khẩu:
+	@RequestMapping("admin/changeForgotPassword")
+	public String showChangeForgotPassword() {
+		return "admin/changeForgotPassword";
+	}
+	
+	@RequestMapping(value = "admin/changeForgotPassword", method = RequestMethod.POST)
+	public String changeForgotPassword(HttpServletRequest request, Model model, SessionStatus sessionStatus) {
+		
+		Boolean isValidPass = Boolean.TRUE;
+		HttpSession session = request.getSession();
+		
+		String email = (String) session.getAttribute("email");
+		AccountEntity adminAcc = accountService.getAccountByEmail(email);
+		String newPass = request.getParameter("new-password");
+		String reEnterNewPass = request.getParameter("re-enter-new-password");
+		
+		if(newPass.isEmpty()) {
+			model.addAttribute("message1", "Vui lòng nhập mật khẩu mới!");
+			isValidPass = Boolean.FALSE;
+		}else if(reEnterNewPass.isEmpty()) {
+			model.addAttribute("message2", "Vui lòng nhập lại mật khẩu mới!");
+			isValidPass = Boolean.FALSE;
+		}else if(!newPass.equals(reEnterNewPass)) {
+			model.addAttribute("message2", "Nhập lại mật khẩu không trùng khớp vui lòng nhập lại!");
+			isValidPass = Boolean.FALSE;
+		}
+		
+		if(isValidPass) {
+			adminAcc.setPassword(accountService.getHashPassword(newPass));
+			accountService.updateAccount(adminAcc);
+			System.out.println("==> Admin account password updated successfully!");
+			
+			request.getSession().invalidate();
+			System.out.println("==> Invalidate the session");
+
+			sessionStatus.setComplete();
+			System.out.println("==> Clear model attributes ");
+			
+			return "redirect:/";
+		}else {
+			System.out.println("Error: Admin account password updated unsuccessfully!");
+			return "admin/changeForgotPassword";
+		}
 	}
 
 	// Hiển thị trang cá nhân admin:
@@ -211,83 +397,6 @@ public class adminController {
 			return "redirect:/admin/adminChangePassword.htm";
 		}
 		return "admin/index";
-	}
-
-	// Xử lý đăng nhập cho admin
-	@RequestMapping(value = "admin/adminLogin", method = RequestMethod.POST)
-	public String adminLogin(ModelMap model, HttpServletRequest request,
-			@ModelAttribute("adminAcc") AccountEntity adminAcc, BindingResult errors) {
-
-//			// Kiểm tra thông tin đăng nhập
-//			String userName = request.getParameter("userName");
-//			String password = request.getParameter("password");
-//			if (userName.equals("admin") && password.equals("123")) {
-//				// Đăng nhập thành công
-//				return "admin/index"; // Chuyển hướng đến trang dashboard của admin
-//			} else {
-//				// Đăng nhập không thành công
-//				request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
-//				return "admin/adminLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
-//			}
-
-		Boolean permission = Boolean.TRUE;
-
-		if (adminAcc.getEmail().isEmpty()) {
-			errors.rejectValue("email", "adminAcc", "Xin vui lòng nhập username hoặc email!");
-			return "admin/adminLogin";
-		} else if (adminAcc.getPassword().isEmpty()) {
-			errors.rejectValue("password", "adminAcc", "Xin vui lòng nhập mật khẩu!");
-			return "admin/adminLogin";
-		}
-
-		if (!accountService.isExistAccount(adminAcc.getEmail(),
-				accountService.getHashPassword(adminAcc.getPassword()))) {
-			System.out.println(accountService.getHashPassword(adminAcc.getPassword()));
-			errors.rejectValue("email", "adminAcc", "Tài khoản không tồn tại");
-			errors.rejectValue("password", "adminAcc", "Hoặc mật khẩu bạn nhập không đúng");
-			permission = Boolean.FALSE;
-		} else if (!accountService.getStatusFromAccount(adminAcc.getEmail())) {
-			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn đã bị khóa");
-			permission = Boolean.FALSE;
-		} else if (accountService.getRoleIdFromAccount(adminAcc.getEmail()) != 1) {
-			errors.rejectValue("email", "adminAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
-			permission = Boolean.FALSE;
-		}
-
-		if (permission) {
-			System.out.println("==> Login successfully!");
-			HttpSession session = request.getSession();
-
-			// Tạo adminAccount dùng cho cả session
-			RoleEntity adminRole = roleService.getRoleById(1);
-			adminAcc.setRole(adminRole);
-			adminAcc.setStatus(true);
-			session.setAttribute("adminAcc", adminAcc);
-			System.out.println("==> Session's memories: 'adminAcc' has been allocated");
-
-			// Tạo employee dùng cho cả session
-			EmployeeEntity employee = employeeService.getEmployeeByEmail(adminAcc.getEmail());
-			session.setAttribute("employee", employee);
-			System.out.println("==> Session's memories: 'employee' has been allocated");
-
-			return "admin/index";
-		} else {
-			System.out.println("Error: Login unsuccessfully!");
-			return "admin/adminLogin";
-		}
-	}
-
-	// Đăng xuất:
-	@RequestMapping("admin/logout")
-	public String Logout(HttpServletRequest request, SessionStatus sessionStatus) {
-		request.getSession().invalidate(); // Giải phóng vùng nhớ của session
-		System.out.println("==> Invalidate the session");
-
-		sessionStatus.setComplete(); // Giải phóng vùng nhớ của các model attribute
-		System.out.println("==> Clear model attributes ");
-
-		System.out.println("==> Logout");
-		return "redirect:/";
 	}
 
 	// Trang dashboard của admin
@@ -440,8 +549,8 @@ public class adminController {
 
 		return "admin/contractManagement";
 	}
-	
-	//Thêm thông tin hợp đồng:
+
+	// Thêm thông tin hợp đồng:
 	@RequestMapping("admin/addContract")
 	public String showAddContractForm() {
 		return "admin/addContract";
@@ -653,25 +762,6 @@ public class adminController {
 		servicePriceService.addServicePrice(servicePrice);
 		System.out.println("==> Add new service price successfully!");
 	}
-
-	@RequestMapping(value = "admin/adminForgotPassword", method = RequestMethod.POST)
-	public String adminForgotPassword(HttpServletRequest request) {
-		String email = request.getParameter("email");
-		System.out.println(email);
-		return "admin/adminForgotPassword";
-	}
-	
-	// Trang nhập OTP quên mật khẩu:
-		@RequestMapping("admin/forgotPasswordOTP")
-		public String showForgotPasswordOTP() {
-			return "admin/forgotPasswordOTP";
-		}
-		
-		// Trang nhập đặt lại quên mật khẩu:
-		@RequestMapping("admin/changeForgotPassword")
-		public String showChangeForgotPassword() {
-			return "admin/changeForgotPassword";
-		}
 
 	// Test sort
 	@RequestMapping("admin/maid")

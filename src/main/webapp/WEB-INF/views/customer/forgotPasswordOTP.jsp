@@ -38,11 +38,11 @@
 </head>
 <body>
 
-	<form class="verify-form"  >
+	<form class="verify-form" action="forgotPasswordOTP.htm" method="get">
 			<h1>
-				Hãy nhập mã OTP mà hệ thống vừa gửi tới email: <span></span>
+				Hãy nhập mã OTP mà hệ thống vừa gửi tới email: <span>${email }</span>
 			</h1>
-			<span class="messenger"></span>
+			<span class="messenger">${message }</span>
 		<div class="container">
 			
 			<div id="inputs" class="inputs">
@@ -54,7 +54,7 @@
 				<input class="input" type="text" name="f" maxlength="1" autocomplete="off" />
 			</div>
 		</div>
-		<button id="btn-veri" name="verify"><a href="changeForgotPassword.htm">Xác Nhận</a></button>
+		<button id="btn-veri" name="verify">Xác Nhận</button>
 		<button id="btn-again" name="again">Gửi lại mã</button>
 	</form>
 

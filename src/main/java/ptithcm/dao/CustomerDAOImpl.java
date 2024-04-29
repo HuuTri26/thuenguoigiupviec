@@ -52,4 +52,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return customer;
 	}
 
+	@Override
+	public CustomerEntity getCustomerByEmail(String email) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM CustomerEntity WHERE email = :email";
+		Query query = session.createQuery(hql);
+		query.setParameter("email", email);
+		CustomerEntity customer = (CustomerEntity) query.uniqueResult();
+		return customer;
+	}
+
 }

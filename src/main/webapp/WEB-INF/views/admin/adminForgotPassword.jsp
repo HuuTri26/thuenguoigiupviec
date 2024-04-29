@@ -1,20 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!doctype html>
 <html lang="en">
 
 <head>
-	<title>Quên mật khẩu</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Quên mật khẩu</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="<c:url value='/resources/login/css/style.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/resources/login/css/style.css'/>">
 
 </head>
 
@@ -43,36 +48,26 @@
 									</p>
 								</div>
 							</div>
-							<form action="adminForgotPassword.htm" class="signin-form" method="post">
-                                <div>
-                                    Forgot your password? No problem, we will fix it. Just type your email below and we will send you password recovery instructions to your email. Follow easy steps to get back to your account.
-                                </div>
-                                <br />
+							<form:form action="adminForgotPassword.htm" class="signin-form"
+								method="post" modelAttribute="adminAcc">
+								<div>Quên mật khẩu? Không thành vấn đề, chúng tôi sẽ lấy
+									lại nó cho bạn Hãy nhập email mà bạn thiết lập làm tài khoản
+									xuống dưới đây để xác nhận và thực hiện xác thực OTP qua email
+									của bạn. Khi hoàn tất bạn sẽ có thể thiết lập mật khẩu mới cho
+									tài khoản này.</div>
+								<br />
 								<div class="form-group mb-3">
 									<label class="label" for="name">Email</label>
-									<input name="email" type="text" class="form-control" placeholder="Email" required>
+									<form:input path="email" type="text" class="form-control"
+										placeholder="Email" />
+									<form:errors path="email" />
 								</div>
-								<!-- <div class="form-group mb-3">
-									<label class="label" for="password">Password</label>
-									<input type="password" class="form-control" placeholder="Password" required>
-								</div>
-                                <div class="form-group mb-3">
-									<label class="label" for="changepassword">Confirm Password</label>
-									<input type="changepassword" class="form-control" placeholder="Confirm Password" required>
-								</div> -->
 								<div class="form-group">
 									<button type="submit"
-										class="form-control btn btn-primary rounded submit px-3"><a href="forgotPasswordOTP.htm">Xác nhận</a></button>
+										class="form-control btn btn-primary rounded submit px-3">
+										Xác nhận</button>
 								</div>
-								<!-- <div class="form-group d-md-flex">
-									<div class="w-100 text-left">
-										<label class="checkbox-wrap checkbox-primary mb-0">I Agree To The Terms & Conditions
-											<input type="checkbox" checked>
-											<span class="checkmark"></span>
-										</label>
-									</div>
-								</div> -->
-							</form>
+							</form:form>
 						</div>
 					</div>
 				</div>

@@ -15,4 +15,5 @@ public interface CustomerService {
 	public void addCustomer(CustomerEntity customer);
 	public void updateCustomer(CustomerEntity customer);
 	public CustomerEntity getCustomerById(Integer id);
+	public CustomerEntity getCustomerByEmail(String email);
 }
