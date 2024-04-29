@@ -9,5 +9,6 @@ public interface AccountDAO {
 	public boolean getStatusFromAccount(String email);
 	public Integer getRoleIdFromAccount(String email);
 	public boolean isExistEmail(String email);
+	public AccountEntity getAccountByEmail(String email);
 	
 }

@@ -5,6 +5,7 @@ import javax.transaction.Transactional;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -32,6 +33,12 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
 		}
 		return employee;
+	}
+
+	@Override
+	public void updateEmployee(EmployeeEntity employee) {
+		Session session = factory.getCurrentSession();
+		session.update(employee);
 	}
 	
 }

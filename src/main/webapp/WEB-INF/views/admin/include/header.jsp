@@ -23,16 +23,16 @@
 			<li class="nav-item dropdown pe-3"><a
 				class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
 				data-bs-toggle="dropdown"> <img
-					src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
+					src="<c:url value='/resources/admin/assets/img/${employee.image }'/>"
 					alt="Profile" class="rounded-circle"> <span
-					class="d-none d-md-block dropdown-toggle ps-2">Admin</span>
+					class="d-none d-md-block dropdown-toggle ps-2">${adminAcc.role.roleName }</span>
 			</a>
 			<!-- End Profile Iamge Icon -->
 
 				<ul
 					class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 					<li class="dropdown-header">
-						<h6>Hữu Trí</h6> <span>huutri</span>
+						<h6>${adminAcc.email }</h6>
 					</li>
 					<li>
 						<hr class="dropdown-divider">
@@ -62,7 +62,7 @@
 					</li>
 
 					<li><a class="dropdown-item d-flex align-items-center"
-						href="adminLogin.htm"> <i class="bi bi-box-arrow-right"></i> <span>Thoát</span>
+						href="logout.htm"> <i class="bi bi-box-arrow-right"></i> <span>Thoát</span>
 					</a></li>
 				</ul>
 				<!-- End Profile Dropdown Items --></li>
