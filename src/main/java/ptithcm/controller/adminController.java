@@ -440,6 +440,12 @@ public class adminController {
 
 		return "admin/contractManagement";
 	}
+	
+	//Thêm thông tin hợp đồng:
+	@RequestMapping("admin/addContract")
+	public String showAddContractForm() {
+		return "admin/addContract";
+	}
 
 	// Hiển thị thông tin hợp đồng:
 	@RequestMapping("admin/contractDetail")
@@ -654,6 +660,18 @@ public class adminController {
 		System.out.println(email);
 		return "admin/adminForgotPassword";
 	}
+	
+	// Trang nhập OTP quên mật khẩu:
+		@RequestMapping("admin/forgotPasswordOTP")
+		public String showForgotPasswordOTP() {
+			return "admin/forgotPasswordOTP";
+		}
+		
+		// Trang nhập đặt lại quên mật khẩu:
+		@RequestMapping("admin/changeForgotPassword")
+		public String showChangeForgotPassword() {
+			return "admin/changeForgotPassword";
+		}
 
 	// Test sort
 	@RequestMapping("admin/maid")

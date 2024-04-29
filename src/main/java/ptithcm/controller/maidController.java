@@ -41,6 +41,19 @@ public class maidController {
 		return "maid/maidForgotPassword";
 	}
 
+	// Trang nhập OTP quên mật khẩu:
+	@RequestMapping("maid/forgotPasswordOTP")
+	public String showForgotPasswordOTP() {
+		return "maid/forgotPasswordOTP";
+	}
+	
+	// Trang nhập đặt lại quên mật khẩu:
+	@RequestMapping("maid/changeForgotPassword")
+	public String showChangeForgotPassword() {
+		return "maid/changeForgotPassword";
+	}
+	
+	
 	// Trang profile cho maid:
 	@RequestMapping("maid/maidProfile")
 	public String showMaidProfile() {

@@ -43,7 +43,7 @@
 									</p>
 								</div>
 							</div>
-							<form action="adminForgotPassword.htm" class="signin-form">
+							<form action="customerForgotPassword.htm" class="signin-form">
                                 <div>
                                     Forgot your password? No problem, we will fix it. Just type your email below and we will send you password recovery instructions to your email. Follow easy steps to get back to your account.
                                 </div>
@@ -62,7 +62,7 @@
 								</div> -->
 								<div class="form-group">
 									<button type="submit"
-										class="form-control btn btn-primary rounded submit px-3">Xác nhận</button>
+										class="form-control btn btn-primary rounded submit px-3"><a href="forgotPasswordOTP.htm" style="color:white;">Xác nhận</a></button>
 								</div>
 								<!-- <div class="form-group d-md-flex">
 									<div class="w-100 text-left">

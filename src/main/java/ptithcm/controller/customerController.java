@@ -31,10 +31,10 @@ public class customerController {
 
 	@Autowired
 	AccountService accountService;
-	
+
 	@Autowired
 	RoleService roleService;
-	
+
 	@Autowired
 	CustomerService customerService;
 
@@ -54,11 +54,25 @@ public class customerController {
 		return "customer/customerForgotPassword";
 	}
 
+	// Trang nhập OTP quên mật khẩu:
+	@RequestMapping("customer/forgotPasswordOTP")
+	public String showForgotPasswordOTP() {
+		return "customer/forgotPasswordOTP";
+	}
+	
+	// Trang nhập đặt lại quên mật khẩu:
+	@RequestMapping("customer/changeForgotPassword")
+	public String showChangeForgotPassword() {
+		return "customer/changeForgotPassword";
+	}
+	
+	
+	
+
 	// Hiển thị trang thông tin cá nhân của customer:
 	@RequestMapping("customer/customerProfile")
 	public String showCustomerProfile() {
 		return "customer/customerProfile";
-
 	}
 
 	// Hiển thị form cập nhật thông tin cho customer:
@@ -172,6 +186,7 @@ public class customerController {
 			errors.rejectValue("email", "customerAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "customerAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;
+			System.out.println(accountService.getHashPassword(customerAcc.getPassword()));
 		} else if (!accountService.getStatusFromAccount(customerAcc.getEmail())) {
 			errors.rejectValue("email", "customerAcc", "Tài khoản của bạn đã bị khóa");
 			permission = Boolean.FALSE;
@@ -264,65 +279,66 @@ public class customerController {
 	@RequestMapping(value = "customer/customerSignup", params = "signup", method = RequestMethod.POST)
 	public String signup(HttpServletRequest request, ModelMap model,
 			@ModelAttribute("newCustomer") CustomerEntity newCustomer, BindingResult errors) {
-		
+
 		Boolean isValidCustomer = Boolean.TRUE;
-		
-		if(newCustomer.getFullName().isEmpty()) {
+
+		if (newCustomer.getFullName().isEmpty()) {
 			errors.rejectValue("fullName", "newCustomer", "Xin vui lòng nhập họ tên của bạn");
 			isValidCustomer = Boolean.FALSE;
-		}else if (accountService.standardize(newCustomer.getFullName()).length() > 30) {
+		} else if (accountService.standardize(newCustomer.getFullName()).length() > 30) {
 			errors.rejectValue("fullName", "newCustomer", "Tên của bạn không dài quá 30 ký tự!");
 			isValidCustomer = Boolean.FALSE;
 		}
-		
-		if(newCustomer.getPhoneNumber().isEmpty()) {
+
+		if (newCustomer.getPhoneNumber().isEmpty()) {
 			errors.rejectValue("phoneNumber", "newCustomer", "Vui lòng nhập số điện thoại!");
 			isValidCustomer = Boolean.FALSE;
-		}else if(!accountService.isValidPhoneNumber(newCustomer.getPhoneNumber())) {
+		} else if (!accountService.isValidPhoneNumber(newCustomer.getPhoneNumber())) {
 			errors.rejectValue("phoneNumber", "newCustomer", "Số điện thoại bạn nhập không hợp lệ!");
 			isValidCustomer = Boolean.FALSE;
 		}
-		
+
 		String reEnterPass = request.getParameter("re-password");
-		
-		if(!newCustomer.getAccount().getPassword().equals(reEnterPass)) {
-			errors.rejectValue("account.password", "newCustomer", "Mật khẩu nhập lại không trùng khớp vui lòng nhập lại !");
+
+		if (!newCustomer.getAccount().getPassword().equals(reEnterPass)) {
+			errors.rejectValue("account.password", "newCustomer",
+					"Mật khẩu nhập lại không trùng khớp vui lòng nhập lại !");
 			isValidCustomer = Boolean.FALSE;
 		}
-		
-		if(isValidCustomer == Boolean.TRUE) {
+
+		if (isValidCustomer == Boolean.TRUE) {
 			RoleEntity customerRole = roleService.getRoleById(3);
-			
-			if(customerRole != null) {
+
+			if (customerRole != null) {
 				HttpSession session = request.getSession();
 				AccountEntity newCustomerAcc = (AccountEntity) session.getAttribute("customerAcc");
-				
+
 				newCustomerAcc.setPassword(accountService.getHashPassword(reEnterPass));
 				newCustomerAcc.setRole(customerRole);
 				newCustomerAcc.setStatus(true);
-				
+
 				accountService.addAccount(newCustomerAcc);
 				newCustomer.setAccount(newCustomerAcc);
 				System.out.println("==> Add new customer account successfully!");
-			}else {
+			} else {
 				System.out.println("Error: Add new customer account unsuccessfully!"
 						+ " Reason: RoleEntity with RoleId = 3 does not exist");
 			}
-			
+
 			try {
 				newCustomer.setFullName(accountService.standardizeName(newCustomer.getFullName()));
 				newCustomer.setAddress(newCustomer.getAddress());
 				newCustomer.setPhoneNumber(newCustomer.getPhoneNumber());
-				
+
 				customerService.addCustomer(newCustomer);
 				System.out.println("==> Add new customer successfully!");
-				
+
 				return "redirect:/";
 			} catch (Exception e) {
 				System.out.println("Error: Add new customer unsuccessfully!");
 			}
 		}
-		
+
 		return "customer/customerSignup";
 	}
 

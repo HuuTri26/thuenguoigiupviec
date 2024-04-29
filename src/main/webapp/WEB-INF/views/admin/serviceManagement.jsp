@@ -53,6 +53,10 @@
 <!-- Template Main CSS File -->
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
 	rel="stylesheet">
+
+<!-- 	font-awersome-5 -->
+<script src="https://kit.fontawesome.com/7e7516ee77.js"
+	crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -270,7 +274,10 @@
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
 												href="updateService.htm" class="btn btn-primary "><i
 													class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-													class="bi-trash"></i></a></td>
+													class="bi-trash"></i></a> <a href="" class="btn btn-danger "><i
+													class="fa-solid fa-ban"></i></a> <a href=""
+												class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
+											</td>
 										</tr>
 
 									</c:forEach>

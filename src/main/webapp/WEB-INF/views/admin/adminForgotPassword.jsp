@@ -62,7 +62,7 @@
 								</div> -->
 								<div class="form-group">
 									<button type="submit"
-										class="form-control btn btn-primary rounded submit px-3">Xác nhận</button>
+										class="form-control btn btn-primary rounded submit px-3"><a href="forgotPasswordOTP.htm">Xác nhận</a></button>
 								</div>
 								<!-- <div class="form-group d-md-flex">
 									<div class="w-100 text-left">
