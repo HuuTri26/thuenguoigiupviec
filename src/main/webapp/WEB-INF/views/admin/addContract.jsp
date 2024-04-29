@@ -188,7 +188,7 @@
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form:form action="addcontract.htm" modelAttribute="contract"
+							<form:form action="addcontract.htm" 
 								method="post" class="row g-3">
 								<!-- <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">ID</label>
@@ -212,10 +212,10 @@
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Mã khách hàng</label>
-									<form:input type="text" class="form-control"
+									<input type="text" class="form-control"
 										id="validationDefault01" path="customerId" value=""
 										placeholder="Subject name" />
-									<form:errors path="customerId" />
+<%-- 									<form:errors path="customerId" /> --%>
 								</div>
 
 <!-- 								<div class="col-md-6"> -->
@@ -231,45 +231,45 @@
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Mã maid</label>
-									<form:input type="number" class="form-control"
+									<input type="number" class="form-control"
 										id="validationDefault01" value=""
 										path="maidId" placeholder="Subject name" />
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Ghi chú</label>
-									<form:input type="number" class="form-control"
+									<input type="number" class="form-control"
 										id="validationDefault01" value="" path="note"
 										placeholder="Subject name" />
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Ngày tạo</label>
-									<form:input type="date" class="form-control"
+									<input type="date" class="form-control"
 										id="validationDefault01" value="" path="createAt"
 										placeholder="Subject name" />
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Ngày bắt đầu</label>
-									<form:input type="date" class="form-control"
+									<input type="date" class="form-control"
 										id="validationDefault01" value="" path="startAt"
 										placeholder="Subject name" />
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Ngày kết thúc</label>
-									<form:input type="date" class="form-control"
+									<input type="date" class="form-control"
 										id="validationDefault01" value="" path="endAt"
 										placeholder="Subject name" />
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Ngày cập nhật</label>
-									<form:input type="date" class="form-control"
+									<input type="date" class="form-control"
 										id="validationDefault01" value="" path="updateAt"
 										placeholder="Subject name" />
 								</div>
 									<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Mã nhân viên</label>
-									<form:input type="number" class="form-control"
+									<input type="number" class="form-control"
 										id="validationDefault01" value=""
 										path="employeeId" placeholder="Subject name" />
 								</div>
@@ -289,11 +289,11 @@
 								<div class="col-md-6">
 									<label for="validationDefault04" class="form-label">Trạng
 										thái</label>
-									<form:select class="form-select" id="validationDefault04"
+									<select class="form-select" id="validationDefault04"
 										name="status" path="status">
 										<option selected value="true">Hoạt động</option>
 										<option value="false">Ngưng hoạt động</option>
-									</form:select>
+									</select>
 
 								</div>
 
