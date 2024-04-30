@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.support.SessionStatus;
 
 import ptithcm.bean.Mailer;
 import ptithcm.entity.AccountEntity;
@@ -48,10 +49,121 @@ public class customerController {
 		return "customer/customerLogin";
 	}
 
+	// Xử lý đăng nhập cho customer
+	@RequestMapping(value = "customer/customerLogin", method = RequestMethod.POST)
+	public String customerLogin(ModelMap model, HttpServletRequest request,
+			@ModelAttribute("customerAcc") AccountEntity customerAcc, BindingResult errors) {
+
+//				// Kiểm tra thông tin đăng nhập
+//				String userName = request.getParameter("userName");
+//				String password = request.getParameter("password");
+//				if (userName.equals("customer") && password.equals("123")) {
+//					// Đăng nhập thành công
+//					return "main"; // Chuyển hướng đến trang dashboard của customer
+//				} else {
+//					// Đăng nhập không thành công
+//					request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
+//					return "customer/customerLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
+//				}
+		Boolean permission = Boolean.TRUE;
+
+		if (customerAcc.getEmail().isEmpty()) {
+			errors.rejectValue("email", "customerAcc", "Xin vui lòng nhập username hoặc email!");
+			return "admin/adminLogin";
+		} else if (customerAcc.getPassword().isEmpty()) {
+			errors.rejectValue("password", "customerAcc", "Xin vui lòng nhập mật khẩu!");
+			return "admin/adminLogin";
+		}
+
+		if (!accountService.isExistAccount(customerAcc.getEmail(),
+				accountService.getHashPassword(customerAcc.getPassword()))) {
+			errors.rejectValue("email", "customerAcc", "Tài khoản không tồn tại");
+			errors.rejectValue("password", "customerAcc", "Hoặc mật khẩu bạn nhập không đúng");
+			permission = Boolean.FALSE;
+			System.out.println(accountService.getHashPassword(customerAcc.getPassword()));
+		} else if (!accountService.getStatusFromAccount(customerAcc.getEmail())) {
+			errors.rejectValue("email", "customerAcc", "Tài khoản của bạn đã bị khóa");
+			permission = Boolean.FALSE;
+		} else if (accountService.getRoleIdFromAccount(customerAcc.getEmail()) != 3) {
+			errors.rejectValue("email", "customerAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
+			permission = Boolean.FALSE;
+		}
+
+		if (permission) {
+			System.out.println("Login successfully!");
+			HttpSession session = request.getSession();
+
+			// Tạo customerAcc dùng cho cả session
+			RoleEntity customerRole = roleService.getRoleById(3);
+			customerAcc.setRole(customerRole);
+			customerAcc.setStatus(true);
+			session.setAttribute("customerAcc", customerAcc);
+			System.out.println("==> Session's memories: 'customerAcc' has been allocated");
+
+			// Tạo Customer dùng cho cả session
+			CustomerEntity customer = customerService.getCustomerByEmail(customerAcc.getEmail());
+			session.setAttribute("customer", customer);
+			System.out.println("==> Session's memories: 'customer' has been allocated");
+
+			return "customer/index";
+		} else {
+			System.out.println("Login unsuccessfully!");
+			return "customer/customerLogin";
+		}
+
+	}
+
+	// Đăng xuất:
+	@RequestMapping("customer/logout")
+	public String Logout(HttpServletRequest request, SessionStatus sessionStatus) {
+		request.getSession().invalidate(); // Giải phóng vùng nhớ của session
+		System.out.println("==> Invalidate the session");
+
+		sessionStatus.setComplete(); // Giải phóng vùng nhớ của các model attribute
+		System.out.println("==> Clear model attributes ");
+
+		System.out.println("==> Logout");
+		return "redirect:/";
+	}
+
 	// Trang quên mật khẩu cho customer:
 	@RequestMapping("customer/customerForgotPassword")
-	public String showCustomerForgotPasswordForm() {
+	public String showCustomerForgotPasswordForm(Model model) {
+		model.addAttribute("customerAcc", new AccountEntity());
+
 		return "customer/customerForgotPassword";
+	}
+
+	@RequestMapping(value = "customer/customerForgotPassword", method = RequestMethod.POST)
+	public String customerForgotPassword(HttpServletRequest request,
+			@ModelAttribute("customerAcc") AccountEntity customerAcc, BindingResult errors) {
+
+		Boolean continueVerify = Boolean.TRUE;
+
+		if (customerAcc.getEmail().isEmpty()) {
+			errors.rejectValue("email", "customerAcc", "Vui lòng nhập email mà bạn thiết lập làm tài khoản!");
+			continueVerify = Boolean.FALSE;
+		} else if (!accountService.isValidEmail(customerAcc.getEmail())) {
+			errors.rejectValue("email", "customerAcc", "Email mà bạn vừa nhập không hợp lệ, vui lòng nhập lại!");
+			continueVerify = Boolean.FALSE;
+		} else if (!accountService.isExistEmail(customerAcc.getEmail())) {
+			errors.rejectValue("email", "customerAcc",
+					"Email mà bạn vừa nhập không tồn tại trong hệ thống, vui lòng kiểm tra lại!");
+			continueVerify = Boolean.FALSE;
+		}
+
+		if (continueVerify) {
+			HttpSession session = request.getSession();
+			String otp = accountService.generateOTP();
+			session.setAttribute("otp", otp);
+			session.setAttribute("email", customerAcc.getEmail());
+			mailer.sendMailAsync("DichVuQuanLyMaid", customerAcc.getEmail(), "OTP Forgot Password",
+					"Mã OTP của bạn là: " + otp);
+			return "customer/forgotPasswordOTP";
+		} else {
+			return "customer/customerForgotPassword";
+		}
+
 	}
 
 	// Trang nhập OTP quên mật khẩu:
@@ -59,15 +171,74 @@ public class customerController {
 	public String showForgotPasswordOTP() {
 		return "customer/forgotPasswordOTP";
 	}
-	
+
+	@RequestMapping(value = "customer/forgotPasswordOTP", params = "verify", method = RequestMethod.GET)
+	public String verifyForgotPasswordOTP(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+
+		String a = request.getParameter("a");
+		String b = request.getParameter("b");
+		String c = request.getParameter("c");
+		String d = request.getParameter("d");
+		String e = request.getParameter("e");
+		String f = request.getParameter("f");
+
+		String otp = session.getAttribute("otp").toString();
+		String otpInput = a + b + c + d + e + f;
+
+		if (otp.equals(otpInput)) {
+			return "customer/changeForgotPassword";
+		} else {
+			model.addAttribute("message", "Mã OTP bạn nhập không đúng vui lòng đúng vui lòng nhập lại!");
+			return "customer/forgotPasswordOTP";
+		}
+	}
+
 	// Trang nhập đặt lại quên mật khẩu:
 	@RequestMapping("customer/changeForgotPassword")
 	public String showChangeForgotPassword() {
 		return "customer/changeForgotPassword";
 	}
-	
-	
-	
+
+	@RequestMapping(value = "customer/changeForgotPassword", method = RequestMethod.POST)
+	public String changeForgotPassword(HttpServletRequest request, Model model, SessionStatus sessionStatus) {
+
+		Boolean isValidPass = Boolean.TRUE;
+		HttpSession session = request.getSession();
+		
+		String email = (String) session.getAttribute("email");
+		AccountEntity customerAcc = accountService.getAccountByEmail(email);
+		String newPass = request.getParameter("new-password");
+		String reEnterNewPass = request.getParameter("re-enter-new-password");
+		
+		if(newPass.isEmpty()) {
+			model.addAttribute("message1", "Vui lòng nhập mật khẩu mới!");
+			isValidPass = Boolean.FALSE;
+		}else if(reEnterNewPass.isEmpty()) {
+			model.addAttribute("message2", "Vui lòng nhập lại mật khẩu mới!");
+			isValidPass = Boolean.FALSE;
+		}else if(!newPass.equals(reEnterNewPass)) {
+			model.addAttribute("message2", "Nhập lại mật khẩu không trùng khớp vui lòng nhập lại!");
+			isValidPass = Boolean.FALSE;
+		}
+		
+		if(isValidPass) {
+			customerAcc.setPassword(accountService.getHashPassword(newPass));
+			accountService.updateAccount(customerAcc);
+			System.out.println("==> Admin account password updated successfully!");
+			
+			request.getSession().invalidate();
+			System.out.println("==> Invalidate the session");
+
+			sessionStatus.setComplete();
+			System.out.println("==> Clear model attributes ");
+			
+			return "redirect:/";
+		}else {
+			System.out.println("Error: Admin account password updated unsuccessfully!");
+			return "customer/changeForgotPassword";
+		}
+	}
 
 	// Hiển thị trang thông tin cá nhân của customer:
 	@RequestMapping("customer/customerProfile")
@@ -155,56 +326,6 @@ public class customerController {
 		return "customer/serviceDetail";
 	}
 
-	// Xử lý đăng nhập cho customer
-	@RequestMapping(value = "customer/customerLogin", method = RequestMethod.POST)
-	public String customerLogin(ModelMap model, HttpServletRequest request,
-			@ModelAttribute("customerAcc") AccountEntity customerAcc, BindingResult errors) {
-
-//			// Kiểm tra thông tin đăng nhập
-//			String userName = request.getParameter("userName");
-//			String password = request.getParameter("password");
-//			if (userName.equals("customer") && password.equals("123")) {
-//				// Đăng nhập thành công
-//				return "main"; // Chuyển hướng đến trang dashboard của customer
-//			} else {
-//				// Đăng nhập không thành công
-//				request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng hoặc không tồn tại");
-//				return "customer/customerLogin"; // Hiển thị lại trang đăng nhập với thông báo lỗi
-//			}
-		Boolean permission = Boolean.TRUE;
-
-		if (customerAcc.getEmail().isEmpty()) {
-			errors.rejectValue("email", "customerAcc", "Xin vui lòng nhập username hoặc email!");
-			return "admin/adminLogin";
-		} else if (customerAcc.getPassword().isEmpty()) {
-			errors.rejectValue("password", "customerAcc", "Xin vui lòng nhập mật khẩu!");
-			return "admin/adminLogin";
-		}
-
-		if (!accountService.isExistAccount(customerAcc.getEmail(),
-				accountService.getHashPassword(customerAcc.getPassword()))) {
-			errors.rejectValue("email", "customerAcc", "Tài khoản không tồn tại");
-			errors.rejectValue("password", "customerAcc", "Hoặc mật khẩu bạn nhập không đúng");
-			permission = Boolean.FALSE;
-			System.out.println(accountService.getHashPassword(customerAcc.getPassword()));
-		} else if (!accountService.getStatusFromAccount(customerAcc.getEmail())) {
-			errors.rejectValue("email", "customerAcc", "Tài khoản của bạn đã bị khóa");
-			permission = Boolean.FALSE;
-		} else if (accountService.getRoleIdFromAccount(customerAcc.getEmail()) != 3) {
-			errors.rejectValue("email", "customerAcc", "Tài khoản của bạn không có quyền truy cập vào trang này");
-			permission = Boolean.FALSE;
-		}
-
-		if (permission) {
-			System.out.println("Login successfully!");
-			return "customer/index";
-		} else {
-			System.out.println("Login unsuccessfully!");
-			return "customer/customerLogin";
-		}
-
-	}
-
 	// Trang đăng ký gmail của customer
 	@RequestMapping(value = "customer/customerSignupEmail", params = "register")
 	public String showCustomerSignupEmail(Model model) {
@@ -240,7 +361,6 @@ public class customerController {
 			customerAcc.setEmail(customerAcc.getEmail());
 			session.setAttribute("customerAcc", customerAcc);
 			mailer.sendMailAsync("DichVuQuanLyMaid", customerAcc.getEmail(), "OTP", "Mã OTP của bạn là: " + otp);
-			model.addAttribute("email", customerAcc.getEmail());
 			session.setAttribute("email", customerAcc.getEmail());
 			return "customer/verifyOTP";
 		} else {
@@ -265,8 +385,6 @@ public class customerController {
 		String otpInput = a + b + c + d + e + f;
 
 		if (otp.equals(otpInput)) {
-			String email = session.getAttribute("email").toString();
-			model.addAttribute("email", email);
 			model.addAttribute("newCustomer", new CustomerEntity());
 			return "customer/customerSignup";
 		} else {
