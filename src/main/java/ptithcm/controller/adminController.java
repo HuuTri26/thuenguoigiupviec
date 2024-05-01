@@ -170,35 +170,37 @@ public class adminController {
 	@RequestMapping("admin/adminForgotPassword")
 	public String showForgotPasswordForm(Model model) {
 		model.addAttribute("adminAcc", new AccountEntity());
-		
+
 		return "admin/adminForgotPassword";
 	}
 
 	@RequestMapping(value = "admin/adminForgotPassword", method = RequestMethod.POST)
 	public String adminForgotPassword(HttpServletRequest request, @ModelAttribute("adminAcc") AccountEntity adminAcc,
 			BindingResult errors) {
-		
+
 		Boolean continueVerify = Boolean.TRUE;
-		
-		if(adminAcc.getEmail().isEmpty()) {
+
+		if (adminAcc.getEmail().isEmpty()) {
 			errors.rejectValue("email", "adminAcc", "Vui lòng nhập email mà bạn thiết lập làm tài khoản!");
 			continueVerify = Boolean.FALSE;
-		}else if(!accountService.isValidEmail(adminAcc.getEmail())) {
+		} else if (!accountService.isValidEmail(adminAcc.getEmail())) {
 			errors.rejectValue("email", "adminAcc", "Email mà bạn vừa nhập không hợp lệ, vui lòng nhập lại!");
 			continueVerify = Boolean.FALSE;
-		}else if(!accountService.isExistEmail(adminAcc.getEmail())) {
-			errors.rejectValue("email", "adminAcc", "Email mà bạn vừa nhập không tồn tại trong hệ thống, vui lòng kiểm tra lại!");
+		} else if (!accountService.isExistEmail(adminAcc.getEmail())) {
+			errors.rejectValue("email", "adminAcc",
+					"Email mà bạn vừa nhập không tồn tại trong hệ thống, vui lòng kiểm tra lại!");
 			continueVerify = Boolean.FALSE;
 		}
-		
-		if(continueVerify == Boolean.TRUE) {
+
+		if (continueVerify == Boolean.TRUE) {
 			HttpSession session = request.getSession();
 			String otp = accountService.generateOTP();
 			session.setAttribute("otp", otp);
 			session.setAttribute("email", adminAcc.getEmail());
-			mailer.sendMailAsync("DichVuQuanLyMaid", adminAcc.getEmail(), "OTP Forgot Password", "Mã OTP của bạn là: " + otp);
+			mailer.sendMailAsync("DichVuQuanLyMaid", adminAcc.getEmail(), "OTP Forgot Password",
+					"Mã OTP của bạn là: " + otp);
 			return "admin/forgotPasswordOTP";
-		}else
+		} else
 			return "admin/adminForgotPassword";
 	}
 
@@ -207,7 +209,7 @@ public class adminController {
 	public String showForgotPasswordOTP() {
 		return "admin/forgotPasswordOTP";
 	}
-	
+
 	@RequestMapping(value = "admin/forgotPasswordOTP", params = "verify", method = RequestMethod.GET)
 	public String verifyForgotPassOTP(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
@@ -218,13 +220,13 @@ public class adminController {
 		String d = request.getParameter("d");
 		String e = request.getParameter("e");
 		String f = request.getParameter("f");
-		
+
 		String otp = session.getAttribute("otp").toString();
 		String otpInput = a + b + c + d + e + f;
-		
-		if(otp.equals(otpInput)) {
+
+		if (otp.equals(otpInput)) {
 			return "admin/changeForgotPassword";
-		}else {
+		} else {
 			model.addAttribute("message", "Mã OTP bạn nhập không đúng vui lòng đúng vui lòng nhập lại!");
 			return "admin/ForgotPasswordOTP";
 		}
@@ -235,42 +237,42 @@ public class adminController {
 	public String showChangeForgotPassword() {
 		return "admin/changeForgotPassword";
 	}
-	
+
 	@RequestMapping(value = "admin/changeForgotPassword", method = RequestMethod.POST)
 	public String changeForgotPassword(HttpServletRequest request, Model model, SessionStatus sessionStatus) {
-		
+
 		Boolean isValidPass = Boolean.TRUE;
 		HttpSession session = request.getSession();
-		
+
 		String email = (String) session.getAttribute("email");
 		AccountEntity adminAcc = accountService.getAccountByEmail(email);
 		String newPass = request.getParameter("new-password");
 		String reEnterNewPass = request.getParameter("re-enter-new-password");
-		
-		if(newPass.isEmpty()) {
+
+		if (newPass.isEmpty()) {
 			model.addAttribute("message1", "Vui lòng nhập mật khẩu mới!");
 			isValidPass = Boolean.FALSE;
-		}else if(reEnterNewPass.isEmpty()) {
+		} else if (reEnterNewPass.isEmpty()) {
 			model.addAttribute("message2", "Vui lòng nhập lại mật khẩu mới!");
 			isValidPass = Boolean.FALSE;
-		}else if(!newPass.equals(reEnterNewPass)) {
+		} else if (!newPass.equals(reEnterNewPass)) {
 			model.addAttribute("message2", "Nhập lại mật khẩu không trùng khớp vui lòng nhập lại!");
 			isValidPass = Boolean.FALSE;
 		}
-		
-		if(isValidPass) {
+
+		if (isValidPass) {
 			adminAcc.setPassword(accountService.getHashPassword(newPass));
 			accountService.updateAccount(adminAcc);
 			System.out.println("==> Admin account password updated successfully!");
-			
+
 			request.getSession().invalidate();
 			System.out.println("==> Invalidate the session");
 
 			sessionStatus.setComplete();
 			System.out.println("==> Clear model attributes ");
-			
+
 			return "redirect:/";
-		}else {
+		} else {
 			System.out.println("Error: Admin account password updated unsuccessfully!");
 			return "admin/changeForgotPassword";
 		}
@@ -483,6 +485,30 @@ public class adminController {
 		model.addAttribute("customer", customer);
 
 		return "admin/customerDetail";
+	}
+
+	// Hiển thị danh sách category:
+	@RequestMapping("admin/categoryManagement")
+	public String showCategoryList() {
+		return "admin/categoryManagement";
+	}
+
+	// Hiển thị thêm add category:
+	@RequestMapping("admin/addCategory")
+	public String showAddCategoryForm() {
+		return "admin/addCategory";
+	}
+
+	// Hiển thị categoryDetail:
+	@RequestMapping("admin/categoryDetail")
+	public String showCategoryDetail() {
+		return "admin/categoryDetail";
+	}
+
+	// Hiển thị form cập nhật category:
+	@RequestMapping("admin/updateCategory")
+	public String showUpdateCategoryForm() {
+		return "admin/updateCategory";
 	}
 
 	// Hiển thị danh sách dịch vụ:
