@@ -89,12 +89,8 @@
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form class="row g-3">
-								<!-- <div class="col-md-6">
-                                    <label for="validationDefault01" class="form-label">ID</label>
-                                    <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
-                                        required>
-                                </div> -->
+							<form:form class="row g-3" action="addCategory.htm" method="post"
+								modelAttribute="category">
 								<div class="row mb-3">
 									<label for="profileImage"
 										class="col-md-4 col-lg-3 col-form-label">Ảnh</label>
@@ -111,23 +107,25 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Tên loại dịch vụ</label>
-									<input type="text" class="form-control"
-										id="validationDefault01"  value=""
-										placeholder="Subject name" />
+									<label for="validationDefault01" class="form-label">Tên
+										loại dịch vụ</label>
+									<form:input path="name" class="form-control"
+										id="validationDefault01" placeholder="Subject name" />
+									<form:errors path="name" />
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Miêu
 										tả</label>
-									<textarea class="form-control" style="height: 100px"
-										path="description"></textarea>
+									<form:textarea class="form-control" style="height: 100px"
+										path="description" />
+									<form:errors path="description" />
 								</div>
 
 								<div class="col-12">
 									<button class="btn btn-primary" type="submit" name="add">Thêm</button>
 								</div>
-							</form>
+							</form:form>
 							<!-- End Browser Default Validation -->
 
 						</div>

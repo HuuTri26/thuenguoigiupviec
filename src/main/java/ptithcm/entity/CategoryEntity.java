@@ -21,6 +21,12 @@ public class CategoryEntity {
 	@Column(name = "Name")
 	private String name;
 	
+	@Column(name = "Description")
+	private String description;
+	
+	@Column(name = "Image")
+	private String image;
+	
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
 	private List<ServiceEntity> services;
 
@@ -40,6 +46,22 @@ public class CategoryEntity {
 		this.name = name;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	public List<ServiceEntity> getServices() {
 		return services;
 	}
@@ -48,6 +70,4 @@ public class CategoryEntity {
 		this.services = services;
 	}
 	
-	
-
 }
