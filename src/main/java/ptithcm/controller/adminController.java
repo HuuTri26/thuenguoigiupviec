@@ -489,14 +489,49 @@ public class adminController {
 
 	// Hiển thị danh sách category:
 	@RequestMapping("admin/categoryManagement")
-	public String showCategoryList() {
+	public String showCategoryList(Model model) {
+		List<CategoryEntity> categoryList = categoryService.getListCategory();
+		model.addAttribute("categoryList", categoryList);
+		
 		return "admin/categoryManagement";
 	}
 
 	// Hiển thị thêm add category:
 	@RequestMapping("admin/addCategory")
-	public String showAddCategoryForm() {
+	public String showAddCategoryForm(Model model) {
+		model.addAttribute("category", new CategoryEntity());
+		System.out.println("==> Open add category session");
+		
 		return "admin/addCategory";
+	}
+	
+	@RequestMapping(value = "admin/addCategory", method = RequestMethod.POST)
+	public String addCategoryForm(@ModelAttribute("category") CategoryEntity category, BindingResult errors) {
+		Boolean isValidCategory = Boolean.TRUE;
+		
+		if(category.getName().isEmpty()) {
+			errors.rejectValue("name", "category", "Tên danh mục không được để trống!");
+			isValidCategory = Boolean.FALSE;
+		}if(accountService.standardize(category.getName()).length() >= 50){
+			errors.rejectValue("name", "category", "Tên danh mục không đc vượt quá 50 ký tự!");
+			isValidCategory = Boolean.FALSE;
+		}
+		
+		if(isValidCategory) {
+			try {
+				category.setName(accountService.standardize(category.getName()));
+				category.setDescription(category.getDescription());
+				categoryService.addCategory(category);
+				System.out.println("==> New category added successfully!");
+				return "redirect:/admin/categoryManagement.htm";
+			} catch (Exception e) {
+				System.out.println("Error: New category added unsuccessfully!");
+				return "redirect:/admin/addCategory.htm";
+			}
+		}else {
+			System.out.println("Error: New category added unsuccessfully!");
+			return "redirect:/admin/addCategory.htm";
+		}
 	}
 
 	// Hiển thị categoryDetail:

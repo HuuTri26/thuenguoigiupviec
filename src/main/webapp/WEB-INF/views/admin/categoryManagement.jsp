@@ -120,79 +120,18 @@
 											class="bi bi-arrow-up-short" data-sort="name"
 											data-order="asc"></i>
 										</th>
-										<th scope="col">Miêu tả <i
-											class="bi bi-arrow-up-short" data-sort="description"
-											data-order="asc"></i>
+										<th scope="col">Miêu tả <i class="bi bi-arrow-up-short"
+											data-sort="description" data-order="asc"></i>
 										</th>
 									</tr>
 								</thead>
 								<tbody id="table_categorys">
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">Dọn nhà</td>
-										<td scope="col">djkjlfjdjdfn</td>
-										<td scope="col"><a href="categoryDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-											href="updateCategory.htm" class="btn btn-primary "><i
-												class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-												class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">3</td>
-										<td scope="col">Chăm trẻ</td>
-										<td scope="col">fjkjlfjdjdvdsvvfn</td>
-										<td scope="col"><a href="categoryDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-											href="updateCategory.htm" class="btn btn-primary "><i
-												class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-												class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">2</td>
-										<td scope="col">Chăm sóc người bệnh</td>
-										<td scope="col">ôiiehueh</td>
-										<td scope="col"><a href="categoryDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-											href="updateCategory.htm" class="btn btn-primary "><i
-												class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-												class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">9</td>
-										<td scope="col">Chăm sóc người nghèo</td>
-										<td scope="col">yyuuiiehueh</td>
-										<td scope="col"><a href="categoryDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-											href="updateCategory.htm" class="btn btn-primary "><i
-												class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-												class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">6</td>
-										<td scope="col">Rửa xe</td>
-										<td scope="col">jhhgiiehueh</td>
-										<td scope="col"><a href="categoryDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-											href="updateCategory.htm" class="btn btn-primary "><i
-												class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-												class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">4</td>
-										<td scope="col">Nấu ăn</td>
-										<td scope="col">ụckdiiehueh</td>
-										<td scope="col"><a href="categoryDetail.htm"
-											class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-											href="updateCategory.htm" class="btn btn-primary "><i
-												class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-												class="bi-trash"></i></a></td>
-									</tr>
 									<c:forEach var="category" items="${categoryList }">
 
 										<tr>
 											<td scope="row">${category.id }</td>
 											<td scope="col">${category.name }</td>
-											<td scope="col">${category.category.name }</td>
+											<td scope="col">${category.description }</td>
 											<td scope="col"><a href="categoryDetail.htm"
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
 												href="updateCategory.htm" class="btn btn-primary "><i
