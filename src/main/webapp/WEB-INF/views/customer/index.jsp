@@ -179,21 +179,19 @@
 				</div>
 
 				<div class="row">
-					<c:forEach var="category" items="${categoryList}">
+					<c:forEach var="category" items="${categoryList }">
 						<!-- Phần dịch vụ thứ nhất -->
 						<div
 							class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
 							data-aos="fade-up">
 							<div class="icon-box icon-box-pink">
 								<div class="icon">
-									<i class="bx bx-file"></i>
+									<i class="bx ${category.image }"></i>
 								</div>
 								<h4 class="title">
 									<a href="serviceList.htm">${category.name }</a>
 								</h4>
-								<p class="description">Voluptatum deleniti atque corrupti
-									quos dolores et quas molestias excepturi sint occaecati
-									cupiditate</p>
+								<p class="description">${category.description }</p>
 							</div>
 						</div>
 
