@@ -1,5 +1,7 @@
 package ptithcm.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -17,9 +19,11 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import ptithcm.bean.Mailer;
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.CustomerEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.CategoryService;
 import ptithcm.service.CustomerService;
 import ptithcm.service.RoleService;
 
@@ -41,6 +45,9 @@ public class customerController {
 
 	@Autowired
 	Mailer mailer;
+
+	@Autowired
+	CategoryService categoryService;
 
 	// Trang đăng nhập cho customer
 	@RequestMapping("customer/customerLogin")
@@ -105,7 +112,7 @@ public class customerController {
 			session.setAttribute("customer", customer);
 			System.out.println("==> Session's memories: 'customer' has been allocated");
 
-			return "customer/index";
+			return "redirect:/customer/index.htm";
 		} else {
 			System.out.println("Login unsuccessfully!");
 			return "customer/customerLogin";
@@ -205,36 +212,36 @@ public class customerController {
 
 		Boolean isValidPass = Boolean.TRUE;
 		HttpSession session = request.getSession();
-		
+
 		String email = (String) session.getAttribute("email");
 		AccountEntity customerAcc = accountService.getAccountByEmail(email);
 		String newPass = request.getParameter("new-password");
 		String reEnterNewPass = request.getParameter("re-enter-new-password");
-		
-		if(newPass.isEmpty()) {
+
+		if (newPass.isEmpty()) {
 			model.addAttribute("message1", "Vui lòng nhập mật khẩu mới!");
 			isValidPass = Boolean.FALSE;
-		}else if(reEnterNewPass.isEmpty()) {
+		} else if (reEnterNewPass.isEmpty()) {
 			model.addAttribute("message2", "Vui lòng nhập lại mật khẩu mới!");
 			isValidPass = Boolean.FALSE;
-		}else if(!newPass.equals(reEnterNewPass)) {
+		} else if (!newPass.equals(reEnterNewPass)) {
 			model.addAttribute("message2", "Nhập lại mật khẩu không trùng khớp vui lòng nhập lại!");
 			isValidPass = Boolean.FALSE;
 		}
-		
-		if(isValidPass) {
+
+		if (isValidPass) {
 			customerAcc.setPassword(accountService.getHashPassword(newPass));
 			accountService.updateAccount(customerAcc);
 			System.out.println("==> Admin account password updated successfully!");
-			
+
 			request.getSession().invalidate();
 			System.out.println("==> Invalidate the session");
 
 			sessionStatus.setComplete();
 			System.out.println("==> Clear model attributes ");
-			
+
 			return "redirect:/";
-		}else {
+		} else {
 			System.out.println("Error: Admin account password updated unsuccessfully!");
 			return "customer/changeForgotPassword";
 		}
@@ -459,10 +466,13 @@ public class customerController {
 
 		return "customer/customerSignup";
 	}
+	
 
 	// Trang dashboard của customer
 	@RequestMapping("customer/index")
-	public String customerIndex() {
-		return "customer/index";
+	public String getAllCategories(Model model) {
+		List<CategoryEntity> categoryList = categoryService.getListCategory();
+		model.addAttribute("categoryList", categoryList);
+		return "customer/index"; // Assuming you have a view named categoryList.jsp
 	}
 }
