@@ -242,7 +242,8 @@
 								</div>
 							</div>
 							<a href="#">
-								<button class="btn btn-warning shadow-0" ${!service.status ? 'disabled' : ''}>${service.status ? 'Đặt ngay' : 'Không khả dụng'}</button>
+								<button class="btn btn-warning shadow-0"
+									${!service.status ? 'disabled' : ''}>${service.status ? 'Đặt ngay' : 'Không khả dụng'}</button>
 							</a>
 
 						</div>
