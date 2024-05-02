@@ -37,7 +37,7 @@
 						<li><a href="bookingManagement.htm">Xem danh sách </a></li>
 						<li><a href="contractManagement.htm">Xem danh sách đặt dịch vụ</a></li>
 						<li><a href="billManagement.htm">Xem danh bill</a></li>
-						<li><a href="customerLogin.htm">Log out</a></li>
+						<li><a href="logout.htm">Log out</a></li>
 
 					</ul></li>
 			</ul>

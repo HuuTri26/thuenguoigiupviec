@@ -61,104 +61,24 @@
 	<main id="main" style="background-color: gray;">
 		<div
 			class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 p-5 m-3 mt-10">
-			<div class="col">
-				<div class="card">
-					<img
-						src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
-						class="card-img-top" alt="Hollywood Sign on The Hill">
-					<div class="card-body">
-						<a href="serviceDetail.htm" class="card-title"
-							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Dọn nhà 2H</a>
-						<p class="card-text">Loại: Dọn nhà</p>
-						<p class="card-text">Thời gian gói: 2H</p>
-						<p class="card-text">Số lượng: 4</p>
+
+			<c:forEach var="service" items="${serviceList }">
+				<div class="col">
+					<div class="card">
+						<img
+							src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
+							class="card-img-top" alt="Hollywood Sign on The Hill">
+						<div class="card-body">
+							<a href="serviceDetail/${service.id }.htm" class="card-title"
+								style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">${service.name }</a>
+							<p class="card-text">Loại: ${service.category.name }</p>
+							<p class="card-text">Thời gian gói: ${service.time }</p>
+							<p class="card-text">Số lượng: ${service.maidQuantity }</p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img
-						src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
-						class="card-img-top" alt="Hollywood Sign on The Hill">
-					<div class="card-body">
-						<a href="serviceDetail.htm" class="card-title"
-							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Dọn nhà 2H</a>
-						<p class="card-text">Loại: Dọn nhà</p>
-						<p class="card-text">Thời gian gói: 2H</p>
-						<p class="card-text">Số lượng: 4</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img
-						src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
-						class="card-img-top" alt="Hollywood Sign on The Hill">
-					<div class="card-body">
-						<a href="serviceDetail.htm" class="card-title"
-							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Dọn nhà 2H</a>
-						<p class="card-text">Loại: Dọn nhà</p>
-						<p class="card-text">Thời gian gói: 2H</p>
-						<p class="card-text">Số lượng: 4</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img
-						src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
-						class="card-img-top" alt="Hollywood Sign on The Hill">
-					<div class="card-body">
-						<a href="serviceDetail.htm" class="card-title"
-							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Dọn nhà 2H</a>
-						<p class="card-text">Loại: Dọn nhà</p>
-						<p class="card-text">Thời gian gói: 2H</p>
-						<p class="card-text">Số lượng: 4</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img
-						src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
-						class="card-img-top" alt="Hollywood Sign on The Hill">
-					<div class="card-body">
-						<a href="serviceDetail.htm" class="card-title"
-							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Dọn nhà 2H</a>
-						<p class="card-text">Loại: Dọn nhà</p>
-						<p class="card-text">Thời gian gói: 2H</p>
-						<p class="card-text">Số lượng: 4</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img
-						src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
-						class="card-img-top" alt="Hollywood Sign on The Hill">
-					<div class="card-body">
-						<a href="serviceDetail.htm" class="card-title"
-							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Dọn nhà 2H</a>
-						<p class="card-text">Loại: Dọn nhà</p>
-						<p class="card-text">Thời gian gói: 2H</p>
-						<p class="card-text">Số lượng: 4</p>
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<img
-						src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
-						class="card-img-top" alt="Hollywood Sign on The Hill">
-					<div class="card-body">
-						<a href="serviceDetail.htm" class="card-title"
-							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Dọn nhà 2H</a>
-						<p class="card-text">Loại: Dọn nhà</p>
-						<p class="card-text">Thời gian gói: 2H</p>
-						<p class="card-text">Số lượng: 4</p>
-					</div>
-				</div>
-			</div>
+			</c:forEach>
+
 		</div>
 		<div class="pagination pb-4"
 			style="display: flex; justify-content: center; align-items: center; vertical-align: middle;">

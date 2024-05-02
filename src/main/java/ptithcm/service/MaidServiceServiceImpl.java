@@ -36,4 +36,14 @@ public class MaidServiceServiceImpl implements MaidServiceService {
 		MaidServiceDAO.updateService(service);
 	}
 
+	@Override
+	public List<ServiceEntity> getListServiceByCategoryId(Integer categoryId) {
+		return MaidServiceDAO.getListServiceByCategoryId(categoryId);
+	}
+
+	@Override
+	public ServiceEntity getServiceById(Integer id) {
+		return MaidServiceDAO.getSetviceById(id);
+	}
+
 }
