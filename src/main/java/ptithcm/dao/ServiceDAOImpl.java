@@ -60,6 +60,26 @@ public class ServiceDAOImpl implements ServiceDAO {
 			session.close();
 		}
 	}
+
+	@Override
+	public List<ServiceEntity> getListServiceByCategoryId(Integer categoryId) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM ServiceEntity s WHERE s.category.id = :categoryId";
+		Query query = session.createQuery(hql);
+		query.setParameter("categoryId", categoryId);
+		List<ServiceEntity> maidServiceList = query.list();
+		return maidServiceList;
+	}
+
+	@Override
+	public ServiceEntity getSetviceById(Integer id) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM ServiceEntity WHERE id = :id";
+		Query query = session.createQuery(hql);
+		query.setParameter("id", id);
+		ServiceEntity maidService = (ServiceEntity) query.uniqueResult();
+		return maidService;
+	}
 	
 	
 }

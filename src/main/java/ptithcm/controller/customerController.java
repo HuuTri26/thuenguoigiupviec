@@ -2,6 +2,7 @@ package ptithcm.controller;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
@@ -13,8 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ptithcm.bean.Mailer;
@@ -22,9 +25,11 @@ import ptithcm.entity.AccountEntity;
 import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.CustomerEntity;
 import ptithcm.entity.RoleEntity;
+import ptithcm.entity.ServiceEntity;
 import ptithcm.service.AccountService;
 import ptithcm.service.CategoryService;
 import ptithcm.service.CustomerService;
+import ptithcm.service.MaidServiceService;
 import ptithcm.service.RoleService;
 
 @Transactional
@@ -48,6 +53,9 @@ public class customerController {
 
 	@Autowired
 	CategoryService categoryService;
+	
+	@Autowired
+	MaidServiceService maidServiceService;
 
 	// Trang đăng nhập cho customer
 	@RequestMapping("customer/customerLogin")
@@ -130,7 +138,7 @@ public class customerController {
 		System.out.println("==> Clear model attributes ");
 
 		System.out.println("==> Logout");
-		return "redirect:/";
+		return "redirect:/main.htm";
 	}
 
 	// Trang quên mật khẩu cho customer:
@@ -322,14 +330,21 @@ public class customerController {
 	}
 
 	// Trang danh sách người giúp việc fulltime cho customer:
-	@RequestMapping("customer/serviceList")
-	public String showServiceList() {
+	@RequestMapping("customer/serviceList/{id}")
+	public String showServiceList(Model model, @PathVariable("id") Integer id) {
+		List<ServiceEntity> serviceList = maidServiceService.getListServiceByCategoryId(id);
+		model.addAttribute("serviceList", serviceList);
+		System.out.println("==> Open booking service session!");
+		
 		return "customer/serviceList";
 	}
 
 	// Trang danh sách người giúp việc fulltime cho customer:
-	@RequestMapping("customer/serviceDetail")
-	public String showServiceDetail() {
+	@RequestMapping("customer/serviceList/serviceDetail/{id}")
+	public String showServiceDetail(Model model, @PathVariable("id") Integer id) {
+		ServiceEntity service = maidServiceService.getServiceById(id);
+		model.addAttribute("service", service);
+		
 		return "customer/serviceDetail";
 	}
 

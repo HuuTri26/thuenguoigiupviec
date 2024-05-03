@@ -189,14 +189,12 @@
 									<i class="bx ${category.image }"></i>
 								</div>
 								<h4 class="title">
-									<a href="serviceList.htm">${category.name }</a>
+									<a href="serviceList/${category.id }.htm">${category.name }</a>
 								</h4>
 								<p class="description">${category.description }</p>
 							</div>
 						</div>
-
 					</c:forEach>
-
 				</div>
 
 				<!-- Chuyển trang -->
