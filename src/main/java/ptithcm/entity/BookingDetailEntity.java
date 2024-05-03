@@ -1,15 +1,14 @@
 package ptithcm.entity;
 
-import java.util.Set;
-
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,23 +26,15 @@ public class BookingDetailEntity {
 	private String feedback;
 	
 	@ManyToOne()
-	@JoinColumn(name = "bookingDetailId")
+	@JoinColumn(name = "bookingId")
 	private BookingEntity booking;
 	
-	
-	@ManyToMany
-    @JoinTable(
-        name = "BOOKINGDETAIL_MAID",
-        joinColumns = @JoinColumn(name = "BookingDetailId"),
-        inverseJoinColumns = @JoinColumn(name = "MaidId")
-    )
-    private Set<MaidEntity> maids;
-
+	@OneToMany(mappedBy = "bookingDetail", fetch = FetchType.LAZY)
+	private List<MaidEntity> maids;
 
 	public Integer getId() {
 		return id;
 	}
-
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -79,14 +70,13 @@ public class BookingDetailEntity {
 		this.booking = booking;
 	}
 
-
-	public Set<MaidEntity> getMaids() {
+	public List<MaidEntity> getMaids() {
 		return maids;
 	}
 
-
-	public void setMaids(Set<MaidEntity> maids) {
+	public void setMaids(List<MaidEntity> maids) {
 		this.maids = maids;
 	}
+
 	
 }

@@ -259,7 +259,7 @@
 						<div class="close-btn position-absolute top-0 end-0 p-3">
 							<i class="fas fa-times text-white"></i>
 						</div>
-						<form class="row g-3">
+						<form:form class="row g-3" action="serviceBooking.htm" method="post" modelAttribute="booking">
 							<div class="col-12">
 								<h1 class="text-center fw-bolder text-white mt-3">Form đặt
 									dịch vụ</h1>
@@ -293,7 +293,7 @@
 									nhận</button>
 								<a href="#" class="text-primary shadow-sm">Xác nhận</a>
 							</div>
-						</form>
+						</form:form>
 					</div>
 				</div>
 			</div>
