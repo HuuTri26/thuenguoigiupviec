@@ -274,9 +274,9 @@
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
 												href="updateService.htm" class="btn btn-primary "><i
 													class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-													class="bi-trash"></i></a> <a href="" class="btn btn-danger "><i
-													class="fa-solid fa-ban"></i></a> <a href=""
-												class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
+													class="bi-trash"></i></a> 
+													<a href="blockService/${service.id}.htm" class="btn btn-danger "><i class="fa-solid fa-ban"></i></a> 
+													<a href="activeService/${service.id}.htm" class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
 											</td>
 										</tr>
 
