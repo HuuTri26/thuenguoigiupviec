@@ -269,7 +269,9 @@
 										<td scope="col">28/10/2024</td>
 										<td scope="col">97 Man Thiện</td>
 										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col">3000$</td>
+										<td scope="col"><fmt:formatNumber value="300"
+												pattern="#,###.## VND;VND -#,###.##" type="currency"
+												currencySymbol="VND" /></td>
 										<td scope="col">
 											<div class="form-check form-switch"
 												data-switch-text="Chưa xác nhận,Đã xác nhận">
@@ -299,7 +301,9 @@
 										<td scope="col">28/10/2024</td>
 										<td scope="col">97 Man Thiện</td>
 										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col">3000$</td>
+										<td scope="col"><fmt:formatNumber value="300"
+												pattern="#,###.## VND;VND -#,###.##" type="currency"
+												currencySymbol="VND" /></td>
 										<td scope="col"><div class="form-check form-switch"
 												data-switch-text="Chưa xác nhận,Đã xác nhận">
 												<input class="form-check-input" type="checkbox"
@@ -317,7 +321,7 @@
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
-									
+
 									<tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
@@ -326,7 +330,9 @@
 										<td scope="col">28/10/2024</td>
 										<td scope="col">97 Man Thiện</td>
 										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col">3000$</td>
+										<td scope="col"><fmt:formatNumber value="300"
+												pattern="#,###.## VND;VND -#,###.##" type="currency"
+												currencySymbol="VND" /></td>
 										<td scope="col"><div class="form-check form-switch"
 												data-switch-text="Chưa xác nhận,Đã xác nhận">
 												<input class="form-check-input" type="checkbox"
@@ -352,7 +358,9 @@
 										<td scope="col">28/10/2024</td>
 										<td scope="col">97 Man Thiện</td>
 										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col">3000$</td>
+										<td scope="col"><fmt:formatNumber value="300"
+												pattern="#,###.## VND;VND -#,###.##" type="currency"
+												currencySymbol="VND" /></td>
 										<td scope="col"><div class="form-check form-switch"
 												data-switch-text="Chưa xác nhận,Đã xác nhận">
 												<input class="form-check-input" type="checkbox"
@@ -378,7 +386,9 @@
 										<td scope="col">28/10/2020</td>
 										<td scope="col">70 Man Thiện</td>
 										<td scope="col">Oang máy cắt cỏ</td>
-										<td scope="col">2500$</td>
+										<td scope="col"><fmt:formatNumber value="2500"
+												pattern="#,###.## VND;VND -#,###.##" type="currency"
+												currencySymbol="VND" /></td>
 										<td scope="col"><div class="form-check form-switch"
 												data-switch-text="Chưa xác nhận,Đã xác nhận">
 												<input class="form-check-input" type="checkbox"
@@ -404,7 +414,10 @@
 										<td scope="col">28/10/2022</td>
 										<td scope="col">87 Man Thiện</td>
 										<td scope="col">kang máy cắt cỏ</td>
-										<td scope="col">2000$</td>
+
+										<td scope="col"><fmt:formatNumber value="2500"
+												pattern="#,###.## VND;VND -#,###.##" type="currency"
+												currencySymbol="VND" /></td>
 										<td scope="col"><div class="form-check form-switch"
 												data-switch-text="Chưa xác nhận,Đã xác nhận">
 												<input class="form-check-input" type="checkbox"

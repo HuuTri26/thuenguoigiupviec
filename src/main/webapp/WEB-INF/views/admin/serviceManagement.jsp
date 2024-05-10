@@ -255,7 +255,9 @@
 											<td scope="col">${service.name }</td>
 											<td scope="col">${service.category.name }</td>
 											<td scope="col">${service.time }</td>
-											<td scope="col">${service.servicePrices[0].price }</td>
+											<td scope="col"><fmt:formatNumber
+										value="${service.servicePrices[0].price }" pattern="#,###.## VND;VND -#,###.##" type="currency"
+										currencySymbol="VND"/></td>
 											<td scope="col">${service.description }</td>
 											<td scope="col">${service.maidQuantity }</td>
 											<td scope="col">
@@ -273,8 +275,10 @@
 											<td scope="col"><a href="serviceDetail.htm"
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
 												href="updateService.htm" class="btn btn-primary "><i
-													class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-													class="bi-trash"></i></a> <a href="" class="btn btn-danger "><i
+													class="bi-pencil"></i></a> 
+<!-- 													<a href="#" class="btn btn-danger"><i -->
+<!-- 													class="bi-trash"></i></a>  -->
+													<a href="" class="btn btn-danger "><i
 													class="fa-solid fa-ban"></i></a> <a href=""
 												class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
 											</td>

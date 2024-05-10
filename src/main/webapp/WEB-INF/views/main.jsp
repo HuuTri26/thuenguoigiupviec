@@ -84,8 +84,8 @@
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
     <div class="container text-center text-md-left" data-aos="fade-up">
-      <h1>Welcome to BookMyMaid</h1>
-      <h2>Don’t stress. We’ll handle the mess.</h2>
+      <h1>NHÓM 16</h1>
+      <h2>WEB ĐẶT DỊCH VỤ VÀ THUÊ NGƯỜI GIÚP VIỆC</h2>
       <a href="#about" class="btn-get-started scrollto">Get Started</a>
     </div>
   </section><!-- End Hero -->

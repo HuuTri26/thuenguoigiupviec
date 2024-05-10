@@ -320,7 +320,7 @@ public class customerController {
 	// Trang danh sách người giúp việc fulltime cho customer:
 	@RequestMapping("customer/maidList")
 	public String showMaidList() {
-		return "customer/maidList";
+		return "redirect:/customer/maidList";
 	}
 
 	// Trang thông tin người giúp việc fulltime cho customer:

@@ -73,7 +73,7 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Category</h1>
+			<h1>Danh mục</h1>
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -135,8 +135,11 @@
 											<td scope="col"><a href="categoryDetail.htm"
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
 												href="updateCategory.htm" class="btn btn-primary "><i
-													class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-													class="bi-trash"></i></a> <a href="" class="btn btn-danger "><i
+													class="bi-pencil"></i></a>
+<!-- 													 <a href="#" class="btn btn-danger"><i -->
+<!-- 													class="bi-trash"></i></a>  -->
+													
+													<a href="" class="btn btn-danger "><i
 													class="fa-solid fa-ban"></i></a> <a href=""
 												class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
 											</td>
