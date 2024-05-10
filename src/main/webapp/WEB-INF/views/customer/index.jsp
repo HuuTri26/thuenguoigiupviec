@@ -66,8 +66,8 @@
 	<section id="hero"
 		class="d-flex flex-column justify-content-center align-items-center">
 		<div class="container text-center text-md-left" data-aos="fade-up">
-			<h1>Welcome to BookMyMaid</h1>
-			<h2>Don’t stress. We’ll handle the mess.</h2>
+			<h1>NHÓM 16</h1>
+			<h2>WEB ĐẶT VÀ THUÊ NGƯỜI GIÚP VIỆC</h2>
 			<a href="#about" class="btn-get-started scrollto">Get Started</a>
 		</div>
 	</section>
@@ -83,20 +83,11 @@
 					<h2>About Us</h2>
 				</div>
 
-				<p>The BookMyMaid Portal will provide a connection mechanism to
-					all the maids in the area and will also provide standardization and
-					regularity in the salaries paid to them. The online venture may
-					also serve as an easy means to find and book maid/helpers online
-					through the website depending on the need of the user.</p>
+				<p>:)))</p>
 
-				<p>Today Online Booking System has become fast growing Booking
-					method because of its speed and accuracy. Online Maid Booking
-					System is the simplest to use web-based application for household,
-					Residential complexes etc. BookMyMaid is web-based application
-					provides facility to book a service online</p>
+				<p>:))</p>
 
-				<p>The Administrator can manage Maids as well as Users. Admin
-					can manage Bookings and can analyse requirements of users.</p>
+				<p>:)))</p>
 				<div class="row content">
 					<div class="col-lg-6"></div>
 
@@ -114,50 +105,46 @@
 
 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in">
 						<span>01</span>
-						<h4>Easy Bookings</h4>
-						<p>Ulamco laboris nisi ut aliquip ex ea commodo consequat. Et
-							consectetur ducimus vero placeat</p>
+						<h4>Dễ dàng đặt dịch vụ</h4>
+						<p>~~</p>
 					</div>
 
 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in"
 						data-aos-delay="100">
 						<span>02</span>
-						<h4>Verified Maids</h4>
-						<p>Dolorem est fugiat occaecati voluptate velit esse. Dicta
-							veritatis dolor quod et vel dire leno para dest</p>
+						<h4>Xác thực khách quan</h4>
+						<p>hahaha</p>
 					</div>
 
 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in"
 						data-aos-delay="200">
 						<span>03</span>
-						<h4>Refund on cancellation</h4>
-						<p>Molestiae officiis omnis illo asperiores. Aut doloribus
-							vitae sunt debitis quo vel nam quis</p>
+						<h4>Giao diện dex nhìn</h4>
+						<p>hahahahah</p>
 					</div>
 
-					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in"
-						data-aos-delay="300">
-						<span>04</span>
-						<h4>Easy Schedulling</h4>
-						<p>Inventore quo sint a sint rerum. Distinctio blanditiis
-							deserunt quod soluta quod nam mider lando casa</p>
-					</div>
+<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
+<!-- 						data-aos-delay="300"> -->
+<!-- 						<span>04</span> -->
+<!-- 						<h4>Xem thông tin đặt lịch</h4> -->
+<!-- 						<p>kcsmsnc</p> -->
+<!-- 					</div> -->
 
-					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in"
-						data-aos-delay="400">
-						<span>05</span>
-						<h4>Available at your time</h4>
-						<p>Vitae dolorem in deleniti ipsum omnis tempore voluptatem.
-							Qui possimus est repellendus est quibusdam</p>
-					</div>
+<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
+<!-- 						data-aos-delay="400"> -->
+<!-- 						<span>05</span> -->
+<!-- 						<h4>Available at your time</h4> -->
+<!-- 						<p>Vitae dolorem in deleniti ipsum omnis tempore voluptatem. -->
+<!-- 							Qui possimus est repellendus est quibusdam</p> -->
+<!-- 					</div> -->
 
-					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in"
-						data-aos-delay="500">
-						<span>06</span>
-						<h4>Easy Payment gateway</h4>
-						<p>Quis eum numquam veniam ea voluptatibus voluptas. Excepturi
-							aut nostrum repudiandae voluptatibus corporis sequi</p>
-					</div>
+<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
+<!-- 						data-aos-delay="500"> -->
+<!-- 						<span>06</span> -->
+<!-- 						<h4>Easy Payment gateway</h4> -->
+<!-- 						<p>Quis eum numquam veniam ea voluptatibus voluptas. Excepturi -->
+<!-- 							aut nostrum repudiandae voluptatibus corporis sequi</p> -->
+<!-- 					</div> -->
 
 				</div>
 
@@ -220,12 +207,8 @@
 			<div class="container">
 
 				<div class="section-title" data-aos="fade-up">
-					<h2>Happy Customers</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius
-						consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-						velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-						suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem
-						hic quas.</p>
+					<h2>Feed back từ khách hàng</h2>
+					<p>jkdfknk</p>
 				</div>
 
 				<div class="testimonials-slider swiper" data-aos="fade-up"
@@ -235,17 +218,14 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Proin
-									iaculis purus consequat sem cure digni ssim donec porttitora
-									entum suscipit rhoncus. Accusantium quam, ultricies eget id,
-									aliquam eget nibh et. Maecen aliquam, risus at semper. <i
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i> :))) <i
 										class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-1.jpg'/>"
 									class="testimonial-img" alt="">
-								<h3>Saul Goodman</h3>
-								<h4>Ceo &amp; Founder</h4>
+								<h3>Trí</h3>
+								<h4>SV &amp; PTIT</h4>
 							</div>
 						</div>
 						<!-- End testimonial item -->
@@ -253,17 +233,14 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Export
-									tempor illum tamen malis malis eram quae irure esse labore quem
-									cillum quid cillum eram malis quorum velit fore eram velit sunt
-									aliqua noster fugiat irure amet legam anim culpa. <i
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Hahahaha <i
 										class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-2.jpg'/>"
 									class="testimonial-img" alt="">
-								<h3>Sara Wilsson</h3>
-								<h4>Designer</h4>
+								<h3>Toàn</h3>
+								<h4>Giáo viên</h4>
 							</div>
 						</div>
 						<!-- End testimonial item -->
@@ -271,17 +248,14 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Enim nisi
-									quem export duis labore cillum quae magna enim sint quorum
-									nulla quem veniam duis minim tempor labore quem eram duis
-									noster aute amet eram fore quis sint minim. <i
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Hay quassssss<i
 										class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-3.jpg'/>"
 									class="testimonial-img" alt="">
-								<h3>Jena Karlis</h3>
-								<h4>Store Owner</h4>
+								<h3>David backhamk</h3>
+								<h4>chsgchjdsbj</h4>
 							</div>
 						</div>
 						<!-- End testimonial item -->
@@ -289,17 +263,13 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Fugiat
-									enim eram quae cillum dolore dolor amet nulla culpa multos
-									export minim fugiat minim velit minim dolor enim duis veniam
-									ipsum anim magna sunt elit fore quem dolore labore illum
-									veniam. <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i>ahhahah  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-4.jpg'/>"
 									class="testimonial-img" alt="">
-								<h3>Matt Brandon</h3>
-								<h4>Freelancer</h4>
+								<h3>Lewwab</h3>
+								<h4>Tự do</h4>
 							</div>
 						</div>
 						<!-- End testimonial item -->
@@ -307,17 +277,13 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Quis
-									quorum aliqua sint quem legam fore sunt eram irure aliqua
-									veniam tempor noster veniam enim culpa labore duis sunt culpa
-									nulla illum cillum fugiat legam esse veniam culpa fore nisi
-									cillum quid. <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i> lalalal <i class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-5.jpg'/>"
 									class="testimonial-img" alt="">
-								<h3>John Larson</h3>
-								<h4>Entrepreneur</h4>
+								<h3>Jackson</h3>
+								<h4>cksdcdks</h4>
 							</div>
 						</div>
 						<!-- End testimonial item -->
@@ -336,7 +302,7 @@
 			<div class="container" data-aos="fade-up">
 
 				<div class="section-title">
-					<h2>Frequently Asked Questions</h2>
+					<h2>Câu hỏi</h2>
 					<!-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p> -->
 				</div>
 
@@ -345,78 +311,77 @@
 						<li data-aos="fade-up" data-aos-delay="100"><i
 							class="bx bx-help-circle icon-help"></i> <a
 							data-bs-toggle="collapse" class="collapse"
-							data-bs-target="#faq-list-1">How many Maids can i book at a
-								time? <i class="bx bx-chevron-down icon-show"></i><i
+							data-bs-target="#faq-list-1">Tôi có thể thuê bao nhiêu người giúp việc trong ngày <i class="bx bx-chevron-down icon-show"></i><i
 								class="bx bx-chevron-up icon-close"></i>
 						</a>
 							<div id="faq-list-1" class="collapse " data-bs-parent=".faq-list">
 								<p>
-									As much you want for your services.
+									:))))
 									<!--  However, students who miss the exam (never start the exam) can contact the teacher personally for requesting re-open of exams. As for students who already taken the exam, they cannot take the re-open exam. -->
 								</p>
 							</div></li>
 
-						<li data-aos="fade-up" data-aos-delay="200"><i
-							class="bx bx-help-circle icon-help"></i> <a
-							data-bs-toggle="collapse" data-bs-target="#faq-list-2"
-							class="collapsed">Feugiat scelerisque varius morbi enim nunc?
-								<i class="bx bx-chevron-down icon-show"></i><i
-								class="bx bx-chevron-up icon-close"></i>
-						</a>
-							<div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-								<p>Dolor sit amet consectetur adipiscing elit pellentesque
-									habitant morbi. Id interdum velit laoreet id donec ultrices.
-									Fringilla phasellus faucibus scelerisque eleifend donec
-									pretium. Est pellentesque elit ullamcorper dignissim. Mauris
-									ultrices eros in cursus turpis massa tincidunt dui.</p>
-							</div></li>
+<!-- 						<li data-aos="fade-up" data-aos-delay="200"><i -->
+<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
+<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-2" -->
+<!-- 							class="collapsed">Feugiat scelerisque varius morbi enim nunc? -->
+<!-- 								<i class="bx bx-chevron-down icon-show"></i><i -->
+<!-- 								class="bx bx-chevron-up icon-close"></i> -->
+<!-- 						</a> -->
+<!-- 							<div id="faq-list-2" class="collapse" data-bs-parent=".faq-list"> -->
+<!-- 								<p>Dolor sit amet consectetur adipiscing elit pellentesque -->
+<!-- 									habitant morbi. Id interdum velit laoreet id donec ultrices. -->
+<!-- 									Fringilla phasellus faucibus scelerisque eleifend donec -->
+<!-- 									pretium. Est pellentesque elit ullamcorper dignissim. Mauris -->
+<!-- 									ultrices eros in cursus turpis massa tincidunt dui.</p> -->
+<!-- 							</div></li> -->
 
-						<li data-aos="fade-up" data-aos-delay="300"><i
-							class="bx bx-help-circle icon-help"></i> <a
-							data-bs-toggle="collapse" data-bs-target="#faq-list-3"
-							class="collapsed">Dolor sit amet consectetur adipiscing elit?
-								<i class="bx bx-chevron-down icon-show"></i><i
-								class="bx bx-chevron-up icon-close"></i>
-						</a>
-							<div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-								<p>Eleifend mi in nulla posuere sollicitudin aliquam
-									ultrices sagittis orci. Faucibus pulvinar elementum integer
-									enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum
-									tellus pellentesque eu tincidunt. Lectus urna duis convallis
-									convallis tellus. Urna molestie at elementum eu facilisis sed
-									odio morbi quis</p>
-							</div></li>
+<!-- 						<li data-aos="fade-up" data-aos-delay="300"><i -->
+<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
+<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-3" -->
+<!-- 							class="collapsed">Dolor sit amet consectetur adipiscing elit? -->
+<!-- 								<i class="bx bx-chevron-down icon-show"></i><i -->
+<!-- 								class="bx bx-chevron-up icon-close"></i> -->
+<!-- 						</a> -->
+<!-- 							<div id="faq-list-3" class="collapse" data-bs-parent=".faq-list"> -->
+<!-- 								<p>Eleifend mi in nulla posuere sollicitudin aliquam -->
+<!-- 									ultrices sagittis orci. Faucibus pulvinar elementum integer -->
+<!-- 									enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum -->
+<!-- 									tellus pellentesque eu tincidunt. Lectus urna duis convallis -->
+<!-- 									convallis tellus. Urna molestie at elementum eu facilisis sed -->
+<!-- 									odio morbi quis</p> -->
+<!-- 							</div></li> -->
 
-						<li data-aos="fade-up" data-aos-delay="400"><i
-							class="bx bx-help-circle icon-help"></i> <a
-							data-bs-toggle="collapse" data-bs-target="#faq-list-4"
-							class="collapsed">Tempus quam pellentesque nec nam aliquam
-								sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i
-								class="bx bx-chevron-up icon-close"></i>
-						</a>
-							<div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-								<p>Molestie a iaculis at erat pellentesque adipiscing
-									commodo. Dignissim suspendisse in est ante in. Nunc vel risus
-									commodo viverra maecenas accumsan. Sit amet nisl suscipit
-									adipiscing bibendum est. Purus gravida quis blandit turpis
-									cursus in.</p>
-							</div></li>
+<!-- 						<li data-aos="fade-up" data-aos-delay="400"><i -->
+<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
+<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-4" -->
+<!-- 							class="collapsed">Tempus quam pellentesque nec nam aliquam -->
+<!-- 								sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i -->
+<!-- 								class="bx bx-chevron-up icon-close"></i> -->
+<!-- 						</a> -->
+<!-- 							<div id="faq-list-4" class="collapse" data-bs-parent=".faq-list"> -->
+<!-- 								<p>Molestie a iaculis at erat pellentesque adipiscing -->
+<!-- 									commodo. Dignissim suspendisse in est ante in. Nunc vel risus -->
+<!-- 									commodo viverra maecenas accumsan. Sit amet nisl suscipit -->
+<!-- 									adipiscing bibendum est. Purus gravida quis blandit turpis -->
+<!-- 									cursus in.</p> -->
+<!-- 							</div></li> -->
 
-						<li data-aos="fade-up" data-aos-delay="500"><i
-							class="bx bx-help-circle icon-help"></i> <a
-							data-bs-toggle="collapse" data-bs-target="#faq-list-5"
-							class="collapsed">Tortor vitae purus faucibus ornare. Varius
-								vel pharetra vel turpis nunc eget lorem dolor? <i
-								class="bx bx-chevron-down icon-show"></i><i
-								class="bx bx-chevron-up icon-close"></i>
-						</a>
-							<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-								<p>Laoreet sit amet cursus sit amet dictum sit amet justo.
-									Mauris vitae ultricies leo integer malesuada nunc vel.
-									Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget
-									lorem dolor sed. Ut venenatis tellus in metus vulputate eu
-									scelerisque.</p>
-							</div></li>
+<!-- 						<li data-aos="fade-up" data-aos-delay="500"><i -->
+<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
+<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-5" -->
+<!-- 							class="collapsed">Tortor vitae purus faucibus ornare. Varius -->
+<!-- 								vel pharetra vel turpis nunc eget lorem dolor? <i -->
+<!-- 								class="bx bx-chevron-down icon-show"></i><i -->
+<!-- 								class="bx bx-chevron-up icon-close"></i> -->
+<!-- 						</a> -->
+<!-- 							<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list"> -->
+<!-- 								<p>Laoreet sit amet cursus sit amet dictum sit amet justo. -->
+<!-- 									Mauris vitae ultricies leo integer malesuada nunc vel. -->
+<!-- 									Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget -->
+<!-- 									lorem dolor sed. Ut venenatis tellus in metus vulputate eu -->
+<!-- 									scelerisque.</p> -->
+<!-- 							</div></li> -->
 
 					</ul>
 				</div>
@@ -430,12 +395,8 @@
 			<div class="container">
 
 				<div class="section-title" data-aos="fade-up">
-					<h2>Contact Us</h2>
-					<p>Magnam dolores commodi suscipit. Necessitatibus eius
-						consequatur ex aliquid fuga eum quidem. Sit sint consectetur
-						velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit
-						suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem
-						hic quas.</p>
+					<h2>Liên lạc</h2>
+					<p>Hhahaha</p>
 				</div>
 
 				<div class="row no-gutters justify-content-center"
@@ -445,20 +406,20 @@
 						<div class="info">
 							<div class="address">
 								<i class="bi bi-geo-alt"></i>
-								<h4>Location:</h4>
-								<p>A-123 MG Road, Pune, PU 535022</p>
+								<h4>Địa chỉ:</h4>
+								<p>97 Man Thiện</p>
 							</div>
 
 							<div class="email mt-4">
 								<i class="bi bi-envelope"></i>
 								<h4>Email:</h4>
-								<p>bookmymaid@gmail.com</p>
+								<p>nhom16@gmail.com</p>
 							</div>
 
 							<div class="phone mt-4">
 								<i class="bi bi-phone"></i>
-								<h4>Call:</h4>
-								<p>+91 9988452631</p>
+								<h4>SDT:</h4>
+								<p>0009988452631</p>
 							</div>
 
 						</div>
@@ -496,13 +457,13 @@
 									placeholder="Message" required></textarea>
 							</div>
 							<div class="my-3">
-								<div class="loading">Loading</div>
+								<div class="loading">Load</div>
 								<div class="error-message"></div>
-								<div class="sent-message">Your message has been sent.
+								<div class="sent-message">Tin nhắn bạn đã gửi
 									Thank you!</div>
 							</div>
 							<div class="text-center">
-								<button type="submit">Send Message</button>
+								<button type="submit">Gửi</button>
 							</div>
 						</form>
 					</div>

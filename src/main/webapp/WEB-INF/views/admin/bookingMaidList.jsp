@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -232,7 +233,9 @@
 										<td scope="col">${maid.phoneNumber }</td>
 										<td scope="col">${maid.address }</td>
 										<td scope="col">${maid.experience }</td>
-										<td scope="col">${maid.salary }</td>
+										<td scope="col"><fmt:formatNumber
+										value="${maid.salary}" pattern="#,###.## VND;VND -#,###.##" type="currency"
+										currencySymbol="VND"/></td>
 										<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
 										<td scope="col">${maid.employee.id }</td>
 										<td scope="col">${maid.account.email }</td>

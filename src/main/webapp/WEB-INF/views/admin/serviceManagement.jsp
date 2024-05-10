@@ -255,7 +255,9 @@
 											<td scope="col">${service.name }</td>
 											<td scope="col">${service.category.name }</td>
 											<td scope="col">${service.time }</td>
-											<td scope="col">${service.servicePrices[0].price }</td>
+											<td scope="col"><fmt:formatNumber
+										value="${service.servicePrices[0].price }" pattern="#,###.## VND;VND -#,###.##" type="currency"
+										currencySymbol="VND"/></td>
 											<td scope="col">${service.description }</td>
 											<td scope="col">${service.maidQuantity }</td>
 											<td scope="col">

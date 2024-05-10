@@ -841,7 +841,7 @@ public class adminController {
 			System.out.println("Error: Add new service unsuccessfully!");
 		}
 
-		return "admin/serviceManagement";
+		return "redirect:/admin/serviceManagement.htm";
 	}
 
 	private void addServicePriceForService(ServiceEntity service) {

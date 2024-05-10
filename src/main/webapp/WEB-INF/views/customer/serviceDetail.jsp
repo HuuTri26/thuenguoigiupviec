@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -190,8 +191,9 @@
 							</div>
 
 							<div class="mb-3">
-								<span class="h5">${service.servicePrices[0].price } VNĐ</span> <span
-									class="text-muted">/gói</span>
+								<span class="h5"><fmt:formatNumber
+										value="${service.servicePrices[0].price}" pattern="#,###.## VND;VND -#,###.##" type="currency"
+										currencySymbol="VND"/></span> <span class="text-muted">/gói</span>
 							</div>
 
 							<p>${service.description }</p>
@@ -259,7 +261,8 @@
 						<div class="close-btn position-absolute top-0 end-0 p-3">
 							<i class="fas fa-times text-white"></i>
 						</div>
-						<form:form class="row g-3" action="serviceBooking.htm" method="post" modelAttribute="booking">
+						<form:form class="row g-3" action="serviceBooking.htm"
+							method="post" modelAttribute="booking">
 							<div class="col-12">
 								<h1 class="text-center fw-bolder text-white mt-3">Form đặt
 									dịch vụ</h1>

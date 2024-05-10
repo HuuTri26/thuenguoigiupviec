@@ -195,7 +195,7 @@
 					<div class="card">
 						<div class="card-body ">
 							<div class="card-title">
-								<a href="addMaid.htm" class="btn btn-primary">Add Maid</a>
+								<a href="addMaid.htm" class="btn btn-primary">Add maid</a>
 							</div>
 							<!--  <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
@@ -279,7 +279,9 @@
 											<td scope="col">${maid.phoneNumber }</td>
 											<td scope="col">${maid.address }</td>
 											<td scope="col">${maid.experience }</td>
-											<td scope="col">${maid.salary }</td>
+												<td scope="col"><fmt:formatNumber value="${maid.salary }"
+												pattern="#,###.## VND;VND -#,###.##" type="currency"
+												currencySymbol="VND" /></td>
 											<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
 											<td scope="col">${maid.employee.id }</td>
 											<td scope="col">${maid.account.email }</td>

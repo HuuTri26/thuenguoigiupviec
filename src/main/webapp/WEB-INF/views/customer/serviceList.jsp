@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,26 +60,75 @@
 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
 
 	<main id="main" style="background-color: gray;">
+		<!-- 		<div style="margin-top: 100px;"> -->
+		<%-- 			<form action="/services/search" method="GET"> --%>
+		<!-- 				<div class="col-md-4"> -->
+		<!-- 					<label for="filterBy">Lọc theo thuộc tính:</label> <select -->
+		<!-- 						id="filterBy" name="filterBy" class="form-select"> -->
+		<!-- 						<option value="all">Tất cả</option> -->
+		<!-- 						<option value="name">Tên</option> -->
+		<!-- 						<option value="category">Loại</option> -->
+		<!-- 						<option value="time">Thời gian gói</option> -->
+		<!-- 						Thêm các option khác nếu cần -->
+		<!-- 					</select> -->
+		<!-- 				</div> -->
+		<!-- 				<div class="col-md-4"> -->
+		<!-- 					<label for="searchInput">Nhập thông tin cần lọc:</label> <input -->
+		<!-- 						type="text" id="searchInput" name="keyword" class="form-control" -->
+		<!-- 						placeholder="Nhập thông tin..."> -->
+		<!-- 				</div> -->
+		<!-- 				<div class="col-md-2"> -->
+		<!-- 					<label></label> -->
+		<!-- 					<button type="submit" class="btn btn-primary">Search</button> -->
+		<!-- 				</div> -->
+		<%-- 			</form> --%>
+		<!-- 		</div> -->
+		<div class="container " style="margin-top: 70px;">
+			<div class="row">
+				<div class="col-md-4">
+					<label for="filterBy">Lọc theo thuộc tính:</label> <select
+						id="filterBy" class="form-select">
+						<option value="all">Tất cả</option>
+						<option value="serviceName">Tên gói</option>
+						<option value="serviceTime">Thời gian gói</option>
+						<option value="serviceQuantity">Số lượng Maid</option>
+						<!-- Thêm các option khác nếu cần -->
+					</select>
+				</div>
+				<div class="col-md-4">
+					<label for="searchInput">Nhập thông tin cần lọc:</label> <input
+						type="text" id="searchInput" class="form-control"
+						placeholder="Nhập thông tin...">
+				</div>
+				<div class="col-md-2">
+					<label></label>
+					<button id="searchButton" class="btn btn-primary">Search</button>
+				</div>
+			</div>
+		</div>
 		<div
-			class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 p-5 m-3 mt-10">
+			class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 p-5 m-3 mt-10 serviceList">
 
 			<c:forEach var="service" items="${serviceList }">
-				<div class="col">
+				<div class="col serviceInfor">
 					<div class="card">
 						<img
 							src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
 							class="card-img-top" alt="Hollywood Sign on The Hill">
 						<div class="card-body">
 							<a href="serviceDetail/${service.id }.htm" class="card-title"
-								style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">${service.name }</a>
-							<p class="card-text">Loại: ${service.category.name }</p>
-							<p class="card-text">Thời gian gói: ${service.time }</p>
-							<p class="card-text">Số lượng: ${service.maidQuantity }</p>
+								style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;"
+								id="serviceName">${service.name }</a>
+							<p class="card-text" id="categoryName">Loại:
+								${service.category.name }</p>
+							<p class="card-text" id="serviceTime">Thời gian gói:
+								${service.time }</p>
+							<p class="card-text" id="serviceQuantity">Số lượng:
+								${service.maidQuantity }</p>
 						</div>
 					</div>
 				</div>
 			</c:forEach>
-
 		</div>
 		<div class="pagination pb-4"
 			style="display: flex; justify-content: center; align-items: center; vertical-align: middle;">
@@ -109,46 +159,126 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/main/assets/js/main.js'/>"></script>
+
 	<script>
-	const cards = document.querySelectorAll('.col');
-	const paginationDiv = document.querySelector('.pagination');
-	const prevBtn = document.querySelector('.prev-btn');
-	const nextBtn = document.querySelector('.next-btn');
-	const pageNumSpan = document.querySelector('.page-num');
+  const originalCards = Array.from(document.querySelectorAll('.serviceInfor'));
+  let filteredCards = originalCards.slice(); // Sao chép danh sách card ban đầu
 
-	let currentPage = 1;
-	const cardPerPage = 6;
+  const prevBtn = document.querySelector('.prev-btn');
+  const nextBtn = document.querySelector('.next-btn');
+  const pageNumSpan = document.querySelector('.page-num');
 
-	function displayCards() {
-	  const startIndex = (currentPage - 1) * cardPerPage;
-	  const endIndex = startIndex + cardPerPage;
+  let currentPage = 1;
+  const cardPerPage = 3;
 
-	  cards.forEach((card, index) => {
-	    if (index >= startIndex && index < endIndex) {
-	      card.style.display = 'block';
-	    } else {
-	      card.style.display = 'none';
-	    }
-	  });
+  document.getElementById('searchButton').addEventListener('click', function() {
+    const filterBy = document.getElementById('filterBy').value; // Lấy giá trị thuộc tính được chọn từ combo box
+    const searchInput = document.getElementById('searchInput').value.trim().toLowerCase(); // Lấy giá trị đã nhập từ input và chuyển thành chữ thường
 
-	  pageNumSpan.textContent = currentPage;
-	}
+    // Lọc danh sách card dựa trên từ khóa tìm kiếm và thuộc tính đã chọn
+    filteredCards = originalCards.filter(card => {
+      const serviceName = card.querySelector('#serviceName').innerText.toLowerCase();
+      const serviceTime = card.querySelector('#serviceTime').innerText.toLowerCase();
+      const serviceQuantity = card.querySelector('#serviceQuantity').innerText.toLowerCase();
 
-	prevBtn.addEventListener('click', () => {
-	  if (currentPage > 1) {
-	    currentPage--;
-	    displayCards();
-	  }
-	});
+      if (filterBy === 'all' && (serviceName.includes(searchInput) || serviceTime.includes(searchInput) || serviceQuantity.includes(searchInput))) {
+        return true;
+      } else if ((filterBy === 'serviceName' && serviceName.includes(searchInput)) || (filterBy === 'serviceTime' && serviceTime.includes(searchInput)) || (filterBy === 'serviceQuantity' && serviceQuantity.includes(searchInput))) {
+        return true;
+      } else {
+        return false;
+      }
+    });
 
-	nextBtn.addEventListener('click', () => {
-	  if (currentPage * cardPerPage < cards.length) {
-	    currentPage++;
-	    displayCards();
-	  }
-	});
+    // Hiển thị danh sách card đã lọc và cập nhật phân trang
+    displayCards(filteredCards);
+    updatePagination(filteredCards);
+  });
 
-	displayCards();
-	</script>
+  // Xử lý khi input trống hoặc trang được làm mới
+  window.addEventListener('load', function() {
+    // Hiển thị danh sách card ban đầu và cập nhật phân trang
+    displayCards(originalCards);
+    updatePagination(originalCards);
+  });
+
+  function updatePagination(cards) {
+    const totalPages = Math.ceil(cards.length / cardPerPage);
+    pageNumSpan.textContent = currentPage + ' / ' + totalPages;
+  }
+
+  function displayCards(cards) {
+    const cardList = document.querySelector('.serviceList');
+    // Xóa toàn bộ card hiện tại trước khi đổ danh sách card mới
+    cardList.innerHTML = '';
+
+    const startIndex = (currentPage - 1) * cardPerPage;
+    const endIndex = startIndex + cardPerPage;
+
+    cards.slice(startIndex, endIndex).forEach(function(card) {
+      cardList.appendChild(card);
+    });
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayCards(filteredCards);
+      updatePagination(filteredCards);
+    }
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const totalPages = Math.ceil(filteredCards.length / cardPerPage);
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayCards(filteredCards);
+      updatePagination(filteredCards);
+    }
+  });
+</script>
+
+	<!-- 	<script> -->
+	<!-- //  	const cards = document.querySelectorAll('.col');  -->
+	<!-- //  	const paginationDiv = document.querySelector('.pagination');  -->
+	<!-- //  	const prevBtn = document.querySelector('.prev-btn'); -->
+	<!-- //  	const nextBtn = document.querySelector('.next-btn');  -->
+	<!-- //  	const pageNumSpan = document.querySelector('.page-num');  -->
+
+	<!-- //  	let currentPage = 1;  -->
+	<!-- //  	const cardPerPage = 3; -->
+
+	<!-- //  	function displayCards() { -->
+	<!-- //  	  const startIndex = (currentPage - 1) * cardPerPage; -->
+	<!-- //  	  const endIndex = startIndex + cardPerPage;  -->
+
+	<!-- //  	  cards.forEach((card, index) => { -->
+	<!-- //  	    if (index >= startIndex && index < endIndex) {  -->
+	<!-- //  	      card.style.display = 'block'; -->
+	<!-- // 	    } else { -->
+	<!-- //  	      card.style.display = 'none';  -->
+	<!-- //  	    } -->
+	<!-- //  	  });  -->
+
+	<!-- //  	  pageNumSpan.textContent = currentPage;  -->
+	<!-- //  	}  -->
+
+	<!-- //  	prevBtn.addEventListener('click', () => {  -->
+	<!-- //  	  if (currentPage > 1) { -->
+	<!-- //  	    currentPage--; -->
+	<!-- // 	    displayCards();  -->
+	<!-- //  	  }  -->
+	<!-- //  	});  -->
+
+	<!-- // 	nextBtn.addEventListener('click', () => {  -->
+	<!-- //  	  if (currentPage * cardPerPage < cards.length) {  -->
+	<!-- // 	    currentPage++;  -->
+	<!-- //  	    displayCards();  -->
+	<!-- //  	  }  -->
+	<!-- //  	});  -->
+
+	<!-- //  	displayCards();  -->
+	<!-- </script> -->
+
 </body>
 </html>
