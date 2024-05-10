@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ptithcm.bean.Mailer;
+import ptithcm.dao.ServiceDAO;
 import ptithcm.entity.AccountEntity;
 import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.ContractEntity;
@@ -492,7 +493,7 @@ public class adminController {
 	public String showCategoryList(Model model) {
 		List<CategoryEntity> categoryList = categoryService.getListCategory();
 		model.addAttribute("categoryList", categoryList);
-		
+
 		return "admin/categoryManagement";
 	}
 
@@ -501,23 +502,24 @@ public class adminController {
 	public String showAddCategoryForm(Model model) {
 		model.addAttribute("category", new CategoryEntity());
 		System.out.println("==> Open add category session");
-		
+
 		return "admin/addCategory";
 	}
-	
+
 	@RequestMapping(value = "admin/addCategory", method = RequestMethod.POST)
 	public String addCategoryForm(@ModelAttribute("category") CategoryEntity category, BindingResult errors) {
 		Boolean isValidCategory = Boolean.TRUE;
-		
-		if(category.getName().isEmpty()) {
+
+		if (category.getName().isEmpty()) {
 			errors.rejectValue("name", "category", "Tên danh mục không được để trống!");
 			isValidCategory = Boolean.FALSE;
-		}if(accountService.standardize(category.getName()).length() >= 50){
+		}
+		if (accountService.standardize(category.getName()).length() >= 50) {
 			errors.rejectValue("name", "category", "Tên danh mục không đc vượt quá 50 ký tự!");
 			isValidCategory = Boolean.FALSE;
 		}
-		
-		if(isValidCategory) {
+
+		if (isValidCategory) {
 			try {
 				category.setName(accountService.standardize(category.getName()));
 				category.setDescription(category.getDescription());
@@ -528,7 +530,7 @@ public class adminController {
 				System.out.println("Error: New category added unsuccessfully!");
 				return "redirect:/admin/addCategory.htm";
 			}
-		}else {
+		} else {
 			System.out.println("Error: New category added unsuccessfully!");
 			return "redirect:/admin/addCategory.htm";
 		}
@@ -570,6 +572,34 @@ public class adminController {
 		System.out.println("==> Open an add service session");
 
 		return "admin/addService";
+	}
+
+	@RequestMapping("admin/blockService/{id}")
+	public String blockService(@PathVariable("id") Integer id) {
+		ServiceEntity service = maidServiceService.getServiceById(id);
+
+		if (service != null) {
+			service.setStatus(false);
+			System.out.println("==> Set service status to 'fasle' successfully!");
+		} else {
+			System.out.println("Error: Set service status to 'fasle' unsuccessfully!");
+		}
+
+		return "redirect:/admin/serviceManagement.htm";
+	}
+
+	@RequestMapping("admin/activeService/{id}")
+	public String activeService(@PathVariable("id") Integer id) {
+		ServiceEntity service = maidServiceService.getServiceById(id);
+
+		if (service != null) {
+			service.setStatus(true);
+			System.out.println("==> Set service status to 'true' successfully!");
+		} else {
+			System.out.println("Error: Set service status to 'true' unsuccessfully!");
+		}
+
+		return "redirect:/admin/serviceManagement.htm";
 	}
 
 	// Hiển thị form cập nhật dịch vụ:
