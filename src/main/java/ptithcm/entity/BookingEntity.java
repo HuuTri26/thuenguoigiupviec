@@ -153,5 +153,12 @@ public class BookingEntity {
 	public void setEmployee(EmployeeEntity employee) {
 		this.employee = employee;
 	}
-	
+
+	public List<BookingDetailEntity> getBookingDetails() {
+		return bookingDetails;
+	}
+
+	public void setBookingDetails(List<BookingDetailEntity> bookingDetails) {
+		this.bookingDetails = bookingDetails;
+	}
 }
