@@ -1,5 +1,7 @@
 package ptithcm.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder.In;
@@ -21,12 +23,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ptithcm.bean.Mailer;
+import ptithcm.dao.ServiceDAO;
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.BookingEntity;
 import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.CustomerEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.entity.ServiceEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.BookingService;
 import ptithcm.service.CategoryService;
 import ptithcm.service.CustomerService;
 import ptithcm.service.MaidServiceService;
@@ -56,6 +61,9 @@ public class customerController {
 	
 	@Autowired
 	MaidServiceService maidServiceService;
+	
+	@Autowired
+	BookingService bookingService;
 
 	// Trang đăng nhập cho customer
 	@RequestMapping("customer/customerLogin")
@@ -345,7 +353,69 @@ public class customerController {
 		ServiceEntity service = maidServiceService.getServiceById(id);
 		model.addAttribute("service", service);
 		
+		BookingEntity booking = new BookingEntity();
+		model.addAttribute("booking", booking);
+		
 		return "customer/serviceDetail";
+	}
+	
+	//Tạo yêu cầu đặt người giúp việc
+	@RequestMapping(value = "customer/serviceList/serviceDetail/booking/{id}", method =  RequestMethod.POST)
+	public String createBookingRequest(HttpServletRequest request ,Model model, @PathVariable("id") Integer id,
+			@ModelAttribute("booking") BookingEntity booking, BindingResult errors) {
+		
+		Date currentTime = new Date();
+		
+//		 System.out.println("Current Time: " + currentTime);
+//		 System.out.println("Booking Start Time: " + booking.getStartTime());
+		
+		Boolean isValidBooking = Boolean.TRUE;
+		
+		if(booking.getStartTime() == null) {
+			errors.rejectValue("startTime", "booking", "Thời gian bắt đầu không được để trống!");
+			isValidBooking = Boolean.FALSE;
+			
+		}else if(booking.getStartTime().before(currentTime)) {
+			errors.rejectValue("startTime", "booking", "Thời gian bắt đầu không hợp lệ!");
+			isValidBooking = Boolean.FALSE;
+			
+		}else if(booking.getBookingAddress().isEmpty()) {
+			errors.rejectValue("bookingAddress", "booking", "Địa chỉ không được để trống!");
+			isValidBooking = Boolean.FALSE;
+		}
+		
+		if(isValidBooking) {
+			try {
+				HttpSession session = request.getSession();
+				CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
+				ServiceEntity service = maidServiceService.getServiceById(id);
+				
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				String formattedStartTime = dateFormat.format(booking.getStartTime());
+				String formattedCurrTime = dateFormat.format(currentTime);
+				
+				booking.setStartTime(dateFormat.parse(formattedStartTime));
+				booking.setBookingAddress(booking.getBookingAddress());
+				booking.setPrice(service.getServicePrices().get(0).getPrice());
+				booking.setBookingStatus(0);
+				booking.setPaymentStatus(0);
+				booking.setCreateAt(dateFormat.parse(formattedCurrTime));
+				booking.setCustomer(customer);
+				booking.setService(service);
+				
+				bookingService.createBooking(booking);
+				System.out.println("==> Booking request created successfully at " + currentTime + '!');
+				return "redirect:/customer/serviceList/" + service.getId() +".htm";
+			}catch (Exception e) {
+				System.out.println("Error: \n" + e.toString());
+			}
+		}else {
+			System.out.println("Error: Booking request created unsuccessfuly!");
+			
+		}
+//		System.out.println(booking.getBookingAddress());
+//		System.out.println(booking.getStartTime());
+		return "redirect:/customer/serviceList/serviceDetail/" + id +".htm";
 	}
 
 	// Trang đăng ký gmail của customer
