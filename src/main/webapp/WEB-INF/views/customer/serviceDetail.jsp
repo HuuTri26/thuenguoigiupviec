@@ -192,8 +192,9 @@
 
 							<div class="mb-3">
 								<span class="h5"><fmt:formatNumber
-										value="${service.servicePrices[0].price}" pattern="#,###.## VND;VND -#,###.##" type="currency"
-										currencySymbol="VND"/></span> <span class="text-muted">/gói</span>
+										value="${service.servicePrices[0].price}"
+										pattern="#,###.## VND;VND -#,###.##" type="currency"
+										currencySymbol="VND" /></span> <span class="text-muted">/gói</span>
 							</div>
 
 							<p>${service.description }</p>
@@ -261,7 +262,7 @@
 						<div class="close-btn position-absolute top-0 end-0 p-3">
 							<i class="fas fa-times text-white"></i>
 						</div>
-						<form:form class="row g-3" action="serviceBooking.htm"
+						<form:form class="row g-3" action="booking/${service.id }.htm"
 							method="post" modelAttribute="booking">
 							<div class="col-12">
 								<h1 class="text-center fw-bolder text-white mt-3">Form đặt
@@ -275,18 +276,21 @@
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
-									<input type="date" autocomplete="off"
+									<form:input path="startTime" type="date" autocomplete="off"
 										class="form-control bg-light " id="startTime"
-										placeholder="Name"> <label for="inputName">Ngày
-										bắt đầu</label>
+										placeholder="Name" />
+									<label for="inputName">Ngày bắt đầu</label>
+									<form:errors path="startTime"/>
 								</div>
 							</div>
 
 							<div class="col-12">
 								<div class="form-floating">
-									<input type="text" class="form-control bg-light "
-										id="inputAddress" placeholder="1234 Main St"> <label
-										for="inputAddress" class="form-label">Address</label>
+									<form:input path="bookingAddress" type="text"
+										class="form-control bg-light " id="inputAddress"
+										placeholder="1234 Main St" />
+									<label for="inputAddress" class="form-label">Address</label>
+									<form:errors path="bookingAddress"/>
 								</div>
 							</div>
 

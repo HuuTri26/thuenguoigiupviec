@@ -27,7 +27,7 @@ public class BookingEntity {
 	private Integer id;
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "StartTime")
 	private Date startTime;
 	
@@ -40,23 +40,23 @@ public class BookingEntity {
 	@Column(name = "Price")
 	private Double price;
 	
-	@Column(name = "BookingStatus")
+	@Column(name = "BookingStatus", nullable = false, columnDefinition = "INT DEFAULT 0")
 	private Integer bookingStatus;
 	
-	@Column(name = "PaymentStatus")
+	@Column(name = "PaymentStatus", nullable = false, columnDefinition = "INT DEFAULT 0")
 	private Integer paymentStatus;
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
-	@Column(name = "CreateAt")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "CreateAt", nullable = false, updatable = false)
 	private Date createAt;
 	
 	@ManyToOne
-	@JoinColumn(name = "customerId")
+	@JoinColumn(name = "customerId", nullable = false)
 	private CustomerEntity customer;
 	
 	@OneToOne
-	@JoinColumn(name = "id")
+	@JoinColumn(name = "serviceId", nullable = false)
 	private ServiceEntity service;
 	
 	@ManyToOne

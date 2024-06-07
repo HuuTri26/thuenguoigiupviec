@@ -67,9 +67,9 @@ public class MaidEntity {
 	@OneToMany(mappedBy = "maid", fetch = FetchType.LAZY)
 	private List<ContractEntity> contracts;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "id")
-//	private BookingDetailEntity bookingDetail;
+	@ManyToOne
+	@JoinColumn(name = "bookingDetailId")
+	private BookingDetailEntity bookingDetail;
 	
 	public Integer getId() {
 		return id;
@@ -175,12 +175,12 @@ public class MaidEntity {
 		this.contracts = contracts;
 	}
 
-//	public BookingDetailEntity getBookingDetail() {
-//		return bookingDetail;
-//	}
-//
-//	public void setBookingDetail(BookingDetailEntity bookingDetail) {
-//		this.bookingDetail = bookingDetail;
-//	}
+	public BookingDetailEntity getBookingDetail() {
+		return bookingDetail;
+	}
+
+	public void setBookingDetail(BookingDetailEntity bookingDetail) {
+		this.bookingDetail = bookingDetail;
+	}
     
 }
