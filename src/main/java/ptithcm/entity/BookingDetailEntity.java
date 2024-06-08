@@ -29,8 +29,10 @@ public class BookingDetailEntity {
 	@JoinColumn(name = "bookingId")
 	private BookingEntity booking;
 	
-	@OneToMany(mappedBy = "bookingDetail", fetch = FetchType.LAZY)
-	private List<MaidEntity> maids;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "MaidId")
+	private MaidEntity maid;
 
 	public Integer getId() {
 		return id;
@@ -70,12 +72,12 @@ public class BookingDetailEntity {
 		this.booking = booking;
 	}
 
-	public List<MaidEntity> getMaids() {
-		return maids;
+	public MaidEntity getMaid() {
+		return maid;
 	}
 
-	public void setMaids(List<MaidEntity> maids) {
-		this.maids = maids;
+	public void setMaids(MaidEntity maids) {
+		this.maid = maid;
 	}
 	
 	
