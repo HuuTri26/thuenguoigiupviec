@@ -77,6 +77,6 @@ public class BookingDetailEntity {
 	public void setMaids(List<MaidEntity> maids) {
 		this.maids = maids;
 	}
-
+	
 	
 }
