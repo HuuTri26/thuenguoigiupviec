@@ -66,7 +66,7 @@ public class MaidEntity {
 	
 	@OneToMany(mappedBy = "maid", fetch = FetchType.LAZY)
 	private List<ContractEntity> contracts;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bookingDetailId")
 	private BookingDetailEntity bookingDetail;

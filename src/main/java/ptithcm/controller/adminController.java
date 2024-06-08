@@ -28,6 +28,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import ptithcm.bean.Mailer;
 import ptithcm.dao.ServiceDAO;
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.BookingEntity;
 import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.ContractEntity;
 import ptithcm.entity.CustomerEntity;
@@ -37,6 +38,7 @@ import ptithcm.entity.ServiceEntity;
 import ptithcm.entity.ServicePriceEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.BookingService;
 import ptithcm.service.CategoryService;
 import ptithcm.service.ContractService;
 import ptithcm.service.CustomerService;
@@ -79,6 +81,9 @@ public class adminController {
 
 	@Autowired
 	ContractService contractService;
+	
+	@Autowired
+	BookingService bookingService;
 
 	@Autowired
 	Mailer mailer;
@@ -610,7 +615,10 @@ public class adminController {
 
 	// Hiển thị danh sách đặt lịch thuê:
 	@RequestMapping("admin/bookingManagement")
-	public String showBookingList() {
+	public String showBookingList(Model model) {
+		List<BookingEntity> bookingList = bookingService.getListBooking();
+		model.addAttribute("bookingList", bookingList);
+		
 		return "admin/bookingManagement";
 	}
 
