@@ -71,7 +71,7 @@ public class ContractDAOImpl implements ContractDAO {
 	}
 
 	@Override
-	public ContractEntity getUnexpiredContractBy(Integer customerId, Integer maidId, Date createAt) {
+	public ContractEntity getContractBy(Integer customerId, Integer maidId, Date createAt) {
 		Session session = factory.getCurrentSession();
 		String hql = "FROM ContractEntity c WHERE c.customer.id = :customerId AND c.maid.id = :maidId AND c.createAt = :createAt";
 		Query query = session.createQuery(hql);

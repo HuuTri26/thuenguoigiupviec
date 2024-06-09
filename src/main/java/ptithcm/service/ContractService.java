@@ -14,7 +14,7 @@ import ptithcm.entity.ContractEntity;
 public interface ContractService {
 	public List<ContractEntity> getListContract();
 	public void updateContractStatus();
-	public ContractEntity getUnexpiredContractBy(Integer customerId, Integer maidId, Date createAt);
+	public ContractEntity getContractBy(Integer customerId, Integer maidId, Date createAt);
 	public void createContract(ContractEntity contract);
 	public void renewContract(ContractEntity contract);
 	

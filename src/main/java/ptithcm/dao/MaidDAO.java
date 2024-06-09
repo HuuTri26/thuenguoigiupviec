@@ -9,4 +9,5 @@ public interface MaidDAO {
 	public void addMaid(MaidEntity maid);
 	public void updateMaid(MaidEntity maid);
 	public MaidEntity getMaidById(Integer id);
+	public List<MaidEntity> getListFullTimeMaids();
 }
