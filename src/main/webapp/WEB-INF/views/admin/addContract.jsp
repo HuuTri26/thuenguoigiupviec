@@ -186,15 +186,10 @@
 						<div class="card-body">
 							<h5 class="card-title">Thêm hợp đồng</h5>
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
-   -->
+   -->						<a>${message }</a>
 							<!-- Browser Default Validation -->
-							<form:form action="addcontract.htm" 
-								method="post" class="row g-3">
-								<!-- <div class="col-md-6">
-                                    <label for="validationDefault01" class="form-label">ID</label>
-                                    <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
-                                        required>
-                                </div> -->
+							<form:form action="proccessContract.htm" method="post"
+								class="row g-3" modelAttribute="contract">
 								<div class="row mb-3">
 									<label for="profileImage"
 										class="col-md-4 col-lg-3 col-form-label">Ảnh</label>
@@ -211,92 +206,82 @@
 									</div>
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Mã khách hàng</label>
-									<input type="text" class="form-control"
-										id="validationDefault01" path="customerId" value=""
+									<label for="validationDefault01" class="form-label">Mã
+										khách hàng</label>
+									<form:input type="number" class="form-control"
+										id="validationDefault01" path="customer.id" value=""
 										placeholder="Subject name" />
-<%-- 									<form:errors path="customerId" /> --%>
-								</div>
-
-<!-- 								<div class="col-md-6"> -->
-<!-- 									<label for="validationDefault04" class="form-label">Mã maid</label> -->
-<%-- 									<form:select class="form-select" id="validationDefault04" --%>
-<%-- 										path="category.id"> --%>
-<%-- 										<c:forEach var="category" items="${categories}"> --%>
-<%-- 											<option value="${category.id}">${category.name}</option> --%>
-<%-- 										</c:forEach> --%>
-<%-- 									</form:select> --%>
-<!-- 								</div> -->
-
-
-								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Mã maid</label>
-									<input type="number" class="form-control"
-										id="validationDefault01" value=""
-										path="maidId" placeholder="Subject name" />
+									<form:errors path="customer.id" />
 								</div>
 
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Ghi chú</label>
-									<input type="number" class="form-control"
-										id="validationDefault01" value="" path="note"
+									<label for="validationDefault01" class="form-label">Mã
+										maid</label>
+									<form:input type="number" class="form-control"
+										id="validationDefault01" value="" path="maid.id"
 										placeholder="Subject name" />
+									<form:errors path="maid.id" />
 								</div>
 
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Ngày tạo</label>
-									<input type="date" class="form-control"
+									<label for="validationDefault01" class="form-label">Ghi
+										chú</label>
+									<form:input type="text" class="form-control"
+										id="validationDefault01" value="" path="description"
+										placeholder="Subject name" />
+									<form:errors path="description" />
+								</div>
+
+								<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Ngày
+										tạo</label>
+									<form:input type="date" class="form-control"
 										id="validationDefault01" value="" path="createAt"
 										placeholder="Subject name" />
+									<form:errors path="createAt" />
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Ngày bắt đầu</label>
-									<input type="date" class="form-control"
+									<label for="validationDefault01" class="form-label">Ngày
+										bắt đầu</label>
+									<form:input type="date" class="form-control"
 										id="validationDefault01" value="" path="startAt"
 										placeholder="Subject name" />
+									<form:errors path="startAt" />
 								</div>
 								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Ngày kết thúc</label>
-									<input type="date" class="form-control"
+									<label for="validationDefault01" class="form-label">Ngày
+										kết thúc</label>
+									<form:input type="date" class="form-control"
 										id="validationDefault01" value="" path="endAt"
 										placeholder="Subject name" />
+									<form:errors path="endAt" />
 								</div>
-								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Ngày cập nhật</label>
-									<input type="date" class="form-control"
-										id="validationDefault01" value="" path="updateAt"
+								<%-- <div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Ngày
+										cập nhật</label> <form:input type="date" class="form-control"
+										id="validationDefault01" value="" path="contract.updateAt"
 										placeholder="Subject name" />
-								</div>
-									<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Mã nhân viên</label>
-									<input type="number" class="form-control"
-										id="validationDefault01" value=""
-										path="employeeId" placeholder="Subject name" />
-								</div>
-								<!-- <div class="col-md-6">
-                                    <label class="form-label">Description</label>
-                                    <textarea  class="form-control" name="last_name" style="height:100px"
-                                        required>
-                                        </textarea>
-                                </div> -->
-
-<!-- 								<div class="col-md-6"> -->
-<!-- 									<label for="validationDefault01" class="form-label">Miêu -->
-<!-- 										tả</label> -->
-<%-- 									<form:textarea class="form-control" style="height: 100px" --%>
-<%-- 										path="description"></form:textarea> --%>
-<!-- 								</div> -->
-								<div class="col-md-6">
+								</div> --%>
+							<%-- 	<div class="col-md-6">
+									<label for="validationDefault01" class="form-label">Mã
+										nhân viên</label>
+									<form:input type="number" class="form-control"
+										id="validationDefault01" value="" path="employee.id"
+										placeholder="Subject name" />
+									<form:errors path="employee.id" />
+								</div> --%>
+								<%-- <div class="col-md-6">
 									<label for="validationDefault04" class="form-label">Trạng
 										thái</label>
-									<select class="form-select" id="validationDefault04"
+									<form:select class="form-select" id="validationDefault04"
 										name="status" path="status">
-										<option selected value="true">Hoạt động</option>
-										<option value="false">Ngưng hoạt động</option>
-									</select>
+										<form:option selected value="true">Còn hạn</form:option>
+										<form:option value="false">Hết hạn</form:option>
+										<form:option value="false">Hủy</form:option>
+									</form:select>
 
 								</div>
-
+ --%>
 
 
 								<!-- <div class="col-md-6">

@@ -194,37 +194,43 @@
 									</tr>
 								</thead>
 								<tbody id="table_bookings">
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col"><fmt:formatNumber value="78000"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div>
-										</td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
 
-										<td scope="col"><a href="bookingDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
+									<c:forEach var="booking" items="${bookingList }">
+
+										<tr>
+											<td scope="row">${booking.id }</td>
+											<td scope="col">${booking.customer.id }</td>
+											<td scope="col">${booking.service.id }</td>
+											<!-- <td scope="col">5</td> -->
+											<td scope="col">${booking.startTime }</td>
+											<td scope="col">${booking.bookingAddress }</td>
+											<td scope="col">${booking.note }</td>
+											<td scope="col"><fmt:formatNumber value="${booking.service.servicePrices[0].price }"
+													pattern="#,###.## VND;VND -#,###.##" type="currency"
+													currencySymbol="VND" /></td>
+											<td scope="col" id="bookingStatus" class="bookingStatus">${booking.bookingStatus == 1 ? 'Đã xác nhận' : 'Chưa xác nhận' }
+												<!-- <div class="form-check form-switch"
+													data-switch-text="Chưa xác nhận,Đã xác nhận">
+													<input class="form-check-input" type="checkbox"
+														role="switch"> <label class="form-check-label"
+														for="{checkboxId}"> <span class="switch-status">Chưa
+															xác nhận</span>
+													</label>
+												</div> -->
+											</td>
+											<td scope="col" id="paymentStatus" class="paymentStatus">${booking.paymentStatus == 1 ? 'Đã thanh toán' : 'Chưa thanh toán' }</td>
+											<td scope="col">${booking.employee.id }</td>
+											<td scope="col">5</td>
+											<td scope="col">Tốt</td>
+
+											<td scope="col"><a href="bookingDetail.htm"
+												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
+												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+										</tr>
+
+									</c:forEach>
+
+									<%-- <tr>
 										<td scope="row">1</td>
 										<td scope="col">3</td>
 										<td scope="col">2</td>
@@ -393,7 +399,7 @@
 										<td scope="col"><a href="bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
+									</tr> --%>
 								</tbody>
 							</table>
 

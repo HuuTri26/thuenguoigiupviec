@@ -282,7 +282,7 @@
 												<td scope="col"><fmt:formatNumber value="${maid.salary }"
 												pattern="#,###.## VND;VND -#,###.##" type="currency"
 												currencySymbol="VND" /></td>
-											<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
+											<td scope="col">${maid.employmentType ? 'Partime' : 'Fulltime'}</td>
 											<td scope="col">${maid.employee.id }</td>
 											<td scope="col">${maid.account.email }</td>
 											<td scope="col">
