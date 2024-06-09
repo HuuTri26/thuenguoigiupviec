@@ -56,10 +56,22 @@
 </head>
 <body>
 
-	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
+<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
+	<header id="header" class="fixed-top d-flex align-items-center">
+		<div class="container d-flex justify-content-between">
 
-	<main id="main" style="background-color: gray;">
-		<div class="container " style="margin-top: 70px;">
+			<div class="logo">
+				<h1>
+					<a href="index.htm">BookMyMaid</a>
+				</h1>
+				<!-- Uncomment below if you prefer to use an image logo -->
+				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+			</div>
+
+		</div>
+	</header>
+	<main id="main" style="background-color: gray;" >
+		<div class="container " style="margin-top: 70px;"  >
 			<div class="row">
 				<div class="col-md-4">
 					<label for="filterBy">Lọc theo thuộc tính:</label> <select
