@@ -30,27 +30,27 @@ public class ContractEntity {
 	private String description;
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "CreateAt")
 	private Date createAt;
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "UpdateAt")
 	private Date updateAt;
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "StartAt")
 	private Date startAt;
 	
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-mm-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Column(name = "EndAt")
 	private Date endAt;
 	
 	@Column(name = "Status")
-	private Integer status;
+	private Boolean status;
 	//status: (Còn hạn, hết hạn , đã hủy)
 	//Trùng bộ maidId , customerId,createAt -> update không hải thêm mới.
 	
@@ -117,11 +117,11 @@ public class ContractEntity {
 		this.endAt = endAt;
 	}
 
-	public Integer getStatus() {
+	public Boolean getStatus() {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 

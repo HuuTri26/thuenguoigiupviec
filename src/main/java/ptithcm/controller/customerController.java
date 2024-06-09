@@ -404,7 +404,7 @@ public class customerController {
 				booking.setService(service);
 				
 				bookingService.createBooking(booking);
-				System.out.println("==> Booking request created successfully at " + currentTime + '!');
+				System.out.println("==> Booking request created successfully at " + new Date() + '!');
 				return "redirect:/customer/serviceList/" + service.getId() +".htm";
 			}catch (Exception e) {
 				System.out.println("Error: \n" + e.toString());

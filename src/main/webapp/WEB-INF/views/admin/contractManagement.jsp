@@ -185,7 +185,8 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
-								<a href="addContract.htm" class="btn btn-primary">Add Contract</a>
+								<a href="addContract.htm" class="btn btn-primary">Add
+									Contract</a>
 							</div>
 							<!--       <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
@@ -266,7 +267,17 @@
 											<td scope="col">${contract.endAt }</td>
 											<td scope="col">${contract.createAt }</td>
 											<td scope="col">${contract.updateAt }</td>
-											<td scope="col">${contract.status }</td>
+											<td scope="col"><c:choose>
+													<c:when test="${contract.status == null}">
+                    									Chưa có hiệu lực
+                									</c:when>
+													<c:when test="${contract.status == true}">
+                    									Còn hạn
+                									</c:when>
+													<c:otherwise>
+                    									Hết hạn
+                									</c:otherwise>
+												</c:choose></td>
 											<td scope="col"><a href="contractDetail.htm"
 												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
