@@ -37,8 +37,8 @@ public class ContractServiceImpl implements ContractService{
 	}
 
 	@Override
-	public ContractEntity getUnexpiredContractBy(Integer customerId, Integer maidId, Date createAt) {
-		return ContractDAO.getUnexpiredContractBy(customerId, maidId, createAt);
+	public ContractEntity getContractBy(Integer customerId, Integer maidId, Date createAt) {
+		return ContractDAO.getContractBy(customerId, maidId, createAt);
 	}
 
 	@Override

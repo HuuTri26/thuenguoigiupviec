@@ -418,6 +418,7 @@ public class adminController {
 	@RequestMapping("admin/maidManagement")
 	public String showMaidList(Model model) {
 		List<MaidEntity> maidList = maidService.getListMaid();
+		
 		model.addAttribute("maidList", maidList);
 
 		return "admin/maidManagement";
@@ -656,9 +657,7 @@ public class adminController {
 		ContractEntity contract = new ContractEntity();
 		model.addAttribute("contract", contract);
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	    String formattedCurrentDate = dateFormat.format(new Date());
-		model.addAttribute("currentDate", dateFormat.parseObject(formattedCurrentDate));
+		System.out.println("==> Open an add contract session!");
 
 		return "admin/addContract";
 	}
@@ -716,7 +715,7 @@ public class adminController {
 			String formattedStartAt = dateFormat.format(contract.getStartAt());
 			String formattedEndAt = dateFormat.format(contract.getEndAt());
 
-			ContractEntity contract_t = contractService.getUnexpiredContractBy(contract.getCustomer().getId(),
+			ContractEntity contract_t = contractService.getContractBy(contract.getCustomer().getId(),
 					contract.getMaid().getId(), dateFormat.parse(formattedCreateAt));
 
 			if (contract_t == null) { // TH: Hợp đồng nhập là 1 hợp đồng mới
@@ -726,8 +725,8 @@ public class adminController {
 				MaidEntity maid = maidService.getMaidById(contract.getMaid().getId());
 
 				if (contract.getCreateAt().before(currentDate)) {
-					System.out.println(contract.getCreateAt());
-					System.out.println(currentDate);
+//					System.out.println(contract.getCreateAt());
+//					System.out.println(currentDate);
 					isValidNewContract = Boolean.FALSE;
 					errors.rejectValue("createAt", "contract", "Ngày tạo hợp đồng không hợp lệ!");
 				} else if (customer == null) {
@@ -739,6 +738,9 @@ public class adminController {
 				} else if (maid.getEmploymentType() == Boolean.TRUE) {
 					isValidNewContract = Boolean.FALSE;
 					errors.rejectValue("maid.id", "contract", "Loại người giúp việc phải là Fulltime!");
+				} else if (maidService.isAvalaiblePartTimeMaid(maid, dateFormat.parse(formattedCurrDate))) {
+					isValidNewContract = Boolean.FALSE;
+					errors.rejectValue("maid.id", "contract", "Người giúp việc này hiện tại đang bận hoặc không khả dụng!");
 				}
 
 				if (isValidNewContract) {

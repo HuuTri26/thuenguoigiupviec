@@ -50,4 +50,13 @@ public class MaidDAOImpl implements MaidDAO {
 	        session.update(maid);
 	    }
 
+	@Override
+	public List<MaidEntity> getListFullTimeMaids() {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MaidEntity m WHERE m.employmentType = false";
+		Query query = session.createQuery(hql);
+		List<MaidEntity> maidList = query.list();
+		return maidList;
+	}
+
 }
