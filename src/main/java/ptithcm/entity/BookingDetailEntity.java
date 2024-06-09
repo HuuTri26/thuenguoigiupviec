@@ -76,7 +76,8 @@ public class BookingDetailEntity {
 		return maid;
 	}
 
-	public void setMaids(MaidEntity maid) {
+
+	public void setMaid(MaidEntity maid) {
 		this.maid = maid;
 	}
 	

@@ -14,4 +14,5 @@ public interface BookingService {
 	public List<BookingEntity> getListBooking();
 	public void createBooking(BookingEntity booking);
 	public void updateBooking(BookingEntity booking);
+	public BookingEntity getBookingById(int bookingId);
 }

@@ -137,7 +137,7 @@ public class customerController {
 	}
 
 	// Đăng xuất:
-	@RequestMapping("customer/logout")
+	@RequestMapping("customer/serviceList/logout")
 	public String Logout(HttpServletRequest request, SessionStatus sessionStatus) {
 		request.getSession().invalidate(); // Giải phóng vùng nhớ của session
 		System.out.println("==> Invalidate the session");
@@ -146,7 +146,7 @@ public class customerController {
 		System.out.println("==> Clear model attributes ");
 
 		System.out.println("==> Logout");
-		return "redirect:/main.htm";
+		return "redirect:/";
 	}
 
 	// Trang quên mật khẩu cho customer:

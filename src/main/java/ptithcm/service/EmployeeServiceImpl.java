@@ -26,4 +26,10 @@ public class EmployeeServiceImpl implements EmployeeService{
 		
 	}
 
+	@Override
+	public EmployeeEntity getEmployeeById(int employeeId) {
+		// TODO Auto-generated method stub
+		return EmployeeDAO.getEmployeeById(employeeId);
+	}
+
 }

@@ -10,4 +10,6 @@ public interface MaidDAO {
 	public void updateMaid(MaidEntity maid);
 	public MaidEntity getMaidById(Integer id);
 	public List<MaidEntity> getListFullTimeMaids();
+	public List<MaidEntity> getMaidSelectedListBybookingId(Integer bookingId);
+	public List<MaidEntity> getListMaidPartTime();
 }

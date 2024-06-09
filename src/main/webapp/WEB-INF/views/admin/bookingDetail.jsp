@@ -3,6 +3,7 @@
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,6 +53,10 @@
 
 <!-- Template Main CSS File -->
 <link href="<c:url value='/resources/admin/assets/css/style.css'/>"
+	rel="stylesheet">
+<!-- CSS custom -->
+<link
+	href="<c:url value='/resources/admin/assets/css/modal_select_maid.css'/>"
 	rel="stylesheet">
 
 </head>
@@ -172,8 +177,8 @@
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="bookingDetail.htm">Profile
-							booking</a></li>
+					<li class="breadcrumb-item  active"><a
+						href="bookingDetail.htm">Profile booking</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -181,6 +186,75 @@
 
 		<section class="section profile">
 			<div class="row">
+				<!-- Modal select Maid -->
+
+				<!-- The Modal -->
+				<div id="modal-select-maid" class="modal-choose-maid">
+
+					<!-- Modal content -->
+					<div class="modal-choose-maid-content">
+						<span class="modal-choose-maid-close modal-choose-maid-close-js">&times;</span>
+						<h2 class="row justify-content-center">Chọn người giúp việc</h2>
+						<form:form action="${booking.id }/confirmMaid.htm" method="post">
+							<div class="tbody-scrollable">
+								<table class="table datatable ">
+									<thead class="thead-fixed"
+										style="background-color: #37517e; color: white">
+										<tr>
+
+											<th scope="col-1">Id</th>
+											<th scope="col-2">Họ tên</th>
+											<th scope="col-1">Số điện thoại</th>
+
+											<th scope="col-3">Địa chỉ</th>
+											<th scope="col-1">Full/Partime</th>
+											<th scope="col-1"></th>
+
+										</tr>
+									</thead>
+									<tbody id="table_maids">
+
+
+										<c:forEach var="maid" items="${maidsAvailable}">
+											<tr>
+												<td scope="row">${maid.id }</td>
+												<td scope="col-2">${maid.fullName }</td>
+
+												<td scope="col-2">${maid.phoneNumber }</td>
+												<td scope="col-3">${maid.account.email }</td>
+												<%-- <td scope="col-1">${maid.employmentType ==1 ? 'Full-time':'Part-time' }</td> --%>
+												<td scope="col-1">Part-time</td>
+
+												<td><input class="checkbox-limited"
+													style="cursor: pointer;" type="checkbox"
+													name="selectedItems" value="${maid.id}"
+													<c:forEach var="selectedMaid" items="${maidsSelected}">
+                    <c:if test="${maid.id == selectedMaid.id}">
+                        checked="checked"
+                    </c:if>
+                </c:forEach>></td>
+
+												<!-- <td scope="col"><a href="/index/1?linkDelete"
+													class="btn btn-danger" data-action="delete" data-id="1"><i
+														class="bi-trash"></i></a></td> -->
+											</tr>
+										</c:forEach>
+
+
+									</tbody>
+								</table>
+							</div>
+
+							<div
+								style="width: fit-content; margin-left: auto; margin-right: auto;">
+								<!-- <button class="btn btn-danger modal-choose-maid-close-js" style ="margin-right:10px">Hủy</button> -->
+								<button class="btn btn-success">Xác nhận</button>
+							</div>
+						</form:form>
+					</div>
+
+				</div>
+				<!-- the end of modal -->
 				<div class="col-xl-4">
 
 					<div class="card">
@@ -190,8 +264,12 @@
 							<img
 								src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
 								alt="Profile" class="rounded-circle">
-							<h2>Hữu</h2>
-							<h3>huutri</h3>
+							<h2>Thông tin khách hàng</h2>
+							<div style="margin-top: 30px">
+
+								<h3>Họ tên khách hàng: ${booking.customer.fullName}</h3>
+								<h3>Số điện thoại: ${booking.customer.phoneNumber}</h3>
+							</div>
 						</div>
 					</div>
 
@@ -209,9 +287,11 @@
 										data-bs-target="#profile-overview">Xem thông tin</button>
 								</li>
 
-								<!--                   <li class="nav-item"> -->
-								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Chỉnh sửa Profile</button> -->
-								<!--                   </li> -->
+								<li class="nav-item">
+									<button class="nav-link" data-bs-toggle="tab"
+										data-bs-target="#profile-edit">Danh sách người giúp
+										việc</button>
+								</li>
 
 								<!--                   <li class="nav-item"> -->
 								<!--                     <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button> -->
@@ -226,50 +306,52 @@
 
 								<div class="tab-pane fade show active profile-overview"
 									id="profile-overview">
-									<h5 class="card-title">Miêu tả</h5>
-									<p class="small fst-italic">Hahahahahahaa</p>
+									<!-- <h5 class="card-title">Miêu tả</h5> -->
+									<%-- <p class="small fst-italic">${booking.note }</p> --%>
 
 									<h5 class="card-title">Thông tin Booking</h5>
 
-									<div class="row">
+									<!-- 									<div class="row">
 										<div class="col-lg-3 col-md-4 label ">Id khách hàng</div>
 										<div class="col-lg-9 col-md-8">1</div>
-									</div>
-									<div class="row">
+									</div> -->
+									<!-- <div class="row">
 										<div class="col-lg-3 col-md-4 label ">Danh sách người giúp việc</div>
 										<div class="col-lg-9 col-md-8"><a href="bookingMaidChecked.htm">Xem danh sách</a></div>
-									</div>
+									</div> -->
 									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Id gói dịch vụ</div>
-										<div class="col-lg-9 col-md-8">2</div>
+										<div class="col-lg-3 col-md-4 label">Tên dịch vụ</div>
+										<div class="col-lg-9 col-md-8">
+											<a>${service.name }</a>
+										</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày bắt đầu</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
+										<div class="col-lg-9 col-md-8">${booking.startTime }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-										<div class="col-lg-9 col-md-8">Man thiện</div>
+										<div class="col-lg-9 col-md-8">${booking.bookingAddress }</div>
 									</div>
 
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ghi chú</div>
-										<div class="col-lg-9 col-md-8">Cần mang dao chặt cỏ</div>
+										<div class="col-lg-9 col-md-8">${booking.note }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Giá</div>
-										<div class="col-lg-9 col-md-8">350000</div>
+										<div class="col-lg-9 col-md-8">${booking.price }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
+										<div class="col-lg-9 col-md-8">${booking.createAt }</div>
 									</div>
 									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Id nhân viên</div>
-										<div class="col-lg-9 col-md-8">1</div>
+										<div class="col-lg-3 col-md-4 label ">Nhân viên duyệt</div>
+										<div class="col-lg-9 col-md-8">${booking.employee.fullName }</div>
 									</div>
 
 
@@ -277,207 +359,284 @@
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Trạng thái thanh
 											toán</div>
-										<div class="col-lg-9 col-md-8">Đã thanh toán</div>
+										<div class="col-lg-9 col-md-8">${booking.paymentStatus == 1 ? 'Đã thanh toán' : 'Chưa thanh toán'}</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Trạng thái đặt lịch</div>
-										<div class="col-lg-9 col-md-8">Đã xác nhận</div>
+
+										<c:choose>
+											<c:when test="${booking.bookingStatus == 1}">
+												<!-- 1: Chờ xác nhận, 2: Đã xác nhận, 3: Hoàn thành, 0: Đã hủy -->
+												<!-- Nội dung khi điều kiện đúng -->
+												<div class="col-lg-9 col-md-8">Chờ xác nhận</div>
+											</c:when>
+											<c:when test="${booking.bookingStatus == 2}">
+												<!-- Nội dung khi điều kiện đúng -->
+												<div class="col-lg-9 col-md-8">Đã xác nhận</div>
+											</c:when>
+											<c:when test="${booking.bookingStatus == 3}">
+												<!-- Nội dung khi điều kiện đúng -->
+												<div class="col-lg-9 col-md-8">Đã hoàn thành</div>
+											</c:when>
+											<c:otherwise>
+												<!-- Nội dung khi điều kiện sai -->
+												<div class="col-lg-9 col-md-8">Đã hủy</div>
+											</c:otherwise>
+										</c:choose>
 									</div>
+									<c:if test="${booking.bookingStatus ==1 }">
+										<div class="row">
+											<form:form action="confirmBooking/${booking.id}.htm">
+												<button class="btn btn-primary">Duyệt đơn</button>
+											</form:form>
+										</div>
+									</c:if>
+
 								</div>
+								<!-- danh sách người giúp việc được phân  -->
+								<div class="tab-pane fade profile-edit pt-3" id="profile-edit">
+									<div class="card-title">
+										<button class="btn btn-primary" id="btn-select-maid">Phân
+											công người giúp việc</button>
+									</div>
+									<table class="table datatable ">
+										<thead style="background-color: #37517e; color: white">
+											<tr>
 
-								<!-- 								<div class="tab-pane fade profile-edit pt-3" id="profile-edit"> -->
-
-								<!-- 									Profile Edit Form -->
-								<%-- 									<form> --%>
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="profileImage" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Ảnh</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<img -->
-								<%-- 													src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" --%>
-								<!-- 													alt="Profile"> -->
-								<!-- 												<div class="pt-2"> -->
-								<!-- 													<a href="#" class="btn btn-primary btn-sm" -->
-								<!-- 														title="Upload new profile image"><i -->
-								<!-- 														class="bi bi-upload"></i></a> <a href="#" -->
-								<!-- 														class="btn btn-danger btn-sm" -->
-								<!-- 														title="Remove my profile image"><i class="bi bi-trash"></i></a> -->
-								<!-- 												</div> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="fullName" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Họ tên</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="name" type="text" class="form-control" -->
-								<!-- 													id="fullName" value="Kevin Anderson"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="about" class="col-md-4 col-lg-3 col-form-label">Giới -->
-								<!-- 												thiệu</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<textarea name="about" class="form-control" id="about" -->
-								<!-- 													style="height: 100px">Hahahahaha</textarea> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="company" class="col-md-4 col-lg-3 col-form-label">UserName</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="userName" type="text" class="form-control" -->
-								<!-- 													id="company" value="huutri"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Job" class="col-md-4 col-lg-3 col-form-label">Giới -->
-								<!-- 												tính</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="gender" type="text" class="form-control" -->
-								<!-- 													id="Job" value="Nữ"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Ngày -->
-								<!-- 												sinh</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="dob" type="text" class="form-control" -->
-								<!-- 													id="Country" value="31/02/2099"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Address" class="col-md-4 col-lg-3 col-form-label">Địa -->
-								<!-- 												chỉ</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="address" type="text" class="form-control" -->
-								<!-- 													id="Address" value="97 Man Thiện"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số -->
-								<!-- 												điện thoại</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="phone" type="text" class="form-control" -->
-								<!-- 													id="Phone" value="(436) 486-3538 x29071"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
-
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="email" type="email" class="form-control" -->
-								<!-- 													id="Email" value="k.anderson@example.com"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
+												<th scope="col-1">Id</th>
+												<th scope="col-2">Họ tên</th>
+												<th scope="col-1">Số điện thoại</th>
+												<!-- 									<th scope="col">Giới tính</th> -->
+												<!-- 									<th scope="col">Ngày sinh</th> -->
+												<th scope="col-3">Địa chỉ</th>
+												<th scope="col-1">Full/Partime</th>
+												<th scope="col-3">Email</th>
 
 
-								<!-- 										<div class="text-center"> -->
-								<!-- 											<button type="submit" class="btn btn-primary">Cập -->
-								<!-- 												nhật</button> -->
-								<!-- 										</div> -->
-								<%-- 									</form> --%>
-								<!-- 									End Profile Edit Form -->
+											</tr>
+										</thead>
+										<tbody id="table_maids">
 
-								<!-- 								</div> -->
+											<c:forEach var="maid" items="${maidsSelected}">
+												<tr>
+													<td scope="row">${maid.id }</td>
+													<td scope="col-2">${maid.fullName }</td>
 
-								<!-- 								<div class="tab-pane fade pt-3" id="profile-settings"> -->
+													<td scope="col-2">${maid.phoneNumber }</td>
+													<td scope="col-3">${maid.address }</td>
+													<td scope="col-1">${maid.employmentType == true ? 'Full-time':'Part-time' }</td>
 
-								<!-- 									Settings Form -->
-								<%-- 									<form> --%>
+													<td scope="col">${maid.account.email }</td>
 
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="fullName" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Email -->
-								<!-- 												Notifications</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<div class="form-check"> -->
-								<!-- 													<input class="form-check-input" type="checkbox" -->
-								<!-- 														id="changesMade" checked> <label -->
-								<!-- 														class="form-check-label" for="changesMade"> -->
-								<!-- 														Changes made to your account </label> -->
-								<!-- 												</div> -->
-								<!-- 												<div class="form-check"> -->
-								<!-- 													<input class="form-check-input" type="checkbox" -->
-								<!-- 														id="newProducts" checked> <label -->
-								<!-- 														class="form-check-label" for="newProducts"> -->
-								<!-- 														Information on new products and services </label> -->
-								<!-- 												</div> -->
-								<!-- 												<div class="form-check"> -->
-								<!-- 													<input class="form-check-input" type="checkbox" -->
-								<!-- 														id="proOffers"> <label class="form-check-label" -->
-								<!-- 														for="proOffers"> Marketing and promo offers </label> -->
-								<!-- 												</div> -->
-								<!-- 												<div class="form-check"> -->
-								<!-- 													<input class="form-check-input" type="checkbox" -->
-								<!-- 														id="securityNotify" checked disabled> <label -->
-								<!-- 														class="form-check-label" for="securityNotify"> -->
-								<!-- 														Security alerts </label> -->
-								<!-- 												</div> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
 
-								<!-- 										<div class="text-center"> -->
-								<!-- 											<button type="submit" class="btn btn-primary">Save -->
-								<!-- 												Changes</button> -->
-								<!-- 										</div> -->
-								<%-- 									</form> --%>
-								<!-- 									End settings Form -->
 
-								<!-- 								</div> -->
 
-								<!-- 								<div class="tab-pane fade pt-3" id="profile-change-password"> -->
-								<!-- 									Change Password Form -->
-								<%-- 									<form> --%>
+												</tr>
 
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="currentPassword" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
-								<!-- 												hiện tại</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="password" type="password" class="form-control" -->
-								<!-- 													id="currentPassword"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
 
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="newPassword" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
-								<!-- 												mới</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="newpassword" type="password" -->
-								<!-- 													class="form-control" id="newPassword"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
+											</c:forEach>
 
-								<!-- 										<div class="row mb-3"> -->
-								<!-- 											<label for="renewPassword" -->
-								<!-- 												class="col-md-4 col-lg-3 col-form-label">Nhập lại -->
-								<!-- 												mật khẩu</label> -->
-								<!-- 											<div class="col-md-8 col-lg-9"> -->
-								<!-- 												<input name="renewpassword" type="password" -->
-								<!-- 													class="form-control" id="renewPassword"> -->
-								<!-- 											</div> -->
-								<!-- 										</div> -->
+										</tbody>
+									</table>
 
-								<!-- 										<div class="text-center"> -->
-								<!-- 											<button type="submit" class="btn btn-primary">Đổi -->
-								<!-- 												mật khẩu</button> -->
-								<!-- 										</div> -->
-								<%-- 									</form> --%>
-								<!-- 									End Change Password Form -->
 
-								<!-- 								</div> -->
 
-								<!-- 							</div> -->
+
+
+
+
+									<!-- 									Profile Edit Form -->
+									<%-- 									<form> --%>
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="profileImage" -->
+									<!-- 												class="col-md-4 col-lg-3 col-form-label">Ảnh</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<img -->
+									<%-- 													src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" --%>
+									<!-- 													alt="Profile"> -->
+									<!-- 												<div class="pt-2"> -->
+									<!-- 													<a href="#" class="btn btn-primary btn-sm" -->
+									<!-- 														title="Upload new profile image"><i -->
+									<!-- 														class="bi bi-upload"></i></a> <a href="#" -->
+									<!-- 														class="btn btn-danger btn-sm" -->
+									<!-- 														title="Remove my profile image"><i class="bi bi-trash"></i></a> -->
+									<!-- 												</div> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="fullName" -->
+									<!-- 												class="col-md-4 col-lg-3 col-form-label">Họ tên</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="name" type="text" class="form-control" -->
+									<!-- 													id="fullName" value="Kevin Anderson"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="about" class="col-md-4 col-lg-3 col-form-label">Giới -->
+									<!-- 												thiệu</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<textarea name="about" class="form-control" id="about" -->
+									<!-- 													style="height: 100px">Hahahahaha</textarea> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="company" class="col-md-4 col-lg-3 col-form-label">UserName</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="userName" type="text" class="form-control" -->
+									<!-- 													id="company" value="huutri"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="Job" class="col-md-4 col-lg-3 col-form-label">Giới -->
+									<!-- 												tính</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="gender" type="text" class="form-control" -->
+									<!-- 													id="Job" value="Nữ"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Ngày -->
+									<!-- 												sinh</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="dob" type="text" class="form-control" -->
+									<!-- 													id="Country" value="31/02/2099"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="Address" class="col-md-4 col-lg-3 col-form-label">Địa -->
+									<!-- 												chỉ</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="address" type="text" class="form-control" -->
+									<!-- 													id="Address" value="97 Man Thiện"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số -->
+									<!-- 												điện thoại</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="phone" type="text" class="form-control" -->
+									<!-- 													id="Phone" value="(436) 486-3538 x29071"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="email" type="email" class="form-control" -->
+									<!-- 													id="Email" value="k.anderson@example.com"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+
+									<!-- 										<div class="text-center"> -->
+									<!-- 											<button type="submit" class="btn btn-primary">Cập -->
+									<!-- 												nhật</button> -->
+									<!-- 										</div> -->
+									<%-- 									</form> --%>
+									<!-- 									End Profile Edit Form -->
+
+									<!-- 								</div> -->
+
+									<!-- 								<div class="tab-pane fade pt-3" id="profile-settings"> -->
+
+									<!-- 									Settings Form -->
+									<%-- 									<form> --%>
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="fullName" -->
+									<!-- 												class="col-md-4 col-lg-3 col-form-label">Email -->
+									<!-- 												Notifications</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<div class="form-check"> -->
+									<!-- 													<input class="form-check-input" type="checkbox" -->
+									<!-- 														id="changesMade" checked> <label -->
+									<!-- 														class="form-check-label" for="changesMade"> -->
+									<!-- 														Changes made to your account </label> -->
+									<!-- 												</div> -->
+									<!-- 												<div class="form-check"> -->
+									<!-- 													<input class="form-check-input" type="checkbox" -->
+									<!-- 														id="newProducts" checked> <label -->
+									<!-- 														class="form-check-label" for="newProducts"> -->
+									<!-- 														Information on new products and services </label> -->
+									<!-- 												</div> -->
+									<!-- 												<div class="form-check"> -->
+									<!-- 													<input class="form-check-input" type="checkbox" -->
+									<!-- 														id="proOffers"> <label class="form-check-label" -->
+									<!-- 														for="proOffers"> Marketing and promo offers </label> -->
+									<!-- 												</div> -->
+									<!-- 												<div class="form-check"> -->
+									<!-- 													<input class="form-check-input" type="checkbox" -->
+									<!-- 														id="securityNotify" checked disabled> <label -->
+									<!-- 														class="form-check-label" for="securityNotify"> -->
+									<!-- 														Security alerts </label> -->
+									<!-- 												</div> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="text-center"> -->
+									<!-- 											<button type="submit" class="btn btn-primary">Save -->
+									<!-- 												Changes</button> -->
+									<!-- 										</div> -->
+									<%-- 									</form> --%>
+									<!-- 									End settings Form -->
+
+									<!-- 								</div> -->
+
+									<!-- 								<div class="tab-pane fade pt-3" id="profile-change-password"> -->
+									<!-- 									Change Password Form -->
+									<%-- 									<form> --%>
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="currentPassword" -->
+									<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
+									<!-- 												hiện tại</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="password" type="password" class="form-control" -->
+									<!-- 													id="currentPassword"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="newPassword" -->
+									<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
+									<!-- 												mới</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="newpassword" type="password" -->
+									<!-- 													class="form-control" id="newPassword"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="row mb-3"> -->
+									<!-- 											<label for="renewPassword" -->
+									<!-- 												class="col-md-4 col-lg-3 col-form-label">Nhập lại -->
+									<!-- 												mật khẩu</label> -->
+									<!-- 											<div class="col-md-8 col-lg-9"> -->
+									<!-- 												<input name="renewpassword" type="password" -->
+									<!-- 													class="form-control" id="renewPassword"> -->
+									<!-- 											</div> -->
+									<!-- 										</div> -->
+
+									<!-- 										<div class="text-center"> -->
+									<!-- 											<button type="submit" class="btn btn-primary">Đổi -->
+									<!-- 												mật khẩu</button> -->
+									<!-- 										</div> -->
+									<%-- 									</form> --%>
+									<!-- 									End Change Password Form -->
+
+									<!-- 								</div> -->
+
+								</div>
 								<!-- End Bordered Tabs -->
 
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -521,7 +680,26 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/admin/assets/js/main.js'/>"></script>
-
+	<!-- JS custom for modal-select-maid -->
+	<script type="text/javascript"
+		src="<c:url value='/resources/admin/assets/js/modal_select_maid.js'/>"></script>
+	<!-- Ràng buộc số lượng người giúp việc -->
+	<script>
+        // Đây là nơi bạn có thể đặt mã JavaScript
+        var limit = ${service.maidQuantity}; // Giới hạn số lượng checkbox có thể chọn
+        document.addEventListener('DOMContentLoaded', function() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    var checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                    if (checkedCheckboxes.length > limit) {
+                        this.checked = false; // Bỏ chọn nếu số lượng vượt quá giới hạn
+                        alert('Chỉ được chọn tối đa ' + limit + ' người giúp việc.');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
