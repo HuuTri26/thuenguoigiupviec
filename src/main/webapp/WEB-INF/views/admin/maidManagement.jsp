@@ -279,26 +279,16 @@
 											<td scope="col">${maid.phoneNumber }</td>
 											<td scope="col">${maid.address }</td>
 											<td scope="col">${maid.experience }</td>
-												<td scope="col"><fmt:formatNumber value="${maid.salary }"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-											<td scope="col">${maid.employmentType ? 'Fulltime' : 'Partime'}</td>
+											<td scope="col"><fmt:formatNumber
+													value="${maid.salary }"
+													pattern="#,###.## VND;VND -#,###.##" type="currency"
+													currencySymbol="VND" /></td>
+											<td scope="col">${maid.employmentType ? 'Partime' : 'Fulltime'}</td>
 											<td scope="col">${maid.employee.id }</td>
 											<td scope="col">${maid.account.email }</td>
-											<td scope="col">
-												<div class="form-check form-switch"
-													data-switch-text="Rảnh,Đang làm việc">
-													<input class="form-check-input" type="checkbox"
-														role="switch" disabled="disabled"> <label
-														class="form-check-label" for="{checkboxId}"> <span
-														class="switch-status">Rảnh</span>
-													</label>
-												</div>
-											</td>
-
+											<td scope="col">${maid.status }</td>
 											<td scope="col" id="accountStatus-${maid.id}"
 												class="accountStatus">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}
-
 											</td>
 
 											<td scope="col"><a href="maidDetail/${maid.id }.htm"

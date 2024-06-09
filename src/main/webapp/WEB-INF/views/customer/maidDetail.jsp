@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,48 +87,17 @@
 body {
 	background: rgb(99, 39, 120)
 }
-
-.form-control:focus {
-	box-shadow: none;
-	border-color: #BA68C8
+.icon-hover:hover {
+	border-color: #3b71ca !important;
+	background-color: white !important;
+	color: #3b71ca !important;
 }
 
-.profile-button {
-	background: rgb(99, 39, 120);
-	box-shadow: none;
-	border: none
+.icon-hover:hover i {
+	color: #3b71ca !important;
 }
-
-.profile-button:hover {
-	background: #682773
-}
-
-.profile-button:focus {
-	background: #682773;
-	box-shadow: none
-}
-
-.profile-button:active {
-	background: #682773;
-	box-shadow: none
-}
-
-.back:hover {
-	color: #682773;
-	cursor: pointer
-}
-
-.labels {
-	font-size: 11px
-}
-
-.add-experience:hover {
-	background: #BA68C8;
-	color: #fff;
-	cursor: pointer;
-	border: solid 1px #BA68C8
-}
-
+</style>
+<style media="screen">
 .form-control, .form-select {
 	border: 0;
 }
@@ -145,124 +115,268 @@ body {
 	background-color: #282828;
 }
 
-#contract-form {
-	display: block;
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 999;
+}
+
+.container.mt-3.pt-3 {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+}
+
+.close-btn {
+	cursor: pointer;
+}
+
+.close-btn i {
+	font-size: 24px;
 }
 </style>
 </head>
 
 <body>
-	<%@include file="/WEB-INF/views/customer/include/header.jsp"%>
-	<main id="main" style="background-color: gray;">
-		<div class="container rounded bg-white mt-5 mb-5">
-			<div class="row">
-				<div class="col-md-3 border-right">
-					<div
-						class="d-flex flex-column align-items-center text-center p-3 py-5">
-						<img class="rounded-circle mt-5" width="150px"
-							src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
-							class="font-weight-bold">Huu Tri</span><span
-							class="text-black-50">maid@mail.com</span><span> </span>
-					</div>
-				</div>
-				<div class="col-md-5 border-right">
-					<div class="p-3 py-5">
-						<div
-							class="d-flex justify-content-between align-items-center mb-3">
-							<h4 class="text-right">Profile</h4>
+	<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
+	<header id="header" class="fixed-top d-flex align-items-center">
+		<div class="container d-flex justify-content-between">
+
+			<div class="logo">
+				<h1>
+					<a href="index.htm">BookMyMaid</a>
+				</h1>
+				<!-- Uncomment below if you prefer to use an image logo -->
+				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+			</div>
+			<nav id="navbar" class="navbar">
+				<ul>
+					<li class="dropdown"><a href="#"><span>Account</span> <i
+							class="bi bi-chevron-down"></i></a>
+						<ul>
+							<li><a href="customerProfile.htm">Trang cá nhân</a></li>
+							<li><a href="updateCustomer.htm">Cập nhật thông tin</a></li>
+							<li><a href="customerChangePassword.htm">Đổi mật khẩu</a></li>
+							<li><a href="bookingManagement.htm">Xem danh sách </a></li>
+							<li><a href="contractManagement.htm">Xem danh sách đặt
+									dịch vụ</a></li>
+							<li><a href="billManagement.htm">Xem danh bill</a></li>
+							<li><a href="logout.htm">Log out</a></li>
+
+						</ul></li>
+				</ul>
+				<i class="bi bi-list mobile-nav-toggle"></i>
+			</nav>
+
+		</div>
+	</header>
+
+	<main id="main" style="background-color: white;">
+		<!-- content -->
+		<section class="py-5" style="margin-top: 70px;">
+			<div class="container">
+				<div class="row gx-5">
+					<aside class="col-lg-6">
+						<div class="border rounded-4 mb-3 d-flex justify-content-center">
+							<a data-fslightbox="mygalley" class="rounded-4" target="_blank"
+								data-type="image"
+								href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big.webp">
+								<img style="max-width: 100%; max-height: 100vh; margin: auto;"
+								class="rounded-4 fit"
+								src="https://giupviecnhatanbinh.vn/hoangnhu/upload/images/t%C3%ACm%20ng%C6%B0%E1%BB%9Di%20gi%C3%BAp%20vi%E1%BB%87c%20nh%C3%A0%20t%E1%BA%A1i%20qu%E1%BA%ADn%206%20th%C3%A0nh%20ph%E1%BB%91%20h%E1%BB%93%20ch%C3%AD%20minh.jpg" />
+							</a>
 						</div>
-						<div class="row mt-3">
-							<div class="col-md-12">
-								<label class="labels">Họ tên</label><input type="text"
-									class="form-control" placeholder="FullName" value="Hữu Trí"
-									name="fullName" disabled="disabled">
-							</div>
-						</div>
-						<div class="row mt-3">
-							<div class="col-md-12">
-								<label class="labels">Số điện thoại</label><input type="text"
-									class="form-control" placeholder="Phonenumber"
-									value="0903289232" name="phonenumber" disabled="disabled">
-							</div>
-							<div class="col-md-12">
-								<label class="labels">Địa chỉ làm việc</label><input type="text"
-									class="form-control" placeholder="Địa chỉ: "
-									value="Hồ Chí Minh" name="address" disabled="disabled">
-							</div>
-							<!-- 							<div class="col-md-12"> -->
-							<!-- 								<label class="labels">Address Line 2</label><input type="text" -->
-							<!-- 									class="form-control" placeholder="enter address line 2" -->
-							<!-- 									value=""> -->
-							<!-- 							</div> -->
-							<div class="col-md-12">
-								<label class="labels">Kinh nghiệm</label><input type="number"
-									class="form-control" placeholder="Kinh nghiệm" value="2"
-									name="exp" disabled="disabled">
-							</div>
-							<div class="col-md-12">
-								<label class="labels">Mức lương</label><input type="number"
-									class="form-control" placeholder="Mức Lương" value="3000"
-									name="salary" disabled="disabled">
-							</div>
-							<div class="col-md-12">
-								<label class="labels">Email</label><input type="email"
-									class="form-control" placeholder="Nhập email"
-									value="maid@gmail.com" disabled="disabled">
+						<!-- 						<div class="d-flex justify-content-center mb-3"> -->
+						<!-- 							<a data-fslightbox="mygalley" class="border mx-1 rounded-2" -->
+						<!-- 								target="_blank" data-type="image" -->
+						<!-- 								href="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w" -->
+						<!-- 								class="item-thumb"> <img width="60" height="60" -->
+						<!-- 								class="rounded-2" -->
+						<!-- 								src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w" /> -->
+						<!-- 							</a> <a data-fslightbox="mygalley" class="border mx-1 rounded-2" -->
+						<!-- 								target="_blank" data-type="image" -->
+						<!-- 								href="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w" -->
+						<!-- 								class="item-thumb"> <img width="60" height="60" -->
+						<!-- 								class="rounded-2" -->
+						<!-- 								src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w" /> -->
+						<!-- 							</a> <a data-fslightbox="mygalley" class="border mx-1 rounded-2" -->
+						<!-- 								target="_blank" data-type="image" -->
+						<!-- 								href="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w" -->
+						<!-- 								class="item-thumb"> <img width="60" height="60" -->
+						<!-- 								class="rounded-2" -->
+						<!-- 								src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w" /> -->
+						<!-- 							</a> -->
+						<!-- 						</div> -->
+						<!-- thumbs-wrap.// -->
+						<!-- gallery-wrap .end// -->
+					</aside>
+					<main class="col-lg-6">
+						<div class="ps-lg-3">
+							<h4 class="title text-dark">
+								<br />Họ tên: ${service.name }
+							</h4>
+							<div class="d-flex flex-row my-3">
+								<div class="text-warning mb-1 me-2">
+									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+										class="fas fa-star-half-alt"></i> <span class="ms-1">
+										4.5 </span>
+								</div>
+								<span class="text-muted"><i
+									class="fas fa-shopping-basket fa-sm mx-1"></i>154 contracts</span> <span
+									class="text-success ms-2">${service.status ? 'Rảnh' : 'Bận'}</span>
 							</div>
 
-							<div class="col-md-12">
-								<label class="labels">Fulltime/Partime</label><input type="text"
-									class="form-control" placeholder="" value="Fulltime"
-									disabled="disabled">
+							<div class="mb-3">
+								Mức Lương <span class="h5"><fmt:formatNumber
+										value="${service.servicePrices[0].price}"
+										pattern="#,###.## VND;VND -#,###.##" type="currency"
+										currencySymbol="VND" /></span> <span class="text-muted">/tháng</span>
 							</div>
-							<div class="col-md-12">
-								<label class="labels">Trạng thái làm việc</label><input
-									type="text" class="form-control" placeholder="Trạng thái"
-									value="Đang làm việc" disabled="disabled">
+
+							<p>${service.description }</p>
+
+							<div class="row">
+								<dt class="col-3">Số điện thoại:</dt>
+								<dd class="col-9">${service.name }</dd>
+
+								<dt class="col-3">Kinh nghiệm</dt>
+								<dd class="col-9">${service.category.name }</dd>
+
+								<dt class="col-3">Địa chỉ:</dt>
+								<dd class="col-9">${service.time }h</dd>
+
+								<dt class="col-3">Email:</dt>
+								<dd class="col-9">${service.maidQuantity }</dd>
 							</div>
+
+							<hr />
+							<a href="#">
+								<button class="btn btn-warning shadow-0"
+									${!service.status ? '' : ''}>${service.status ? 'Ký hợp đồng' : 'Xem'}</button>
+							</a>
+
 						</div>
-						<!-- 						<div class="row mt-3"> -->
-						<!-- 							<div class="col-md-6"> -->
-						<!-- 								<label class="labels">Country</label><input type="text" -->
-						<!-- 									class="form-control" placeholder="country" value=""> -->
-						<!-- 							</div> -->
-						<!-- 							<div class="col-md-6"> -->
-						<!-- 								<label class="labels">State/Region</label><input type="text" -->
-						<!-- 									class="form-control" value="" placeholder="state"> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-						<div class="mt-5 text-center">
-							<button class="btn btn-primary profile-button" id="sign-contract"
-								type="button">Ký hợp đồng</button>
-						</div>
-					</div>
+					</main>
 				</div>
-				<!-- <div class="col-md-4">
-					<div class="p-3 py-5">
-						<div
-							class="d-flex justify-content-between align-items-center experience">
-							<span>Edit Experience</span><span
-								class="border px-3 p-1 add-experience"><i
-								class="fa fa-plus"></i>&nbsp;Experience</span>
-						</div>
-						<br>
-						<div class="col-md-12">
-							<label class="labels">Experience in Designing</label><input
-								type="text" class="form-control" placeholder="experience"
-								value="">
-						</div>
-						<br>
-						<div class="col-md-12">
-							<label class="labels">Additional Details</label><input
-								type="text" class="form-control"
-								placeholder="additional details" value="">
-						</div>
-					</div>
-				</div> -->
 			</div>
-		</div>
+		</section>
+		<!-- 		<div class="container rounded bg-white mt-5 mb-5"> -->
+		<!-- 			<div class="row"> -->
+		<!-- 				<div class="col-md-3 border-right"> -->
+		<!-- 					<div -->
+		<!-- 						class="d-flex flex-column align-items-center text-center p-3 py-5"> -->
+		<!-- 						<img class="rounded-circle mt-5" width="150px" -->
+		<!-- 							src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span -->
+		<!-- 							class="font-weight-bold">Huu Tri</span><span -->
+		<!-- 							class="text-black-50">maid@mail.com</span><span> </span> -->
+		<!-- 					</div> -->
+		<!-- 				</div> -->
+		<!-- 				<div class="col-md-5 border-right"> -->
+		<!-- 					<div class="p-3 py-5"> -->
+		<!-- 						<div -->
+		<!-- 							class="d-flex justify-content-between align-items-center mb-3"> -->
+		<!-- 							<h4 class="text-right">Profile</h4> -->
+		<!-- 						</div> -->
+		<!-- 						<div class="row mt-3"> -->
+		<!-- 							<div class="col-md-12"> -->
+		<!-- 								<label class="labels">Họ tên</label><input type="text" -->
+		<!-- 									class="form-control" placeholder="FullName" value="Hữu Trí" -->
+		<!-- 									name="fullName" disabled="disabled"> -->
+		<!-- 							</div> -->
+		<!-- 						</div> -->
+		<!-- 						<div class="row mt-3"> -->
+		<!-- 							<div class="col-md-12"> -->
+		<!-- 								<label class="labels">Số điện thoại</label><input type="text" -->
+		<!-- 									class="form-control" placeholder="Phonenumber" -->
+		<!-- 									value="0903289232" name="phonenumber" disabled="disabled"> -->
+		<!-- 							</div> -->
+		<!-- 							<div class="col-md-12"> -->
+		<!-- 								<label class="labels">Địa chỉ làm việc</label><input type="text" -->
+		<!-- 									class="form-control" placeholder="Địa chỉ: " -->
+		<!-- 									value="Hồ Chí Minh" name="address" disabled="disabled"> -->
+		<!-- 							</div> -->
+		<!-- 														<div class="col-md-12"> -->
+		<!-- 															<label class="labels">Address Line 2</label><input type="text" -->
+		<!-- 																class="form-control" placeholder="enter address line 2" -->
+		<!-- 																value=""> -->
+		<!-- 														</div> -->
+		<!-- 							<div class="col-md-12"> -->
+		<!-- 								<label class="labels">Kinh nghiệm</label><input type="number" -->
+		<!-- 									class="form-control" placeholder="Kinh nghiệm" value="2" -->
+		<!-- 									name="exp" disabled="disabled"> -->
+		<!-- 							</div> -->
+		<!-- 							<div class="col-md-12"> -->
+		<!-- 								<label class="labels">Mức lương</label><input type="number" -->
+		<!-- 									class="form-control" placeholder="Mức Lương" value="3000" -->
+		<!-- 									name="salary" disabled="disabled"> -->
+		<!-- 							</div> -->
+		<!-- 							<div class="col-md-12"> -->
+		<!-- 								<label class="labels">Email</label><input type="email" -->
+		<!-- 									class="form-control" placeholder="Nhập email" -->
+		<!-- 									value="maid@gmail.com" disabled="disabled"> -->
+		<!-- 							</div> -->
+
+		<!-- 							<div class="col-md-12"> -->
+		<!-- 								<label class="labels">Fulltime/Partime</label><input type="text" -->
+		<!-- 									class="form-control" placeholder="" value="Fulltime" -->
+		<!-- 									disabled="disabled"> -->
+		<!-- 							</div> -->
+		<!-- 							<div class="col-md-12"> -->
+		<!-- 								<label class="labels">Trạng thái làm việc</label><input -->
+		<!-- 									type="text" class="form-control" placeholder="Trạng thái" -->
+		<!-- 									value="Đang làm việc" disabled="disabled"> -->
+		<!-- 							</div> -->
+		<!-- 						</div> -->
+		<!-- 												<div class="row mt-3"> -->
+		<!-- 													<div class="col-md-6"> -->
+		<!-- 														<label class="labels">Country</label><input type="text" -->
+		<!-- 															class="form-control" placeholder="country" value=""> -->
+		<!-- 													</div> -->
+		<!-- 													<div class="col-md-6"> -->
+		<!-- 														<label class="labels">State/Region</label><input type="text" -->
+		<!-- 															class="form-control" value="" placeholder="state"> -->
+		<!-- 													</div> -->
+		<!-- 												</div> -->
+		<!-- 						<div class="mt-5 text-center"> -->
+		<!-- 							<button class="btn btn-primary profile-button" id="sign-contract" -->
+		<!-- 								type="button">Ký hợp đồng</button> -->
+		<!-- 						</div> -->
+		<!-- 					</div> -->
+		<!-- 				</div> -->
+		<!-- 				<div class="col-md-4">
+<!-- 					<div class="p-3 py-5"> -->
+		<!-- 						<div -->
+		<!-- 							class="d-flex justify-content-between align-items-center experience"> -->
+		<!-- 							<span>Edit Experience</span><span -->
+		<!-- 								class="border px-3 p-1 add-experience"><i -->
+		<!-- 								class="fa fa-plus"></i>&nbsp;Experience</span> -->
+		<!-- 						</div> -->
+		<!-- 						<br> -->
+		<!-- 						<div class="col-md-12"> -->
+		<!-- 							<label class="labels">Experience in Designing</label><input -->
+		<!-- 								type="text" class="form-control" placeholder="experience" -->
+		<!-- 								value=""> -->
+		<!-- 						</div> -->
+		<!-- 						<br> -->
+		<!-- 						<div class="col-md-12"> -->
+		<!-- 							<label class="labels">Additional Details</label><input -->
+		<!-- 								type="text" class="form-control" -->
+		<!-- 								placeholder="additional details" value=""> -->
+		<!-- 						</div> -->
+		<!-- 					</div> -->
+		<!-- 				</div> -->
+		-->
+		<!-- 			</div> -->
+		<!-- 		</div> -->
 		<!-- created by @BrCodeSnippets -->
-		<div class="container mt-3 pt-3" id="contract-form">
+		<div class="container mt-3 pt-3 d-none" style="height:700px; width:1000px;" id="contract-form">
 			<div class="row">
 				<div class="col-12">
 					<div class="card p-3 bg-form">
@@ -474,15 +588,40 @@ body {
 			crossorigin="anonymous"></script>
 
 		<script>
-			const sc = document.getElementById('sign-contract');
-			const cf = document.getElementById('contract-form');
+			// Lấy đối tượng "Buy now" button
+			const buyNowBtn = document.querySelector('button.btn.btn-warning');
 
-			button.addEventListener('click', function() {
-				if (cf.style.display === 'none') {
-					cf.style.display = 'block';
-				} else {
-					cf.style.display = 'none';
-				}
+			// Thêm sự kiện click cho button
+			buyNowBtn.addEventListener('click', function(event) {
+				event.preventDefault(); // Ngăn chặn hành động mặc định của link
+
+				// Hiển thị div với lớp overlay và toggle
+				const formContainer = document
+						.querySelector('.container.mt-3.pt-3');
+				formContainer.classList.remove('d-none');
+
+				// Thêm lớp overlay
+				const overlay = document.createElement('div');
+				overlay.classList.add('overlay');
+				document.body.appendChild(overlay);
+
+				// Thêm sự kiện click cho overlay để đóng form
+				overlay.addEventListener('click', function() {
+					formContainer.classList.add('d-none');
+					overlay.remove();
+				});
+			});
+
+			// Lấy đối tượng nút "X"
+			const closeBtn = document.querySelector('.close-btn');
+
+			// Thêm sự kiện click cho nút "X"
+			closeBtn.addEventListener('click', function() {
+				const formContainer = document
+						.querySelector('.container.mt-3.pt-3');
+				formContainer.classList.add('d-none');
+				const overlay = document.querySelector('.overlay');
+				overlay.remove();
 			});
 		</script>
 

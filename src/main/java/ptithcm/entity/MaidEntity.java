@@ -18,6 +18,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -53,6 +54,10 @@ public class MaidEntity {
 	
 	@Column(name = "EmploymentType")
 	private Boolean employmentType;
+	
+	//Thuộc tính trung gian để dùng để lấy status của ContractEntity và BookingEntity
+	@Transient
+	private String status;
 	
 	//Associate:
 	
@@ -152,6 +157,14 @@ public class MaidEntity {
 
 	public void setEmploymentType(Boolean employmentType) {
 		this.employmentType = employmentType;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public AccountEntity getAccount() {

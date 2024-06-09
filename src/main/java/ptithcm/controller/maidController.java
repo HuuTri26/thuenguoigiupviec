@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import ptithcm.entity.AccountEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.RoleService;
 
 @Controller
 public class maidController {
@@ -22,6 +23,9 @@ public class maidController {
 
 	@Autowired
 	AccountService accountService;
+
+	@Autowired
+	RoleService roleService;
 
 	// Trang đăng nhập cho maid
 	@RequestMapping("maid/maidLogin")
@@ -46,32 +50,31 @@ public class maidController {
 	public String showForgotPasswordOTP() {
 		return "maid/forgotPasswordOTP";
 	}
-	
+
 	// Trang nhập đặt lại quên mật khẩu:
 	@RequestMapping("maid/changeForgotPassword")
 	public String showChangeForgotPassword() {
 		return "maid/changeForgotPassword";
 	}
-	
-	
+
 	// Trang profile cho maid:
 	@RequestMapping("maid/maidProfile")
 	public String showMaidProfile() {
 		return "maid/maidProfile";
 	}
-	
+
 	// Trang cập nhật profile cho maid:
 	@RequestMapping("maid/maidEditProfile")
 	public String showMaidEditProfile() {
 		return "maid/maidEditProfile";
 	}
 
-	//Trang thay đổi password cho maid:
-	
-		@RequestMapping("maid/maidChangePassword")
-		public String showMaidChangePassword() {
-			return "maid/maidChangePassword";
-		}
+	// Trang thay đổi password cho maid:
+
+	@RequestMapping("maid/maidChangePassword")
+	public String showMaidChangePassword() {
+		return "maid/maidChangePassword";
+	}
 
 	// Trang danh sách đặt lịch thuê cho maid:
 	@RequestMapping("maid/bookingManagement")
@@ -123,10 +126,11 @@ public class maidController {
 			return "admin/adminLogin";
 		}
 
-		if (!accountService.isExistAccount(maidAcc.getEmail(), maidAcc.getPassword())) {
+		if (!accountService.isExistAccount(maidAcc.getEmail(), accountService.getHashPassword(maidAcc.getPassword()))) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản không tồn tại");
 			errors.rejectValue("password", "maidAcc", "Hoặc mật khẩu bạn nhập không đúng");
 			permission = Boolean.FALSE;
+			System.out.println(accountService.getHashPassword(maidAcc.getPassword()));
 		} else if (!accountService.getStatusFromAccount(maidAcc.getEmail())) {
 			errors.rejectValue("email", "maidAcc", "Tài khoản của bạn đã bị khóa");
 			permission = Boolean.FALSE;

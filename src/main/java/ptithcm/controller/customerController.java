@@ -328,7 +328,7 @@ public class customerController {
 	// Trang danh sách người giúp việc fulltime cho customer:
 	@RequestMapping("customer/maidList")
 	public String showMaidList() {
-		return "redirect:/customer/maidList";
+		return "customer/maidList";
 	}
 
 	// Trang thông tin người giúp việc fulltime cho customer:
@@ -404,7 +404,7 @@ public class customerController {
 				booking.setService(service);
 				
 				bookingService.createBooking(booking);
-				System.out.println("==> Booking request created successfully at " + currentTime + '!');
+				System.out.println("==> Booking request created successfully at " + new Date() + '!');
 				return "redirect:/customer/serviceList/" + service.getId() +".htm";
 			}catch (Exception e) {
 				System.out.println("Error: \n" + e.toString());
@@ -559,5 +559,18 @@ public class customerController {
 		List<CategoryEntity> categoryList = categoryService.getListCategory();
 		model.addAttribute("categoryList", categoryList);
 		return "customer/index"; // Assuming you have a view named categoryList.jsp
+	}
+	
+	@RequestMapping("customer/serviceList/index")
+	public String retureIndexCustomer(Model model) {
+		List<CategoryEntity> categoryList = categoryService.getListCategory();
+		model.addAttribute("categoryList", categoryList);
+		return "redirect:/customer/index.htm"; // Assuming you have a view named categoryList.jsp
+	}
+	@RequestMapping("customer/serviceList/serviceDetail/index")
+	public String retureIndexCustomer2(Model model) {
+		List<CategoryEntity> categoryList = categoryService.getListCategory();
+		model.addAttribute("categoryList", categoryList);
+		return "redirect:/customer/index.htm"; // Assuming you have a view named categoryList.jsp
 	}
 }

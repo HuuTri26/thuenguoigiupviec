@@ -1,5 +1,6 @@
 package ptithcm.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -19,7 +20,31 @@ public class ContractServiceImpl implements ContractService{
 
 	@Override
 	public List<ContractEntity> getListContract() {
+		ContractDAO.updateContractStatus();
 		return ContractDAO.getListContract();
+	}
+	
+	@Override
+	public void updateContractStatus() {
+		ContractDAO.updateContractStatus();
+		
+	}
+
+	@Override
+	public void createContract(ContractEntity contract) {
+		ContractDAO.createContract(contract);
+		
+	}
+
+	@Override
+	public ContractEntity getContractBy(Integer customerId, Integer maidId, Date createAt) {
+		return ContractDAO.getContractBy(customerId, maidId, createAt);
+	}
+
+	@Override
+	public void renewContract(ContractEntity contract) {
+		ContractDAO.renewContract(contract);
+		
 	}
 
 }

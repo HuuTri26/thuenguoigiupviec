@@ -2,6 +2,7 @@ package ptithcm.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -86,7 +87,7 @@ public class adminController {
 
 	@Autowired
 	ContractService contractService;
-	
+
 	@Autowired
 	BookingService bookingService;
 	@Autowired
@@ -423,6 +424,7 @@ public class adminController {
 	@RequestMapping("admin/maidManagement")
 	public String showMaidList(Model model) {
 		List<MaidEntity> maidList = maidService.getListMaid();
+		
 		model.addAttribute("maidList", maidList);
 		
 		return "admin/maidManagement";
@@ -624,7 +626,7 @@ public class adminController {
 	public String showBookingList(Model model) {
 		List<BookingEntity> bookingList = bookingService.getListBooking();
 		model.addAttribute("bookingList", bookingList);
-		
+
 		return "admin/bookingManagement";
 	}
 
@@ -753,7 +755,139 @@ public class adminController {
 
 	// Thêm thông tin hợp đồng:
 	@RequestMapping("admin/addContract")
-	public String showAddContractForm() {
+	public String showAddContractForm(Model model) throws ParseException {
+		ContractEntity contract = new ContractEntity();
+		model.addAttribute("contract", contract);
+		
+		System.out.println("==> Open an add contract session!");
+
+		return "admin/addContract";
+	}
+
+	public Date getDateNow() {
+		Calendar calendar = Calendar.getInstance();
+
+		// Đặt giờ, phút, giây, millisecond về 0
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+
+		Date now = calendar.getTime();
+		return now;
+	}
+
+	@RequestMapping(value = "admin/proccessContract", method = RequestMethod.POST)
+	public String proccessContract(HttpServletRequest request, Model model,
+			@ModelAttribute("contract") ContractEntity contract, BindingResult errors) throws ParseException {
+		Boolean isValidContract = Boolean.TRUE;
+		Date currentDate = getDateNow();
+
+		if (contract.getCustomer().getId() == null) {
+			isValidContract = Boolean.FALSE;
+			errors.rejectValue("customer.id", "contract", "Id khách hàng không được để trống!");
+		} else if (contract.getMaid().getId() == null) {
+			isValidContract = Boolean.FALSE;
+			errors.rejectValue("maid.id", "contract", "Id người giúp việc không được để trống!");
+		} else if (contract.getCreateAt() == null) {
+			isValidContract = Boolean.FALSE;
+			errors.rejectValue("createAt", "contract", "Ngày tạo hợp đồng không được để trống!");
+		} else if (contract.getStartAt() == null) {
+			isValidContract = Boolean.FALSE;
+			errors.rejectValue("startAt", "contract", "Ngày có hiệu lực không được để trống!");
+		} else if (contract.getEndAt() == null) {
+			isValidContract = Boolean.FALSE;
+			errors.rejectValue("endAt", "contract", "Ngày hết hạn không được để trống!");
+		} else if (contract.getStartAt().before(currentDate)) {
+			isValidContract = Boolean.FALSE;
+			errors.rejectValue("startAt", "contract", "Ngày hợp đồng có hiệu lực không hợp lệ!");
+		} else if (contract.getEndAt().before(currentDate)) {
+			isValidContract = Boolean.FALSE;
+			errors.rejectValue("endAt", "contract", "Ngày có hết hạn hợp đồng không hợp lệ!");
+		} else if (contract.getStartAt().after(contract.getEndAt())
+				|| contract.getStartAt().equals(contract.getEndAt())) {
+			isValidContract = Boolean.FALSE;
+			errors.rejectValue("startAt", "contract", "Ngày hợp đồng có hiệu lực phải bé hơn ngày hết hạn!");
+		}
+
+		if (isValidContract) {
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String formattedCurrDate = dateFormat.format(currentDate);
+			String formattedCreateAt = dateFormat.format(contract.getCreateAt());
+			String formattedStartAt = dateFormat.format(contract.getStartAt());
+			String formattedEndAt = dateFormat.format(contract.getEndAt());
+
+			ContractEntity contract_t = contractService.getContractBy(contract.getCustomer().getId(),
+					contract.getMaid().getId(), dateFormat.parse(formattedCreateAt));
+
+			if (contract_t == null) { // TH: Hợp đồng nhập là 1 hợp đồng mới
+
+				Boolean isValidNewContract = Boolean.TRUE;
+				CustomerEntity customer = customerService.getCustomerById(contract.getCustomer().getId());
+				MaidEntity maid = maidService.getMaidById(contract.getMaid().getId());
+
+				if (contract.getCreateAt().before(currentDate)) {
+//					System.out.println(contract.getCreateAt());
+//					System.out.println(currentDate);
+					isValidNewContract = Boolean.FALSE;
+					errors.rejectValue("createAt", "contract", "Ngày tạo hợp đồng không hợp lệ!");
+				} else if (customer == null) {
+					isValidNewContract = Boolean.FALSE;
+					errors.rejectValue("customer.id", "contract", "Id khách hàng không tồn tại!");
+				} else if (maid == null) {
+					isValidNewContract = Boolean.FALSE;
+					errors.rejectValue("maid.id", "contract", "Id người giúp việc không tồn tại!");
+				} else if (maid.getEmploymentType() == Boolean.TRUE) {
+					isValidNewContract = Boolean.FALSE;
+					errors.rejectValue("maid.id", "contract", "Loại người giúp việc phải là Fulltime!");
+				} else if (maidService.isAvalaiblePartTimeMaid(maid, dateFormat.parse(formattedCurrDate))) {
+					isValidNewContract = Boolean.FALSE;
+					errors.rejectValue("maid.id", "contract", "Người giúp việc này hiện tại đang bận hoặc không khả dụng!");
+				}
+
+				if (isValidNewContract) {
+					HttpSession session = request.getSession();
+					EmployeeEntity employee = (EmployeeEntity) session.getAttribute("employee");
+
+					contract.setCustomer(customer);
+					contract.setMaid(maid);
+					contract.setDescription(contract.getDescription());
+					contract.setCreateAt(dateFormat.parse(formattedCreateAt));
+					contract.setUpdateAt(dateFormat.parse(formattedCurrDate));
+					contract.setStartAt(dateFormat.parse(formattedStartAt));
+					contract.setEndAt(dateFormat.parse(formattedEndAt));
+					contract.setStatus(null);
+					contract.setEmployee(employee);
+
+					contractService.createContract(contract);
+					System.out.println("==> Contract created successfully at " + new Date() + '!');
+					return "redirect:/admin/contractManagement.htm";
+				} else {
+					System.out.println("Error: Contract created unsuccessfuly!");
+					return "admin/addContract";
+				}
+			} else { // TH: Hợp đồng đã tồn tại
+
+				if (contract_t.getStatus() == Boolean.TRUE || contract_t.getStatus() == null) { // Nếu hợp đồng còn hạn hoặc chưa có hiệu lực
+					System.out.println(contract_t.getId());
+					contract_t.setStartAt(dateFormat.parse(formattedStartAt));
+					contract_t.setEndAt(dateFormat.parse(formattedEndAt));
+					contract_t.setUpdateAt(dateFormat.parse(formattedCurrDate));
+
+					contractService.renewContract(contract_t);
+					System.out.println("==> Contract renewed successfully at " + new Date() + '!');
+					return "redirect:/admin/contractManagement.htm";
+				} else { // Nếu hợp đồng hết hạn
+					model.addAttribute("message", "Hợp đồng mà bạn chọn đã hết hạn!");
+					System.out.println("Error: Cannot renew an this contract!");
+					return "admin/addContract";
+				}
+			}
+
+		} else {
+			System.out.println("Error: Contract created unsuccessfully!");
+		}
+
 		return "admin/addContract";
 	}
 
