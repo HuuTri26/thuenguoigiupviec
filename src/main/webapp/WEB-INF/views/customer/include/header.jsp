@@ -7,7 +7,7 @@
 
 		<div class="logo">
 			<h1>
-				<a href="index.html">BookMyMaid</a>
+				<a href="index.htm">BookMyMaid</a>
 			</h1>
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->

@@ -78,7 +78,7 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  height: 70px;
+  height: 10px;
   transition: all 0.5s;
   z-index: 997;
   background: #000;

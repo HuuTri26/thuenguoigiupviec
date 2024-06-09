@@ -129,28 +129,57 @@
 }
 </style>
 </head>
+
 <body>
 
-	<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
-
+	<!-- ======= Header ======= -->
 	<header id="header" class="fixed-top d-flex align-items-center">
 		<div class="container d-flex justify-content-between">
 
 			<div class="logo">
 				<h1>
-					<a href="index.htm">BookMyMaid</a>
+					<a href="main.htm">BookMyMaid</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 			</div>
 
+<!-- 			<nav id="navbar" class="navbar"> -->
+<!-- 				<ul> -->
+<!-- 					<li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
+<!-- 					<li><a class="nav-link scrollto" href="#about">About</a></li> -->
+<!-- 					<li><a class="nav-link scrollto" href="#services">Services</a></li> -->
+
+<!-- 					<li class="dropdown"><a href="#"><span>Login</span> <i -->
+<!-- 							class="bi bi-chevron-down"></i></a> -->
+<!-- 						<ul> -->
+<!-- 							<li><a href="admin/adminLogin.htm">Admin</a></li> -->
+<!-- 							<li><a href="maid/maidLogin.htm">Maid</a></li> -->
+<!-- 							<li><a href="customer/customerLogin.htm">User</a></li> -->
+
+<!-- 						</ul></li> -->
+<!-- 					<li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+<!-- 					             <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a> -->
+<!-- 					               <ul> -->
+<!-- 					              <li><a href="profile.htm">Trang cá nhân</a></li> -->
+<!-- 					              <li><a href="index.htm">Log out</a></li> -->
+
+<!-- 					            </ul> -->
+<!-- 					          </li> -->
+<!-- 				</ul> -->
+<!-- 				<i class="bi bi-list mobile-nav-toggle"></i> -->
+<!-- 			</nav> -->
+			<!-- .navbar -->
+
 		</div>
 	</header>
+	<!-- End Header -->
 
-	<main id="main">
+	<!-- ======= Hero Section ======= -->
+		<main id="main">
 
 		<!-- content -->
-		<section class="py-5" style="margin-top: 50px;">
+		<section class="py-5">
 			<div class="container">
 				<div class="row gx-5">
 					<aside class="col-lg-6">
@@ -258,7 +287,7 @@
 									</div>
 								</div>
 							</div>
-							<a href="#">
+							<a href="customer/customerLogin.htm">
 								<button class="btn btn-warning shadow-0"
 									${!service.status ? 'disabled' : ''}>${service.status ? 'Đặt ngay' : 'Không khả dụng'}</button>
 							</a>
@@ -269,138 +298,136 @@
 			</div>
 		</section>
 
-		<div class="container mt-3 pt-3 d-none"
-			style="height: 700px; width: 1000px;">
-			<div class="row">
-				<div class="col-12">
-					<div class="card p-3 bg-form position-relative">
-						<div class="close-btn position-absolute top-0 end-0 p-3">
-							<i class="fas fa-times text-white"></i>
+
+	</main>
+	<!-- End #main -->
+
+	<!-- ======= Footer ======= -->
+	<footer id="footer">
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-lg-3 col-md-6">
+						<div class="footer-info">
+							<h3>BookMyMaid</h3>
+							<p>
+							<p>
+								A-123 MG Road, <br> Pune, PU 535022 <br> <strong>Phone:</strong>
+								+91 9988452631<br> <strong>Email:</strong>
+								bookmymaid@gmail.com<br>
+							</p>
+
 						</div>
-						<form:form class="row g-3" action="booking/${service.id }.htm"
-							method="post" modelAttribute="booking">
-							<div class="col-12">
-								<h1 class="text-center fw-bolder text-white mt-3">Form đặt
-									dịch vụ</h1>
-								<hr>
-							</div>
-							<div class="col-12">
-								<div
-									class="p-3 mb-3 text-white fw-bolder fs-3 border-5 border-start">
-									Điền thông tin đặt dịch vụ</div>
-							</div>
-							<div class="col-12">
-								<div class="form-floating">
-									<form:input path="startTime" autocomplete="off"
-										class="form-control bg-light " type="datetime-local"
-										id="startTime" placeholder="Name" />
-									<label for="inputName">Ngày bắt đầu</label>
-									<form:errors path="startTime" />
-								</div>
-							</div>
-
-							<div class="col-12">
-								<div class="form-floating">
-									<form:input path="bookingAddress" type="text"
-										class="form-control bg-light " id="inputAddress"
-										placeholder="1234 Main St" />
-									<label for="inputAddress" class="form-label">Address</label>
-									<form:errors path="bookingAddress" />
-								</div>
-							</div>
-							<div class="col-12">
-								<div class="form-floating">
-									<form:input path="bookingAddress" type="text"
-										class="form-control bg-light " id="inputAddress"
-										placeholder="1234 Main St" />
-									<label for="inputAddress" class="form-label">Note</label>
-									<form:errors path="note" />
-								</div>
-							</div>
-						
-							<div class="col-12">
-								<div class="form-floating">
-									<form:input path="bookingAddress" type="number"
-										class="form-control bg-light " id="inputAddress"
-										placeholder="033434343" />
-									<label for="inputAddress" class="form-label">Phone
-										number</label>
-									<form:errors path="" />
-								</div>
-							</div>
-								<div class="col-md-4 col-6">
-									<label class="mb-2">Phương thức thanh toán</label> <select
-										class="form-select border border-secondary"
-										style="height: 35px;">
-										<option>Tiền mặt</option>
-										<option>Chuyển khoản</option>
-										
-									</select>
-								</div>
-
-							<div class="col-12 text-end">
-								<button type="submit"
-									class="btn bg-button-submit w-100 bg-gradient p-3 text-center mb-2 text-white fw-bolder fs-3">Xác
-									nhận</button>
-								<a href="#" class="text-primary shadow-sm">Xác nhận</a>
-							</div>
-						</form:form>
 					</div>
+
+					<div class="col-lg-2 col-md-6 footer-links">
+						<h4>Useful Links</h4>
+						<ul>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">About
+									us</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Terms
+									of service</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Privacy
+									policy</a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-3 col-md-6 footer-links">
+						<h4>Design by</h4>
+						<ul>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">AkshayKumar
+									Girmal</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Atharva
+									Bondre</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Tejas
+									Jawale</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Mayur
+									Nigade</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Pankaj
+									Desai</a></li>
+							<li><i class="bx bx-chevron-right"></i> <a href="#">Ruchita
+									Patil</a></li>
+						</ul>
+					</div>
+
+					<div class="col-lg-3 col-md-6 footer-links">
+						<h3>BookMyMaid</h3>
+						<p>A web-based application that provides facility to book maid
+							online. It provides a common platform where user can book maid
+							according to need and maid can get a job assigned.</p>
+						<h4>Our Social Networks</h4>
+						<div class="social-links mt-3">
+							<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> <a
+								href="#" class="facebook"><i class="bx bxl-facebook"></i></a> <a
+								href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+							<a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+							<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
 
+		<div class="container">
+			<div class="copyright">
+				&copy; Đồ án <strong><span>Nhóm 16</span></strong> Maid Hiring
+			</div>
+			<div class="credits">
+				<!-- All the links in the footer should remain intact. -->
+				<!-- You can delete the links only if you purchased the pro version. -->
+				<!-- Licensing information: https://bootstrapmade.com/license/ -->
+				<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/ -->
+				Designed by <a href="https://bootstrapmade.com/">Developers</a>
+			</div>
+		</div>
+	</footer>
+	<!-- End Footer -->
 
-	</main>
-	<%@include file="/WEB-INF/views/customer/include/footer.jsp"%>
+<!-- 	<script> -->
+<!-- // 		// Lấy đối tượng "Buy now" button -->
+<!-- // 		const buyNowBtn = document.querySelector('button.btn.btn-warning'); -->
+
+<!-- // 		// Thêm sự kiện click cho button -->
+<!-- // 		buyNowBtn.addEventListener('click', function(event) { -->
+<!-- // 			event.preventDefault(); // Ngăn chặn hành động mặc định của link -->
+
+<!-- // 			// Hiển thị div với lớp overlay và toggle -->
+<!-- // 			const formContainer = document -->
+<!-- // 					.querySelector('.container.mt-3.pt-3'); -->
+<!-- // 			formContainer.classList.remove('d-none'); -->
+
+<!-- // 			// Thêm lớp overlay -->
+<!-- // 			const overlay = document.createElement('div'); -->
+<!-- // 			overlay.classList.add('overlay'); -->
+<!-- // 			document.body.appendChild(overlay); -->
+
+<!-- // 			// Thêm sự kiện click cho overlay để đóng form -->
+<!-- // 			overlay.addEventListener('click', function() { -->
+<!-- // 				formContainer.classList.add('d-none'); -->
+<!-- // 				overlay.remove(); -->
+<!-- // 			}); -->
+<!-- // 		}); -->
+
+<!-- // 		// Lấy đối tượng nút "X" -->
+<!-- // 		const closeBtn = document.querySelector('.close-btn'); -->
+
+<!-- // 		// Thêm sự kiện click cho nút "X" -->
+<!-- // 		closeBtn.addEventListener('click', function() { -->
+<!-- // 			const formContainer = document -->
+<!-- // 					.querySelector('.container.mt-3.pt-3'); -->
+<!-- // 			formContainer.classList.add('d-none'); -->
+<!-- // 			const overlay = document.querySelector('.overlay'); -->
+<!-- // 			overlay.remove(); -->
+<!-- // 		}); -->
+<!-- 	</script> -->
 
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
-
-	<!-- 		Modal -->
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-		crossorigin="anonymous"></script>
-
-	<script>
-		// Lấy đối tượng "Buy now" button
-		const buyNowBtn = document.querySelector('button.btn.btn-warning');
-
-		// Thêm sự kiện click cho button
-		buyNowBtn.addEventListener('click', function(event) {
-			event.preventDefault(); // Ngăn chặn hành động mặc định của link
-
-			// Hiển thị div với lớp overlay và toggle
-			const formContainer = document
-					.querySelector('.container.mt-3.pt-3');
-			formContainer.classList.remove('d-none');
-
-			// Thêm lớp overlay
-			const overlay = document.createElement('div');
-			overlay.classList.add('overlay');
-			document.body.appendChild(overlay);
-
-			// Thêm sự kiện click cho overlay để đóng form
-			overlay.addEventListener('click', function() {
-				formContainer.classList.add('d-none');
-				overlay.remove();
-			});
-		});
-
-		// Lấy đối tượng nút "X"
-		const closeBtn = document.querySelector('.close-btn');
-
-		// Thêm sự kiện click cho nút "X"
-		closeBtn.addEventListener('click', function() {
-			const formContainer = document
-					.querySelector('.container.mt-3.pt-3');
-			formContainer.classList.add('d-none');
-			const overlay = document.querySelector('.overlay');
-			overlay.remove();
-		});
-	</script>
 
 	<!-- Vendor JS Files -->
 	<script src="<c:url value='/resources/main/assets/vendor/aos/aos.js'/>"></script>
@@ -417,5 +444,7 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/main/assets/js/main.js'/>"></script>
+
 </body>
+
 </html>
