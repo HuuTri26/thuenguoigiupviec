@@ -277,7 +277,28 @@
 													pattern="#,###.## VND;VND -#,###.##" type="currency"
 													currencySymbol="VND" /></td>
 											<td scope="col" id="bookingStatus-${booking.id}"
-												class="bookingStatus">${booking.bookingStatus == 1 ? 'Đã xác nhận' : 'Chưa xác nhận'}
+												class="bookingStatus">
+												
+												<c:choose>
+											<c:when test="${booking.bookingStatus == 1}">
+												<!-- 1: Chờ xác nhận, 2: Đã xác nhận, 3: Hoàn thành, 0: Đã hủy -->
+												<!-- Nội dung khi điều kiện đúng -->
+												<div class="col-lg-9 col-md-8">Chờ xác nhận</div>
+											</c:when>
+											<c:when test="${booking.bookingStatus == 2}">
+												<!-- Nội dung khi điều kiện đúng -->
+												<div class="col-lg-9 col-md-8">Đã xác nhận</div>
+												</c:when>
+												<c:when test="${booking.bookingStatus == 3}">
+													<!-- Nội dung khi điều kiện đúng -->
+													<div class="col-lg-9 col-md-8">Đã hoàn thành</div>
+												
+											</c:when>
+											<c:otherwise>
+												<!-- Nội dung khi điều kiện sai -->
+												<div class="col-lg-9 col-md-8">Đã hủy</div>
+											</c:otherwise>
+										</c:choose>
 												<!-- <div class="form-check form-switch"
 													data-switch-text="Chưa xác nhận,Đã xác nhận">
 													<input class="form-check-input" type="checkbox"
@@ -293,11 +314,16 @@
 											<td scope="col">5</td>
 											<td scope="col">Tốt</td>
 
-											<td scope="col"><a href="bookingDetail.htm"
-												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
+											<td scope="col">
+												<a href="bookingDetail/${booking.id}.htm"
+												class="btn btn-primary "><i class="bi bi-eye"></i></a>
+												
+												<a
 												href="bookingMaidList.htm" class="btn btn-primary"><i
-													class="fa fa-list-ul"></i></a> <a href="#"
-												class="btn btn-danger "><i class="bi-trash"></i></a></td>
+													class="fa fa-list-ul"></i></a> 
+												<a href="#"
+												class="btn btn-danger "><i class="bi-trash"></i></a>
+											</td>
 										</tr>
 
 									</c:forEach>

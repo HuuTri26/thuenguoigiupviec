@@ -14,4 +14,6 @@ public interface MaidService {
 	public void addMaid(MaidEntity maid);
 	public void updateMaid(MaidEntity maid);
 	public MaidEntity getMaidById(Integer id);
+	public List<MaidEntity> getListMaidSelectedListByBookingId(Integer bookingId);
+	public List<MaidEntity> getListMaidPartTime();
 }

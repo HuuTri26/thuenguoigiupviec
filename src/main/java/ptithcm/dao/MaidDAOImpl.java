@@ -50,4 +50,25 @@ public class MaidDAOImpl implements MaidDAO {
 	        session.update(maid);
 	    }
 
+	@Override
+	public List<MaidEntity> getMaidSelectedListBybookingId(Integer bookingId) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+		String hql = "SELECT m FROM MaidEntity m JOIN m.bookingDetails bd WHERE bd.booking.id = :bookingId";
+		Query query = session.createQuery(hql);
+		query.setParameter("bookingId", bookingId);
+		List<MaidEntity> maids = query.list();
+		return maids;
+	}
+
+	@Override
+	public List<MaidEntity> getListMaidPartTime() {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+        String hql = "FROM MaidEntity WHERE employmentType = 0";
+        Query query = session.createQuery(hql);
+        List<MaidEntity> maidList = query.list();
+        return maidList;
+	}
+
 }

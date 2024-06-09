@@ -42,4 +42,15 @@ public class BookingDAOImpl implements BookingDAO {
 		
 	}
 
+	@Override
+	public BookingEntity getBookingById(int bookingId) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+        String hql = "FROM BookingEntity where id=:bookingId";
+        Query query = session.createQuery(hql);
+        query.setParameter("bookingId", bookingId);
+        BookingEntity booking = (BookingEntity) query.uniqueResult();
+        return booking;
+	}
+
 }

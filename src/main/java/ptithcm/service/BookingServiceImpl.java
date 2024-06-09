@@ -35,4 +35,10 @@ public class BookingServiceImpl implements BookingService{
 		
 	}
 
+	@Override
+	public BookingEntity getBookingById(int bookingId) {
+		// TODO Auto-generated method stub
+		return BookingDAO.getBookingById(bookingId);
+	}
+
 }
