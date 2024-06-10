@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -229,7 +230,7 @@
 
 							<hr />
 
-							<div class="row mb-4">
+							<!-- <div class="row mb-4">
 								<div class="col-md-4 col-6">
 									<label class="mb-2">Size</label> <select
 										class="form-select border border-secondary"
@@ -239,7 +240,7 @@
 										<option>Large</option>
 									</select>
 								</div>
-								<!-- col.// -->
+								col.//
 								<div class="col-md-4 col-6 mb-3">
 									<label class="mb-2 d-block">Quantity</label>
 									<div class="input-group mb-3" style="width: 170px;">
@@ -257,7 +258,7 @@
 										</button>
 									</div>
 								</div>
-							</div>
+							</div> -->
 							<a href="#">
 								<button class="btn btn-warning shadow-0"
 									${!service.status ? 'disabled' : ''}>${service.status ? 'Đặt ngay' : 'Không khả dụng'}</button>
@@ -277,7 +278,7 @@
 						<div class="close-btn position-absolute top-0 end-0 p-3">
 							<i class="fas fa-times text-white"></i>
 						</div>
-						<form:form class="row g-3" action="booking/${service.id }.htm"
+						<form:form class="row g-3" action="customer/booking/${service.id }.htm"
 							method="post" modelAttribute="booking">
 							<div class="col-12">
 								<h1 class="text-center fw-bolder text-white mt-3">Form đặt

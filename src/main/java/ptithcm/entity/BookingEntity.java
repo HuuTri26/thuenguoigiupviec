@@ -1,5 +1,6 @@
 package ptithcm.entity;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -26,11 +27,18 @@ public class BookingEntity {
 	@Column(name = "Id")
 	private Integer id;
 	
-	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Column(name = "StartTime")
-	private Date startTime;
+//	@Temporal(TemporalType.DATE)
+//	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+//	@Column(name = "StartTime")
+//	private Date startTime;
 	
+//	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+//	@Column(name = "StartTime")
+//    private LocalDateTime startTime;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    private Date startTime;
 	@Column(name = "Address")
 	private String bookingAddress;
 	
