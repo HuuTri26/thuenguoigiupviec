@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -63,7 +64,7 @@
 
 			<div class="logo">
 				<h1>
-					<a href="index.htm">BookMyMaid</a>
+					<a href="customer/index.htm">BookMyMaid</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -130,7 +131,7 @@
 							src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
 							class="card-img-top" alt="Hollywood Sign on The Hill">
 						<div class="card-body">
-							<a href="serviceDetail/${service.id }.htm" class="card-title"
+							<a href="customer/serviceList/serviceDetail/${service.id }.htm" class="card-title"
 								style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;"
 								id="serviceName">${service.name }</a>
 							<p class="card-text" id="categoryName">Loại:

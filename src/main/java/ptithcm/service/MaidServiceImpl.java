@@ -108,4 +108,18 @@ public class MaidServiceImpl implements MaidService {
 		}
 		return maids;
 	}
+
+	@Override
+	public List<MaidEntity> getListMaidSelectedListByBookingId(Integer bookingId) {
+		// TODO Auto-generated method stub
+		return MaidDAO.getMaidSelectedListBybookingId(bookingId);
+	}
+
+	@Override
+	public List<MaidEntity> getListMaidPartTime() {
+		// TODO Auto-generated method stub
+		return MaidDAO.getListMaidPartTime();
+	}
+
+
 }

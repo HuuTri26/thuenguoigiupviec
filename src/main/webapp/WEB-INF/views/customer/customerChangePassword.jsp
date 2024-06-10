@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -97,30 +98,33 @@
 <body>
 
 	<!-- ======= Header ======= -->
-<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
-<header id="header" class="fixed-top d-flex align-items-center">
+	<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
+	<header id="header" class="fixed-top d-flex align-items-center">
 		<div class="container d-flex justify-content-between">
 
 			<div class="logo">
 				<h1>
-					<a href="index.htm">BookMyMaid</a>
+					<a href="customer/index.htm">BookMyMaid</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="#"><span>Account</span> <i
+					<li class="dropdown"><a href="customer/index.htm"><span>Account</span> <i
 							class="bi bi-chevron-down"></i></a>
 						<ul>
-							<li><a href="customerProfile.htm">Trang cá nhân</a></li>
-							<li><a href="updateCustomer.htm">Cập nhật thông tin</a></li>
-							<li><a href="customerChangePassword.htm">Đổi mật khẩu</a></li>
-							<li><a href="bookingManagement.htm">Xem danh sách </a></li>
-							<li><a href="contractManagement.htm">Xem danh sách đặt
-									dịch vụ</a></li>
-							<li><a href="billManagement.htm">Xem danh bill</a></li>
-							<li><a href="logout.htm">Log out</a></li>
+							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
+							<li><a href="customer/updateCustomer.htm">Cập nhật thông
+									tin</a></li>
+							<li><a href="customer/customerChangePassword.htm">Đổi
+									mật khẩu</a></li>
+							<li><a href="customer/bookingManagement.htm">Xem danh
+									sách </a></li>
+							<li><a href="customer/contractManagement.htm">Xem danh
+									sách đặt dịch vụ</a></li>
+							<li><a href="customer/billManagement.htm">Xem danh bill</a></li>
+							<li><a href="#">Log out</a></li>
 
 						</ul></li>
 				</ul>
@@ -135,9 +139,9 @@
 			<h1>customer</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="customer/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="customerManagement.html">customer</a></li>
+						href="customer/customerManagement.htm">customer</a></li>
 				</ol>
 			</nav>
 		</div>

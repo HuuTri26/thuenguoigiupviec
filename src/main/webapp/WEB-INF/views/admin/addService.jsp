@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -170,9 +171,11 @@
 			<h1>Dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="serviceManagement.html">Dịch vụ</a></li>
+						href="admin/serviceManagement.htm">Dịch vụ</a></li>
+					<li class="breadcrumb-item active"><a
+						href="admin/addService.htm">Thêm dịch vụ</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -188,7 +191,7 @@
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form:form action="addService.htm" modelAttribute="service"
+							<form:form action="admin/addService.htm" modelAttribute="service"
 								method="post" class="row g-3">
 								<!-- <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">ID</label>
@@ -215,7 +218,7 @@
 										dịch vụ</label>
 									<form:input type="text" class="form-control"
 										id="validationDefault01" path="name" value=""
-										placeholder="Subject name" />
+										placeholder="Subject name" required="required" />
 									<form:errors path="name" />
 								</div>
 
@@ -235,7 +238,8 @@
 										tiền</label>
 									<form:input type="number" class="form-control"
 										id="validationDefault01" value=""
-										path="servicePrices[0].price" placeholder="Subject name" />
+										path="servicePrices[0].price" placeholder="Subject name"
+										required="required" />
 								</div>
 
 								<div class="col-md-6">
@@ -243,7 +247,7 @@
 										gian gói</label>
 									<form:input type="number" class="form-control"
 										id="validationDefault01" value="" path="time"
-										placeholder="Subject name" />
+										placeholder="Subject name" required="required" />
 								</div>
 
 								<div class="col-md-6">
@@ -251,7 +255,7 @@
 										lượng giúp việc</label>
 									<form:input type="number" class="form-control"
 										id="validationDefault01" value="" path="maidQuantity"
-										placeholder="Subject name" />
+										placeholder="Subject name" required="required" />
 								</div>
 								<!-- <div class="col-md-6">
                                     <label class="form-label">Description</label>
@@ -320,7 +324,7 @@
 	</footer>
 	<!-- End Footer -->
 
-	<a href="#"
+	<a href="admin/addService.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

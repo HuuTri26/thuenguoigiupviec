@@ -7,6 +7,8 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
+
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -70,9 +72,12 @@
 			<h1>Bill</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="contractDetail.htm">Bill</a></li>
+						href="admin/billManagement.htm">Danh sách hóa đơn</a></li>
+					<li class="breadcrumb-item active"><a
+						href="admin/billDetail/1.htm">Thông tin hóa đơn</a></li>
+
 				</ol>
 			</nav>
 		</div>
@@ -145,7 +150,7 @@
 									</div>
 
 									<div class="text-center">
-										<button href="index.htm" class="btn btn-primary">Thoát</button>
+										<button href="admin/index.htm" class="btn btn-primary">Thoát</button>
 									</div>
 								</div>
 

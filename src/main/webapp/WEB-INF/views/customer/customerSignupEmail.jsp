@@ -9,6 +9,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <title>Đăng Ký Tài Khoản</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -50,18 +51,18 @@
 									</p>
 								</div>
 							</div>
-							<form:form class="signin-form" action="verifyOTP.htm"
+							<form:form class="signin-form" action="customer/verifyOTP.htm"
 								modelAttribute="customerAcc">
 								${message }
 								
 								<div class="form-group mb-3">
 									<label class="label" for="name">Gmail</label>
-									
+
 									<form:input type="email" class="form-control" path="email"
 										placeholder="Nhập username(email)" />
 									<form:errors path="email" />
 								</div>
-								
+
 								<div class="form-group">
 									<button type="submit"
 										class="form-control btn btn-primary rounded submit px-3"

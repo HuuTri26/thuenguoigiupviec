@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -64,110 +65,10 @@
 </head>
 
 <body>
-
-	<!-- ======= Header ======= -->
-	<!-- 	<header id="header" class="header fixed-top d-flex align-items-center"> -->
-
-	<!-- 		<div class="d-flex align-items-center justify-content-between"> -->
-	<!-- 			<i class="bi bi-list toggle-sidebar-btn"></i> <a href="index.html" -->
-	<!-- 				class="logo d-flex align-items-center"> <img -->
-	<%-- 				src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" --%>
-	<!-- 				alt=""> <span class="d-none d-lg-block">BookMyMaid</span> -->
-	<!-- 			</a> -->
-
-	<!-- 		</div> -->
-	<!-- 		<!-- End Logo -->
-	-->
-
-
-	<!-- 		<nav class="header-nav ms-auto"> -->
-	<!-- 			<ul class="d-flex align-items-center"> -->
-
-
-
-	<!-- 				<li class="nav-item dropdown pe-3"><a -->
-	<!-- 					class="nav-link nav-profile d-flex align-items-center pe-0" -->
-	<!-- 					href="#" data-bs-toggle="dropdown"> <img -->
-	<%-- 						src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" --%>
-	<!-- 						alt="Profile" class="rounded-circle"> <span -->
-	<!-- 						class="d-none d-md-block dropdown-toggle ps-2">Profile</span> -->
-	<!-- 				</a> -->
-	<!-- 				End Profile Iamge Icon -->
-
-	<!-- 					<ul -->
-	<!-- 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!-- 						<li class="dropdown-header"> -->
-	<!-- 							<h6>Profile</h6> <span>Web Designer</span> -->
-	<!-- 						</li> -->
-	<!-- 						<li> -->
-	<!-- 							<hr class="dropdown-divider"> -->
-	<!-- 						</li> -->
-
-	<!-- 						<li><a class="dropdown-item d-flex align-items-center" -->
-	<!-- 							href="user-profile.html"> <i class="bi bi-person"></i> <span>My -->
-	<!-- 									Profile</span> -->
-	<!-- 						</a></li> -->
-	<!-- 						<li> -->
-	<!-- 							<hr class="dropdown-divider"> -->
-	<!-- 						</li> -->
-
-	<!-- 						<li><a class="dropdown-item d-flex align-items-center" -->
-	<!-- 							href="#"> <i class="bi bi-box-arrow-right"></i> <span>Sign -->
-	<!-- 									Out</span> -->
-	<!-- 						</a></li> -->
-
-	<!-- 					</ul> -->
-	<!-- 					End Profile Dropdown Items</li> -->
-	<!-- 				End Profile Nav -->
-
-	<!-- 			</ul> -->
-	<!-- 		</nav> -->
-	<!-- 		<!-- End Icons Navigation -->
-	-->
-
-	<!-- 	</header> -->
 	<!-- 	<!-- End Header -->
 	-->
 	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
 
-	<!-- ======= Sidebar ======= -->
-	<!-- 	<aside id="sidebar" class="sidebar"> -->
-
-	<!-- 		<ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-	<!-- 				href="dashboard.htm"> <i class="bi bi-grid"></i> <span>Dashboard</span> -->
-	<!-- 			</a></li> -->
-	<!-- 			<!-- End Dashboard Nav -->
-	-->
-
-	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-	<!-- 				href="#"> <i class="bi bi-person"></i> <span>Maid</span> -->
-	<!-- 			</a></li> -->
-	<!-- 			<!-- End Maid Page Nav -->
-	-->
-
-	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-	<!-- 				href="customerManagement.htm"> <i class="bi bi-question-circle"></i> <span>User</span> -->
-	<!-- 			</a></li> -->
-	<!-- 			<!-- End User Page Nav -->
-	-->
-
-	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-	<!-- 				href="serviceManagement.htm"> <i class="bi bi-envelope"></i> <span>Services</span> -->
-	<!-- 			</a></li> -->
-	<!-- 			<!-- End Subject Page Nav -->
-	-->
-
-	<!-- 			<li class="nav-item"><a class="nav-link collapsed" -->
-	<!-- 				href="bookingManagement.htm"> <i class="bi bi-box-arrow-in-right"></i> -->
-	<!-- 					<span>Booking Details</span> -->
-	<!-- 			</a></li> -->
-	<!-- 			<!-- End Exam History Page Nav -->
-	-->
-
-
-	<!-- 		</ul> -->
 
 	<!-- 	</aside> -->
 	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
@@ -178,9 +79,9 @@
 			<h1>Maid Management</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="maidManagement.html"> maid được phân công</a></li>
+						href="admin/maidManagement.htm"> maid được phân công</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -192,17 +93,10 @@
 
 					<div class="card">
 						<div class="card-body ">
-							<!-- 							<div class="card-title"> -->
-							<!-- 								<a href="addMaid.htm" class="btn btn-primary">Add Maid</a> -->
-							<!-- 							</div> -->
-							<!--  <h5 class="card-title">Datatables</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
- -->
-							<!-- Table with stripped rows -->
 							<table class="table datatable ">
 								<thead style="background-color: #37517e; color: white">
 									<tr>
-										
+
 										<th scope="col">Id</th>
 										<th scope="col">Họ tên</th>
 										<th scope="col">Số điện thoại</th>
@@ -222,7 +116,7 @@
 
 
 									<tr>
-										
+
 										<td scope="row">${maid.id }</td>
 										<td scope="col">${maid.fullName }</td>
 										<!-- 										<td scope="col">huutri</td> -->
@@ -258,18 +152,18 @@
 											</div>
 										</td>
 
-<!-- 										<td scope="col"><a href="maidDetail.htm" -->
-<!-- 											class="btn btn-primary"><i class="bi bi-eye"></i></a> <a -->
-<%-- 											href="admin/edit/${maid.id}.htm?linkEdit" --%>
-<!-- 											class="btn btn-primary "><i class="bi-pencil" -->
-<%-- 												data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" --> --%>
-<!-- 																						class="btn btn-primary "><i class="bi-pencil"></i></a> -->
-<%-- 											<a href="/index/${maid.id}?linkDelete" class="btn btn-danger" --%>
-<%-- 											data-action="delete" data-id="${maid.id}"><i --%>
-<!-- 												class="bi-trash"></i></a></td> -->
+										<!-- 										<td scope="col"><a href="maidDetail.htm" -->
+										<!-- 											class="btn btn-primary"><i class="bi bi-eye"></i></a> <a -->
+										<%-- 											href="admin/edit/${maid.id}.htm?linkEdit" --%>
+										<!-- 											class="btn btn-primary "><i class="bi-pencil" -->
+										<%-- 												data-action="edit" data-id="${maid.id }"></i></a> <!-- 										<a href="updateMaid.htm" --> --%>
+										<!-- 																						class="btn btn-primary "><i class="bi-pencil"></i></a> -->
+										<%-- 											<a href="/index/${maid.id}?linkDelete" class="btn btn-danger" --%>
+										<%-- 											data-action="delete" data-id="${maid.id}"><i --%>
+										<!-- 												class="bi-trash"></i></a></td> -->
 									</tr>
 									<tr>
-										
+
 										<td scope="row">${maid.id }</td>
 										<td scope="col">${maid.fullName }</td>
 										<!-- 										<td scope="col">huutri</td> -->
@@ -305,15 +199,16 @@
 											</div>
 										</td>
 
-										<td scope="col"><a href="maidDetail.htm" 
-									class="btn btn-primary"><i class="bi bi-eye"></i></a> <a 
-									href="admin/edit/${maid.id}.htm?linkEdit" 
-									class="btn btn-primary "><i class="bi-pencil" 
-									data-action="edit" data-id="${maid.id }"></i></a> 								<a href="maid.htm" 
-																				class="btn btn-primary "><i class="bi-pencil"></i></a>
-										<a href="/index/${maid.id}?linkDelete" class="btn btn-danger" 
-										data-action="delete" data-id="${maid.id}"><i 
-											class="bi-trash"></i></a></td> 
+										<td scope="col"><a href="admin/maidDetail/1.htm"
+											class="btn btn-primary"><i class="bi bi-eye"></i></a> <a
+											href="admin/edit/${maid.id}.htm?linkEdit"
+											class="btn btn-primary "><i class="bi-pencil"
+												data-action="edit" data-id="${maid.id }"></i></a> <a
+											href="maid.htm" class="btn btn-primary "><i
+												class="bi-pencil"></i></a> <a
+											href="/index/${maid.id}?linkDelete" class="btn btn-danger"
+											data-action="delete" data-id="${maid.id}"><i
+												class="bi-trash"></i></a></td>
 									</tr>
 
 								</tbody>

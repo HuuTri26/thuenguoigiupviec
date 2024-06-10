@@ -35,4 +35,16 @@ public class BookingServiceImpl implements BookingService{
 		
 	}
 
+	@Override
+	public BookingEntity getBookingById(int bookingId) {
+		// TODO Auto-generated method stub
+		return BookingDAO.getBookingById(bookingId);
+	}
+
+	@Override
+	public List<BookingEntity> getBookingsForMaid(int maidId) {
+		// TODO Auto-generated method stub
+		return BookingDAO.getBookingsForMaid(maidId);
+	}
+
 }

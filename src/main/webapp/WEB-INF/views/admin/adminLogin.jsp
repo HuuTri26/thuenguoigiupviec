@@ -2,22 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c1"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!doctype html>
 <html lang="en">
 
 <head>
-	<title>Đăng nhập</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<base href="${pageContext.servletContext.contextPath}/">
+<title>Đăng nhập</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="<c:url value='/resources/login/css/style.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/resources/login/css/style.css'/>">
 
 </head>
 
@@ -32,8 +38,10 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-12">
 					<div class="wrap d-md-flex">
-						<div class="img">
-						</div>
+					<a href="#">
+					<i class="fa fa-arrow-left" aria-hidden="true" style="font-size:60px; cursor: pointer;" ></i>
+					</a>
+						<div class="img"></div>
 						<div class="login-wrap p-4 p-md-4">
 							<div class="d-flex">
 								<div class="w-100 ">
@@ -46,38 +54,42 @@
 									</p>
 								</div>
 							</div>
-							<form:form action="adminLogin.htm" class="signin-form" method="post" modelAttribute="adminAcc">
-							    <div style="color:red;">${message }</div>
+							<form:form action="admin/adminLogin.htm" class="signin-form"
+								method="post" modelAttribute="adminAcc">
+								<div style="color: red;">${message }</div>
 								<div class="form-group mb-3">
 									<label class="label" for="name">Username</label>
-									<form:input path="email" class="form-control" placeholder="Nhập username(email)"/>
-									<form:errors path="email"/>
+									<form:input path="email" class="form-control"
+										placeholder="Nhập username(email)" />
+									<form:errors path="email" />
 								</div>
 								<div class="form-group mb-3">
 									<label class="label" for="password">Password</label>
-									<form:input type="password" path="password" class="form-control" placeholder="Nhập password"/>
-									<form:errors path = "password"/>
+									<form:input type="password" path="password"
+										class="form-control" placeholder="Nhập password" />
+									<form:errors path="password" />
 								</div>
 								<div class="form-group">
 									<button type="submit"
-										class="form-control btn btn-primary rounded submit px-3">Đăng nhập</button>
+										class="form-control btn btn-primary rounded submit px-3">Đăng
+										nhập</button>
 								</div>
 								<div class="form-group d-md-flex">
 									<div class="w-50 text-left">
-										<label class="checkbox-wrap checkbox-primary mb-0">Remember Me
-											<input type="checkbox" checked>
-											<span class="checkmark"></span>
+										<label class="checkbox-wrap checkbox-primary mb-0">Remember
+											Me <input type="checkbox" checked> <span
+											class="checkmark"></span>
 										</label>
 									</div>
 									<div class="w-50 text-md-right">
-										<a href="adminForgotPassword.htm">Quên mật khẩu</a>
+										<a href="admin/adminForgotPassword.htm">Quên mật khẩu</a>
 									</div>
 								</div>
 							</form:form>
-<!-- 							<p class="text-center"><a href="signup.htm">Đăng ký</a></p> -->
+							<!-- 							<p class="text-center"><a href="signup.htm">Đăng ký</a></p> -->
 
-<%-- 							</form> --%>
-<!-- 							<p class="text-center"><a href="signup.htm">Đăng ký</a></p> -->
+							<%-- 							</form> --%>
+							<!-- 							<p class="text-center"><a href="signup.htm">Đăng ký</a></p> -->
 						</div>
 					</div>
 				</div>

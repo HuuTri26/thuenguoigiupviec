@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="UTF-8">
 <title>Nhập mã OTP</title>
 <style>
@@ -38,20 +39,23 @@
 </head>
 <body>
 
-	<form class="verify-form" action="forgotPasswordOTP.htm" method="get">
-			<h1>
-				Hãy nhập mã OTP mà hệ thống vừa gửi tới email: <span>${email }</span>
-			</h1>
-			<span class="messenger">${message }</span>
+	<form class="verify-form" action="customer/forgotPasswordOTP.htm"
+		method="get">
+		<h1>
+			Hãy nhập mã OTP mà hệ thống vừa gửi tới email: <span>${email }</span>
+		</h1>
+		<span class="messenger">${message }</span>
 		<div class="container">
-			
+
 			<div id="inputs" class="inputs">
-				<input class="input" type="text" name="a" maxlength="1" autocomplete="off" /> 
-				<input class="input" type="text" name="b" maxlength="1" autocomplete="off" /> 
-				<input class="input" type="text" name="c" maxlength="1" autocomplete="off" /> 
-				<input class="input" type="text" name="d" maxlength="1" autocomplete="off" />
-				<input class="input" type="text" name="e" maxlength="1" autocomplete="off" /> 
-				<input class="input" type="text" name="f" maxlength="1" autocomplete="off" />
+				<input class="input" type="text" name="a" maxlength="1"
+					autocomplete="off" /> <input class="input" type="text" name="b"
+					maxlength="1" autocomplete="off" /> <input class="input"
+					type="text" name="c" maxlength="1" autocomplete="off" /> <input
+					class="input" type="text" name="d" maxlength="1" autocomplete="off" />
+				<input class="input" type="text" name="e" maxlength="1"
+					autocomplete="off" /> <input class="input" type="text" name="f"
+					maxlength="1" autocomplete="off" />
 			</div>
 		</div>
 		<button id="btn-veri" name="verify">Xác Nhận</button>

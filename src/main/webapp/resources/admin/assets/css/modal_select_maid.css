@@ -1,0 +1,59 @@
+@charset "ISO-8859-1";
+/* The Modal (background) */
+.modal-choose-maid {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+/*   transform: translate(-50%, -50%); */
+  width: 100%; /* Full width */
+  height: 100%;  /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-choose-maid-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%; /* Could be more or less, depending on screen size */
+  max-height:500px;
+  overflow:auto;
+}
+
+/* The Close Button */
+.modal-choose-maid-close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-choose-maid-close:hover,
+.modal-choose-maid-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#btn-select-maid {
+	
+}
+
+.thead-fixed th {
+  position: sticky;
+  top: 0;
+  background-color: #37517e;
+  color: white; 
+}
+
+
+.tbody-scrollable {
+  display: block;
+  max-height: 300px; 
+  overflow-y: auto;
+}

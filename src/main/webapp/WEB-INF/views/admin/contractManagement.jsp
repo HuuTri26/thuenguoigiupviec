@@ -7,6 +7,9 @@
 <html lang="en">
 
 <head>
+
+<base href="${pageContext.servletContext.contextPath}/">
+
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -59,107 +62,12 @@
 <body>
 
 	<!-- ======= Header ======= -->
-	<!--     <header id="header" class="header fixed-top d-flex align-items-center"> -->
 
-	<!--       <div class="d-flex align-items-center justify-content-between"> -->
-	<!--         <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--         <a href="index.html" class="logo d-flex align-items-center"> -->
-	<%--           <img src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" alt=""> --%>
-	<!--           <span class="d-none d-lg-block">BookMyMaid</span> -->
-	<!--         </a> -->
-
-	<!--       </div>End Logo -->
-
-
-	<!--       <nav class="header-nav ms-auto"> -->
-	<!--         <ul class="d-flex align-items-center"> -->
-
-
-
-	<!--           <li class="nav-item dropdown pe-3"> -->
-
-	<!--             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<%--               <img src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" alt="Profile" class="rounded-circle"> --%>
-	<!--               <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span> -->
-	<!--             </a>End Profile Iamge Icon -->
-
-	<!--             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--               <li class="dropdown-header"> -->
-	<!--                 <h6>Ram</h6> -->
-	<!--                 <span>PRN-111</span> -->
-	<!--               </li> -->
-	<!--               <li> -->
-	<!--                 <hr class="dropdown-divider"> -->
-	<!--               </li> -->
-
-	<!--               <li> -->
-	<!--                 <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                   <i class="bi bi-person"></i> -->
-	<!--                   <span>My Profile</span> -->
-	<!--                 </a> -->
-	<!--               </li> -->
-	<!--               <li> -->
-	<!--                 <hr class="dropdown-divider"> -->
-	<!--               </li> -->
-
-	<!--               <li> -->
-	<!--                 <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                   <i class="bi bi-box-arrow-right"></i> -->
-	<!--                   <span>Sign Out</span> -->
-	<!--                 </a> -->
-	<!--               </li> -->
-
-	<!--             </ul>End Profile Dropdown Items -->
-	<!--           </li>End Profile Nav -->
-
-	<!--         </ul> -->
-	<!--       </nav>End Icons Navigation -->
 
 	<!--     </header>End Header -->
 	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
 
 	<!-- ======= Sidebar ======= -->
-	<!--  <aside id="sidebar" class="sidebar"> -->
-
-	<!--   <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="dashboard.htm"> -->
-	<!--         <i class="bi bi-grid"></i> -->
-	<!--         <span>Dashboard</span> -->
-	<!--       </a> -->
-	<!--     </li>End Dashboard Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="maidManagement.htm"> -->
-	<!--         <i class="bi bi-person"></i> -->
-	<!--         <span>Maid</span> -->
-	<!--       </a> -->
-	<!--     </li>End Maid Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="customerManagement.htm"> -->
-	<!--         <i class="bi bi-question-circle"></i> -->
-	<!--         <span>User</span> -->
-	<!--       </a> -->
-	<!--     </li>End User Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="serviceManagement.htm"> -->
-	<!--         <i class="bi bi-envelope"></i> -->
-	<!--         <span>Services</span> -->
-	<!--       </a> -->
-	<!--     </li>End Subject Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="#"> -->
-	<!--         <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--         <span>Booking Details</span> -->
-	<!--       </a> -->
-	<!--     </li>End Exam History Page Nav -->
-
-
-	<!--   </ul> -->
 
 	<!-- </aside>End Sidebar -->
 
@@ -170,9 +78,9 @@
 			<h1>Thông tin hợp đồng</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin hợp đồng</a></li>
+						href="admin/contractManagement.htm">Danh sách hợp đồng</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -185,7 +93,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
-								<a href="addContract.htm" class="btn btn-primary">Add
+								<a href="admin/addContract.htm" class="btn btn-primary">Add
 									Contract</a>
 							</div>
 							<!--       <h5 class="card-title">Datatables</h5>
@@ -251,6 +159,7 @@
 											class="bi bi-arrow-up-short" data-sort="status"
 											data-order="asc"></i>
 										</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody id="table_contracts">
@@ -278,9 +187,11 @@
                     									Hết hạn
                 									</c:otherwise>
 												</c:choose></td>
-											<td scope="col"><a href="contractDetail.htm"
+											<td scope="col"><a
+												href="admin/contractDetail/${contract.id }.htm"
 												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+												href="admin/contractManagement.htm#main"
+												class="btn btn-danger"><i class="bi-trash"></i></a></td>
 										</tr>
 
 									</c:forEach>

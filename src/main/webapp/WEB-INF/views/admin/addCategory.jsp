@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -71,9 +72,11 @@
 			<h1>Category</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="categoryManagement.html">Category</a></li>
+						href="admin/categoryManagement.htm">Category</a></li>
+					<li class="breadcrumb-item active"><a
+						href="admin/addCategory.htm">Add Category</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -89,8 +92,8 @@
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form:form class="row g-3" action="addCategory.htm" method="post"
-								modelAttribute="category">
+							<form:form class="row g-3" action="admin/addCategory.htm"
+								method="post" modelAttribute="category">
 								<div class="row mb-3">
 									<label for="profileImage"
 										class="col-md-4 col-lg-3 col-form-label">Ảnh</label>
@@ -149,7 +152,7 @@
 	</footer>
 	<!-- End Footer -->
 
-	<a href="#"
+	<a href="admin/addCategory.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

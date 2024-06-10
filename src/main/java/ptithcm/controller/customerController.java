@@ -1,6 +1,9 @@
 package ptithcm.controller;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.type.descriptor.java.LocalDateTimeJavaDescriptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -143,7 +147,7 @@ public class customerController {
 	}
 
 	// Đăng xuất:
-	@RequestMapping("customer/logout")
+	@RequestMapping("customer/serviceList/logout")
 	public String Logout(HttpServletRequest request, SessionStatus sessionStatus) {
 		request.getSession().invalidate(); // Giải phóng vùng nhớ của session
 		System.out.println("==> Invalidate the session");
@@ -152,7 +156,7 @@ public class customerController {
 		System.out.println("==> Clear model attributes ");
 
 		System.out.println("==> Logout");
-		return "redirect:/main.htm";
+		return "redirect:/";
 	}
 
 	// Trang quên mật khẩu cho customer:
@@ -370,16 +374,20 @@ public class customerController {
 		
 		return "customer/serviceDetail";
 	}
+	private LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
+        return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+    }
 	
 	//Tạo yêu cầu đặt người giúp việc
-	@RequestMapping(value = "customer/serviceList/serviceDetail/booking/{id}", method =  RequestMethod.POST)
+	@RequestMapping(value = "customer/booking/{id}", method =  RequestMethod.POST)
 	public String createBookingRequest(HttpServletRequest request ,Model model, @PathVariable("id") Integer id,
 			@ModelAttribute("booking") BookingEntity booking, BindingResult errors) {
 		
-		Date currentTime = new Date();
-		
-//		 System.out.println("Current Time: " + currentTime);
-//		 System.out.println("Booking Start Time: " + booking.getStartTime());
+//		Date currentTime = new Date();
+		LocalDateTime currentTime = LocalDateTime.now();
+		LocalDateTime bookingStartTime = convertToLocalDateTimeViaInstant(booking.getStartTime());
+		System.out.println("Current Time: " + currentTime);
+		System.out.println("Booking Start Time: " + booking.getStartTime());
 		
 		Boolean isValidBooking = Boolean.TRUE;
 		
@@ -387,7 +395,7 @@ public class customerController {
 			errors.rejectValue("startTime", "booking", "Thời gian bắt đầu không được để trống!");
 			isValidBooking = Boolean.FALSE;
 			
-		}else if(booking.getStartTime().before(currentTime)) {
+		}else if(bookingStartTime.isBefore(currentTime)) {
 			errors.rejectValue("startTime", "booking", "Thời gian bắt đầu không hợp lệ!");
 			isValidBooking = Boolean.FALSE;
 			
@@ -401,23 +409,26 @@ public class customerController {
 				HttpSession session = request.getSession();
 				CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
 				ServiceEntity service = maidServiceService.getServiceById(id);
-				
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				String formattedStartTime = dateFormat.format(booking.getStartTime());
-				String formattedCurrTime = dateFormat.format(currentTime);
-				
-				booking.setStartTime(dateFormat.parse(formattedStartTime));
+//				
+//				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+////				// Định dạng mới bao gồm ngày, giờ, phút và giây
+////		        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//				String formattedStartTime = dateFormat.format(booking.getStartTime());
+//				String formattedCurrTime = dateFormat.format(currentTime);
+//				
+				booking.setStartTime(booking.getStartTime());
 				booking.setBookingAddress(booking.getBookingAddress());
 				booking.setPrice(service.getServicePrices().get(0).getPrice());
 				booking.setBookingStatus(0);
 				booking.setPaymentStatus(0);
-				booking.setCreateAt(dateFormat.parse(formattedCurrTime));
+				booking.setCreateAt(new Date());
 				booking.setCustomer(customer);
 				booking.setService(service);
-				
+//				
 				bookingService.createBooking(booking);
 				System.out.println("==> Booking request created successfully at " + new Date() + '!');
 				return "redirect:/customer/serviceList/" + service.getId() +".htm";
+
 			}catch (Exception e) {
 				System.out.println("Error: \n" + e.toString());
 			}
@@ -425,9 +436,22 @@ public class customerController {
 			System.out.println("Error: Booking request created unsuccessfuly!");
 			
 		}
-//		System.out.println(booking.getBookingAddress());
-//		System.out.println(booking.getStartTime());
+
+		System.out.println(booking.getBookingAddress());
+		System.out.println(booking.getStartTime());
 		return "redirect:/customer/serviceList/serviceDetail/" + id +".htm";
+	}
+	public Date getDateNow() {
+		Calendar calendar = Calendar.getInstance();
+
+		// Đặt giờ, phút, giây, millisecond về 0
+		calendar.set(Calendar.HOUR_OF_DAY, 0);
+		calendar.set(Calendar.MINUTE, 0);
+		calendar.set(Calendar.SECOND, 0);
+		calendar.set(Calendar.MILLISECOND, 0);
+
+		Date now = calendar.getTime();
+		return now;
 	}
 
 	// Trang đăng ký gmail của customer

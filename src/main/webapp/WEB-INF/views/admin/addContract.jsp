@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -170,9 +171,11 @@
 			<h1>Dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="contractManagement.html">Dịch vụ</a></li>
+						href="admin/contractManagement.htm">Hợp đồng</a></li>
+					<li class="breadcrumb-item active"><a
+						href="admin/addContract.htm">Thêm hợp đồng</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -186,9 +189,10 @@
 						<div class="card-body">
 							<h5 class="card-title">Thêm hợp đồng</h5>
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
-   -->						<a>${message }</a>
+   -->
+							<a>${message }</a>
 							<!-- Browser Default Validation -->
-							<form:form action="proccessContract.htm" method="post"
+							<form:form action="admin/proccessContract.htm" method="post"
 								class="row g-3" modelAttribute="contract">
 								<div class="row mb-3">
 									<label for="profileImage"
@@ -262,7 +266,7 @@
 										id="validationDefault01" value="" path="contract.updateAt"
 										placeholder="Subject name" />
 								</div> --%>
-							<%-- 	<div class="col-md-6">
+								<%-- 	<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Mã
 										nhân viên</label>
 									<form:input type="number" class="form-control"
@@ -325,7 +329,7 @@
 	</footer>
 	<!-- End Footer -->
 
-	<a href="#"
+	<a href="admin/addContract.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

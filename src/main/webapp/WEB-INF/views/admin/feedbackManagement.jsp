@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -65,9 +66,9 @@
 			<h1>Thông tin phản hồi</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin phản hồi</a></li>
+						href="admin/bookingManagement.htm">Thông tin phản hồi</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -87,6 +88,7 @@
 										<th scope="col">Rating</th>
 										<th scope="col">Feedback</th>
 										<th scope="col">Ngày tạo</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody id="table_feedbacks">
@@ -96,7 +98,7 @@
 										<td scope="row">4</td>
 										<td scope="col">Rất tốt</td>
 										<td scope="col">2022-12-26</td>
-										<td scope="col"><a href="feedbackDetail.htm"
+										<td scope="col"><a href="admin/feedbackDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -106,7 +108,7 @@
 										<td scope="row">4</td>
 										<td scope="col">Rất tốt</td>
 										<td scope="col">2022-12-26</td>
-										<td scope="col"><a href="feedbackDetail.htm"
+										<td scope="col"><a href="admin/feedbackDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
