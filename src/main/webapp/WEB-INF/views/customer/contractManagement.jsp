@@ -97,8 +97,8 @@
 <body>
 
 	<!-- ======= Header ======= -->
-<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
-<header id="header" class="fixed-top d-flex align-items-center">
+	<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
+	<header id="header" class="fixed-top d-flex align-items-center">
 		<div class="container d-flex justify-content-between">
 
 			<div class="logo">
@@ -215,139 +215,35 @@
 									</tr>
 								</thead>
 								<tbody id="table_contracts">
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
+									<c:forEach var="contract" items="${contractList }">
+										<tr>
+											<td scope="row">${contract.id }</td>
+											<td scope="col">${contract.customer.id }</td>
+											<td scope="col">${contract.maid.id }</td>
+											<td scope="col">${contract.employee.id }</td>
+											<td scope="col">${contract.description }</td>
+											<td scope="col">${contract.startAt }</td>
+											<td scope="col">${contract.endAt }</td>
+											<td scope="col">${contract.createAt }</td>
+											<td scope="col">${contract.updateAt }</td>
+											<td scope="col"><c:choose>
+													<c:when test="${contract.status == null}">
+                    									Chưa có hiệu lực
+                									</c:when>
+													<c:when test="${contract.status == true}">
+                    									Còn hạn
+                									</c:when>
+													<c:otherwise>
+                    									Hết hạn
+                									</c:otherwise>
+												</c:choose></td>
+											<td scope="col"><a href="contractDetail.htm"
+												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
+												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+										</tr>
 
-									<tr>
-										<td scope="row">2</td>
-										<td scope="col">4</td>
-										<td scope="col">1</td>
-										<td scope="col">7</td>
-										<td scope="col">h1</td>
-										<td scope="col">2019-12-26</td>
-										<td scope="col">2018-01-26</td>
-										<td scope="col">2017-12-24</td>
-										<td scope="col">Hết hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
+									</c:forEach>
 
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">No1</td>
-										<td scope="col">2022-12-26</td>
-										<td scope="col">2023-01-26</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col">Còn hạn</td>
-										<td scope="col"><a href="contractDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
 								</tbody>
 							</table>
 							<div class="pagination-container pt-5"
