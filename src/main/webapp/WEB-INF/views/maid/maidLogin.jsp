@@ -54,7 +54,7 @@
 									</p>
 								</div>
 							</div>
-							<form:form action="maidLogin.htm" class="signin-form"
+							<form:form action="maid/maidLogin.htm" class="signin-form"
 								method="POST" modelAttribute="maidAcc">
 								<div style="color: red;">${message }</div>
 								<div class="form-group mb-3">
