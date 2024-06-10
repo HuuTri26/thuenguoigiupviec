@@ -5,7 +5,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
 	<div class="d-flex align-items-center justify-content-between">
-		<i class="bi bi-list toggle-sidebar-btn"></i> <a href="index.html"
+		<i class="bi bi-list toggle-sidebar-btn"></i> <a href="admin/index.htm"
 			class="logo d-flex align-items-center"> <img
 			src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>"
 			alt=""> <span class="d-none d-lg-block">Hiring Maid</span>
@@ -39,14 +39,14 @@
 					</li>
 
 					<li><a class="dropdown-item d-flex align-items-center"
-						href="adminProfile.htm"> <i class="bi bi-person"></i> <span>Trang
+						href="admin/adminProfile.htm"> <i class="bi bi-person"></i> <span>Trang
 								cá nhân</span>
 					</a></li>
 					<li>
 						<hr class="dropdown-divider">
 					</li>
 					<li><a class="dropdown-item d-flex align-items-center"
-						href="adminEditProfile.htm"> <i class="bi bi-person"></i> <span>Chỉnh
+						href="admin/adminEditProfile.htm"> <i class="bi bi-person"></i> <span>Chỉnh
 								sửa trang cá nhân</span>
 					</a></li>
 					<li>
@@ -54,7 +54,7 @@
 					</li>
 
 					<li><a class="dropdown-item d-flex align-items-center"
-						href="adminChangePassword.htm"> <i class="bi bi-person"></i> <span>Đổi
+						href="admin/adminChangePassword.htm"> <i class="bi bi-person"></i> <span>Đổi
 								mật khẩu</span>
 					</a></li>
 					<li>
@@ -62,7 +62,7 @@
 					</li>
 
 					<li><a class="dropdown-item d-flex align-items-center"
-						href="logout.htm"> <i class="bi bi-box-arrow-right"></i> <span>Thoát</span>
+						href="admin/logout.htm"> <i class="bi bi-box-arrow-right"></i> <span>Thoát</span>
 					</a></li>
 				</ul>
 				<!-- End Profile Dropdown Items --></li>

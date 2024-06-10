@@ -8,6 +8,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -176,9 +177,11 @@
 			<h1>Profile booking</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.html">Home</a></li>
 					<li class="breadcrumb-item  active"><a
-						href="bookingDetail.htm">Profile booking</a></li>
+						href="admin/bookingManagement.htm">booking</a></li>
+					<li class="breadcrumb-item  active"><a
+						href="admin/bookingDetail/${booking.id}.htm">Profile booking</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -195,7 +198,7 @@
 					<div class="modal-choose-maid-content">
 						<span class="modal-choose-maid-close modal-choose-maid-close-js">&times;</span>
 						<h2 class="row justify-content-center">Chọn người giúp việc</h2>
-						<form:form action="${booking.id }/confirmMaid.htm" method="post">
+						<form:form action="admin/bookingDetail/${booking.id }/confirmMaid.htm" method="post">
 							<div class="tbody-scrollable">
 								<table class="table datatable ">
 									<thead class="thead-fixed"
@@ -386,7 +389,7 @@
 									</div>
 									<c:if test="${booking.bookingStatus ==1 }">
 										<div class="row">
-											<form:form action="confirmBooking/${booking.id}.htm">
+											<form:form action="admin/bookingDetail/confirmBooking/${booking.id}.htm">
 												<button class="btn btn-primary">Duyệt đơn</button>
 											</form:form>
 										</div>

@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -350,7 +351,7 @@
     </div>
   </footer> End Footer -->
 
-	<a href="#"
+	<a href="admin/index.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

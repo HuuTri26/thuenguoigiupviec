@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -180,9 +181,9 @@
 			<h1>Maid Management</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="maidManagement.html">Maid Manegement</a></li>
+						href="admin/maidManagement.htm">Maid Manegement</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -195,7 +196,7 @@
 					<div class="card">
 						<div class="card-body ">
 							<div class="card-title">
-								<a href="addMaid.htm" class="btn btn-primary">Add maid</a>
+								<a href="admin/addMaid.htm" class="btn btn-primary">Add maid</a>
 							</div>
 							<!--  <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
@@ -291,11 +292,11 @@
 												class="accountStatus">${maid.account.status ? 'Hoạt động' : 'Bị chặn'}
 											</td>
 
-											<td scope="col"><a href="maidDetail/${maid.id }.htm"
+											<td scope="col"><a href="admin/maidDetail/${maid.id }.htm"
 												class="btn btn-primary"><i class="bi bi-eye"></i></a> <a
-												href="blockMaid/${maid.id }.htm" class="btn btn-danger "><i
+												href="admin/blockMaid/${maid.id }.htm" class="btn btn-danger "><i
 													class="fa-solid fa-ban"></i></a> <a
-												href="activeMaid/${maid.id }.htm" class="btn btn-primary "><i
+												href="admin/activeMaid/${maid.id }.htm" class="btn btn-primary "><i
 													class="fa-solid fa-check"></i></a> <%-- 	<button name="active" onclick="confirmActive(${maid.id})">Active</button> --%>
 											</td>
 										</tr>
@@ -332,7 +333,7 @@
 	</footer>
 	<!-- End Footer -->
 
-	<a href="#"
+	<a href="admin/maidManagement.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

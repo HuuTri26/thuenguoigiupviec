@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -175,9 +176,9 @@
 			<h1>Khách Hàng</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="customerManagement.html">Customer</a></li>
+						href="admin/customerManagement.htm">Customer</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -259,11 +260,11 @@
 
 												${customer.account.status ? 'Hoạt động' : 'Bị chặn'}</td>
 											<td scope="col"><a
-												href="customerDetail/${customer.id }.htm"
+												href="admin/customerDetail/${customer.id }.htm"
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-												href="blockCustomer/${customer.id }.htm"
+												href="admin/blockCustomer/${customer.id }.htm"
 												class="btn btn-danger "><i class="fa-solid fa-ban"></i></a>
-												<a href="activeCustomer/${customer.id }.htm"
+												<a href="admin/activeCustomer/${customer.id }.htm"
 												class="btn btn-primary "><i
 													class="fa-solid fa-check"></i></a></td>
 
@@ -302,7 +303,7 @@
   </footer> -->
 	<!-- End Footer -->
 
-	<a href="#"
+	<a href="admin/customerManagement.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

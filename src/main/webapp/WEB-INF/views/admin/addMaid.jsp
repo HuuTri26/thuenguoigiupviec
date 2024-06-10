@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -170,8 +171,8 @@
 			<h1>Người giúp việc</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-					<li class="breadcrumb-item active"><a href="student.html">Người
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang chủ</a></li>
+					<li class="breadcrumb-item active"><a href="admin/addMaid.htm">Người
 							giúp việc</a></li>
 				</ol>
 			</nav>
@@ -188,7 +189,7 @@
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form:form class="row g-3" action="addMaid.htm"
+							<form:form class="row g-3" action="admin/addMaid.htm"
 								modelAttribute="maid" method="post">
 								<div class="row mb-3">
 									<label for="profileImage"

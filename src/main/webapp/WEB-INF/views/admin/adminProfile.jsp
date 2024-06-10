@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -171,8 +172,8 @@
 			<h1>Profile</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="user-profile.html">Profile</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item active"><a href="admin/adminProfile.htm">Profile</a></li><!-- link này định trỏ tới đâu vậy -->
 				</ol>
 			</nav>
 		</div>

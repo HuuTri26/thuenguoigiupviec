@@ -7,6 +7,9 @@
 <html lang="en">
 
 <head>
+
+<base href="${pageContext.servletContext.contextPath}/">
+
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -170,9 +173,9 @@
 			<h1>Thông tin hợp đồng</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin hợp đồng</a></li>
+						href="admin/contractManagement.htm">Danh sách hợp đồng</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -185,7 +188,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
-								<a href="addContract.htm" class="btn btn-primary">Add
+								<a href="admin/addContract.htm" class="btn btn-primary">Add
 									Contract</a>
 							</div>
 							<!--       <h5 class="card-title">Datatables</h5>
@@ -278,9 +281,9 @@
                     									Hết hạn
                 									</c:otherwise>
 												</c:choose></td>
-											<td scope="col"><a href="contractDetail.htm"
+											<td scope="col"><a href="admin/contractDetail/${contract.id }.htm"
 												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+												href="admin/contractManagement.htm#main" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 										</tr>
 
 									</c:forEach>

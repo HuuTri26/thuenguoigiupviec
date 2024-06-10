@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -173,9 +174,9 @@
 			<h1>Dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="serviceManagement.html">Dịch vụ</a></li>
+						href="admin/serviceManagement.htm">Dịch vụ</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -188,7 +189,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
-								<a href="addService.htm" class="btn btn-primary">Thêm dịch
+								<a href="admin/addService.htm" class="btn btn-primary">Thêm dịch
 									vụ</a>
 							</div>
 							<!--  <h5 class="card-title">Datatables</h5>
@@ -272,13 +273,16 @@
 												</div>
 											</td>
 
-											<td scope="col"><a href="serviceDetail.htm"
-												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-												href="updateService.htm" class="btn btn-primary "><i
-													class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-													class="bi-trash"></i></a> 
-													<a href="blockService/${service.id}.htm" class="btn btn-danger "><i class="fa-solid fa-ban"></i></a> 
-													<a href="activeService/${service.id}.htm" class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
+											<td scope="col"><a href="admin/serviceDetail.htm"
+												class="btn btn-primary "><i class="bi bi-eye"></i></a> 
+												<a
+												href="admin/updateService.htm" class="btn btn-primary "><i
+													class="bi-pencil"></i></a> 
+													<a href="#" class="btn btn-danger">
+														<i class="bi-trash"></i><!-- Field này có dùng k -->
+													</a> 
+													<a href="admin/blockService/${service.id}.htm" class="btn btn-danger "><i class="fa-solid fa-ban"></i></a> 
+													<a href="admin/activeService/${service.id}.htm" class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
 											</td>
 										</tr>
 
@@ -313,7 +317,7 @@
            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> 
     </div>
   </footer>End Footer -->
-	<a href="#"
+	<a href="admin/serviceManagement.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -171,8 +172,8 @@
 			<h1>Profile service</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="serviceDetail.htm">Service</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item active"><a href="admin/serviceDetail.htm">Service</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -485,7 +486,7 @@
     </div>
   </footer>End Footer -->
 
-	<a href="#"
+	<a href="admin/serviceDetail.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

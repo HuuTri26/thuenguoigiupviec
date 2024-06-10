@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -170,8 +171,8 @@
 			<h1>admin</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="index.html">admin</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item active"><a href="admin/adminEditProfile.htm">admin-edit-profile</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -188,7 +189,7 @@
    -->
 							<!-- Browser Default Validation -->
 
-							<form:form class="row g-3" action="adminEditProfile.htm"
+							<form:form class="row g-3" action="admin/adminEditProfile.htm"
 								method="post" modelAttribute="employeeInfo">
 
 								<div class="row mb-3">

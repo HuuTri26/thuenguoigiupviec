@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -76,9 +77,9 @@
 			<h1>Danh mục</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="categoryManagement.html">Catagory</a></li>
+						href="admin/categoryManagement.htm">Catagory</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -91,7 +92,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
-								<a href="addCategory.htm" class="btn btn-primary">Thêm dịch
+								<a href="admin/addCategory.htm" class="btn btn-primary">Thêm dịch
 									vụ</a>
 							</div>
 							<!--  <h5 class="card-title">Datatables</h5>
@@ -132,15 +133,15 @@
 											<td scope="row">${category.id }</td>
 											<td scope="col">${category.name }</td>
 											<td scope="col">${category.description }</td>
-											<td scope="col"><a href="categoryDetail.htm"
+											<td scope="col"><a href="admin/categoryDetail.htm"
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-												href="updateCategory.htm" class="btn btn-primary "><i
+												href="admin/updateCategory.htm" class="btn btn-primary "><i
 													class="bi-pencil"></i></a>
 <!-- 													 <a href="#" class="btn btn-danger"><i -->
 <!-- 													class="bi-trash"></i></a>  -->
 													
 													<a href="" class="btn btn-danger "><i
-													class="fa-solid fa-ban"></i></a> <a href=""
+													class="fa-solid fa-ban"><!-- bỏ nha --></i></a> <a href=""
 												class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
 											</td>
 										</tr>
@@ -176,7 +177,7 @@
            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> 
     </div>
   </footer>End Footer -->
-	<a href="#"
+	<a href="admin/categoryManagement.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 

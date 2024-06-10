@@ -892,8 +892,9 @@ public class adminController {
 	}
 
 	// Hiển thị thông tin hợp đồng:
-	@RequestMapping("admin/contractDetail")
-	public String showContractDetail() {
+	@RequestMapping("admin/contractDetail/{contractId}")
+	public String showContractDetail(@PathVariable("contractId") int contractId) {
+		
 		return "admin/contractDetail";
 	}
 
@@ -904,7 +905,7 @@ public class adminController {
 	}
 
 	// Hiển thị thông tin bill:
-	@RequestMapping("admin/billDetail")
+	@RequestMapping("admin/billDetail/{billId}")
 	public String showBillDetail() {
 		return "admin/billDetail";
 	}

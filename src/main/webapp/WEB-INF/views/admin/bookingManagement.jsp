@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -172,9 +173,9 @@
 			<h1>Thông tin đặt dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
+						href="admin/bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -315,13 +316,13 @@
 											<td scope="col">Tốt</td>
 
 											<td scope="col">
-												<a href="bookingDetail/${booking.id}.htm"
+												<a href="admin/bookingDetail/${booking.id}.htm"
 												class="btn btn-primary "><i class="bi bi-eye"></i></a>
 												
 												<a
-												href="bookingMaidList.htm" class="btn btn-primary"><i
+												href="admin/bookingMaidList.htm" class="btn btn-primary"><i
 													class="fa fa-list-ul"></i></a> 
-												<a href="#"
+												<a href="admin/bookingManagement.htm#"
 												class="btn btn-danger "><i class="bi-trash"></i></a>
 											</td>
 										</tr>
@@ -359,7 +360,7 @@
     </div>
   </footer>End Footer -->
 
-	<a href="#"
+	<a href="admin/bookingManagement.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 
