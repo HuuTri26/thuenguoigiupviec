@@ -92,8 +92,8 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
-								<a href="admin/addCategory.htm" class="btn btn-primary">Thêm dịch
-									vụ</a>
+								<a href="admin/addCategory.htm" class="btn btn-primary">Thêm
+									dịch vụ</a>
 							</div>
 							<!--  <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>-->
@@ -124,6 +124,7 @@
 										<th scope="col">Miêu tả <i class="bi bi-arrow-up-short"
 											data-sort="description" data-order="asc"></i>
 										</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody id="table_categorys">
@@ -136,14 +137,12 @@
 											<td scope="col"><a href="admin/categoryDetail.htm"
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
 												href="admin/updateCategory.htm" class="btn btn-primary "><i
-													class="bi-pencil"></i></a>
-<!-- 													 <a href="#" class="btn btn-danger"><i -->
-<!-- 													class="bi-trash"></i></a>  -->
-													
-													<a href="" class="btn btn-danger "><i
-													class="fa-solid fa-ban"><!-- bỏ nha --></i></a> <a href=""
-												class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
-											</td>
+													class="bi-pencil"></i></a> <!-- 													 <a href="#" class="btn btn-danger"><i -->
+												<!-- 													class="bi-trash"></i></a>  --> <a href=""
+												class="btn btn-danger "><i class="fa-solid fa-ban">
+														<!-- bỏ nha -->
+												</i></a> <a href="" class="btn btn-primary "><i
+													class="fa-solid fa-check"></i></a></td>
 										</tr>
 
 									</c:forEach>

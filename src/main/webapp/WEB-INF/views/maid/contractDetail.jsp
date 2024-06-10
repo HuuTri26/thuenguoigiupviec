@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -126,105 +127,7 @@ body {
 
 	<!-- ======= Header ======= -->
 	<%@include file="/WEB-INF/views/maid/include/header.jsp"%>
-	<!--   <header id="header" class="header fixed-top d-flex align-items-center"> -->
-
-	<!--     <div class="d-flex align-items-center justify-content-between"> -->
-	<!--       <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--       <a href="index.html" class="logo d-flex align-items-center"> -->
-	<!--         <img src="assets/img/EPariksha.png" alt=""> -->
-	<!--         <span class="d-none d-lg-block">E-Pariksha</span> -->
-	<!--       </a> -->
-
-	<!--     </div>End Logo -->
-
-
-	<!--     <nav class="header-nav ms-auto"> -->
-	<!--       <ul class="d-flex align-items-center"> -->
-
-	<!--         <li class="nav-item dropdown pe-3"> -->
-
-	<!--           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<!--             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
-	<!--             <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span> -->
-	<!--           </a>End Profile Iamge Icon -->
-
-	<!--           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--             <li class="dropdown-header"> -->
-	<!--               <h6>XYZ</h6> -->
-	<!--               <span>Web Designer</span> -->
-	<!--             </li> -->
-	<!--             <li> -->
-	<!--               <hr class="dropdown-divider"> -->
-	<!--             </li> -->
-
-	<!--             <li> -->
-	<!--               <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                 <i class="bi bi-person"></i> -->
-	<!--                 <span>My Profile</span> -->
-	<!--               </a> -->
-	<!--             </li> -->
-	<!--             <li> -->
-	<!--               <hr class="dropdown-divider"> -->
-	<!--             </li> -->
-
-	<!--             <li> -->
-	<!--               <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                 <i class="bi bi-box-arrow-right"></i> -->
-	<!--                 <span>Sign Out</span> -->
-	<!--               </a> -->
-	<!--             </li> -->
-
-	<!--           </ul>End Profile Dropdown Items -->
-	<!--         </li>End Profile Nav -->
-
-	<!--       </ul> -->
-	<!--     </nav>End Icons Navigation -->
-
-	<!--   </header>End Header -->
-
-
-	<!-- ======= Sidebar ======= -->
-	<!--    <aside id="sidebar" class="sidebar"> -->
-
-	<!--     <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="index.html"> -->
-	<!--           <i class="bi bi-grid"></i> -->
-	<!--           <span>Dashboard</span> -->
-	<!--         </a> -->
-	<!--       </li>End Dashboard Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="student.html"> -->
-	<!--           <i class="bi bi-person"></i> -->
-	<!--           <span>contract</span> -->
-	<!--         </a> -->
-	<!--       </li>End contract Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="teacher.html"> -->
-	<!--           <i class="bi bi-question-circle"></i> -->
-	<!--           <span>User</span> -->
-	<!--         </a> -->
-	<!--       </li>End User Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="subject.html"> -->
-	<!--           <i class="bi bi-envelope"></i> -->
-	<!--           <span>Services</span> -->
-	<!--         </a> -->
-	<!--       </li>End Subject Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="examhistory.html"> -->
-	<!--           <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--           <span>contract Details</span> -->
-	<!--         </a> -->
-	<!--       </li>End Exam History Page Nav -->
-
-
-	<!--     </ul> -->
+	<!--   <header id="header" class="header fixed-top d-flex align-items-center"> --
 
 	<!--   </aside>End Sidebar -->
 

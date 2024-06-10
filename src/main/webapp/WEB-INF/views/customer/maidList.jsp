@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -56,13 +57,13 @@
 </head>
 <body>
 
-<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
+	<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
 	<header id="header" class="fixed-top d-flex align-items-center">
 		<div class="container d-flex justify-content-between">
 
 			<div class="logo">
 				<h1>
-					<a href="index.htm">BookMyMaid</a>
+					<a href="customer/index.htm">BookMyMaid</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -70,8 +71,8 @@
 
 		</div>
 	</header>
-	<main id="main" style="background-color: gray;" >
-		<div class="container " style="margin-top: 70px;"  >
+	<main id="main" style="background-color: gray;">
+		<div class="container " style="margin-top: 70px;">
 			<div class="row">
 				<div class="col-md-4">
 					<label for="filterBy">Lọc theo thuộc tính:</label> <select
@@ -102,7 +103,7 @@
 						src="https://giupviecnhatanbinh.vn/hoangnhu/upload/images/t%C3%ACm%20ng%C6%B0%E1%BB%9Di%20gi%C3%BAp%20vi%E1%BB%87c%20nh%C3%A0%20t%E1%BA%A1i%20qu%E1%BA%ADn%206%20th%C3%A0nh%20ph%E1%BB%91%20h%E1%BB%93%20ch%C3%AD%20minh.jpg"
 						class="card-img-top" alt="Hollywood Sign on The Hill">
 					<div class="card-body">
-						<a href="maidDetail.htm" class="card-title" id="name"
+						<a href="customer/maidDetail.htm" class="card-title" id="name"
 							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Hữu
 							Trí</a>
 						<p class="card-text" id="exp">Kinh nghiệm: 2 năm</p>
@@ -134,7 +135,7 @@
 						src="https://giupviecnhatanbinh.vn/hoangnhu/upload/images/t%C3%ACm%20ng%C6%B0%E1%BB%9Di%20gi%C3%BAp%20vi%E1%BB%87c%20nh%C3%A0%20t%E1%BA%A1i%20qu%E1%BA%ADn%206%20th%C3%A0nh%20ph%E1%BB%91%20h%E1%BB%93%20ch%C3%AD%20minh.jpg"
 						class="card-img-top" alt="Hollywood Sign on The Hill">
 					<div class="card-body">
-						<a href="maidDetail.htm" class="card-title" id="name"
+						<a href="customer/maidDetail.htm" class="card-title" id="name"
 							style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;">Hữu
 							Trí</a>
 						<p class="card-text" id="exp">Kinh nghiệm: 2 năm</p>
@@ -248,7 +249,7 @@
 
 	<!-- Template Main JS File -->
 	<script src="<c:url value='/resources/main/assets/js/main.js'/>"></script>
-<script>
+	<script>
   const originalCards = Array.from(document.querySelectorAll('.cardInfor'));
   let filteredCards = originalCards.slice(); // Sao chép danh sách card ban đầu
 

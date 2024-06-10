@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -138,7 +139,7 @@
 
 			<div class="logo">
 				<h1>
-					<a href="index.htm">BookMyMaid</a>
+					<a href="customer/index.htm">BookMyMaid</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -229,35 +230,6 @@
 
 							<hr />
 
-							<div class="row mb-4">
-								<div class="col-md-4 col-6">
-									<label class="mb-2">Size</label> <select
-										class="form-select border border-secondary"
-										style="height: 35px;">
-										<option>Small</option>
-										<option>Medium</option>
-										<option>Large</option>
-									</select>
-								</div>
-								<!-- col.// -->
-								<div class="col-md-4 col-6 mb-3">
-									<label class="mb-2 d-block">Quantity</label>
-									<div class="input-group mb-3" style="width: 170px;">
-										<button class="btn btn-white border border-secondary px-3"
-											type="button" id="button-addon1" data-mdb-ripple-color="dark">
-											<i class="fas fa-minus"></i>
-										</button>
-										<input type="text"
-											class="form-control text-center border border-secondary"
-											placeholder="14" aria-label="Example text with button addon"
-											aria-describedby="button-addon1" />
-										<button class="btn btn-white border border-secondary px-3"
-											type="button" id="button-addon2" data-mdb-ripple-color="dark">
-											<i class="fas fa-plus"></i>
-										</button>
-									</div>
-								</div>
-							</div>
 							<a href="#">
 								<button class="btn btn-warning shadow-0"
 									${!service.status ? 'disabled' : ''}>${service.status ? 'Đặt ngay' : 'Không khả dụng'}</button>
@@ -277,7 +249,8 @@
 						<div class="close-btn position-absolute top-0 end-0 p-3">
 							<i class="fas fa-times text-white"></i>
 						</div>
-						<form:form class="row g-3" action="booking/${service.id }.htm"
+						<form:form class="row g-3"
+							action="customer/serviceList/serviceDetail/booking/${service.id }.htm"
 							method="post" modelAttribute="booking">
 							<div class="col-12">
 								<h1 class="text-center fw-bolder text-white mt-3">Form đặt
@@ -317,7 +290,7 @@
 									<form:errors path="note" />
 								</div>
 							</div>
-						
+
 							<div class="col-12">
 								<div class="form-floating">
 									<form:input path="bookingAddress" type="number"
@@ -328,15 +301,15 @@
 									<form:errors path="" />
 								</div>
 							</div>
-								<div class="col-md-4 col-6">
-									<label class="mb-2">Phương thức thanh toán</label> <select
-										class="form-select border border-secondary"
-										style="height: 35px;">
-										<option>Tiền mặt</option>
-										<option>Chuyển khoản</option>
-										
-									</select>
-								</div>
+							<div class="col-md-4 col-6">
+								<label class="mb-2">Phương thức thanh toán</label> <select
+									class="form-select border border-secondary"
+									style="height: 35px;">
+									<option>Tiền mặt</option>
+									<option>Chuyển khoản</option>
+
+								</select>
+							</div>
 
 							<div class="col-12 text-end">
 								<button type="submit"

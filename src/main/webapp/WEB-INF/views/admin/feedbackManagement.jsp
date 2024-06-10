@@ -88,6 +88,7 @@
 										<th scope="col">Rating</th>
 										<th scope="col">Feedback</th>
 										<th scope="col">Ngày tạo</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody id="table_feedbacks">
@@ -97,7 +98,7 @@
 										<td scope="row">4</td>
 										<td scope="col">Rất tốt</td>
 										<td scope="col">2022-12-26</td>
-										<td scope="col"><a href="feedbackDetail.htm"
+										<td scope="col"><a href="admin/feedbackDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -107,7 +108,7 @@
 										<td scope="row">4</td>
 										<td scope="col">Rất tốt</td>
 										<td scope="col">2022-12-26</td>
-										<td scope="col"><a href="feedbackDetail.htm"
+										<td scope="col"><a href="admin/feedbackDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>

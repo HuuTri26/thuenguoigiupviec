@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -123,28 +124,28 @@
 						<p>hahahahah</p>
 					</div>
 
-<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
-<!-- 						data-aos-delay="300"> -->
-<!-- 						<span>04</span> -->
-<!-- 						<h4>Xem thông tin đặt lịch</h4> -->
-<!-- 						<p>kcsmsnc</p> -->
-<!-- 					</div> -->
+					<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
+					<!-- 						data-aos-delay="300"> -->
+					<!-- 						<span>04</span> -->
+					<!-- 						<h4>Xem thông tin đặt lịch</h4> -->
+					<!-- 						<p>kcsmsnc</p> -->
+					<!-- 					</div> -->
 
-<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
-<!-- 						data-aos-delay="400"> -->
-<!-- 						<span>05</span> -->
-<!-- 						<h4>Available at your time</h4> -->
-<!-- 						<p>Vitae dolorem in deleniti ipsum omnis tempore voluptatem. -->
-<!-- 							Qui possimus est repellendus est quibusdam</p> -->
-<!-- 					</div> -->
+					<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
+					<!-- 						data-aos-delay="400"> -->
+					<!-- 						<span>05</span> -->
+					<!-- 						<h4>Available at your time</h4> -->
+					<!-- 						<p>Vitae dolorem in deleniti ipsum omnis tempore voluptatem. -->
+					<!-- 							Qui possimus est repellendus est quibusdam</p> -->
+					<!-- 					</div> -->
 
-<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
-<!-- 						data-aos-delay="500"> -->
-<!-- 						<span>06</span> -->
-<!-- 						<h4>Easy Payment gateway</h4> -->
-<!-- 						<p>Quis eum numquam veniam ea voluptatibus voluptas. Excepturi -->
-<!-- 							aut nostrum repudiandae voluptatibus corporis sequi</p> -->
-<!-- 					</div> -->
+					<!-- 					<div class="col-lg-4 col-md-6 content-item" data-aos="fade-in" -->
+					<!-- 						data-aos-delay="500"> -->
+					<!-- 						<span>06</span> -->
+					<!-- 						<h4>Easy Payment gateway</h4> -->
+					<!-- 						<p>Quis eum numquam veniam ea voluptatibus voluptas. Excepturi -->
+					<!-- 							aut nostrum repudiandae voluptatibus corporis sequi</p> -->
+					<!-- 					</div> -->
 
 				</div>
 
@@ -171,12 +172,12 @@
 						<div
 							class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
 							data-aos="fade-up">
-							<div class="icon-box icon-box-pink">
+							<div class="icon-box icon-box-pink" style="display: block; min-width:300px;">
 								<div class="icon">
 									<i class="bx ${category.image }"></i>
 								</div>
 								<h4 class="title">
-									<a href="serviceList/${category.id }.htm">${category.name }</a>
+									<a href="customer/serviceList/${category.id }.htm">${category.name }</a>
 								</h4>
 								<p class="description">${category.description }</p>
 							</div>
@@ -233,8 +234,8 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Hahahaha <i
-										class="bx bxs-quote-alt-right quote-icon-right"></i>
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Hahahaha
+									<i class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-2.jpg'/>"
@@ -248,8 +249,8 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Hay quassssss<i
-										class="bx bxs-quote-alt-right quote-icon-right"></i>
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i> Hay
+									quassssss<i class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-3.jpg'/>"
@@ -263,7 +264,8 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i>ahhahah  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i>ahhahah <i
+										class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-4.jpg'/>"
@@ -277,7 +279,8 @@
 						<div class="swiper-slide">
 							<div class="testimonial-item">
 								<p>
-									<i class="bx bxs-quote-alt-left quote-icon-left"></i> lalalal <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+									<i class="bx bxs-quote-alt-left quote-icon-left"></i> lalalal <i
+										class="bx bxs-quote-alt-right quote-icon-right"></i>
 								</p>
 								<img
 									src="<c:url value='/resources/main/assets/img/testimonials/testimonials-5.jpg'/>"
@@ -311,7 +314,8 @@
 						<li data-aos="fade-up" data-aos-delay="100"><i
 							class="bx bx-help-circle icon-help"></i> <a
 							data-bs-toggle="collapse" class="collapse"
-							data-bs-target="#faq-list-1">Tôi có thể thuê bao nhiêu người giúp việc trong ngày <i class="bx bx-chevron-down icon-show"></i><i
+							data-bs-target="#faq-list-1">Tôi có thể thuê bao nhiêu người
+								giúp việc trong ngày <i class="bx bx-chevron-down icon-show"></i><i
 								class="bx bx-chevron-up icon-close"></i>
 						</a>
 							<div id="faq-list-1" class="collapse " data-bs-parent=".faq-list">
@@ -321,67 +325,67 @@
 								</p>
 							</div></li>
 
-<!-- 						<li data-aos="fade-up" data-aos-delay="200"><i -->
-<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
-<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-2" -->
-<!-- 							class="collapsed">Feugiat scelerisque varius morbi enim nunc? -->
-<!-- 								<i class="bx bx-chevron-down icon-show"></i><i -->
-<!-- 								class="bx bx-chevron-up icon-close"></i> -->
-<!-- 						</a> -->
-<!-- 							<div id="faq-list-2" class="collapse" data-bs-parent=".faq-list"> -->
-<!-- 								<p>Dolor sit amet consectetur adipiscing elit pellentesque -->
-<!-- 									habitant morbi. Id interdum velit laoreet id donec ultrices. -->
-<!-- 									Fringilla phasellus faucibus scelerisque eleifend donec -->
-<!-- 									pretium. Est pellentesque elit ullamcorper dignissim. Mauris -->
-<!-- 									ultrices eros in cursus turpis massa tincidunt dui.</p> -->
-<!-- 							</div></li> -->
+						<!-- 						<li data-aos="fade-up" data-aos-delay="200"><i -->
+						<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
+						<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-2" -->
+						<!-- 							class="collapsed">Feugiat scelerisque varius morbi enim nunc? -->
+						<!-- 								<i class="bx bx-chevron-down icon-show"></i><i -->
+						<!-- 								class="bx bx-chevron-up icon-close"></i> -->
+						<!-- 						</a> -->
+						<!-- 							<div id="faq-list-2" class="collapse" data-bs-parent=".faq-list"> -->
+						<!-- 								<p>Dolor sit amet consectetur adipiscing elit pellentesque -->
+						<!-- 									habitant morbi. Id interdum velit laoreet id donec ultrices. -->
+						<!-- 									Fringilla phasellus faucibus scelerisque eleifend donec -->
+						<!-- 									pretium. Est pellentesque elit ullamcorper dignissim. Mauris -->
+						<!-- 									ultrices eros in cursus turpis massa tincidunt dui.</p> -->
+						<!-- 							</div></li> -->
 
-<!-- 						<li data-aos="fade-up" data-aos-delay="300"><i -->
-<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
-<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-3" -->
-<!-- 							class="collapsed">Dolor sit amet consectetur adipiscing elit? -->
-<!-- 								<i class="bx bx-chevron-down icon-show"></i><i -->
-<!-- 								class="bx bx-chevron-up icon-close"></i> -->
-<!-- 						</a> -->
-<!-- 							<div id="faq-list-3" class="collapse" data-bs-parent=".faq-list"> -->
-<!-- 								<p>Eleifend mi in nulla posuere sollicitudin aliquam -->
-<!-- 									ultrices sagittis orci. Faucibus pulvinar elementum integer -->
-<!-- 									enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum -->
-<!-- 									tellus pellentesque eu tincidunt. Lectus urna duis convallis -->
-<!-- 									convallis tellus. Urna molestie at elementum eu facilisis sed -->
-<!-- 									odio morbi quis</p> -->
-<!-- 							</div></li> -->
+						<!-- 						<li data-aos="fade-up" data-aos-delay="300"><i -->
+						<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
+						<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-3" -->
+						<!-- 							class="collapsed">Dolor sit amet consectetur adipiscing elit? -->
+						<!-- 								<i class="bx bx-chevron-down icon-show"></i><i -->
+						<!-- 								class="bx bx-chevron-up icon-close"></i> -->
+						<!-- 						</a> -->
+						<!-- 							<div id="faq-list-3" class="collapse" data-bs-parent=".faq-list"> -->
+						<!-- 								<p>Eleifend mi in nulla posuere sollicitudin aliquam -->
+						<!-- 									ultrices sagittis orci. Faucibus pulvinar elementum integer -->
+						<!-- 									enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum -->
+						<!-- 									tellus pellentesque eu tincidunt. Lectus urna duis convallis -->
+						<!-- 									convallis tellus. Urna molestie at elementum eu facilisis sed -->
+						<!-- 									odio morbi quis</p> -->
+						<!-- 							</div></li> -->
 
-<!-- 						<li data-aos="fade-up" data-aos-delay="400"><i -->
-<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
-<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-4" -->
-<!-- 							class="collapsed">Tempus quam pellentesque nec nam aliquam -->
-<!-- 								sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i -->
-<!-- 								class="bx bx-chevron-up icon-close"></i> -->
-<!-- 						</a> -->
-<!-- 							<div id="faq-list-4" class="collapse" data-bs-parent=".faq-list"> -->
-<!-- 								<p>Molestie a iaculis at erat pellentesque adipiscing -->
-<!-- 									commodo. Dignissim suspendisse in est ante in. Nunc vel risus -->
-<!-- 									commodo viverra maecenas accumsan. Sit amet nisl suscipit -->
-<!-- 									adipiscing bibendum est. Purus gravida quis blandit turpis -->
-<!-- 									cursus in.</p> -->
-<!-- 							</div></li> -->
+						<!-- 						<li data-aos="fade-up" data-aos-delay="400"><i -->
+						<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
+						<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-4" -->
+						<!-- 							class="collapsed">Tempus quam pellentesque nec nam aliquam -->
+						<!-- 								sem et tortor consequat? <i class="bx bx-chevron-down icon-show"></i><i -->
+						<!-- 								class="bx bx-chevron-up icon-close"></i> -->
+						<!-- 						</a> -->
+						<!-- 							<div id="faq-list-4" class="collapse" data-bs-parent=".faq-list"> -->
+						<!-- 								<p>Molestie a iaculis at erat pellentesque adipiscing -->
+						<!-- 									commodo. Dignissim suspendisse in est ante in. Nunc vel risus -->
+						<!-- 									commodo viverra maecenas accumsan. Sit amet nisl suscipit -->
+						<!-- 									adipiscing bibendum est. Purus gravida quis blandit turpis -->
+						<!-- 									cursus in.</p> -->
+						<!-- 							</div></li> -->
 
-<!-- 						<li data-aos="fade-up" data-aos-delay="500"><i -->
-<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
-<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-5" -->
-<!-- 							class="collapsed">Tortor vitae purus faucibus ornare. Varius -->
-<!-- 								vel pharetra vel turpis nunc eget lorem dolor? <i -->
-<!-- 								class="bx bx-chevron-down icon-show"></i><i -->
-<!-- 								class="bx bx-chevron-up icon-close"></i> -->
-<!-- 						</a> -->
-<!-- 							<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list"> -->
-<!-- 								<p>Laoreet sit amet cursus sit amet dictum sit amet justo. -->
-<!-- 									Mauris vitae ultricies leo integer malesuada nunc vel. -->
-<!-- 									Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget -->
-<!-- 									lorem dolor sed. Ut venenatis tellus in metus vulputate eu -->
-<!-- 									scelerisque.</p> -->
-<!-- 							</div></li> -->
+						<!-- 						<li data-aos="fade-up" data-aos-delay="500"><i -->
+						<!-- 							class="bx bx-help-circle icon-help"></i> <a -->
+						<!-- 							data-bs-toggle="collapse" data-bs-target="#faq-list-5" -->
+						<!-- 							class="collapsed">Tortor vitae purus faucibus ornare. Varius -->
+						<!-- 								vel pharetra vel turpis nunc eget lorem dolor? <i -->
+						<!-- 								class="bx bx-chevron-down icon-show"></i><i -->
+						<!-- 								class="bx bx-chevron-up icon-close"></i> -->
+						<!-- 						</a> -->
+						<!-- 							<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list"> -->
+						<!-- 								<p>Laoreet sit amet cursus sit amet dictum sit amet justo. -->
+						<!-- 									Mauris vitae ultricies leo integer malesuada nunc vel. -->
+						<!-- 									Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget -->
+						<!-- 									lorem dolor sed. Ut venenatis tellus in metus vulputate eu -->
+						<!-- 									scelerisque.</p> -->
+						<!-- 							</div></li> -->
 
 					</ul>
 				</div>
@@ -459,8 +463,7 @@
 							<div class="my-3">
 								<div class="loading">Load</div>
 								<div class="error-message"></div>
-								<div class="sent-message">Tin nhắn bạn đã gửi
-									Thank you!</div>
+								<div class="sent-message">Tin nhắn bạn đã gửi Thank you!</div>
 							</div>
 							<div class="text-center">
 								<button type="submit">Gửi</button>

@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <title>Quên mật khẩu</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -46,7 +47,7 @@
 							<div class=" p-4 p-md-4">
 
 								<h5 class="card-title">Đổi mật khẩu</h5>
-								<form action="changeForgotPassword.htm" method="post">
+								<form action="customer/changeForgotPassword.htm" method="post">
 
 									<div class="row mb-3">
 										<label for="newPassword"

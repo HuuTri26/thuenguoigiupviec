@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <title>Đăng ký</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -73,8 +74,8 @@
 										name="exp" required>
 								</div>
 								<div class="form-group mb-3">
-									<label class="label" for="password">Full/Partime</label>
-									<select class="form-select" id="validationDefault04"
+									<label class="label" for="password">Full/Partime</label> <select
+										class="form-select" id="validationDefault04"
 										name="employmentType" required>
 										<option selected value="">Fulltime</option>
 										<option>Partime</option>

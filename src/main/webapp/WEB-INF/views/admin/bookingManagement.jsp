@@ -62,108 +62,11 @@
 <body>
 
 	<!-- ======= Header ======= -->
-	<!--     <header id="header" class="header fixed-top d-flex align-items-center"> -->
-
-	<!--       <div class="d-flex align-items-center justify-content-between"> -->
-	<!--         <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--         <a href="index.html" class="logo d-flex align-items-center"> -->
-	<%--           <img src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" alt=""> --%>
-	<!--           <span class="d-none d-lg-block">BookMyMaid</span> -->
-	<!--         </a> -->
-
-	<!--       </div>End Logo -->
-
-
-	<!--       <nav class="header-nav ms-auto"> -->
-	<!--         <ul class="d-flex align-items-center"> -->
-
-
-
-	<!--           <li class="nav-item dropdown pe-3"> -->
-
-	<!--             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<%--               <img src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" alt="Profile" class="rounded-circle"> --%>
-	<!--               <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span> -->
-	<!--             </a>End Profile Iamge Icon -->
-
-	<!--             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--               <li class="dropdown-header"> -->
-	<!--                 <h6>Ram</h6> -->
-	<!--                 <span>PRN-111</span> -->
-	<!--               </li> -->
-	<!--               <li> -->
-	<!--                 <hr class="dropdown-divider"> -->
-	<!--               </li> -->
-
-	<!--               <li> -->
-	<!--                 <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                   <i class="bi bi-person"></i> -->
-	<!--                   <span>My Profile</span> -->
-	<!--                 </a> -->
-	<!--               </li> -->
-	<!--               <li> -->
-	<!--                 <hr class="dropdown-divider"> -->
-	<!--               </li> -->
-
-	<!--               <li> -->
-	<!--                 <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                   <i class="bi bi-box-arrow-right"></i> -->
-	<!--                   <span>Sign Out</span> -->
-	<!--                 </a> -->
-	<!--               </li> -->
-
-	<!--             </ul>End Profile Dropdown Items -->
-	<!--           </li>End Profile Nav -->
-
-	<!--         </ul> -->
-	<!--       </nav>End Icons Navigation -->
 
 	<!--     </header>End Header -->
 	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
 
 	<!-- ======= Sidebar ======= -->
-	<!--  <aside id="sidebar" class="sidebar"> -->
-
-	<!--   <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="dashboard.htm"> -->
-	<!--         <i class="bi bi-grid"></i> -->
-	<!--         <span>Dashboard</span> -->
-	<!--       </a> -->
-	<!--     </li>End Dashboard Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="maidManagement.htm"> -->
-	<!--         <i class="bi bi-person"></i> -->
-	<!--         <span>Maid</span> -->
-	<!--       </a> -->
-	<!--     </li>End Maid Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="customerManagement.htm"> -->
-	<!--         <i class="bi bi-question-circle"></i> -->
-	<!--         <span>User</span> -->
-	<!--       </a> -->
-	<!--     </li>End User Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="serviceManagement.htm"> -->
-	<!--         <i class="bi bi-envelope"></i> -->
-	<!--         <span>Services</span> -->
-	<!--       </a> -->
-	<!--     </li>End Subject Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="#"> -->
-	<!--         <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--         <span>Booking Details</span> -->
-	<!--       </a> -->
-	<!--     </li>End Exam History Page Nav -->
-
-
-	<!--   </ul> -->
-
 	<!-- </aside>End Sidebar -->
 
 	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
@@ -259,6 +162,7 @@
 										<th scope="col">Feedback <i class="bi bi-arrow-up-short"
 											data-sort="feedback" data-order="asc"></i>
 										</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody id="table_bookings">
@@ -278,53 +182,44 @@
 													pattern="#,###.## VND;VND -#,###.##" type="currency"
 													currencySymbol="VND" /></td>
 											<td scope="col" id="bookingStatus-${booking.id}"
-												class="bookingStatus">
-												
-												<c:choose>
-											<c:when test="${booking.bookingStatus == 1}">
-												<!-- 1: Chờ xác nhận, 2: Đã xác nhận, 3: Hoàn thành, 0: Đã hủy -->
-												<!-- Nội dung khi điều kiện đúng -->
-												<div class="col-lg-9 col-md-8">Chờ xác nhận</div>
-											</c:when>
-											<c:when test="${booking.bookingStatus == 2}">
-												<!-- Nội dung khi điều kiện đúng -->
-												<div class="col-lg-9 col-md-8">Đã xác nhận</div>
-												</c:when>
-												<c:when test="${booking.bookingStatus == 3}">
-													<!-- Nội dung khi điều kiện đúng -->
-													<div class="col-lg-9 col-md-8">Đã hoàn thành</div>
-												
-											</c:when>
-											<c:otherwise>
-												<!-- Nội dung khi điều kiện sai -->
-												<div class="col-lg-9 col-md-8">Đã hủy</div>
-											</c:otherwise>
-										</c:choose>
-												<!-- <div class="form-check form-switch"
+												class="bookingStatus"><c:choose>
+													<c:when test="${booking.bookingStatus == 1}">
+														<!-- 1: Chờ xác nhận, 2: Đã xác nhận, 3: Hoàn thành, 0: Đã hủy -->
+														<!-- Nội dung khi điều kiện đúng -->
+														<div class="col-lg-9 col-md-8">Chờ xác nhận</div>
+													</c:when>
+													<c:when test="${booking.bookingStatus == 2}">
+														<!-- Nội dung khi điều kiện đúng -->
+														<div class="col-lg-9 col-md-8">Đã xác nhận</div>
+													</c:when>
+													<c:when test="${booking.bookingStatus == 3}">
+														<!-- Nội dung khi điều kiện đúng -->
+														<div class="col-lg-9 col-md-8">Đã hoàn thành</div>
+
+													</c:when>
+													<c:otherwise>
+														<!-- Nội dung khi điều kiện sai -->
+														<div class="col-lg-9 col-md-8">Đã hủy</div>
+													</c:otherwise>
+												</c:choose> <!-- <div class="form-check form-switch"
 													data-switch-text="Chưa xác nhận,Đã xác nhận">
 													<input class="form-check-input" type="checkbox"
 														role="switch"> <label class="form-check-label"
 														for="{checkboxId}"> <span class="switch-status">Chưa
 															xác nhận</span>
 													</label>
-												</div> -->
-											</td>
+												</div> --></td>
 											<td scope="col" id="paymentStatus-${booking.id}"
 												class="paymentStatus">${booking.paymentStatus == 1 ? 'Đã thanh toán' : 'Chưa thanh toán'}</td>
 											<td scope="col">${booking.employee.id }</td>
 											<td scope="col">5</td>
 											<td scope="col">Tốt</td>
 
-											<td scope="col">
-												<a href="admin/bookingDetail/${booking.id}.htm"
-												class="btn btn-primary "><i class="bi bi-eye"></i></a>
-												
-												<a
-												href="admin/bookingMaidList.htm" class="btn btn-primary"><i
-													class="fa fa-list-ul"></i></a> 
-												<a href="admin/bookingManagement.htm#"
-												class="btn btn-danger "><i class="bi-trash"></i></a>
-											</td>
+											<td scope="col"><a
+												href="admin/bookingDetail/${booking.id}.htm"
+												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
+												href="admin/bookingManagement.htm#" class="btn btn-danger "><i
+													class="bi-trash"></i></a></td>
 										</tr>
 
 									</c:forEach>

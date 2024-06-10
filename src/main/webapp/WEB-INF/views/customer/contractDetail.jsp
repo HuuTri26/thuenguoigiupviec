@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <link rel="stylesheet"
@@ -152,30 +153,33 @@ body {
 </head>
 
 <body>
-<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
-<header id="header" class="fixed-top d-flex align-items-center">
+	<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
+	<header id="header" class="fixed-top d-flex align-items-center">
 		<div class="container d-flex justify-content-between">
 
 			<div class="logo">
 				<h1>
-					<a href="index.htm">BookMyMaid</a>
+					<a href="customer/index.htm">BookMyMaid</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="#"><span>Account</span> <i
+					<li class="dropdown"><a href="customer/index.htm"><span>Account</span> <i
 							class="bi bi-chevron-down"></i></a>
 						<ul>
-							<li><a href="customerProfile.htm">Trang cá nhân</a></li>
-							<li><a href="updateCustomer.htm">Cập nhật thông tin</a></li>
-							<li><a href="customerChangePassword.htm">Đổi mật khẩu</a></li>
-							<li><a href="bookingManagement.htm">Xem danh sách </a></li>
-							<li><a href="contractManagement.htm">Xem danh sách đặt
-									dịch vụ</a></li>
-							<li><a href="billManagement.htm">Xem danh bill</a></li>
-							<li><a href="logout.htm">Log out</a></li>
+							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
+							<li><a href="customer/updateCustomer.htm">Cập nhật thông
+									tin</a></li>
+							<li><a href="customer/customerChangePassword.htm">Đổi
+									mật khẩu</a></li>
+							<li><a href="customer/bookingManagement.htm">Xem danh
+									sách </a></li>
+							<li><a href="customer/contractManagement.htm">Xem danh
+									sách đặt dịch vụ</a></li>
+							<li><a href="customer/billManagement.htm">Xem danh bill</a></li>
+							<li><a href="#">Log out</a></li>
 
 						</ul></li>
 				</ul>
@@ -186,7 +190,7 @@ body {
 	</header>
 
 	<main id="main" style="background-color: gray;" class="mt-10">
-				
+
 		<!-- created by @BrCodeSnippets -->
 		<div class="container mt-5 pt-3" id="contract-form">
 			<div class="row">
@@ -194,8 +198,7 @@ body {
 					<div class="card p-3 bg-form">
 						<form class="row g-3  mt-5">
 							<div class="col-12">
-								<h1 class="text-center fw-bolder text-white mt-3">
-									Hợp đồng</h1>
+								<h1 class="text-center fw-bolder text-white mt-3">Hợp đồng</h1>
 								<hr>
 							</div>
 							<div class="col-12">
@@ -275,15 +278,15 @@ body {
 							<!-- 									<label for="floatingTextarea">Ghi chú</label> -->
 							<!-- 								</div> -->
 							<!-- 							</div> -->
-<!-- 							<div class="col-12"> -->
-<!-- 								<div class="form-check"> -->
-<!-- 									<input class="form-check-input" type="checkbox" id="gridCheck"> -->
-<!-- 									<label class="form-check-label shadow-sm text-white" -->
-<!-- 										for="gridCheck"> Tôi đồng ý với các điều khỏa sau.<a -->
-<!-- 										class="legacy illigla">Privacy</a> -->
-<!-- 									</label> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
+							<!-- 							<div class="col-12"> -->
+							<!-- 								<div class="form-check"> -->
+							<!-- 									<input class="form-check-input" type="checkbox" id="gridCheck"> -->
+							<!-- 									<label class="form-check-label shadow-sm text-white" -->
+							<!-- 										for="gridCheck"> Tôi đồng ý với các điều khỏa sau.<a -->
+							<!-- 										class="legacy illigla">Privacy</a> -->
+							<!-- 									</label> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
 							<div class="col-12">
 								<div
 									class="p-3 mb-3 text-white fw-bolder fs-3 border-5 border-start">

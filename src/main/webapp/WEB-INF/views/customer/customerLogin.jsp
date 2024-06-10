@@ -5,10 +5,12 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
+
 <!doctype html>
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <title>Đăng nhập</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -37,6 +39,9 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-12">
 					<div class="wrap d-md-flex">
+					<a href="#">
+					<i class="fa fa-arrow-left" aria-hidden="true" style="font-size:60px; cursor: pointer;" ></i>
+					</a>
 						<div class="img"></div>
 						<div class="login-wrap p-4 p-md-4">
 							<div class="d-flex">
@@ -50,7 +55,7 @@
 									</p>
 								</div>
 							</div>
-							<form:form action="customerLogin.htm" class="signin-form"
+							<form:form action="customer/customerLogin.htm" class="signin-form"
 								method="POST" modelAttribute="customerAcc">
 								<div style="color: red;">${message }</div>
 								<div class="form-group mb-3">
@@ -78,12 +83,12 @@
 										</label>
 									</div>
 									<div class="w-50 text-md-right">
-										<a href="customerForgotPassword.htm">Quên mật khẩu</a>
+										<a href="customer/customerForgotPassword.htm">Quên mật khẩu</a>
 									</div>
 								</div>
 							</form:form>
 
-							<form action="customerSignupEmail.htm">
+							<form action="customer/customerSignupEmail.htm">
 								<button type="submit"
 									class="form-control btn btn-primary rounded submit px-3"
 									name="register">Đăng Ký</button>

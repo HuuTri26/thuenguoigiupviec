@@ -77,10 +77,10 @@
 			<h1>Category</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="admin/categoryManagement.html">Category</a></li>
-						
+						href="admin/categoryManagement.htm">Category</a></li>
+
 				</ol>
 			</nav>
 		</div>

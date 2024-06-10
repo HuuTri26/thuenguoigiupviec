@@ -224,7 +224,7 @@
 						<div
 							class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
 							data-aos="fade-up">
-							<div class="icon-box icon-box-pink">
+							<div class="icon-box icon-box-pink" style="display: block; min-width:300px;">
 								<div class="icon">
 									<i class="bx ${category.image }"></i>
 								</div>
