@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <title>Quên mật khẩu</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -22,6 +23,7 @@
 	href="<c:url value='/resources/login/css/style.css'/>">
 
 </head>
+<base href="${pageContext.servletContext.contextPath}/">
 
 <body>
 
@@ -83,8 +85,9 @@
 									</div>
 
 									<div class="text-center">
-										<button type="submit" class="btn btn-primary"><a href="maidLogin.htm">Đổi mật
-											khẩu</a></button>
+										<button type="submit" class="btn btn-primary">
+											<a href="maid/maidLogin.htm">Đổi mật khẩu</a>
+										</button>
 									</div>
 								</form>
 								<!-- End Change Password Form -->

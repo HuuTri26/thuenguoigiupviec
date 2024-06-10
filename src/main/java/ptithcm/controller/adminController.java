@@ -647,11 +647,53 @@ public class adminController {
 //		List<BookingDetailEntity> bookingDetails = bookingDetailService.getBookingDetailsByBooking(booking)
 //		EmployeeEntity employee = employeeService.getEmployeeById(bookingId);
 		
+		
+		
+		List<MaidEntity> maidsVeryAvailable = new ArrayList<MaidEntity>();
+		//Xử lý lọc người giúp việc bị trùng lịch.
+		for (MaidEntity maid : maidsAvailable) {// duyệt danh sách maid
+			//Lấy các booking của maid
+			List<BookingEntity> bookingsForMaid = bookingService.getBookingsForMaid(maid.getId());
+			// duyệt các booking của maid
+			boolean isFree = true;
+			for (BookingEntity bk : bookingsForMaid) {
+				if (bk.getId() == bookingId) {
+					continue;
+				}
+				Date maidStartTime = bk.getStartTime();
+	            long duration = bk.getService().getTime(); // Thời gian hoàn thành công việc của booking đang duyệt
+
+	            // Kiểm tra khoảng thời gian xung quanh thời gian bắt đầu và thời gian hoàn thành
+	            long bufferTime = 3600000; // 1 tiếng tính bằng milliseconds
+	            long startBuffer = maidStartTime.getTime() - bufferTime;
+	            long endBuffer = maidStartTime.getTime() + duration*bufferTime + bufferTime;
+	            
+	         // Nếu thời gian đặt lịch của booking cần phân công nằm trong khoảng đó
+	            if (booking.getStartTime().getTime() >= startBuffer && booking.getStartTime().getTime() <= endBuffer) {
+	                isFree = false; // Xóa người giúp việc khỏi danh sách maidsAvailable
+	                break;
+	            }
+	            
+	            
+	            //ý tưởng
+				//xét booking đang duyệt nếu thời gian bắt đầu làm - 1 tiếng ; thời gian bắt đầu làm + thời gian hoàn thành + 1 tiếng mà thời gian đặt lịch của booking đang cần phân công nằm trong khoảng đó
+			        // gán người giúp việc trạng thái bận 
+					//break
+				//xóa người giúp việc này khỏi maidsAvailable
+			}
+			if (isFree) {
+                maidsVeryAvailable.add(maid);
+            }
+				
+		}
+		
+		//
+		
 		model.addAttribute("bookingDetails", bookingDetails);
 		model.addAttribute("booking", booking);
 		model.addAttribute("service", service);
 		model.addAttribute("maidsSelected", maidsSelected);
-		model.addAttribute("maidsAvailable", maidsAvailable);
+		model.addAttribute("maidsAvailable", maidsVeryAvailable);
 //		model.addAttribute("employee", employee);
 		return "admin/bookingDetail";
 	}
@@ -737,6 +779,27 @@ public class adminController {
 		model.addAttribute("maidsSelected", maidsSelected);
 		return "redirect:/admin/bookingDetail/{bookingId}.htm";
 	}
+	@RequestMapping(value="admin/bookingDetail/canceledBooking/{bookingId}")
+	public String canceledBooking(@PathVariable("bookingId") int bookingId, ModelMap model) {
+		List<BookingDetailEntity> bookingDetails= bookingDetailService.getListBookingDetailsByBookingId(bookingId);
+		List<MaidEntity> maidsSelected = maidService.getListMaidSelectedListByBookingId(bookingId);
+		List<MaidEntity> maidsAvailable = maidService.getListMaidPartTime();
+		BookingEntity booking = bookingService.getBookingById(bookingId);
+		ServiceEntity service = maidServiceService.getServiceById(booking.getService().getId());
+		
+		
+		// Handle
+		booking.setBookingStatus(0);// 0: đã hủy, 1: chờ xác nhận, 2 đã xác nhận, 3: đã hoàn thành
+		bookingService.updateBooking(booking);
+		
+		model.addAttribute("maidsAvailable", maidsAvailable);
+		model.addAttribute("bookingDetails", bookingDetails);
+		model.addAttribute("booking", booking);
+		model.addAttribute("service", service);
+		model.addAttribute("maidsSelected", maidsSelected);
+		return "redirect:/admin/bookingDetail/{bookingId}.htm";
+	}
+	
 
 	// Hiển thị danh sách maid để chọn:
 	@RequestMapping("admin/bookingMaidChecked")
@@ -892,8 +955,9 @@ public class adminController {
 	}
 
 	// Hiển thị thông tin hợp đồng:
-	@RequestMapping("admin/contractDetail")
-	public String showContractDetail() {
+	@RequestMapping("admin/contractDetail/{contractId}")
+	public String showContractDetail(@PathVariable("contractId") int contractId) {
+		
 		return "admin/contractDetail";
 	}
 
@@ -904,7 +968,7 @@ public class adminController {
 	}
 
 	// Hiển thị thông tin bill:
-	@RequestMapping("admin/billDetail")
+	@RequestMapping("admin/billDetail/{billId}")
 	public String showBillDetail() {
 		return "admin/billDetail";
 	}

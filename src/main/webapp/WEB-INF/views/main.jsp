@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -65,7 +66,7 @@
 
 			<div class="logo">
 				<h1>
-					<a href="main.htm">BookMyMaid</a>
+					<a href="#">BookMyMaid</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
@@ -223,7 +224,7 @@
 						<div
 							class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0"
 							data-aos="fade-up">
-							<div class="icon-box icon-box-pink">
+							<div class="icon-box icon-box-pink" style="display: block; min-width:300px;">
 								<div class="icon">
 									<i class="bx ${category.image }"></i>
 								</div>

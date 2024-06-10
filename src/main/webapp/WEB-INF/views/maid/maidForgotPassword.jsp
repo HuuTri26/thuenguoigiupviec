@@ -1,20 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-    <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!doctype html>
 <html lang="en">
 
 <head>
-	<title>Quên mật khẩu</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<base href="${pageContext.servletContext.contextPath}/">
+<title>Quên mật khẩu</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap"
+	rel="stylesheet">
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" href="<c:url value='/resources/login/css/style.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/resources/login/css/style.css'/>">
 
 </head>
 
@@ -29,8 +35,10 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
 					<div class="wrap d-md-flex">
-						<div class="img">
-						</div>
+						<a href="maid/maidLogin.htm"> <i class="fa fa-arrow-left"
+							aria-hidden="true" style="font-size: 60px; cursor: pointer;"></i>
+						</a>
+						<div class="img"></div>
 						<div class="login-wrap p-4 p-md-4">
 							<div class="d-flex">
 								<div class="w-100 ">
@@ -44,13 +52,14 @@
 								</div>
 							</div>
 							<form action="adminForgotPassword.htm" class="signin-form">
-                                <div>
-                                    Forgot your password? No problem, we will fix it. Just type your email below and we will send you password recovery instructions to your email. Follow easy steps to get back to your account.
-                                </div>
-                                <br />
+								<div>Forgot your password? No problem, we will fix it.
+									Just type your email below and we will send you password
+									recovery instructions to your email. Follow easy steps to get
+									back to your account.</div>
+								<br />
 								<div class="form-group mb-3">
-									<label class="label" for="name">Email</label>
-									<input type="email" class="form-control" placeholder="Email" required>
+									<label class="label" for="name">Email</label> <input
+										type="email" class="form-control" placeholder="Email" required>
 								</div>
 								<!-- <div class="form-group mb-3">
 									<label class="label" for="password">Password</label>
@@ -62,7 +71,9 @@
 								</div> -->
 								<div class="form-group">
 									<button type="submit"
-										class="form-control btn btn-primary rounded submit px-3"><a href="forgotPasswordOTP.htm">Xác nhận</a></button>
+										class="form-control btn btn-primary rounded submit px-3">
+										<a href="maid/forgotPasswordOTP.htm">Xác nhận</a>
+									</button>
 								</div>
 								<!-- <div class="form-group d-md-flex">
 									<div class="w-100 text-left">

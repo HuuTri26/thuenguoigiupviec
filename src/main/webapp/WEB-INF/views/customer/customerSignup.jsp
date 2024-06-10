@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <title>Đăng ký</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -45,19 +46,20 @@
 									<p class="social-media d-flex justify-content-end"></p>
 								</div>
 							</div>
-							<form:form action="customerSignup.htm" method="post"
+							<form:form action="customer/customerSignup.htm" method="post"
 								modelAttribute="newCustomer" class="signin-form">
-								
+
 								<div class="form-group mb-3">
-									<label class="label" for="name">Email</label>
-									<input type="text" value="${email }" class="form-control" readonly="readonly"/>
+									<label class="label" for="name">Email</label> <input
+										type="text" value="${email }" class="form-control"
+										readonly="readonly" />
 								</div>
-								
+
 								<div class="form-group mb-3">
 									<label class="label" for="name">Họ Tên</label>
 									<form:input type="text" path="fullName" class="form-control"
 										placeholder="Tên của bạn" />
-									<form:errors path="fullName"/>
+									<form:errors path="fullName" />
 
 								</div>
 
@@ -65,7 +67,7 @@
 									<label class="label" for="password">Số điện thoại</label>
 									<form:input type="text" path="phoneNumber" class="form-control"
 										placeholder="Số điện thoại" />
-									<form:errors path="phoneNumber"/>
+									<form:errors path="phoneNumber" />
 								</div>
 
 
@@ -73,14 +75,14 @@
 									<label class="label" for="password">Địa chỉ</label>
 									<form:input type="text" path="address" class="form-control"
 										placeholder="Địa chỉ" />
-									<form:errors path="address"/>
+									<form:errors path="address" />
 								</div>
 
-<!-- 								<div class="form-group mb-3"> -->
-<!-- 									<label class="label" for="password">Email</label> -->
-<%-- 									<form:input type="text" path="email" class="form-control" --%>
-<%-- 										placeholder="Email" /> --%>
-<!-- 								</div> -->
+								<!-- 								<div class="form-group mb-3"> -->
+								<!-- 									<label class="label" for="password">Email</label> -->
+								<%-- 									<form:input type="text" path="email" class="form-control" --%>
+								<%-- 										placeholder="Email" /> --%>
+								<!-- 								</div> -->
 								<div class="form-group mb-3">
 									<label class="label" for="password">Password</label>
 									<form:input type="password" path="account.password"
@@ -91,7 +93,7 @@
 									<label class="label" for="password">Nhập lại password</label> <input
 										type="password" class="form-control" name="re-password"
 										placeholder="Re-Enter Password" required>
-									<form:errors path="account.password"/>
+									<form:errors path="account.password" />
 								</div>
 								<div class="form-group mb-3">
 									<label class="label" style="padding-top: 18px;"></label>

@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -62,106 +63,10 @@
 <body>
 
 	<!-- ======= Header ======= -->
-	<!--   <header id="header" class="header fixed-top d-flex align-items-center"> -->
-
-	<!--     <div class="d-flex align-items-center justify-content-between"> -->
-	<!--       <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--       <a href="index.htm" class="logo d-flex align-items-center"> -->
-	<%--         <img src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" alt=""> --%>
-	<!--         <span class="d-none d-lg-block">BookMyMaid</span> -->
-	<!--       </a> -->
-
-	<!--     </div>End Logo -->
-
-
-	<!--     <nav class="header-nav ms-auto"> -->
-	<!--       <ul class="d-flex align-items-center"> -->
-
-
-
-	<!--         <li class="nav-item dropdown pe-3"> -->
-
-	<!--           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<%--             <img src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" alt="Profile" class="rounded-circle"> --%>
-	<!--             <span class="d-none d-md-block dropdown-toggle ps-2">Profile</span> -->
-	<!--           </a>End Profile Iamge Icon -->
-
-	<!--           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--             <li class="dropdown-header"> -->
-	<!--               <h6>Admin</h6> -->
-	<!--             </li> -->
-	<!--             <li> -->
-	<!--               <hr class="dropdown-divider"> -->
-	<!--             </li> -->
-
-	<!--             <li> -->
-	<!--               <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                 <i class="bi bi-person"></i> -->
-	<!--                 <span>My Profile</span> -->
-	<!--               </a> -->
-	<!--             </li> -->
-	<!--             <li> -->
-	<!--               <hr class="dropdown-divider"> -->
-	<!--             </li> -->
-
-	<!--             <li> -->
-	<!--               <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                 <i class="bi bi-box-arrow-right"></i> -->
-	<!--                 <span>Sign Out</span> -->
-	<!--               </a> -->
-	<!--             </li> -->
-
-	<!--           </ul>End Profile Dropdown Items -->
-	<!--         </li>End Profile Nav -->
-
-	<!--       </ul> -->
-	<!--     </nav>End Icons Navigation -->
 
 	<!--   </header>End Header -->
 	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
 	<!-- ======= Sidebar ======= -->
-	<!--  <aside id="sidebar" class="sidebar"> -->
-
-	<!--   <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="dashboard.htm"> -->
-	<!--         <i class="bi bi-grid"></i> -->
-	<!--         <span>Dashboard</span> -->
-	<!--       </a> -->
-	<!--     </li>End Dashboard Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="maidManagement.htm"> -->
-	<!--         <i class="bi bi-person"></i> -->
-	<!--         <span>Maid</span> -->
-	<!--       </a> -->
-	<!--     </li>End Maid Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="customerManagement.htm"> -->
-	<!--         <i class="bi bi-question-circle"></i> -->
-	<!--         <span>User</span> -->
-	<!--       </a> -->
-	<!--     </li>End User Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="#"> -->
-	<!--         <i class="bi bi-envelope"></i> -->
-	<!--         <span>Services</span> -->
-	<!--       </a> -->
-	<!--     </li>End Subject Page Nav -->
-
-	<!--     <li class="nav-item"> -->
-	<!--       <a class="nav-link collapsed" href="bookingManagement.htm"> -->
-	<!--         <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--         <span>Booking Details</span> -->
-	<!--       </a> -->
-	<!--     </li>End Exam History Page Nav -->
-
-
-	<!--   </ul> -->
-
 	<!-- </aside>End Sidebar -->
 
 	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
@@ -173,9 +78,9 @@
 			<h1>Dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="serviceManagement.html">Dịch vụ</a></li>
+						href="admin/serviceManagement.htm">Dịch vụ</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -188,8 +93,8 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
-								<a href="addService.htm" class="btn btn-primary">Thêm dịch
-									vụ</a>
+								<a href="admin/addService.htm" class="btn btn-primary">Thêm
+									dịch vụ</a>
 							</div>
 							<!--  <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>-->
@@ -244,6 +149,7 @@
 											class="bi bi-arrow-up-short" data-sort="status"
 											data-order="asc"></i>
 										</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody id="table_services">
@@ -256,8 +162,9 @@
 											<td scope="col">${service.category.name }</td>
 											<td scope="col">${service.time }</td>
 											<td scope="col"><fmt:formatNumber
-										value="${service.servicePrices[0].price }" pattern="#,###.## VND;VND -#,###.##" type="currency"
-										currencySymbol="VND"/></td>
+													value="${service.servicePrices[0].price }"
+													pattern="#,###.## VND;VND -#,###.##" type="currency"
+													currencySymbol="VND" /></td>
 											<td scope="col">${service.description }</td>
 											<td scope="col">${service.maidQuantity }</td>
 											<td scope="col">
@@ -272,13 +179,18 @@
 												</div>
 											</td>
 
-											<td scope="col"><a href="serviceDetail.htm"
+											<td scope="col"><a href="admin/serviceDetail.htm"
 												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-												href="updateService.htm" class="btn btn-primary "><i
-													class="bi-pencil"></i></a> <a href="#" class="btn btn-danger"><i
-													class="bi-trash"></i></a> 
-													<a href="blockService/${service.id}.htm" class="btn btn-danger "><i class="fa-solid fa-ban"></i></a> 
-													<a href="activeService/${service.id}.htm" class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
+												href="admin/updateService.htm" class="btn btn-primary "><i
+													class="bi-pencil"></i></a> 
+<!-- 													<a href="#" class="btn btn-danger"> -->
+<!-- 													<i class="bi-trash"></i> -->
+<!-- 												Field này có dùng k -->
+<!-- 											</a>  -->
+											<a href="admin/blockService/${service.id}.htm"
+												class="btn btn-danger "><i class="fa-solid fa-ban"></i></a>
+												<a href="admin/activeService/${service.id}.htm"
+												class="btn btn-primary "><i class="fa-solid fa-check"></i></a>
 											</td>
 										</tr>
 
@@ -313,7 +225,7 @@
            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> 
     </div>
   </footer>End Footer -->
-	<a href="#"
+	<a href="admin/serviceManagement.htm#main"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
 
