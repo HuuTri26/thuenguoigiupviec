@@ -82,5 +82,15 @@ public class ContractDAOImpl implements ContractDAO {
 		ContractEntity contract = (ContractEntity) query.uniqueResult();
 		return contract;
 	}
+
+	@Override
+	public List<ContractEntity> getListContractBy(Integer customerId) {
+		Session session = factory.getCurrentSession();
+		String hql = "FROM ContractEntity c WHERE c.customer.id = :customerId";
+		Query query = session.createQuery(hql);
+		query.setParameter("customerId", customerId);
+		List<ContractEntity> contractList = query.list();
+		return contractList;
+	}
 	
 }

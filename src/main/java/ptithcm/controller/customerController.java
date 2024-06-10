@@ -27,16 +27,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import ptithcm.bean.Mailer;
+import ptithcm.dao.ContractDAO;
 import ptithcm.dao.ServiceDAO;
 import ptithcm.entity.AccountEntity;
 import ptithcm.entity.BookingEntity;
 import ptithcm.entity.CategoryEntity;
+import ptithcm.entity.ContractEntity;
 import ptithcm.entity.CustomerEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.entity.ServiceEntity;
 import ptithcm.service.AccountService;
 import ptithcm.service.BookingService;
 import ptithcm.service.CategoryService;
+import ptithcm.service.ContractService;
 import ptithcm.service.CustomerService;
 import ptithcm.service.MaidServiceService;
 import ptithcm.service.RoleService;
@@ -68,6 +71,9 @@ public class customerController {
 	
 	@Autowired
 	BookingService bookingService;
+	
+	@Autowired
+	ContractService contractService;
 
 	// Trang đăng nhập cho customer
 	@RequestMapping("customer/customerLogin")
@@ -303,9 +309,15 @@ public class customerController {
 
 	// Hiển thị danh sách hợp đồng
 	@RequestMapping("customer/contractManagement")
-	public String showContractList() {
+	public String showContractList(HttpServletRequest request ,Model model) {
+		HttpSession session = request.getSession();
+		CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
+		
+		List<ContractEntity> contractList = contractService.getListContractBy(customer.getId());
+		model.addAttribute("contractList", contractList);
+		
 		return "customer/contractManagement";
-
+		
 	}
 
 	// Hiển thị thông tin hợp đồng hợp đồng
