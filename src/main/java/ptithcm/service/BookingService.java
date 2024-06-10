@@ -15,4 +15,5 @@ public interface BookingService {
 	public void createBooking(BookingEntity booking);
 	public void updateBooking(BookingEntity booking);
 	public BookingEntity getBookingById(int bookingId);
+	public List<BookingEntity> getBookingsForMaid(int maidId);
 }

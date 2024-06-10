@@ -15,5 +15,5 @@ public interface MaidServiceService {
 	public void updateService(ServiceEntity service);
 	public List<ServiceEntity> getListServiceByCategoryId(Integer categoryId);
 	public ServiceEntity getServiceById(Integer id);
-	
+	public Integer getTimeOfService(int serviceId);
 }

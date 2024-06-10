@@ -328,6 +328,12 @@
 											<a>${service.name }</a>
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Số lượng người giúp việc</div>
+										<div class="col-lg-9 col-md-8">
+											<a>${service.maidQuantity }</a>
+										</div>
+									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày bắt đầu</div>
@@ -389,18 +395,32 @@
 									</div>
 									<c:if test="${booking.bookingStatus ==1 }">
 										<div class="row">
-											<form:form action="admin/bookingDetail/confirmBooking/${booking.id}.htm">
+											<form:form class="col-2" action="admin/bookingDetail/confirmBooking/${booking.id}.htm">
 												<button class="btn btn-primary">Duyệt đơn</button>
 											</form:form>
+											<form:form class="col-2" action="admin/bookingDetail/canceledBooking/${booking.id}.htm">
+												<button class="btn btn-danger">Hủy đơn</button>
+											</form:form>
+											<div class="col-8"></div>
 										</div>
 									</c:if>
 
 								</div>
 								<!-- danh sách người giúp việc được phân  -->
 								<div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-									<div class="card-title">
+									<c:if test="${booking.bookingStatus ==2 }">
+										<div class="card-title">
 										<button class="btn btn-primary" id="btn-select-maid">Phân
 											công người giúp việc</button>
+									</div>
+									</c:if>
+									
+									<div class="row">
+										<div class="col-lg-3 col-md-4 label">Số lượng người giúp việc tối đa	</div>
+										<div class="col-lg-9 col-md-8">
+											<a>${service.maidQuantity }</a>
+										</div>
+										
 									</div>
 									<table class="table datatable ">
 										<thead style="background-color: #37517e; color: white">
