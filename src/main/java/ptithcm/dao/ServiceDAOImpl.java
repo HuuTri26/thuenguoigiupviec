@@ -80,6 +80,17 @@ public class ServiceDAOImpl implements ServiceDAO {
 		ServiceEntity maidService = (ServiceEntity) query.uniqueResult();
 		return maidService;
 	}
+
+	@Override
+	public Integer getTimeOfService(int serviceId) {
+		// TODO Auto-generated method stub
+		Session session = factory.getCurrentSession();
+	    String hql = "SELECT expectedDuration FROM ServiceEntity WHERE id = :id";
+	    Query query = session.createQuery(hql);
+	    query.setParameter("id", serviceId);
+	    Integer expectedDuration = (Integer) query.uniqueResult();
+	    return expectedDuration;
+	}
 	
 	
 }

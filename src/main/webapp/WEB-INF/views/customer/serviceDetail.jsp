@@ -251,6 +251,7 @@
 						</div>
 						<form:form class="row g-3"
 							action="customer/serviceList/serviceDetail/booking/${service.id }.htm"
+
 							method="post" modelAttribute="booking">
 							<div class="col-12">
 								<h1 class="text-center fw-bolder text-white mt-3">Form đặt

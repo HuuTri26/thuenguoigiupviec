@@ -10,5 +10,5 @@ public interface ServiceDAO {
 	public void updateService(ServiceEntity service);
 	public List<ServiceEntity> getListServiceByCategoryId(Integer categoryId);
 	public ServiceEntity getSetviceById(Integer id);
-
+	public Integer getTimeOfService(int serviceId);
 }

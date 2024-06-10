@@ -72,7 +72,8 @@ public class MaidDAOImpl implements MaidDAO {
 	public List<MaidEntity> getListMaidPartTime() {
 		// TODO Auto-generated method stub
 		Session session = factory.getCurrentSession();
-        String hql = "FROM MaidEntity WHERE employmentType = 1";
+
+        String hql = "FROM MaidEntity m  WHERE m.employmentType = 1 AND m.account.status = true";// 1: part-time, 0: full-time;
         Query query = session.createQuery(hql);
         List<MaidEntity> maidList = query.list();
         return maidList;

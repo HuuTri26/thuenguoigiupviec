@@ -99,8 +99,8 @@
 									aria-label="Default select example">
 									<option value="all">Tất cả</option>
 									<option value="id">Id</option>
-									<option value="customerId">Id khách hàng</option>
-									<option value="serviceId">Id gói dịch vụ</option>
+									<option value="customerId">Tên khách hàng</option>
+									<option value="serviceId">Tên gói dịch vụ</option>
 									<option value="startAt">Ngày bắt đầu</option>
 									<option value="address">Địa chỉ</option>
 									<option value="note">Ghi chú</option>
@@ -122,12 +122,12 @@
 										<th scope="col">Id <i class="bi bi-arrow-up-short"
 											data-sort="id" data-order="asc"></i>
 										</th>
-										<th scope="col">Id khách hàng <i
+										<th scope="col">Tên khách hàng <i
 											class="bi bi-arrow-up-short" data-sort="customerId"
 											data-order="asc"></i>
 										</th>
 										<!-- 										<th scope="col">Id người giúp việc</th> -->
-										<th scope="col">Id gói dịch vụ <i
+										<th scope="col">Tên gói dịch vụ <i
 											class="bi bi-arrow-up-short" data-sort="serviceId"
 											data-order="asc"></i>
 										</th>
@@ -171,9 +171,9 @@
 
 										<tr>
 											<td scope="row">${booking.id }</td>
-											<td scope="col">${booking.customer.id }</td>
+											<td scope="col">${booking.customer.fullName}</td>
 											<!-- 										<td scope="col">2</td> -->
-											<td scope="col">${booking.service.id }</td>
+											<td scope="col">${booking.service.name }</td>
 											<td scope="col">${booking.startTime }</td>
 											<td scope="col">${booking.bookingAddress }</td>
 											<td scope="col">${booking.note }</td>
@@ -215,11 +215,18 @@
 											<td scope="col">5</td>
 											<td scope="col">Tốt</td>
 
-											<td scope="col"><a
-												href="admin/bookingDetail/${booking.id}.htm"
-												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-												href="admin/bookingManagement.htm#" class="btn btn-danger "><i
-													class="bi-trash"></i></a></td>
+
+											<td scope="col">
+												<a href="admin/bookingDetail/${booking.id}.htm"
+												class="btn btn-primary "><i class="bi bi-eye"></i></a>
+												
+												<!-- <a
+												href="admin/bookingMaidList.htm" class="btn btn-primary"><i
+													class="fa fa-list-ul"></i></a>  -->
+												<!-- <a href="admin/bookingManagement.htm#"
+												class="btn btn-danger "><i class="bi-trash"></i></a> -->
+											</td>
+
 										</tr>
 
 									</c:forEach>

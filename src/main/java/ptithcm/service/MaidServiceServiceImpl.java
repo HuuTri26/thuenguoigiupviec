@@ -46,4 +46,10 @@ public class MaidServiceServiceImpl implements MaidServiceService {
 		return MaidServiceDAO.getSetviceById(id);
 	}
 
+	@Override
+	public Integer getTimeOfService(int serviceId) {
+		// TODO Auto-generated method stub
+		return MaidServiceDAO.getTimeOfService(serviceId);
+	}
+
 }

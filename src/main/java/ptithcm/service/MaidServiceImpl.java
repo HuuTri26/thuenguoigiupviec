@@ -120,4 +120,6 @@ public class MaidServiceImpl implements MaidService {
 		// TODO Auto-generated method stub
 		return MaidDAO.getListMaidPartTime();
 	}
+
+
 }
