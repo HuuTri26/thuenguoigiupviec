@@ -66,106 +66,6 @@
 
 	<!-- ======= Header ======= -->
 	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
-	<!--   <header id="header" class="header fixed-top d-flex align-items-center"> -->
-
-	<!--     <div class="d-flex align-items-center justify-content-between"> -->
-	<!--       <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--       <a href="index.html" class="logo d-flex align-items-center"> -->
-	<!--         <img src="assets/img/EPariksha.png" alt=""> -->
-	<!--         <span class="d-none d-lg-block">E-Pariksha</span> -->
-	<!--       </a> -->
-
-	<!--     </div>End Logo -->
-
-
-	<!--     <nav class="header-nav ms-auto"> -->
-	<!--       <ul class="d-flex align-items-center"> -->
-
-	<!--         <li class="nav-item dropdown pe-3"> -->
-
-	<!--           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<!--             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
-	<!--             <span class="d-none d-md-block dropdown-toggle ps-2">Admin</span> -->
-	<!--           </a>End Profile Iamge Icon -->
-
-	<!--           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--             <li class="dropdown-header"> -->
-	<!--               <h6>XYZ</h6> -->
-	<!--               <span>Web Designer</span> -->
-	<!--             </li> -->
-	<!--             <li> -->
-	<!--               <hr class="dropdown-divider"> -->
-	<!--             </li> -->
-
-	<!--             <li> -->
-	<!--               <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                 <i class="bi bi-person"></i> -->
-	<!--                 <span>My Profile</span> -->
-	<!--               </a> -->
-	<!--             </li> -->
-	<!--             <li> -->
-	<!--               <hr class="dropdown-divider"> -->
-	<!--             </li> -->
-
-	<!--             <li> -->
-	<!--               <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                 <i class="bi bi-box-arrow-right"></i> -->
-	<!--                 <span>Sign Out</span> -->
-	<!--               </a> -->
-	<!--             </li> -->
-
-	<!--           </ul>End Profile Dropdown Items -->
-	<!--         </li>End Profile Nav -->
-
-	<!--       </ul> -->
-	<!--     </nav>End Icons Navigation -->
-
-	<!--   </header>End Header -->
-
-
-	<!-- ======= Sidebar ======= -->
-	<!--    <aside id="sidebar" class="sidebar"> -->
-
-	<!--     <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="index.html"> -->
-	<!--           <i class="bi bi-grid"></i> -->
-	<!--           <span>Dashboard</span> -->
-	<!--         </a> -->
-	<!--       </li>End Dashboard Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="student.html"> -->
-	<!--           <i class="bi bi-person"></i> -->
-	<!--           <span>booking</span> -->
-	<!--         </a> -->
-	<!--       </li>End booking Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="teacher.html"> -->
-	<!--           <i class="bi bi-question-circle"></i> -->
-	<!--           <span>User</span> -->
-	<!--         </a> -->
-	<!--       </li>End User Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="subject.html"> -->
-	<!--           <i class="bi bi-envelope"></i> -->
-	<!--           <span>Services</span> -->
-	<!--         </a> -->
-	<!--       </li>End Subject Page Nav -->
-
-	<!--       <li class="nav-item"> -->
-	<!--         <a class="nav-link collapsed" href="examhistory.html"> -->
-	<!--           <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--           <span>Booking Details</span> -->
-	<!--         </a> -->
-	<!--       </li>End Exam History Page Nav -->
-
-
-	<!--     </ul> -->
-
 	<!--   </aside>End Sidebar -->
 
 	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
@@ -198,7 +98,9 @@
 					<div class="modal-choose-maid-content">
 						<span class="modal-choose-maid-close modal-choose-maid-close-js">&times;</span>
 						<h2 class="row justify-content-center">Chọn người giúp việc</h2>
-						<form:form action="admin/bookingDetail/${booking.id }/confirmMaid.htm" method="post">
+						<form:form
+							action="admin/bookingDetail/${booking.id }/confirmMaid.htm"
+							method="post">
 							<div class="tbody-scrollable">
 								<table class="table datatable ">
 									<thead class="thead-fixed"
@@ -461,200 +363,6 @@
 
 										</tbody>
 									</table>
-
-
-
-
-
-
-
-									<!-- 									Profile Edit Form -->
-									<%-- 									<form> --%>
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="profileImage" -->
-									<!-- 												class="col-md-4 col-lg-3 col-form-label">Ảnh</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<img -->
-									<%-- 													src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" --%>
-									<!-- 													alt="Profile"> -->
-									<!-- 												<div class="pt-2"> -->
-									<!-- 													<a href="#" class="btn btn-primary btn-sm" -->
-									<!-- 														title="Upload new profile image"><i -->
-									<!-- 														class="bi bi-upload"></i></a> <a href="#" -->
-									<!-- 														class="btn btn-danger btn-sm" -->
-									<!-- 														title="Remove my profile image"><i class="bi bi-trash"></i></a> -->
-									<!-- 												</div> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="fullName" -->
-									<!-- 												class="col-md-4 col-lg-3 col-form-label">Họ tên</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="name" type="text" class="form-control" -->
-									<!-- 													id="fullName" value="Kevin Anderson"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="about" class="col-md-4 col-lg-3 col-form-label">Giới -->
-									<!-- 												thiệu</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<textarea name="about" class="form-control" id="about" -->
-									<!-- 													style="height: 100px">Hahahahaha</textarea> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="company" class="col-md-4 col-lg-3 col-form-label">UserName</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="userName" type="text" class="form-control" -->
-									<!-- 													id="company" value="huutri"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="Job" class="col-md-4 col-lg-3 col-form-label">Giới -->
-									<!-- 												tính</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="gender" type="text" class="form-control" -->
-									<!-- 													id="Job" value="Nữ"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="Country" class="col-md-4 col-lg-3 col-form-label">Ngày -->
-									<!-- 												sinh</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="dob" type="text" class="form-control" -->
-									<!-- 													id="Country" value="31/02/2099"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="Address" class="col-md-4 col-lg-3 col-form-label">Địa -->
-									<!-- 												chỉ</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="address" type="text" class="form-control" -->
-									<!-- 													id="Address" value="97 Man Thiện"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Số -->
-									<!-- 												điện thoại</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="phone" type="text" class="form-control" -->
-									<!-- 													id="Phone" value="(436) 486-3538 x29071"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="email" type="email" class="form-control" -->
-									<!-- 													id="Email" value="k.anderson@example.com"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-
-									<!-- 										<div class="text-center"> -->
-									<!-- 											<button type="submit" class="btn btn-primary">Cập -->
-									<!-- 												nhật</button> -->
-									<!-- 										</div> -->
-									<%-- 									</form> --%>
-									<!-- 									End Profile Edit Form -->
-
-									<!-- 								</div> -->
-
-									<!-- 								<div class="tab-pane fade pt-3" id="profile-settings"> -->
-
-									<!-- 									Settings Form -->
-									<%-- 									<form> --%>
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="fullName" -->
-									<!-- 												class="col-md-4 col-lg-3 col-form-label">Email -->
-									<!-- 												Notifications</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<div class="form-check"> -->
-									<!-- 													<input class="form-check-input" type="checkbox" -->
-									<!-- 														id="changesMade" checked> <label -->
-									<!-- 														class="form-check-label" for="changesMade"> -->
-									<!-- 														Changes made to your account </label> -->
-									<!-- 												</div> -->
-									<!-- 												<div class="form-check"> -->
-									<!-- 													<input class="form-check-input" type="checkbox" -->
-									<!-- 														id="newProducts" checked> <label -->
-									<!-- 														class="form-check-label" for="newProducts"> -->
-									<!-- 														Information on new products and services </label> -->
-									<!-- 												</div> -->
-									<!-- 												<div class="form-check"> -->
-									<!-- 													<input class="form-check-input" type="checkbox" -->
-									<!-- 														id="proOffers"> <label class="form-check-label" -->
-									<!-- 														for="proOffers"> Marketing and promo offers </label> -->
-									<!-- 												</div> -->
-									<!-- 												<div class="form-check"> -->
-									<!-- 													<input class="form-check-input" type="checkbox" -->
-									<!-- 														id="securityNotify" checked disabled> <label -->
-									<!-- 														class="form-check-label" for="securityNotify"> -->
-									<!-- 														Security alerts </label> -->
-									<!-- 												</div> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="text-center"> -->
-									<!-- 											<button type="submit" class="btn btn-primary">Save -->
-									<!-- 												Changes</button> -->
-									<!-- 										</div> -->
-									<%-- 									</form> --%>
-									<!-- 									End settings Form -->
-
-									<!-- 								</div> -->
-
-									<!-- 								<div class="tab-pane fade pt-3" id="profile-change-password"> -->
-									<!-- 									Change Password Form -->
-									<%-- 									<form> --%>
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="currentPassword" -->
-									<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
-									<!-- 												hiện tại</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="password" type="password" class="form-control" -->
-									<!-- 													id="currentPassword"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="newPassword" -->
-									<!-- 												class="col-md-4 col-lg-3 col-form-label">Mật khẩu -->
-									<!-- 												mới</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="newpassword" type="password" -->
-									<!-- 													class="form-control" id="newPassword"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="row mb-3"> -->
-									<!-- 											<label for="renewPassword" -->
-									<!-- 												class="col-md-4 col-lg-3 col-form-label">Nhập lại -->
-									<!-- 												mật khẩu</label> -->
-									<!-- 											<div class="col-md-8 col-lg-9"> -->
-									<!-- 												<input name="renewpassword" type="password" -->
-									<!-- 													class="form-control" id="renewPassword"> -->
-									<!-- 											</div> -->
-									<!-- 										</div> -->
-
-									<!-- 										<div class="text-center"> -->
-									<!-- 											<button type="submit" class="btn btn-primary">Đổi -->
-									<!-- 												mật khẩu</button> -->
-									<!-- 										</div> -->
-									<%-- 									</form> --%>
-									<!-- 									End Change Password Form -->
-
-									<!-- 								</div> -->
-
 								</div>
 								<!-- End Bordered Tabs -->
 
@@ -708,21 +416,35 @@
 		src="<c:url value='/resources/admin/assets/js/modal_select_maid.js'/>"></script>
 	<!-- Ràng buộc số lượng người giúp việc -->
 	<script>
-        // Đây là nơi bạn có thể đặt mã JavaScript
-        var limit = ${service.maidQuantity}; // Giới hạn số lượng checkbox có thể chọn
-        document.addEventListener('DOMContentLoaded', function() {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(function(checkbox) {
-                checkbox.addEventListener('change', function() {
-                    var checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-                    if (checkedCheckboxes.length > limit) {
-                        this.checked = false; // Bỏ chọn nếu số lượng vượt quá giới hạn
-                        alert('Chỉ được chọn tối đa ' + limit + ' người giúp việc.');
-                    }
-                });
-            });
-        });
-    </script>
+		// Đây là nơi bạn có thể đặt mã JavaScript
+		var limit = $
+		{
+			service.maidQuantity
+		}; // Giới hạn số lượng checkbox có thể chọn
+		document
+				.addEventListener(
+						'DOMContentLoaded',
+						function() {
+							var checkboxes = document
+									.querySelectorAll('input[type="checkbox"]');
+							checkboxes
+									.forEach(function(checkbox) {
+										checkbox
+												.addEventListener(
+														'change',
+														function() {
+															var checkedCheckboxes = document
+																	.querySelectorAll('input[type="checkbox"]:checked');
+															if (checkedCheckboxes.length > limit) {
+																this.checked = false; // Bỏ chọn nếu số lượng vượt quá giới hạn
+																alert('Chỉ được chọn tối đa '
+																		+ limit
+																		+ ' người giúp việc.');
+															}
+														});
+									});
+						});
+	</script>
 </body>
 
 </html>

@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <title>Quên mật khẩu</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -34,8 +35,10 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
 					<div class="wrap d-md-flex">
-						<div class="img" >
-						</div>
+						<a href="customer/customerLogin.htm"> <i class="fa fa-arrow-left" aria-hidden="true"
+							style="font-size: 60px; cursor: pointer;"></i>
+						</a>
+						<div class="img"></div>
 						<div class="login-wrap p-4 p-md-4">
 							<div class="d-flex">
 								<div class="w-100 ">
@@ -48,7 +51,7 @@
 									</p>
 								</div>
 							</div>
-							<form:form action="customerForgotPassword.htm"
+							<form:form action="customer/customerForgotPassword.htm"
 								class="signin-form" modelAttribute="customerAcc">
 								<div>Quên mật khẩu? Không thành vấn đề, chúng tôi sẽ lấy
 									lại nó cho bạn Hãy nhập email mà bạn thiết lập làm tài khoản

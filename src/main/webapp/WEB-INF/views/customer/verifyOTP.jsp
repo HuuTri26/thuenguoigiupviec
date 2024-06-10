@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="UTF-8">
 <title>Nhập mã OTP</title>
 <style>
@@ -38,7 +39,7 @@
 </head>
 <body>
 
-	<form class="verify-form" action="customerSignup.htm" method="post">
+	<form class="verify-form" action="customer/customerSignup.htm" method="post">
 			<h1>
 				Hãy nhập mã OTP mà hệ thống vừa gửi tới email: <span>${email }</span>
 			</h1>

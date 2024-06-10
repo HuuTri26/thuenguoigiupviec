@@ -171,7 +171,8 @@
 			<h1>Người giúp việc</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Trang chủ</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a href="admin/addMaid.htm">Người
 							giúp việc</a></li>
 				</ol>

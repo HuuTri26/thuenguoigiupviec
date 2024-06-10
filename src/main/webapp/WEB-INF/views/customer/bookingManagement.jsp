@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -97,31 +98,33 @@
 <body>
 
 	<!-- ======= Header ======= -->
-<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
-<header id="header" class="fixed-top d-flex align-items-center">
+	<%-- 	<%@include file="/WEB-INF/views/customer/include/header.jsp"%> --%>
+	<header id="header" class="fixed-top d-flex align-items-center">
 		<div class="container d-flex justify-content-between">
 
 			<div class="logo">
 				<h1>
-					<a href="index.htm">BookMyMaid</a>
+					<a href="customer/index.htm">BookMyMaid</a>
 				</h1>
 				<!-- Uncomment below if you prefer to use an image logo -->
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="#"><span>Account</span> <i
-							class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="customer/index.htm"><span>Account</span>
+							<i class="bi bi-chevron-down"></i></a>
 						<ul>
-							<li><a href="customerProfile.htm">Trang cá nhân</a></li>
-							<li><a href="updateCustomer.htm">Cập nhật thông tin</a></li>
-							<li><a href="customerChangePassword.htm">Đổi mật khẩu</a></li>
-							<li><a href="bookingManagement.htm">Xem danh sách </a></li>
-							<li><a href="contractManagement.htm">Xem danh sách đặt
-									dịch vụ</a></li>
-							<li><a href="billManagement.htm">Xem danh bill</a></li>
-							<li><a href="logout.htm">Log out</a></li>
-
+							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
+							<li><a href="customer/updateCustomer.htm">Cập nhật thông
+									tin</a></li>
+							<li><a href="customer/customerChangePassword.htm">Đổi
+									mật khẩu</a></li>
+							<li><a href="customer/bookingManagement.htm">Xem danh
+									sách </a></li>
+							<li><a href="customer/contractManagement.htm">Xem danh
+									sách đặt dịch vụ</a></li>
+							<li><a href="customer/billManagement.htm">Xem danh bill</a></li>
+							<li><a href="#">Log out</a></li>
 						</ul></li>
 				</ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
@@ -135,9 +138,9 @@
 			<h1>Thông tin đặt dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="customer/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
+						href="customer/bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -146,7 +149,6 @@
 		<section class="section">
 			<div class="row">
 				<div class="col-lg-12">
-
 					<div class="card">
 						<div class="card-body">
 							<!--       <h5 class="card-title">Datatables</h5>
@@ -157,7 +159,7 @@
 								<select id="searchSelect" class="form-select"
 									aria-label="Default select example">
 									<option value="all">Tất cả</option>
-									<option value="id">Id</option>
+									<!-- 									<option value="id">Id</option> -->
 									<option value="customerId">Id khách hàng</option>
 									<option value="serviceId">Id gói dịch vụ</option>
 									<option value="startAt">Ngày bắt đầu</option>
@@ -166,9 +168,9 @@
 									<option value="price">Giá</option>
 									<option value="bookingStatus">Trạng thái đặt lịch</option>
 									<option value="paymentStatus">Trạng thái thanh toán</option>
-									<option value="employeeId">Id nhân viên</option>
-									<option value="rating">Rating</option>
-									<option value="feedback">Feedback</option>
+									<!-- 									<option value="employeeId">Id nhân viên</option> -->
+									<!-- 									<option value="rating">Rating</option> -->
+									<!-- 									<option value="feedback">Feedback</option> -->
 
 								</select> <input type="text" id="searchInput" placeholder="Tìm kiếm..."
 									class="m-2">
@@ -179,9 +181,9 @@
 							<table class="table datatable">
 								<thead style="background-color: #37517e; color: white">
 									<tr>
-										<th scope="col">Id <i class="bi bi-arrow-up-short"
-											data-sort="id" data-order="asc"></i>
-										</th>
+										<!-- 										<th scope="col">Id <i class="bi bi-arrow-up-short" -->
+										<!-- 											data-sort="id" data-order="asc"></i> -->
+										<!-- 										</th> -->
 										<th scope="col">Id khách hàng <i
 											class="bi bi-arrow-up-short" data-sort="customerId"
 											data-order="asc"></i>
@@ -212,16 +214,17 @@
 											class="bi bi-arrow-up-short" data-sort="paymentStatus"
 											data-order="asc"></i>
 										</th>
-										<th scope="col">Id nhân viên <i
-											class="bi bi-arrow-up-short" data-sort="employeeId"
-											data-order="asc"></i>
-										</th>
-										<th scope="col">Ratting <i class="bi bi-arrow-up-short"
-											data-sort="rating" data-order="asc"></i>
-										</th>
-										<th scope="col">Feedback <i class="bi bi-arrow-up-short"
-											data-sort="feedback" data-order="asc"></i>
-										</th>
+										<th></th>
+										<!-- 										<th scope="col">Id nhân viên <i -->
+										<!-- 											class="bi bi-arrow-up-short" data-sort="employeeId" -->
+										<!-- 											data-order="asc"></i> -->
+										<!-- 										</th> -->
+										<!-- 										<th scope="col">Ratting <i class="bi bi-arrow-up-short" -->
+										<!-- 											data-sort="rating" data-order="asc"></i> -->
+										<!-- 										</th> -->
+										<!-- 										<th scope="col">Feedback <i class="bi bi-arrow-up-short" -->
+										<!-- 											data-sort="feedback" data-order="asc"></i> -->
+										<!-- 										</th> -->
 									</tr>
 								</thead>
 								<tbody id="table_bookings">
@@ -229,14 +232,15 @@
 									<c:forEach var="booking" items="${bookingList }">
 
 										<tr>
-											<td scope="row">${booking.id }</td>
+											<%-- 											<td scope="row">${booking.id }</td> --%>
 											<td scope="col">${booking.customer.id }</td>
 											<td scope="col">${booking.service.id }</td>
 											<!-- <td scope="col">5</td> -->
 											<td scope="col">${booking.startTime }</td>
 											<td scope="col">${booking.bookingAddress }</td>
 											<td scope="col">${booking.note }</td>
-											<td scope="col"><fmt:formatNumber value="${booking.service.servicePrices[0].price }"
+											<td scope="col"><fmt:formatNumber
+													value="${booking.service.servicePrices[0].price }"
 													pattern="#,###.## VND;VND -#,###.##" type="currency"
 													currencySymbol="VND" /></td>
 											<td scope="col" id="bookingStatus" class="bookingStatus">${booking.bookingStatus == 1 ? 'Đã xác nhận' : 'Chưa xác nhận' }
@@ -254,186 +258,46 @@
 											<td scope="col">5</td>
 											<td scope="col">Tốt</td>
 
-											<td scope="col"><a href="bookingDetail.htm"
+											<td scope="col"><a href="customer/bookingDetail.htm"
 												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 										</tr>
 
 									</c:forEach>
-
-									<%-- <tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col"><fmt:formatNumber value="78000"
+									<tr>
+										<%-- 											<td scope="row">${booking.id }</td> --%>
+										<td scope="col">${booking.customer.id }</td>
+										<td scope="col">${booking.service.id }</td>
+										<!-- <td scope="col">5</td> -->
+										<td scope="col">${booking.startTime }</td>
+										<td scope="col">${booking.bookingAddress }</td>
+										<td scope="col">${booking.note }</td>
+										<td scope="col"><fmt:formatNumber
+												value="${booking.service.servicePrices[0].price }"
 												pattern="#,###.## VND;VND -#,###.##" type="currency"
 												currencySymbol="VND" /></td>
-										<td scope="col">
-											<div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div>
+										<td scope="col" id="bookingStatus" class="bookingStatus">${booking.bookingStatus == 1 ? 'Đã xác nhận' : 'Chưa xác nhận' }
+											<!-- <div class="form-check form-switch"
+													data-switch-text="Chưa xác nhận,Đã xác nhận">
+													<input class="form-check-input" type="checkbox"
+														role="switch"> <label class="form-check-label"
+														for="{checkboxId}"> <span class="switch-status">Chưa
+															xác nhận</span>
+													</label>
+												</div> -->
 										</td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
+										<td scope="col" id="paymentStatus" class="paymentStatus">${booking.paymentStatus == 1 ? 'Đã thanh toán' : 'Chưa thanh toán' }</td>
+										<td scope="col">${booking.employee.id }</td>
 										<td scope="col">5</td>
 										<td scope="col">Tốt</td>
 
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="customer/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col"><fmt:formatNumber value="8000"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div></td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
 
-										<td scope="col"><a href="bookingDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col"><fmt:formatNumber value="78000"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div></td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
-										<td scope="col"><a href="bookingDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">9</td>
-										<td scope="col">6</td>
-										<td scope="col">3</td>
-										<td scope="col">12</td>
-										<td scope="col">28/10/2022</td>
-										<td scope="col">Tan Thiện</td>
-										<td scope="col">Hang máy cắt cỏ</td>
-										<td scope="col"><fmt:formatNumber value="78000"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div></td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
-										<td scope="col"><a href="bookingDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">3</td>
-										<td scope="col">2</td>
-										<td scope="col">5</td>
-										<td scope="col">28/10/2024</td>
-										<td scope="col">97 Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col"><fmt:formatNumber value="78000"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div></td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">5</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
-										<td scope="col"><a href="bookingDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">2</td>
-										<td scope="col">6</td>
-										<td scope="col">7</td>
-										<td scope="col">2</td>
-										<td scope="col">28/10/2019</td>
-										<td scope="col">Man Thiện</td>
-										<td scope="col">Mang máy cắt cỏ</td>
-										<td scope="col"><fmt:formatNumber value="78000"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><div class="form-check form-switch"
-												data-switch-text="Chưa xác nhận,Đã xác nhận">
-												<input class="form-check-input" type="checkbox"
-													role="switch"> <label class="form-check-label"
-													for="{checkboxId}"> <span class="switch-status">Chưa
-														xác nhận</span>
-												</label>
-											</div></td>
-										<td scope="col">Đã thanh toán</td>
-										<td scope="col">7</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
-										<td scope="col"><a href="bookingDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr> --%>
 								</tbody>
 							</table>
-
 							<div class="pagination-container pt-5"
 								style="align-items: center; justify-content: center; text-align: center;">
 								<button class="btn btn-primary prev-page">Trước</button>
@@ -753,10 +617,8 @@ function resetTable() {
 	<!-- // 	  }); -->
 	<!-- // 	}); -->
 	<!-- <!-- 	</script> -->
-	-->
 
 	<!-- <!-- 	<script> -->
-	-->
 	<!-- // 	// Lấy dữ liệu từ bảng -->
 	<!-- // 	const tableRows = document.querySelectorAll("#table_bookings tr"); -->
 	<!-- // 	const itemsPerPage = 5; // Số dòng hiển thị mỗi trang -->

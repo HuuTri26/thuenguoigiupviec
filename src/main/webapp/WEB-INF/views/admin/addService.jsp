@@ -218,7 +218,7 @@
 										dịch vụ</label>
 									<form:input type="text" class="form-control"
 										id="validationDefault01" path="name" value=""
-										placeholder="Subject name" />
+										placeholder="Subject name" required="required" />
 									<form:errors path="name" />
 								</div>
 
@@ -238,7 +238,8 @@
 										tiền</label>
 									<form:input type="number" class="form-control"
 										id="validationDefault01" value=""
-										path="servicePrices[0].price" placeholder="Subject name" />
+										path="servicePrices[0].price" placeholder="Subject name"
+										required="required" />
 								</div>
 
 								<div class="col-md-6">
@@ -246,7 +247,7 @@
 										gian gói</label>
 									<form:input type="number" class="form-control"
 										id="validationDefault01" value="" path="time"
-										placeholder="Subject name" />
+										placeholder="Subject name" required="required" />
 								</div>
 
 								<div class="col-md-6">
@@ -254,7 +255,7 @@
 										lượng giúp việc</label>
 									<form:input type="number" class="form-control"
 										id="validationDefault01" value="" path="maidQuantity"
-										placeholder="Subject name" />
+										placeholder="Subject name" required="required" />
 								</div>
 								<!-- <div class="col-md-6">
                                     <label class="form-label">Description</label>

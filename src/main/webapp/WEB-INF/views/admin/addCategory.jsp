@@ -92,8 +92,8 @@
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
    -->
 							<!-- Browser Default Validation -->
-							<form:form class="row g-3" action="admin/addCategory.htm" method="post"
-								modelAttribute="category">
+							<form:form class="row g-3" action="admin/addCategory.htm"
+								method="post" modelAttribute="category">
 								<div class="row mb-3">
 									<label for="profileImage"
 										class="col-md-4 col-lg-3 col-form-label">Ảnh</label>

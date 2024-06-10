@@ -72,11 +72,11 @@
 			<h1>Bill</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
 						href="admin/billManagement.htm">Danh sách hóa đơn</a></li>
 					<li class="breadcrumb-item active"><a
-					href="admin/billDetail/1.htm">Thông tin hóa đơn</a></li>
+						href="admin/billDetail/1.htm">Thông tin hóa đơn</a></li>
 
 				</ol>
 			</nav>
@@ -150,7 +150,7 @@
 									</div>
 
 									<div class="text-center">
-										<button href="index.htm" class="btn btn-primary">Thoát</button>
+										<button href="admin/index.htm" class="btn btn-primary">Thoát</button>
 									</div>
 								</div>
 

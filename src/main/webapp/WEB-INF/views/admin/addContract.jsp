@@ -189,7 +189,8 @@
 						<div class="card-body">
 							<h5 class="card-title">Thêm hợp đồng</h5>
 							<!--   <p>Browser default validation with using the <code>required</code> keyword. Try submitting the form below. Depending on your browser and OS, you’ll see a slightly different style of feedback.</p>
-   -->						<a>${message }</a>
+   -->
+							<a>${message }</a>
 							<!-- Browser Default Validation -->
 							<form:form action="admin/proccessContract.htm" method="post"
 								class="row g-3" modelAttribute="contract">
@@ -265,7 +266,7 @@
 										id="validationDefault01" value="" path="contract.updateAt"
 										placeholder="Subject name" />
 								</div> --%>
-							<%-- 	<div class="col-md-6">
+								<%-- 	<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Mã
 										nhân viên</label>
 									<form:input type="number" class="form-control"
