@@ -416,34 +416,21 @@
 		src="<c:url value='/resources/admin/assets/js/modal_select_maid.js'/>"></script>
 	<!-- Ràng buộc số lượng người giúp việc -->
 	<script>
-		// Đây là nơi bạn có thể đặt mã JavaScript
-		var limit = $
-		{
-			service.maidQuantity
-		}; // Giới hạn số lượng checkbox có thể chọn
-		document
-				.addEventListener(
-						'DOMContentLoaded',
-						function() {
-							var checkboxes = document
-									.querySelectorAll('input[type="checkbox"]');
-							checkboxes
-									.forEach(function(checkbox) {
-										checkbox
-												.addEventListener(
-														'change',
-														function() {
-															var checkedCheckboxes = document
-																	.querySelectorAll('input[type="checkbox"]:checked');
-															if (checkedCheckboxes.length > limit) {
-																this.checked = false; // Bỏ chọn nếu số lượng vượt quá giới hạn
-																alert('Chỉ được chọn tối đa '
-																		+ limit
-																		+ ' người giúp việc.');
-															}
-														});
-									});
-						});
+	// Đây là nơi bạn có thể đặt mã JavaScript
+    var limit = ${service.maidQuantity}; // Giới hạn số lượng checkbox có thể chọn
+    document.addEventListener('DOMContentLoaded', function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                var checkedCheckboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+                if (checkedCheckboxes.length > limit) {
+                    this.checked = false; // Bỏ chọn nếu số lượng vượt quá giới hạn
+                    alert('Chỉ được chọn tối đa ' + limit + ' người giúp việc.');
+                }
+            });
+        });
+    });
+</script>
 	</script>
 </body>
 
