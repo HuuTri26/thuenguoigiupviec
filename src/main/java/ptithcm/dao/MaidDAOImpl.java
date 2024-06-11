@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import ptithcm.entity.EmployeeEntity;
 import ptithcm.entity.MaidEntity;
 
 @Transactional
@@ -77,6 +78,24 @@ public class MaidDAOImpl implements MaidDAO {
         Query query = session.createQuery(hql);
         List<MaidEntity> maidList = query.list();
         return maidList;
+	}
+
+	@Override
+	public MaidEntity getMaidByEmail(String email) {
+		// TODO Auto-generated method stub
+		MaidEntity maid = null;
+		Session session = factory.getCurrentSession();
+		String hql = "FROM MaidEntity WHERE email = :email";
+		try {
+			Query query = session.createQuery(hql);
+			query.setParameter("email", email);
+			
+			maid = (MaidEntity) query.uniqueResult();
+			
+		}catch (Exception e) {
+			System.out.println("Error: " + e.toString() + "\nStacktrace:"); e.printStackTrace();
+		}
+		return maid;
 	}
 
 }

@@ -20,5 +20,6 @@ public interface MaidService {
 	public List<MaidEntity> updateMaidStatus(List<MaidEntity> maids);
 	public List<MaidEntity> getListMaidSelectedListByBookingId(Integer bookingId);
 	public List<MaidEntity> getListMaidPartTime();
+	public MaidEntity getMaidByEmail(String email);
 	
 }

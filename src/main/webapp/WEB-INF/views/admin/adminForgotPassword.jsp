@@ -51,7 +51,7 @@
 									</p>
 								</div>
 							</div>
-							<form:form action="adminForgotPassword.htm" class="signin-form"
+							<form:form action="admin/adminForgotPassword.htm" class="signin-form"
 								method="post" modelAttribute="adminAcc">
 								<div>Quên mật khẩu? Không thành vấn đề, chúng tôi sẽ lấy
 									lại nó cho bạn Hãy nhập email mà bạn thiết lập làm tài khoản

@@ -151,8 +151,8 @@ public class adminController {
 			RoleEntity adminRole = roleService.getRoleById(1);
 			adminAcc.setRole(adminRole);
 			adminAcc.setStatus(true);
-			session.setAttribute("adminAcc", adminAcc);
-			System.out.println("==> Session's memories: 'adminAcc' has been allocated");
+			session.setAttribute("Account", adminAcc);
+			System.out.println("==> Session's memories: 'Account' has been allocated");
 
 			// Tạo employee dùng cho cả session
 			EmployeeEntity employee = employeeService.getEmployeeByEmail(adminAcc.getEmail());
@@ -373,7 +373,7 @@ public class adminController {
 		Boolean isValidPass = Boolean.TRUE;
 
 		HttpSession session = request.getSession();
-		AccountEntity adminAcc = (AccountEntity) session.getAttribute("adminAcc");
+		AccountEntity adminAcc = (AccountEntity) session.getAttribute("Account");
 		String newPass = request.getParameter("new-password");
 		String reEnterNewPass = request.getParameter("re-enter-new-password");
 

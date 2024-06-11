@@ -121,5 +121,11 @@ public class MaidServiceImpl implements MaidService {
 		return MaidDAO.getListMaidPartTime();
 	}
 
+	@Override
+	public MaidEntity getMaidByEmail(String email) {
+		// TODO Auto-generated method stub
+		return MaidDAO.getMaidByEmail(email);
+	}
+
 
 }
