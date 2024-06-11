@@ -511,21 +511,21 @@ document.getElementById('searchButton').addEventListener('click', () => {
             case 'phone':
                 return rowData[2].includes(searchText);
             case 'address':
-                return rowData.some(data => data.includes(searchText));
+                return rowData[3].includes(searchText);
             case 'exp':
-                return rowData[0].includes(searchText);
+                return rowData[4].includes(searchText);
             case 'salary':
-                return rowData[1].includes(searchText);
+                return rowData[5].includes(searchText);
             case 'type':
-                return rowData[2].includes(searchText);
+                return rowData[6].includes(searchText);
             case 'employeeId':
-                return rowData.some(data => data.includes(searchText));
+                return rowData[7].includes(searchText);
             case 'email':
-                return rowData[0].includes(searchText);
+                return rowData[8].includes(searchText);
             case 'workStatus':
-                return rowData[1].includes(searchText);
+                return rowData[9].includes(searchText);
             case 'accountStatus':
-                return rowData[2].includes(searchText);
+                return rowData[10].includes(searchText);
             default:
                 return false;
         }

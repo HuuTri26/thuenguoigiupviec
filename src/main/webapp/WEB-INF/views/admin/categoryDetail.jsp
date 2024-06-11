@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Gói dịch vụ</title>
+<title>Loại dịch vụ</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -71,12 +71,13 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Profile category</h1>
+			<h1>Thông tin loại dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
-						href="admin/categoryDetail.htm">category</a></li>
+						href="admin/categoryDetail.htm">Loại dịch vụ</a></li>
 				</ol>
 			</nav>
 		</div>

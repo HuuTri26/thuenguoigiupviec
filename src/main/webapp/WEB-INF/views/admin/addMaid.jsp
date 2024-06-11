@@ -61,106 +61,6 @@
 
 	<!-- ======= Header ======= -->
 	<%@include file="/WEB-INF/views/admin/include/header.jsp"%>
-	<!--     <header id="header" class="header fixed-top d-flex align-items-center"> -->
-
-	<!--         <div class="d-flex align-items-center justify-content-between"> -->
-	<!--             <i class="bi bi-list toggle-sidebar-btn"></i> -->
-	<!--             <a href="index.html" class="logo d-flex align-items-center"> -->
-	<%--                 <img src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" alt=""> --%>
-	<!--                 <span class="d-none d-lg-block">E-Pariksha</span> -->
-	<!--             </a> -->
-
-	<!--         </div>End Logo -->
-
-
-	<!--         <nav class="header-nav ms-auto"> -->
-	<!--             <ul class="d-flex align-items-center"> -->
-
-
-
-	<!--                 <li class="nav-item dropdown pe-3"> -->
-
-	<!--                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown"> -->
-	<%--                         <img src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>" alt="Profile" class="rounded-circle"> --%>
-	<!--                         <span class="d-none d-md-block dropdown-toggle ps-2">Sumit</span> -->
-	<!--                     </a>End Profile Iamge Icon -->
-
-	<!--                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile"> -->
-	<!--                         <li class="dropdown-header"> -->
-	<!--                             <h6>Sumit</h6> -->
-	<!--                             <span>Web Designer</span> -->
-	<!--                         </li> -->
-	<!--                         <li> -->
-	<!--                             <hr class="dropdown-divider"> -->
-	<!--                         </li> -->
-
-	<!--                         <li> -->
-	<!--                             <a class="dropdown-item d-flex align-items-center" href="user-profile.html"> -->
-	<!--                                 <i class="bi bi-person"></i> -->
-	<!--                                 <span>My Profile</span> -->
-	<!--                             </a> -->
-	<!--                         </li> -->
-	<!--                         <li> -->
-	<!--                             <hr class="dropdown-divider"> -->
-	<!--                         </li> -->
-
-	<!--                         <li> -->
-	<!--                             <a class="dropdown-item d-flex align-items-center" href="#"> -->
-	<!--                                 <i class="bi bi-box-arrow-right"></i> -->
-	<!--                                 <span>Sign Out</span> -->
-	<!--                             </a> -->
-	<!--                         </li> -->
-
-	<!--                     </ul>End Profile Dropdown Items -->
-	<!--                 </li>End Profile Nav -->
-
-	<!--             </ul> -->
-	<!--         </nav>End Icons Navigation -->
-
-	<!--     </header>End Header -->
-
-	<!-- ======= Sidebar ======= -->
-	<!--     <aside id="sidebar" class="sidebar"> -->
-
-	<!--         <ul class="sidebar-nav" id="sidebar-nav"> -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="index.html"> -->
-	<!--               <i class="bi bi-grid"></i> -->
-	<!--               <span>Dashboard</span> -->
-	<!--             </a> -->
-	<!--           </li>End Dashboard Nav -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="student.html"> -->
-	<!--               <i class="bi bi-person"></i> -->
-	<!--               <span>Maid</span> -->
-	<!--             </a> -->
-	<!--           </li>End Maid Page Nav -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="teacher.html"> -->
-	<!--               <i class="bi bi-question-circle"></i> -->
-	<!--               <span>User</span> -->
-	<!--             </a> -->
-	<!--           </li>End User Page Nav -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="subject.html"> -->
-	<!--               <i class="bi bi-envelope"></i> -->
-	<!--               <span>Services</span> -->
-	<!--             </a> -->
-	<!--           </li>End Subject Page Nav -->
-
-	<!--           <li class="nav-item"> -->
-	<!--             <a class="nav-link collapsed" href="examhistory.html"> -->
-	<!--               <i class="bi bi-box-arrow-in-right"></i> -->
-	<!--               <span>Booking Details</span> -->
-	<!--             </a> -->
-	<!--           </li>End Exam History Page Nav -->
-
-
-	<!--         </ul> -->
 
 	<!--       </aside>End Sidebar -->
 	<%@include file="/WEB-INF/views/admin/include/sidebar.jsp"%>
@@ -212,7 +112,7 @@
 										tên</label>
 									<form:input type="text" class="form-control"
 										id="validationDefault01" path="fullName"
-										placeholder="Full name" />
+										placeholder="Full name" required="required" />
 									<form:errors path="fullName" />
 								</div>
 								<div class="col-md-6">
@@ -220,35 +120,35 @@
 										điện thoại</label>
 									<form:input type="text" class="form-control"
 										id="validationDefault02" path="phoneNumber"
-										placeholder="Phone number" />
+										placeholder="Phone number" required="required"/>
 									<form:errors path="phoneNumber" />
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault03" class="form-label">Địa
 										chỉ</label>
 									<form:input type="text" class="form-control"
-										id="validationDefault03" path="address" placeholder="Address" />
+										id="validationDefault03" path="address" placeholder="Address" required="required"/>
 									<form:errors path="address" />
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault04" class="form-label">Kinh
 										nghiệm</label>
-									<form:input type="text" class="form-control"
+									<form:input type="number" class="form-control"
 										id="validationDefault04" path="experience"
-										placeholder="Experience" />
+										placeholder="Experience" required="required"/>
 									<form:errors path="experience" />
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault05" class="form-label">Lương</label>
-									<form:input type="text" class="form-control"
-										id="validationDefault05" path="salary" placeholder="Salary" />
+									<form:input type="number" class="form-control"
+										id="validationDefault05" path="salary" placeholder="Salary" required="required"/>
 									<form:errors path="salary" />
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault06" class="form-label">Email</label>
 									<form:input type="text" class="form-control"
 										id="validationDefault06" path="account.email"
-										placeholder="Email" />
+										placeholder="Email" required="required"/>
 									<form:errors path="account.email" />
 								</div>
 								<div class="col-md-6">

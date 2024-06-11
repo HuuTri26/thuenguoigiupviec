@@ -51,7 +51,7 @@ public class BookingEntity {
 	@Column(name = "BookingStatus", nullable = false, columnDefinition = "INT DEFAULT 0")
 	private Integer bookingStatus;
 	
-	@Column(name = "PaymentStatus", nullable = false, columnDefinition = "INT DEFAULT 0")
+	@Column(name = "PaymentStatus", nullable = false, columnDefinition = "INT DEFAULT 1")
 	private Integer paymentStatus;
 	
 	@Temporal(TemporalType.DATE)

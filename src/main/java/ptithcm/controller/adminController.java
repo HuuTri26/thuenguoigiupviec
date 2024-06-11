@@ -1063,7 +1063,7 @@ public class adminController {
 			System.out.println("Error: Add maid unsuccessfully!");
 		}
 
-		return "admin/addMaid";
+		return "redirect:/admin/maidManagement.htm";
 	}
 
 	@RequestMapping("admin/blockMaid/{id}")

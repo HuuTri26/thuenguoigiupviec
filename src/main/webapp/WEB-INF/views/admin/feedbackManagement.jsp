@@ -66,7 +66,7 @@
 			<h1>Thông tin phản hồi</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="admin/bookingManagement.htm">Thông tin phản hồi</a></li>
 				</ol>

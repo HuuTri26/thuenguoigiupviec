@@ -27,12 +27,12 @@
 
 		<li class="nav-item"><a class="nav-link collapsed"
 			href="admin/serviceManagement.htm"> <i class="bi bi-envelope"></i>
-				<span>Dịch vụ</span>
+				<span>Gói dịch vụ</span>
 		</a></li>
 
 		<li class="nav-item"><a class="nav-link collapsed"
 			href="admin/categoryManagement.htm"> <i
-				class="bi bi-box-arrow-in-right"></i> <span>Category</span></a></li>
+				class="bi bi-box-arrow-in-right"></i> <span>Loại dịch vụ</span></a></li>
 		<!-- End Subject Page Nav -->
 
 		<li class="nav-item"><a class="nav-link collapsed"
@@ -48,11 +48,11 @@
 		<li class="nav-item"><a class="nav-link collapsed"
 			href="admin/billManagement.htm"> <i
 				class="bi bi-box-arrow-in-right"></i> <span>Quản lý thanh
-					toan </span></a></li>
+					toán </span></a></li>
 
 		<li class="nav-item"><a class="nav-link collapsed"
 			href="admin/feedbackManagement.htm"> <i
-				class="bi bi-box-arrow-in-right"></i> <span>Quản lý phản hồi
+				class="bi bi-box-arrow-in-right"></i> <span>Quản lý đánh giá
 			</span></a></li>
 		<!-- End Exam History Page Nav -->
 

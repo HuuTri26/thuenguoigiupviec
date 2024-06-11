@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Profile customer</title>
+<title>Thông tin khách hàng</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -70,13 +70,14 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Profile customer</h1>
+			<h1>Thông tin khách hàng</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
-						href="admin/customerDetail/${customer.id }.htm">Profile
-							customer</a></li>
+						href="admin/customerDetail/${customer.id }.htm">Thông tin
+							khách hàng</a></li>
 				</ol>
 			</nav>
 		</div>
