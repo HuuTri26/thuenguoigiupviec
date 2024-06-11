@@ -71,7 +71,7 @@
 			<h1>Feedback</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="admin/contractDetail.htm">Feedback</a></li>
 				</ol>

@@ -68,6 +68,9 @@
 <link href="<c:url value='/resources/main/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <!-- =======================================================
   * Template Name: Maxim - v4.8.0
   * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
@@ -195,10 +198,7 @@
 							</h4>
 							<div class="d-flex flex-row my-3">
 								<div class="text-warning mb-1 me-2">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fas fa-star-half-alt"></i> <span class="ms-1">
-										4.5 </span>
+									<span class="ms-1"> 4.5 </span> <i class="fa fa-star"></i>
 								</div>
 								<span class="text-muted"><i
 									class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span> <span
@@ -250,9 +250,8 @@
 							<i class="fas fa-times text-white"></i>
 						</div>
 						<form:form class="row g-3"
-							action="customer/serviceList/serviceDetail/booking/${service.id }.htm"
-
-							method="post" modelAttribute="booking">
+							action="customer/booking/${service.id }.htm" method="post"
+							modelAttribute="booking">
 							<div class="col-12">
 								<h1 class="text-center fw-bolder text-white mt-3">Form đặt
 									dịch vụ</h1>
@@ -292,25 +291,25 @@
 								</div>
 							</div>
 
-							<div class="col-12">
-								<div class="form-floating">
-									<form:input path="bookingAddress" type="number"
-										class="form-control bg-light " id="inputAddress"
-										placeholder="033434343" />
-									<label for="inputAddress" class="form-label">Phone
-										number</label>
-									<form:errors path="" />
-								</div>
-							</div>
-							<div class="col-md-4 col-6">
-								<label class="mb-2">Phương thức thanh toán</label> <select
-									class="form-select border border-secondary"
-									style="height: 35px;">
-									<option>Tiền mặt</option>
-									<option>Chuyển khoản</option>
+							<!-- 							<div class="col-12"> -->
+							<!-- 								<div class="form-floating"> -->
+							<%-- 									<form:input path="bookingAddress" type="number" --%>
+							<%-- 										class="form-control bg-light " id="inputAddress" --%>
+							<%-- 										placeholder="033434343" /> --%>
+							<!-- 									<label for="inputAddress" class="form-label">Phone -->
+							<!-- 										number</label> -->
+							<%-- 									<form:errors path="" /> --%>
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							<div class="col-md-4 col-6"> -->
+							<!-- 								<label class="mb-2">Phương thức thanh toán</label> <select -->
+							<!-- 									class="form-select border border-secondary" -->
+							<!-- 									style="height: 35px;"> -->
+							<!-- 									<option>Tiền mặt</option> -->
+							<!-- 									<option>Chuyển khoản</option> -->
 
-								</select>
-							</div>
+							<!-- 								</select> -->
+							<!-- 							</div> -->
 
 							<div class="col-12 text-end">
 								<button type="submit"

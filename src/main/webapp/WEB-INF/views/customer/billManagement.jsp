@@ -111,8 +111,8 @@
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="customer/index.htm"><span>Account</span>
-							<i class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="customer/index.htm"><span>Tài
+								khoản</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
 							<li><a href="customer/updateCustomer.htm">Cập nhật thông
@@ -139,7 +139,8 @@
 			<h1>Thông tin Bill</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="customer/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="customer/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="customer/bookingManagement.htm">Thông tin bill</a></li>
 				</ol>

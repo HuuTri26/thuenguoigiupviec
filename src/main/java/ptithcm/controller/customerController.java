@@ -419,7 +419,7 @@ public class customerController {
 				booking.setStartTime(booking.getStartTime());
 				booking.setBookingAddress(booking.getBookingAddress());
 				booking.setPrice(service.getServicePrices().get(0).getPrice());
-				booking.setBookingStatus(0);
+				booking.setBookingStatus(1);
 				booking.setPaymentStatus(0);
 				booking.setCreateAt(new Date());
 				booking.setCustomer(customer);
@@ -427,7 +427,9 @@ public class customerController {
 //				
 				bookingService.createBooking(booking);
 				System.out.println("==> Booking request created successfully at " + new Date() + '!');
-				return "redirect:/customer/serviceList/" + service.getId() +".htm";
+				System.out.println(id+" "+service.getId());
+//				return "redirect:/customer/serviceList/" + service.getId() +".htm";
+				return "redirect:/customer/index.htm#service";
 
 			}catch (Exception e) {
 				System.out.println("Error: \n" + e.toString());

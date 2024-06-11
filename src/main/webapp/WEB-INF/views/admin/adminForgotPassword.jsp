@@ -35,8 +35,8 @@
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
 					<div class="wrap d-md-flex">
-						<a href="admin/adminLogin.htm"> <i class="fa fa-arrow-left" aria-hidden="true"
-							style="font-size: 60px; cursor: pointer;"></i>
+						<a href="admin/adminLogin.htm"> <i class="fa fa-arrow-left"
+							aria-hidden="true" style="font-size: 60px; cursor: pointer;"></i>
 						</a>
 						<div class="img"></div>
 						<div class="login-wrap p-4 p-md-4">

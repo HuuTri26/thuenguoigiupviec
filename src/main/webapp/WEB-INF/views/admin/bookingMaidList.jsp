@@ -12,7 +12,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Manage Maid</title>
+<title>Danh sách người giúp việc</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -79,10 +79,11 @@
 
 	<main id="main" class="main">
 		<div class="pagetitle">
-			<h1>Maid Management</h1>
+			<h1>Danh sách người giúp việc</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="admin/maidManagement.htm">Phân công maid</a></li>
 				</ol>
@@ -220,7 +221,7 @@
 								</tbody>
 							</table>
 							<button class="btn btn-primary prev-page mb-3 mt-3">
-								<a href="bookingManagement.htm" style="color: white;">Phân
+								<a href="admin/bookingManagement.htm" style="color: white;">Phân
 									công</a>
 							</button>
 							<div class="pagination-container pt-5"

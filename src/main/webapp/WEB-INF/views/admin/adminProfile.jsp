@@ -11,7 +11,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Profile</title>
+<title>Thông tin admin</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -74,9 +74,10 @@
 			<h1>Profile</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
-						href="admin/adminProfile.htm">Profile</a></li>
+						href="admin/adminProfile.htm">Thông tin</a></li>
 					<!-- link này định trỏ tới đâu vậy -->
 				</ol>
 			</nav>
@@ -155,7 +156,7 @@
 											</div>
 
 											<div class="row">
-												<div class="col-lg-3 col-md-4 label">Phone</div>
+												<div class="col-lg-3 col-md-4 label">Số điện thoại</div>
 												<div class="col-lg-9 col-md-8">
 													<span>${employeeInfo.phoneNumber }</span>
 												</div>
