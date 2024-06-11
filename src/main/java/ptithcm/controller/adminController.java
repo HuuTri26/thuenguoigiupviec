@@ -760,16 +760,18 @@ public class adminController {
 	    return "redirect:/admin/bookingDetail/{bookingId}.htm";
 	}
 	@RequestMapping(value="admin/bookingDetail/confirmBooking/{bookingId}")
-	public String confirmBooking(@PathVariable("bookingId") int bookingId, ModelMap model) {
+	public String confirmBooking(HttpServletRequest request, @PathVariable("bookingId") int bookingId, ModelMap model) {
 		List<BookingDetailEntity> bookingDetails= bookingDetailService.getListBookingDetailsByBookingId(bookingId);
 		List<MaidEntity> maidsSelected = maidService.getListMaidSelectedListByBookingId(bookingId);
 		List<MaidEntity> maidsAvailable = maidService.getListMaidPartTime();
 		BookingEntity booking = bookingService.getBookingById(bookingId);
 		ServiceEntity service = maidServiceService.getServiceById(booking.getService().getId());
 		
-		
 		// Handle
+		HttpSession session = request.getSession();
+		EmployeeEntity employee = (EmployeeEntity) session.getAttribute("employee");
 		booking.setBookingStatus(2);// 0: đã hủy, 1: chờ xác nhận, 2 đã xác nhận, 3: đã hoàn thành
+		booking.setEmployee(employee);
 		bookingService.updateBooking(booking);
 		
 		model.addAttribute("maidsAvailable", maidsAvailable);

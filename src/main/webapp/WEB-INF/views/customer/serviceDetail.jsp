@@ -283,14 +283,16 @@
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
-									<form:input path="bookingAddress" type="text"
+									<form:input path="note" type="text"
 										class="form-control bg-light " id="inputAddress"
-										placeholder="1234 Main St" />
+										placeholder="" />
 									<label for="inputAddress" class="form-label">Note</label>
 									<form:errors path="note" />
 								</div>
 							</div>
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 							<!-- 							<div class="col-12"> -->
 							<!-- 								<div class="form-floating"> -->
 							<%-- 									<form:input path="bookingAddress" type="number" --%>
@@ -307,6 +309,26 @@
 							<!-- 									style="height: 35px;"> -->
 							<!-- 									<option>Tiền mặt</option> -->
 							<!-- 									<option>Chuyển khoản</option> -->
+=======
+=======
+>>>>>>> Stashed changes
+						<%-- 	<div class="col-12">
+								<div class="form-floating">
+									<form:input path="bookingAddress" type="number"
+										class="form-control bg-light " id="inputAddress"
+										placeholder="033434343" />
+									<label for="inputAddress" class="form-label">Phone
+										number</label>
+									<form:errors path="" />
+								</div>
+							</div> --%>
+							<div class="col-md-4 col-6">
+								<label class="mb-2">Phương thức thanh toán</label> <select
+									class="form-select border border-secondary"
+									style="height: 35px;">
+									<option>Tiền mặt</option>
+									<option>Chuyển khoản</option>
+>>>>>>> Stashed changes
 
 							<!-- 								</select> -->
 							<!-- 							</div> -->

@@ -47,4 +47,9 @@ public class BookingServiceImpl implements BookingService{
 		return BookingDAO.getBookingsForMaid(maidId);
 	}
 
+	@Override
+	public List<BookingEntity> getBookingListBy(Integer customerId) {
+		return BookingDAO.getBookingListBy(customerId);
+	}
+
 }

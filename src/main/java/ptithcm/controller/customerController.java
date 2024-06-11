@@ -30,17 +30,23 @@ import ptithcm.bean.Mailer;
 import ptithcm.dao.ContractDAO;
 import ptithcm.dao.ServiceDAO;
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.BillEntity;
+import ptithcm.entity.BookingDetailEntity;
 import ptithcm.entity.BookingEntity;
 import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.ContractEntity;
 import ptithcm.entity.CustomerEntity;
+import ptithcm.entity.MaidEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.entity.ServiceEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.BillService;
+import ptithcm.service.BookingDetailService;
 import ptithcm.service.BookingService;
 import ptithcm.service.CategoryService;
 import ptithcm.service.ContractService;
 import ptithcm.service.CustomerService;
+import ptithcm.service.MaidService;
 import ptithcm.service.MaidServiceService;
 import ptithcm.service.RoleService;
 
@@ -65,15 +71,24 @@ public class customerController {
 
 	@Autowired
 	CategoryService categoryService;
-	
+
 	@Autowired
 	MaidServiceService maidServiceService;
-	
+
 	@Autowired
 	BookingService bookingService;
-	
+
 	@Autowired
 	ContractService contractService;
+
+	@Autowired
+	MaidService maidService;
+
+	@Autowired
+	BookingDetailService bookingDetailService;
+
+	@Autowired
+	BillService billService;
 
 	// Trang đăng nhập cho customer
 	@RequestMapping("customer/customerLogin")
@@ -295,29 +310,93 @@ public class customerController {
 
 	// Hiển thị danh sách các đặt dịch vụ :
 	@RequestMapping("customer/bookingManagement")
-	public String showBookingList() {
+	public String showBookingList(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
+
+		List<BookingEntity> bookingList = bookingService.getBookingListBy(customer.getId());
+
+		model.addAttribute("bookingList", bookingList);
 		return "customer/bookingManagement";
 
 	}
 
 	// Hiển thị thông tin các đặt dịch vụ :
-	@RequestMapping("customer/bookingDetail")
-	public String showBookingDetail() {
-		return "customer/bookingDetail";
+	@RequestMapping("customer/bookingDetail/{id}")
+	public String showBookingDetail(Model model, @PathVariable("id") Integer id) {
+		BookingEntity booking = bookingService.getBookingById(id);
+		List<MaidEntity> bookingMaids = maidService.getListMaidSelectedListByBookingId(id);
 
+		System.out.println("==> Open a booking checkout session!");
+
+		model.addAttribute("booking", booking);
+		model.addAttribute("bookingMaids", bookingMaids);
+		model.addAttribute("bookingDetail", new BookingDetailEntity());
+
+		return "customer/bookingDetail";
+	}
+
+	@RequestMapping(value = "customer/checkoutBooking/{id}", method = RequestMethod.POST)
+	public String checkoutBooking(HttpServletRequest request, @ModelAttribute("bookingDetail") BookingDetailEntity bookingDetail, @PathVariable("id") Integer id) {
+		BookingEntity booking = bookingService.getBookingById(id);
+		List<BookingDetailEntity> bookingDetails = bookingDetailService.getListBookingDetailsByBookingId(id);
+		String rate_str = request.getParameter("rate");
+		System.out.println(rate_str);
+		bookingDetail.setRating(Integer.parseInt(rate_str));
+
+		for (BookingDetailEntity bkDetail : bookingDetails) {
+			try {
+				bkDetail.setFeedback(bookingDetail.getFeedback());
+				bkDetail.setRating(bookingDetail.getRating());
+				bookingDetailService.updateBookingDetail(bkDetail);
+				System.out.println("==> Booking detail with id = " + bkDetail.getId() + " updated successfully!");
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("Error: Booking detail with id = " + bkDetail.getId() + " updated unsuccessfully!");
+				return "redirect:/customer/bookingDetail/" + id + ".htm";
+			}
+
+		}
+
+		try {
+			BillEntity bill = new BillEntity();
+			bill.setTotal(booking.getPrice());
+			bill.setBooking(booking);
+			bill.setPaymentTime(null);
+
+			billService.createBill(bill);
+
+			System.out.println("==> Bill created created successfully at " + new Date() + '!');
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error: Bill created created unsuccessfully!");
+			return "redirect:/customer/bookingDetail/" + id + ".htm";
+		}
+		
+		try {
+			booking.setBookingStatus(3);
+			bookingService.updateBooking(booking);
+			
+			System.out.println("==> Booking checkout successfully");
+			return "redirect:/customer/bookingManagement.htm";
+		}catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("==> Booking checkout unsuccessfully");
+			return "redirect:/customer/bookingDetail/" + id + ".htm";
+		}
 	}
 
 	// Hiển thị danh sách hợp đồng
 	@RequestMapping("customer/contractManagement")
-	public String showContractList(HttpServletRequest request ,Model model) {
+	public String showContractList(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
-		
+
 		List<ContractEntity> contractList = contractService.getListContractBy(customer.getId());
 		model.addAttribute("contractList", contractList);
-		
+
 		return "customer/contractManagement";
-		
+
 	}
 
 	// Hiển thị thông tin hợp đồng hợp đồng
@@ -359,7 +438,7 @@ public class customerController {
 		List<ServiceEntity> serviceList = maidServiceService.getListServiceByCategoryId(id);
 		model.addAttribute("serviceList", serviceList);
 		System.out.println("==> Open booking service session!");
-		
+
 		return "customer/serviceList";
 	}
 
@@ -368,43 +447,44 @@ public class customerController {
 	public String showServiceDetail(Model model, @PathVariable("id") Integer id) {
 		ServiceEntity service = maidServiceService.getServiceById(id);
 		model.addAttribute("service", service);
-		
+
 		BookingEntity booking = new BookingEntity();
 		model.addAttribute("booking", booking);
-		
+
 		return "customer/serviceDetail";
 	}
+
 	private LocalDateTime convertToLocalDateTimeViaInstant(Date dateToConvert) {
-        return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
-    }
-	
-	//Tạo yêu cầu đặt người giúp việc
-	@RequestMapping(value = "customer/booking/{id}", method =  RequestMethod.POST)
-	public String createBookingRequest(HttpServletRequest request ,Model model, @PathVariable("id") Integer id,
+		return dateToConvert.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+	}
+
+	// Tạo yêu cầu đặt người giúp việc
+	@RequestMapping(value = "customer/booking/{id}", method = RequestMethod.POST)
+	public String createBookingRequest(HttpServletRequest request, Model model, @PathVariable("id") Integer id,
 			@ModelAttribute("booking") BookingEntity booking, BindingResult errors) {
-		
+
 //		Date currentTime = new Date();
 		LocalDateTime currentTime = LocalDateTime.now();
 		LocalDateTime bookingStartTime = convertToLocalDateTimeViaInstant(booking.getStartTime());
 		System.out.println("Current Time: " + currentTime);
 		System.out.println("Booking Start Time: " + booking.getStartTime());
-		
+
 		Boolean isValidBooking = Boolean.TRUE;
-		
-		if(booking.getStartTime() == null) {
+
+		if (booking.getStartTime() == null) {
 			errors.rejectValue("startTime", "booking", "Thời gian bắt đầu không được để trống!");
 			isValidBooking = Boolean.FALSE;
-			
-		}else if(bookingStartTime.isBefore(currentTime)) {
+
+		} else if (bookingStartTime.isBefore(currentTime)) {
 			errors.rejectValue("startTime", "booking", "Thời gian bắt đầu không hợp lệ!");
 			isValidBooking = Boolean.FALSE;
-			
-		}else if(booking.getBookingAddress().isEmpty()) {
+
+		} else if (booking.getBookingAddress().isEmpty()) {
 			errors.rejectValue("bookingAddress", "booking", "Địa chỉ không được để trống!");
 			isValidBooking = Boolean.FALSE;
 		}
-		
-		if(isValidBooking) {
+
+		if (isValidBooking) {
 			try {
 				HttpSession session = request.getSession();
 				CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
@@ -427,22 +507,23 @@ public class customerController {
 //				
 				bookingService.createBooking(booking);
 				System.out.println("==> Booking request created successfully at " + new Date() + '!');
-				System.out.println(id+" "+service.getId());
+				System.out.println(id + " " + service.getId());
 //				return "redirect:/customer/serviceList/" + service.getId() +".htm";
 				return "redirect:/customer/index.htm#service";
 
-			}catch (Exception e) {
+			} catch (Exception e) {
 				System.out.println("Error: \n" + e.toString());
 			}
-		}else {
+		} else {
 			System.out.println("Error: Booking request created unsuccessfuly!");
-			
+
 		}
 
 		System.out.println(booking.getBookingAddress());
 		System.out.println(booking.getStartTime());
-		return "redirect:/customer/serviceList/serviceDetail/" + id +".htm";
+		return "redirect:/customer/serviceList/serviceDetail/" + id + ".htm";
 	}
+
 	public Date getDateNow() {
 		Calendar calendar = Calendar.getInstance();
 
@@ -589,7 +670,6 @@ public class customerController {
 
 		return "customer/customerSignup";
 	}
-	
 
 	// Trang dashboard của customer
 	@RequestMapping("customer/index")
@@ -598,13 +678,14 @@ public class customerController {
 		model.addAttribute("categoryList", categoryList);
 		return "customer/index"; // Assuming you have a view named categoryList.jsp
 	}
-	
+
 	@RequestMapping("customer/serviceList/index")
 	public String retureIndexCustomer(Model model) {
 		List<CategoryEntity> categoryList = categoryService.getListCategory();
 		model.addAttribute("categoryList", categoryList);
 		return "redirect:/customer/index.htm"; // Assuming you have a view named categoryList.jsp
 	}
+
 	@RequestMapping("customer/serviceList/serviceDetail/index")
 	public String retureIndexCustomer2(Model model) {
 		List<CategoryEntity> categoryList = categoryService.getListCategory();

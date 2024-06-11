@@ -111,8 +111,8 @@
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="customer/index.htm"><span>Tài khoản</span>
-							<i class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="customer/index.htm"><span>Tài
+								khoản</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
 							<li><a href="customer/updateCustomer.htm">Cập nhật thông
@@ -138,7 +138,8 @@
 			<h1>Thông tin đặt dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="customer/index.htm">Trang chủ</a></li>
+					<li class="breadcrumb-item"><a href="customer/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="customer/bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
 				</ol>
@@ -243,58 +244,34 @@
 													value="${booking.service.servicePrices[0].price }"
 													pattern="#,###.## VND;VND -#,###.##" type="currency"
 													currencySymbol="VND" /></td>
-											<td scope="col" id="bookingStatus" class="bookingStatus">${booking.bookingStatus == 1 ? 'Đã xác nhận' : 'Chưa xác nhận' }
-												<!-- <div class="form-check form-switch"
-													data-switch-text="Chưa xác nhận,Đã xác nhận">
-													<input class="form-check-input" type="checkbox"
-														role="switch"> <label class="form-check-label"
-														for="{checkboxId}"> <span class="switch-status">Chưa
-															xác nhận</span>
-													</label>
-												</div> -->
+											<td scope="col" id="bookingStatus" class="bookingStatus">
+												<c:choose>
+													<c:when test="${booking.bookingStatus == 0}">
+                    									Đã hủy
+                									</c:when>
+													<c:when test="${booking.bookingStatus == 1}">
+                    									Chờ xác nhận
+                									</c:when>
+                									<c:when test="${booking.bookingStatus == 2}">
+                										Đã xác nhận
+                									</c:when>
+													<c:otherwise>
+                    									Hoàn thành
+                									</c:otherwise>
+												</c:choose>
 											</td>
 											<td scope="col" id="paymentStatus" class="paymentStatus">${booking.paymentStatus == 1 ? 'Đã thanh toán' : 'Chưa thanh toán' }</td>
 											<td scope="col">${booking.employee.id }</td>
 											<td scope="col">5</td>
 											<td scope="col">Tốt</td>
 
-											<td scope="col"><a href="customer/bookingDetail.htm"
-												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
+											<td scope="col"><a
+												href="customer/bookingDetail/${booking.id }.htm"
+												class="btn btn-primary"><i class="bi bi-eye"></i></a> <a
 												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 										</tr>
 
 									</c:forEach>
-									<tr>
-										<%-- 											<td scope="row">${booking.id }</td> --%>
-										<td scope="col">${booking.customer.id }</td>
-										<td scope="col">${booking.service.id }</td>
-										<!-- <td scope="col">5</td> -->
-										<td scope="col">${booking.startTime }</td>
-										<td scope="col">${booking.bookingAddress }</td>
-										<td scope="col">${booking.note }</td>
-										<td scope="col"><fmt:formatNumber
-												value="${booking.service.servicePrices[0].price }"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col" id="bookingStatus" class="bookingStatus">${booking.bookingStatus == 1 ? 'Đã xác nhận' : 'Chưa xác nhận' }
-											<!-- <div class="form-check form-switch"
-													data-switch-text="Chưa xác nhận,Đã xác nhận">
-													<input class="form-check-input" type="checkbox"
-														role="switch"> <label class="form-check-label"
-														for="{checkboxId}"> <span class="switch-status">Chưa
-															xác nhận</span>
-													</label>
-												</div> -->
-										</td>
-										<td scope="col" id="paymentStatus" class="paymentStatus">${booking.paymentStatus == 1 ? 'Đã thanh toán' : 'Chưa thanh toán' }</td>
-										<td scope="col">${booking.employee.id }</td>
-										<td scope="col">5</td>
-										<td scope="col">Tốt</td>
-
-										<td scope="col"><a href="customer/bookingDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
 
 								</tbody>
 							</table>
