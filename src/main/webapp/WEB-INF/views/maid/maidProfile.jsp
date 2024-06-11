@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -171,8 +172,8 @@
 			<h1>Profile Maid</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-					<li class="breadcrumb-item active"><a href="maidProfile.html">Profile
+					<li class="breadcrumb-item"><a href="maid/index.htm">Home</a></li>
+					<li class="breadcrumb-item active"><a href="maid/maidProfile.htm">Profile
 							Maid</a></li>
 				</ol>
 			</nav>

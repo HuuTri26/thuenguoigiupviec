@@ -25,15 +25,21 @@ import org.springframework.web.bind.support.SessionStatus;
 import ptithcm.bean.Mailer;
 import ptithcm.dao.ServiceDAO;
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.BillEntity;
+import ptithcm.entity.BookingDetailEntity;
 import ptithcm.entity.BookingEntity;
 import ptithcm.entity.CategoryEntity;
 import ptithcm.entity.CustomerEntity;
+import ptithcm.entity.MaidEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.entity.ServiceEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.BillService;
+import ptithcm.service.BookingDetailService;
 import ptithcm.service.BookingService;
 import ptithcm.service.CategoryService;
 import ptithcm.service.CustomerService;
+import ptithcm.service.MaidService;
 import ptithcm.service.MaidServiceService;
 import ptithcm.service.RoleService;
 
@@ -55,6 +61,9 @@ public class customerController {
 
 	@Autowired
 	Mailer mailer;
+	
+	@Autowired
+	MaidService maidService;
 
 	@Autowired
 	CategoryService categoryService;
@@ -64,7 +73,13 @@ public class customerController {
 	
 	@Autowired
 	BookingService bookingService;
-
+	
+	@Autowired
+	BookingDetailService bookingDetailService;
+	
+	@Autowired
+	BillService billService;
+	
 	// Trang đăng nhập cho customer
 	@RequestMapping("customer/customerLogin")
 	public String showCustomerLoginForm(Model model) {
@@ -285,18 +300,117 @@ public class customerController {
 
 	// Hiển thị danh sách các đặt dịch vụ :
 	@RequestMapping("customer/bookingManagement")
-	public String showBookingList() {
-		return "customer/bookingManagement";
+	public String showBookingList(Model model) {
+		List<BookingEntity> bookingList = bookingService.getListBooking();
+		model.addAttribute("bookingList", bookingList);
 
+		return "customer/bookingManagement";
 	}
+
 
 	// Hiển thị thông tin các đặt dịch vụ :
-	@RequestMapping("customer/bookingDetail")
-	public String showBookingDetail() {
+	@RequestMapping(value="customer/bookingDetail/{bookingId}")
+	public String showBookingDetail(@PathVariable("bookingId") int bookingId, ModelMap model){
+		List<BookingDetailEntity> bookingDetails= bookingDetailService.getListBookingDetailsByBookingId(bookingId);
+		List<MaidEntity> maidsSelected = maidService.getListMaidSelectedListByBookingId(bookingId);
+		List<MaidEntity> maidsAvailable = maidService.getListMaidPartTime();
+		BookingEntity booking = bookingService.getBookingById(bookingId);
+		ServiceEntity service = maidServiceService.getServiceById(booking.getService().getId());
+//		List<BookingDetailEntity> bookingDetails = bookingDetailService.getBookingDetailsByBooking(booking)
+//		EmployeeEntity employee = employeeService.getEmployeeById(bookingId);
+		
+		model.addAttribute("bookingDetails", bookingDetails);
+		model.addAttribute("booking", booking);
+		model.addAttribute("service", service);
+		model.addAttribute("maidsSelected", maidsSelected);
+		model.addAttribute("maidsAvailable", maidsAvailable);
+//		model.addAttribute("employee", employee);
 		return "customer/bookingDetail";
-
 	}
-
+	@RequestMapping(value="customer/bookingDetail/{bookingId}/confirmMaid", method = RequestMethod.POST)
+	public String confirmMaidIntoBooking(@PathVariable("bookingId") int bookingId, ModelMap model,@RequestParam(value="selectedItems", required=false, defaultValue="") List<String> selectedItems) {
+//		if(selectedItems.size() == 0) {
+//			return "redirect:/customer/bookingDetail/"+bookingId+".htm";
+//		}
+	    // selectedItems sẽ chứa danh sách các ID của item được chọn
+	    // Xử lý danh sách các ID này theo nghiệp vụ của bạn
+		List<BookingDetailEntity> bookingDetails= bookingDetailService.getListBookingDetailsByBookingId(bookingId);
+		List<MaidEntity> maidsSelected = maidService.getListMaidSelectedListByBookingId(bookingId);
+		List<MaidEntity> maidsAvailable = maidService.getListMaidPartTime();
+		BookingEntity booking = bookingService.getBookingById(bookingId);
+		ServiceEntity service = maidServiceService.getServiceById(booking.getService().getId());
+		
+		
+		System.out.println(maidsSelected.size());
+		for(int i = 0; i < maidsSelected.size(); i++) {
+			boolean found = false;
+			for(int j = 0; j < selectedItems.size(); j++) {
+				
+				if(maidsSelected.get(i).getId().toString() == selectedItems.get(j)) {
+					found = true;
+					break;
+				}
+			}
+			if(found) {
+				// xóa khỏi list selectedItems để sau chỉ phải thêm những cái chưa có thôi.
+				selectedItems.remove(maidsSelected.get(i).getId().toString());
+                continue;
+            }
+			else {
+				// xóa cái hiện tại khỏi csdl vì không có.
+				MaidEntity maid = maidService.getMaidById(maidsSelected.get(i).getId());
+           
+                bookingDetailService.deleteBookingDetailsByBookingIdAndMaidId(bookingId, maid.getId());
+			}
+		}
+		// Thêm những booking details còn thiếu.
+		
+		for(int i = 0; i < selectedItems.size(); i++) {
+			
+			System.out.println(selectedItems.get(i));
+			MaidEntity maid = maidService.getMaidById(Integer.parseInt(selectedItems.get(i)));
+			BookingDetailEntity bookingDetail = new BookingDetailEntity();
+			bookingDetail.setBooking(booking);
+			bookingDetail.setMaid(maid);
+			bookingDetailService.addBookingDetail(bookingDetail);
+			
+			
+		}
+		// load lại dữ liệu
+		bookingDetails= bookingDetailService.getListBookingDetailsByBookingId(bookingId);
+		maidsSelected = maidService.getListMaidSelectedListByBookingId(bookingId);
+		booking = bookingService.getBookingById(bookingId);
+		service = maidServiceService.getServiceById(booking.getService().getId());
+		//
+		model.addAttribute("maidsAvailable", maidsAvailable);
+		model.addAttribute("bookingDetails", bookingDetails);
+		model.addAttribute("booking", booking);
+		model.addAttribute("service", service);
+		model.addAttribute("maidsSelected", maidsSelected);
+	    return "redirect:/customer/bookingDetail/{bookingId}.htm";
+	}
+	@RequestMapping(value="customer/bookingDetail/confirmBooking/{bookingId}")
+	public String confirmBooking(@PathVariable("bookingId") int bookingId, ModelMap model) {
+		List<BookingDetailEntity> bookingDetails= bookingDetailService.getListBookingDetailsByBookingId(bookingId);
+		List<MaidEntity> maidsSelected = maidService.getListMaidSelectedListByBookingId(bookingId);
+		List<MaidEntity> maidsAvailable = maidService.getListMaidPartTime();
+		BookingEntity booking = bookingService.getBookingById(bookingId);
+		ServiceEntity service = maidServiceService.getServiceById(booking.getService().getId());
+		
+		
+		// Handle
+		booking.setBookingStatus(2);// 0: đã hủy, 1: chờ xác nhận, 2 đã xác nhận, 3: đã hoàn thành
+		bookingService.updateBooking(booking);
+		
+		model.addAttribute("maidsAvailable", maidsAvailable);
+		model.addAttribute("bookingDetails", bookingDetails);
+		model.addAttribute("booking", booking);
+		model.addAttribute("service", service);
+		model.addAttribute("maidsSelected", maidsSelected);
+		return "redirect:/customer/bookingDetail/{bookingId}.htm";
+	}
+	
+	
 	// Hiển thị danh sách hợp đồng
 	@RequestMapping("customer/contractManagement")
 	public String showContractList() {
@@ -311,15 +425,17 @@ public class customerController {
 
 	}
 
-	// Hiển thị danh sách hợp đồng
-	@RequestMapping("customer/billDetail")
-	public String showBillDetail() {
-		return "customer/billDetail";
+	// Hiển thị danh sách hóa đơn
+	@RequestMapping("customer/billManagement")
+	public String showBillList(Model model) {
+		List<BillEntity> billList = billService.getListBill();
+		model.addAttribute("billList", billList);
 
+		return "customer/billManagement";
 	}
 
-	// Hiển thị danh sách hợp đồng
-	@RequestMapping("customer/billManagement")
+	// Hiển thị thông tin hóa đơn
+	@RequestMapping("customer/billDetail")
 	public String showBillList() {
 		return "customer/billManagement";
 

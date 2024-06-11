@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <title>Quên mật khẩu</title>
 <meta charset="utf-8">
 <meta name="viewport"
@@ -83,7 +84,7 @@
 									</div>
 
 									<div class="text-center">
-										<button type="submit" class="btn btn-primary"><a href="maidLogin.htm">Đổi mật
+										<button type="submit" class="btn btn-primary"><a href="maid/maidLogin.htm">Đổi mật
 											khẩu</a></button>
 									</div>
 								</form>

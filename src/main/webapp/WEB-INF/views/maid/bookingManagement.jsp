@@ -7,6 +7,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -171,9 +172,9 @@
 			<h1>Thông tin đặt dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="maid/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
+						href="maid/bookingManagement.htm">Thông tin đặt dịch vụ</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -275,7 +276,7 @@
 										<td scope="col">Đang thực hiện</td>
 										<td scope="col">Chưa thanh toán</td>
 										<td scope="col">2</td>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="maid/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -292,7 +293,7 @@
 										<td scope="col">Đang thực hiện</td>
 										<td scope="col">Chưa thanh toán</td>
 										<td scope="col">3</td>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="maid/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -309,7 +310,7 @@
 										<td scope="col">Đang thực hiện</td>
 										<td scope="col">Chưa thanh toán</td>
 										<td scope="col">3</td>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="maid/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -326,7 +327,7 @@
 										<td scope="col">Đang thực hiện</td>
 										<td scope="col">Chưa thanh toán</td>
 										<td scope="col">3</td>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="maid/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -343,7 +344,7 @@
 										<td scope="col">Đang thực hiện</td>
 										<td scope="col">Chưa thanh toán</td>
 										<td scope="col">3</td>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="maid/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -360,7 +361,7 @@
 										<td scope="col">Đang thực hiện</td>
 										<td scope="col">Chưa thanh toán</td>
 										<td scope="col">3</td>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="maid/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -377,7 +378,7 @@
 										<td scope="col">Đang thực hiện</td>
 										<td scope="col">Chưa thanh toán</td>
 										<td scope="col">3</td>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="maid/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>
@@ -394,7 +395,7 @@
 										<td scope="col">Đang thực hiện</td>
 										<td scope="col">Chưa thanh toán</td>
 										<td scope="col">3</td>
-										<td scope="col"><a href="bookingDetail.htm"
+										<td scope="col"><a href="maid/bookingDetail.htm"
 											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 									</tr>

@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 <meta charset="UTF-8">
 <title>Nhập mã OTP</title>
 <style>
@@ -54,7 +55,7 @@
 				<input class="input" type="text" name="f" maxlength="1" autocomplete="off" />
 			</div>
 		</div>
-		<button id="btn-veri" name="verify"><a href="changeForgotPassword.htm">Xác Nhận</a></button>
+		<button id="btn-veri" name="verify"><a href="maid/changeForgotPassword.htm">Xác Nhận</a></button>
 		<button id="btn-again" name="again">Gửi lại mã</button>
 	</form>
 

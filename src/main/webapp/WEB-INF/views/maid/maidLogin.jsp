@@ -9,6 +9,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 	<title>Đăng nhập</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -46,7 +47,7 @@
 									</p>
 								</div>
 							</div>
-							<form:form action="maidLogin.htm" class="signin-form" method="POST" modelAttribute="maidAcc">
+							<form:form action="maid/maidLogin.htm" class="signin-form" method="POST" modelAttribute="maidAcc">
 							    <div style="color:red;">${message }</div>
 								<div class="form-group mb-3">
 									<label class="label" for="name">Username</label>
@@ -70,11 +71,10 @@
 										</label>
 									</div>
 									<div class="w-50 text-md-right">
-										<a href="maidForgotPassword.htm">Quên mật khẩu</a>
+										<a href="maid/maidForgotPassword.htm">Quên mật khẩu</a>
 									</div>
 								</div>
 							</form:form>
-							<p class="text-center"><a href="maidSignup.htm">Đăng ký</a></p>
 						</div>
 					</div>
 				</div>

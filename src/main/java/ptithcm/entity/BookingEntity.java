@@ -3,10 +3,12 @@ package ptithcm.entity;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -65,7 +67,18 @@ public class BookingEntity {
 	
 	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
 	private List<BookingDetailEntity> bookingDetails;
+	
+	@OneToOne(mappedBy = "booking", fetch = FetchType.LAZY)
+	private BillEntity bill;
 
+	public BillEntity getBill() {
+		return bill;
+	}
+
+	public void setBill(BillEntity bill) {
+		this.bill = bill;
+	}
+	
 	public Integer getId() {
 		return id;
 	}
@@ -161,4 +174,6 @@ public class BookingEntity {
 	public void setBookingDetails(List<BookingDetailEntity> bookingDetails) {
 		this.bookingDetails = bookingDetails;
 	}
+	
+
 }

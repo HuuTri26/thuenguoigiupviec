@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
     <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
     <%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
+    <base href="${pageContext.servletContext.contextPath}/">
 <header id="header" class="header fixed-top d-flex align-items-center">
 
       <div class="d-flex align-items-center justify-content-between">
         <i class="bi bi-list toggle-sidebar-btn"></i>
-        <a href="index.html" class="logo d-flex align-items-center">
+        <a href="maid/index.htm" class="logo d-flex align-items-center">
           <img src="<c:url value='/resources/admin/assets/img/EPariksha.png'/>" alt="">
           <span class="d-none d-lg-block">Hiring Maid</span>
         </a>
@@ -36,19 +37,19 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="maidProfile.htm">
+                <a class="dropdown-item d-flex align-items-center" href="maid/maidProfile.htm">
                   <i class="bi bi-person"></i>
                   <span>Trang cá nhân</span>
                 </a>
               </li>
                 <li>
-                <a class="dropdown-item d-flex align-items-center" href="maidEditProfile.htm">
+                <a class="dropdown-item d-flex align-items-center" href="maid/maidEditProfile.htm">
                   <i class="bi bi-person"></i>
                   <span>Chỉnh sửa trang cá nhân</span>
                 </a>
               </li>
                 <li>
-                <a class="dropdown-item d-flex align-items-center" href="maidChangePassword.htm">
+                <a class="dropdown-item d-flex align-items-center" href="maid/maidChangePassword.htm">
                   <i class="bi bi-person"></i>
                   <span>Đổi mật khẩu</span>
                 </a>
@@ -58,7 +59,7 @@
               </li>
   
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="maidLogin.htm">
+                <a class="dropdown-item d-flex align-items-center" href="maid/maidLogin.htm">
                   <i class="bi bi-box-arrow-right"></i>
                   <span>Thoát</span>
                 </a>

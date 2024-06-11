@@ -219,12 +219,12 @@
 										<th scope="col">Id <i class="bi bi-arrow-up-short"
 											data-sort="id" data-order="asc"></i>
 										</th>
-										<th scope="col">Id khách hàng <i
+										<th scope="col">Tên khách hàng <i
 											class="bi bi-arrow-up-short" data-sort="customerId"
 											data-order="asc"></i>
 										</th>
 										<!-- 										<th scope="col">Id người giúp việc</th> -->
-										<th scope="col">Id gói dịch vụ <i
+										<th scope="col">Tên gói dịch vụ <i
 											class="bi bi-arrow-up-short" data-sort="serviceId"
 											data-order="asc"></i>
 										</th>
@@ -267,9 +267,9 @@
 
 										<tr>
 											<td scope="row">${booking.id }</td>
-											<td scope="col">${booking.customer.id }</td>
+											<td scope="col">${booking.customer.fullName }</td>
 											<!-- 										<td scope="col">2</td> -->
-											<td scope="col">${booking.service.id }</td>
+											<td scope="col">${booking.service.name }</td>
 											<td scope="col">${booking.startTime }</td>
 											<td scope="col">${booking.bookingAddress }</td>
 											<td scope="col">${booking.note }</td>

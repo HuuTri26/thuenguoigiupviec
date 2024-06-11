@@ -1,0 +1,78 @@
+package ptithcm.entity;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.OneToOne;
+
+@Entity
+@Table(name = "BILL")
+public class BillEntity {
+	@Id
+	@GeneratedValue
+	@Column(name = "Id")
+	private Integer id;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name = "PaymentTime")
+	private Date paymentTime;
+	
+	@Column(name = "Total")
+	private Double total;
+	
+	@OneToOne
+	@JoinColumn(name = "bookingId")
+	private BookingEntity booking;
+
+	public BookingEntity getBooking() {
+		return booking;
+	}
+
+	public void setBooking(BookingEntity booking) {
+		this.booking = booking;
+	}
+
+	
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Date getPaymentTime() {
+		return paymentTime;
+	}
+
+	public void setPaymentTime(Date paymentTime) {
+		this.paymentTime = paymentTime;
+	}
+	
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
+
+	
+}

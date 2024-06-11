@@ -32,6 +32,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import ptithcm.bean.Mailer;
 import ptithcm.dao.ServiceDAO;
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.BillEntity;
 import ptithcm.entity.BookingDetailEntity;
 import ptithcm.entity.BookingEntity;
 import ptithcm.entity.CategoryEntity;
@@ -43,6 +44,7 @@ import ptithcm.entity.ServiceEntity;
 import ptithcm.entity.ServicePriceEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.BillService;
 import ptithcm.service.BookingDetailService;
 import ptithcm.service.BookingService;
 import ptithcm.service.CategoryService;
@@ -90,8 +92,13 @@ public class adminController {
 
 	@Autowired
 	BookingService bookingService;
+	
 	@Autowired
 	BookingDetailService bookingDetailService;
+	
+	@Autowired
+	BillService billService;
+	
 	@Autowired
 	Mailer mailer;
 
@@ -900,15 +907,22 @@ public class adminController {
 
 	// Hiển thị danh sách bill:
 	@RequestMapping("admin/billManagement")
-	public String showBillManagement() {
+	public String showBillList(Model model) {
+		List<BillEntity> billList = billService.getListBill();
+		model.addAttribute("billList", billList);
+
 		return "admin/billManagement";
 	}
 
 	// Hiển thị thông tin bill:
 	@RequestMapping("admin/billDetail/{billId}")
-	public String showBillDetail() {
+	public String showBillDetail(@PathVariable("billId") int billId, Model model){
+		BillEntity bill = billService.getBillById(billId);
+		model.addAttribute("bill", bill);
 		return "admin/billDetail";
 	}
+
+
 
 	// Hiển thị danh sách feedback:
 	@RequestMapping("admin/feedbackManagement")

@@ -94,8 +94,12 @@
 							<img
 								src="<c:url value='/resources/admin/assets/img/profile-img.jpg'/>"
 								alt="Profile" class="rounded-circle">
-							<h2>Hữu</h2>
-							<h3>huutri</h3>
+							<h2>Thông tin khách hàng</h2>
+							<div style="margin-top: 30px">
+
+								<h3>Họ tên khách hàng:  ${bill.booking.customer.fullName}</h3>
+								<h3>Số điện thoại: ${bill.booking.customer.phoneNumber} </h3>
+							</div>
 						</div>
 					</div>
 
@@ -131,22 +135,22 @@
 								<div class="tab-pane fade show active profile-overview"
 									id="profile-overview">
 									<h5 class="card-title">Miêu tả</h5>
-									<p class="small fst-italic">Hahahahahahaa</p>
+									<p class="small fst-italic"></p>
 
 									<h5 class="card-title">Thông tin bill</h5>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label ">Id đặt lịch</div>
-										<div class="col-lg-9 col-md-8">1</div>
+										<div class="col-lg-9 col-md-8">${bill.id } </div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label ">Thời gian thanh
 											toán</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
+										<div class="col-lg-9 col-md-8">${bill.paymentTime } </div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Tổng tiền</div>
-										<div class="col-lg-9 col-md-8">200$</div>
+									<div class="col-lg-9 col-md-8"><fmt:formatNumber value="${bill.total}" pattern="#,###.## VND;VND -#,###.##" type="currency" currencySymbol="VND"/></div>
 									</div>
 
 									<div class="text-center">

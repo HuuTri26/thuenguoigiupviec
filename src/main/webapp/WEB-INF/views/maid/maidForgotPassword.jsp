@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+<base href="${pageContext.servletContext.contextPath}/">
 	<title>Quên mật khẩu</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -62,7 +63,7 @@
 								</div> -->
 								<div class="form-group">
 									<button type="submit"
-										class="form-control btn btn-primary rounded submit px-3"><a href="forgotPasswordOTP.htm">Xác nhận</a></button>
+										class="form-control btn btn-primary rounded submit px-3"><a href="maid/forgotPasswordOTP.htm">Xác nhận</a></button>
 								</div>
 								<!-- <div class="form-group d-md-flex">
 									<div class="w-100 text-left">
