@@ -17,16 +17,18 @@
 	<!-- Spring MVC Annotation -->
 	<context:annotation-config />
 	<mvc:annotation-driven />
-<!-- 	 <mvc:interceptors> -->
-<!-- 	<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/admin/adminAccount.htm" /> -->
-<!-- 			<bean class="ptithcm.intercepter.ownerIntercepter" /> -->
-<!-- 		</mvc:interceptor> -->
-<!-- 		<mvc:interceptor> -->
-<!-- 			<mvc:mapping path="/admin/**" /> -->
-<!-- 			<bean class="ptithcm.intercepter.adminIntercepter" /> -->
-<!-- 		</mvc:interceptor> -->
-<!-- 	</mvc:interceptors>  -->
+	 <mvc:interceptors>
+
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**" />
+			<bean class="ptithcm.intercepter.adminIntercepter" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/maid/**" />
+			<bean class="ptithcm.intercepter.maidIntercepter" />
+		</mvc:interceptor>
+		
+	</mvc:interceptors> 
 
 
 	<!-- Cấu hình view -->
@@ -35,7 +37,7 @@
 
 	<!-- Cấu hình package chứa các controller -->
 	<context:component-scan
-		base-package="ptithcm.controller,ptithcm.bean,ptithcm.dao,ptithcm.service,ptithcm.entity" />
+		base-package="ptithcm.controller,ptithcm.bean,ptithcm.dao,ptithcm.service,ptithcm.entity,ptithcm.intercepter" />
 <!-- 		,ptithcm.bean,ptithcm.dao,ptithcm.service,ptithcm.intercepter -->
 
 </beans>

@@ -130,7 +130,7 @@ public class customerController {
 			RoleEntity customerRole = roleService.getRoleById(3);
 			customerAcc.setRole(customerRole);
 			customerAcc.setStatus(true);
-			session.setAttribute("customerAcc", customerAcc);
+			session.setAttribute("Account", customerAcc);
 			System.out.println("==> Session's memories: 'customerAcc' has been allocated");
 
 			// Tạo Customer dùng cho cả session
@@ -487,7 +487,7 @@ public class customerController {
 			String otp = accountService.generateOTP();
 			session.setAttribute("otp", otp);
 			customerAcc.setEmail(customerAcc.getEmail());
-			session.setAttribute("customerAcc", customerAcc);
+			session.setAttribute("Account", customerAcc);
 			mailer.sendMailAsync("DichVuQuanLyMaid", customerAcc.getEmail(), "OTP", "Mã OTP của bạn là: " + otp);
 			session.setAttribute("email", customerAcc.getEmail());
 			return "customer/verifyOTP";
@@ -557,7 +557,7 @@ public class customerController {
 
 			if (customerRole != null) {
 				HttpSession session = request.getSession();
-				AccountEntity newCustomerAcc = (AccountEntity) session.getAttribute("customerAcc");
+				AccountEntity newCustomerAcc = (AccountEntity) session.getAttribute("Account");
 
 				newCustomerAcc.setPassword(accountService.getHashPassword(reEnterPass));
 				newCustomerAcc.setRole(customerRole);

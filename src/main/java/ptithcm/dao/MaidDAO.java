@@ -12,4 +12,5 @@ public interface MaidDAO {
 	public List<MaidEntity> getListFullTimeMaids();
 	public List<MaidEntity> getMaidSelectedListBybookingId(Integer bookingId);
 	public List<MaidEntity> getListMaidPartTime();
+	public MaidEntity getMaidByEmail(String email);
 }

@@ -1,6 +1,7 @@
 package ptithcm.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.EmployeeEntity;
+import ptithcm.entity.MaidEntity;
+import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.MaidService;
 import ptithcm.service.RoleService;
 
 @Controller
@@ -26,6 +31,9 @@ public class maidController {
 
 	@Autowired
 	RoleService roleService;
+	@Autowired
+	MaidService maidService;
+
 
 	// Trang đăng nhập cho maid
 	@RequestMapping("maid/maidLogin")
@@ -141,6 +149,18 @@ public class maidController {
 
 		if (permission) {
 			System.out.println("Login successfully!");
+			HttpSession session = request.getSession();
+
+			RoleEntity adminRole = roleService.getRoleById(2);
+			maidAcc.setRole(adminRole);
+			maidAcc.setStatus(true);
+			session.setAttribute("Account", maidAcc);
+			System.out.println("==> Session's memories: 'adminAcc' has been allocated");
+
+			// Tạo maid dùng cho cả session
+			MaidEntity maid = maidService.getMaidByEmail(maidAcc.getEmail());
+			session.setAttribute("maid", maid);
+			System.out.println("==> Session's memories: 'employee' has been allocated");
 			return "maid/index";
 		} else {
 			System.out.println("Login unsuccessfully!");
