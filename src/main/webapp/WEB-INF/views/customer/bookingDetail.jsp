@@ -459,35 +459,43 @@
 				</div>
 			</div>
 		</section>
+
 		<form:form class="overlay" id="overlay"
 			onclick="hidePaymentForm(event)"
 			action="customer/checkoutBooking/${booking.id}.htm" method="post"
 			modelAttribute="bookingDetail">
 
 			<div class="container-card p-0" id="paymentForm">
+
 				<div class="card-payment px-4">
 					<p class="h8 py-3">Thanh toán đơn hàng</p>
 					<div class="row gx-3">
 						<div class="col-12">
 							<div class="d-flex flex-column">
 								<p class="text mb-1">Tên gói</p>
+
 								<input readonly="readonly" class="form-control mb-3" type="text"
 									placeholder="Name" value="${booking.service.name }">
+
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="d-flex flex-column">
 								<p class="text mb-1">Giá gói</p>
+
 								<input readonly="readonly" class="form-control mb-3" type="text"
 									placeholder="Name"
 									value="${booking.service.servicePrices[0].price }">
+
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="d-flex flex-column">
 								<p class="text mb-1">Feedback</p>
+
 								<form:textarea path="feedback" class="form-control mb-3"
 									placeholder="Name" />
+
 							</div>
 						</div>
 						<div class="col-12">
@@ -563,6 +571,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="col-12">
 							<div class="btn btn-primary mb-3">
 								<a href="customer/checkoutBooking/${booking.id}.htm" class="ps-3">Thanh toán</a> <span
@@ -573,6 +582,7 @@
 				</div>
 			</div>
 		</div> --%>
+
 	</main>
 	<!-- End #main -->
 	<%@include file="/WEB-INF/views/customer/include/footer.jsp"%>
