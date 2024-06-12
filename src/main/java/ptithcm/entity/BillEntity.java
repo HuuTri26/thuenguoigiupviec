@@ -24,7 +24,6 @@ public class BillEntity {
 	
 	@Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
-	@Column(name = "PaymentTime", columnDefinition = "DATETIME DEFAULT SYSDATETIME()")
 	private Date paymentTime;
 	
 	@Column(name = "Total")

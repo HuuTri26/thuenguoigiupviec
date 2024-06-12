@@ -265,7 +265,7 @@
 											<td scope="col">5</td>
 											<td scope="col">Tốt</td>
 
-											<td scope="col"><a
+											<td scope="col"><a ${(booking.bookingStatus == 2 || booking.bookingStatus == 3) ? '' : 'hidden' }
 												href="customer/bookingDetail/${booking.id }.htm"
 												class="btn btn-primary"><i class="bi bi-eye"></i></a> <a
 												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>

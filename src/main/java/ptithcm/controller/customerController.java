@@ -338,6 +338,10 @@ public class customerController {
 
 	@RequestMapping(value = "customer/checkoutBooking/{id}", method = RequestMethod.POST)
 	public String checkoutBooking(HttpServletRequest request, @ModelAttribute("bookingDetail") BookingDetailEntity bookingDetail, @PathVariable("id") Integer id) {
+		Date nowDate = new Date();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+		String formattedNowDate = dateFormat.format(nowDate);
+		
 		BookingEntity booking = bookingService.getBookingById(id);
 		List<BookingDetailEntity> bookingDetails = bookingDetailService.getListBookingDetailsByBookingId(id);
 		String rate_str = request.getParameter("rate");
@@ -362,7 +366,7 @@ public class customerController {
 			BillEntity bill = new BillEntity();
 			bill.setTotal(booking.getPrice());
 			bill.setBooking(booking);
-			bill.setPaymentTime(null);
+			bill.setPaymentTime(dateFormat.parse(formattedNowDate));
 
 			billService.createBill(bill);
 
@@ -375,6 +379,7 @@ public class customerController {
 		
 		try {
 			booking.setBookingStatus(3);
+			booking.setPaymentStatus(1);
 			bookingService.updateBooking(booking);
 			
 			System.out.println("==> Booking checkout successfully");

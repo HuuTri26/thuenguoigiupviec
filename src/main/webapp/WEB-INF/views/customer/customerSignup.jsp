@@ -34,9 +34,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-8 col-lg-10">
 					<div class="wrap d-md-flex">
-						<div class="img"
-							style="background-image: url(images/Logo1.png); margin-left: 5mm; margin-top: 40mm; width: 50ex; height: 50mm;">
-						</div>
+						<div class="img"></div>
 						<div class="login-wrap p-4 p-md-5">
 							<div class="d-flex">
 								<div class="w-2000 ">
