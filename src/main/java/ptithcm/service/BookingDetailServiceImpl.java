@@ -18,8 +18,8 @@ public class BookingDetailServiceImpl implements BookingDetailService{
 	
 
 	@Override
-	public void updateBookingDetail(BookingEntity booking) {
-		// TODO Auto-generated method stub
+	public void updateBookingDetail(BookingDetailEntity bookingDetails) {
+		bookingDetailDAO.updateBookingDetail(bookingDetails);
 		
 	}
 

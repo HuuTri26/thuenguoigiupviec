@@ -13,7 +13,8 @@ import ptithcm.entity.BookingEntity;
 @Transactional
 public interface BookingDetailService {
 	public void addBookingDetail(BookingDetailEntity bookingDetail);
-	public void updateBookingDetail(BookingEntity booking);
+	public void updateBookingDetail(BookingDetailEntity bookingDetails);
 	public List<BookingDetailEntity> getListBookingDetailsByBookingId(int bookingId);
 	public void deleteBookingDetailsByBookingIdAndMaidId(int bookingId, int maidId);
+	
 }

@@ -64,4 +64,14 @@ public class BookingDAOImpl implements BookingDAO {
 	    return bookings;
 	}
 
+	@Override
+	public List<BookingEntity> getBookingListBy(Integer customerId) {
+		Session session = factory.getCurrentSession();
+        String hql = "FROM BookingEntity b WHERE b.customer.id = :customerId";
+        Query query = session.createQuery(hql);
+        query.setParameter("customerId", customerId);
+        List<BookingEntity> bookings = query.list();
+        return bookings;
+	}
+
 }
