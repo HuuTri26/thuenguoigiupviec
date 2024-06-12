@@ -1,5 +1,7 @@
 package ptithcm.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,16 @@ public class BillServiceImpl implements BillService{
 	public void createBill(BillEntity bill) {
 		BillDAO.createBill(bill);
 		
+	}
+
+	@Override
+	public List<BillEntity> getListBill() {
+		return BillDAO.getListBill();
+	}
+
+	@Override
+	public List<BillEntity> getListBillBy(Integer customerId) {
+		return BillDAO.getBillListBy(customerId);
 	}
 	
 }

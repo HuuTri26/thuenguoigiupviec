@@ -180,14 +180,12 @@
 											</td>
 
 											<td scope="col"><a href="admin/serviceDetail.htm"
-												class="btn btn-primary "><i class="bi bi-eye"></i></a> <a
-												href="admin/updateService.htm" class="btn btn-primary "><i
-													class="bi-pencil"></i></a> 
-<!-- 													<a href="#" class="btn btn-danger"> -->
-<!-- 													<i class="bi-trash"></i> -->
-<!-- 												Field này có dùng k -->
-<!-- 											</a>  -->
-											<a href="admin/blockService/${service.id}.htm"
+												class="btn btn-primary "><i class="bi bi-eye"></i></a> 
+												<a href="admin/updateService/${service.id}.htm"
+												class="btn btn-primary "><i class="bi-pencil"></i></a> <!-- 													<a href="#" class="btn btn-danger"> -->
+												<!-- 													<i class="bi-trash"></i> --> <!-- 												Field này có dùng k -->
+												<!-- 											</a>  --> <a
+												href="admin/blockService/${service.id}.htm"
 												class="btn btn-danger "><i class="fa-solid fa-ban"></i></a>
 												<a href="admin/activeService/${service.id}.htm"
 												class="btn btn-primary "><i class="fa-solid fa-check"></i></a>

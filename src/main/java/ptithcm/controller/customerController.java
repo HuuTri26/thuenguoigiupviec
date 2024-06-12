@@ -420,7 +420,13 @@ public class customerController {
 
 	// Hiển thị danh sách hợp đồng
 	@RequestMapping("customer/billManagement")
-	public String showBillList() {
+	public String showBillList(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
+		List<BillEntity> billList = billService.getListBillBy(customer.getId());
+		
+		model.addAttribute("billList", billList);
+		
 		return "customer/billManagement";
 
 	}
