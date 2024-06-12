@@ -159,54 +159,52 @@ body {
 								<h1 class="text-center fw-bolder text-white mt-3">Hợp đồng</h1>
 								<hr>
 							</div>
-							<!-- 							<div class="col-12"> -->
-							<!-- 								<div class="form-floating"> -->
-							<!-- 									<input type="date" autocomplete="off" -->
-							<!-- 										class="form-control bg-light " id="inputName" -->
-							<!-- 										placeholder="Name" name="startAt"> <label -->
-							<!-- 										for="inputName">Ngày bắt đầu</label> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
-							<!-- 							<div class="col-12"> -->
-							<!-- 								<div class="form-floating"> -->
-							<!-- 									<input type="date" autocomplete="off" -->
-							<!-- 										class="form-control bg-light " id="inputName" -->
-							<!-- 										placeholder="Name" name="startAt"> <label -->
-							<!-- 										for="inputName">Ngày hết hạn</label> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 							<div class="col-12">
 								<div class="form-floating">
-									<input type="datetime-local" autocomplete="off"
+									<input type="text" autocomplete="off"
 										class="form-control bg-light " id="inputName"
-										placeholder="Name" name="createAt"> <label
-										for="inputName">Ngày tạo</label>
+										placeholder="Name" name="createAt" readonly="readonly"
+										value="${contract.createAt }"> <label for="inputName">Ngày
+										tạo</label>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
-									<input type="datetime-local" autocomplete="off"
+									<input type="text" autocomplete="off"
 										class="form-control bg-light " id="inputName"
-										placeholder="Name" name="startAt"> <label
-										for="inputName">Ngày bắt đầu</label>
+										placeholder="Name" name="startAt" readonly="readonly"
+										value="${contract.startAt }"> <label for="inputName">Ngày
+										bắt đầu</label>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
-									<input type="datetime-local" autocomplete="off"
+									<input type="text" autocomplete="off"
 										class="form-control bg-light " id="inputName"
-										placeholder="Name" name="endAt"> <label
-										for="inputName">Ngày kết thúc</label>
+										placeholder="Name" name="endAt" readonly="readonly"
+										value="${contract.endAt }"> <label for="inputName">Ngày
+										kết thúc</label>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
 									<textarea class="form-control"
 										placeholder="Leave a comment here" id="floatingTextarea"
-										style="height: 100px"></textarea>
+										style="height: 100px" readonly="readonly">${contract.description }</textarea>
 									<label for="floatingTextarea">Ghi chú</label>
 								</div>
 							</div>
+
+							<div class="col-md-2">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light" id="inputZip"
+										placeholder="Cep" readonly="readonly"
+										value="${contract.employee.fullName }"> <label
+										for="inputZip" class="form-label">Tên nhân viên ghi
+										nhận</label>
+								</div>
+							</div>
+
 							<div class="col-12">
 								<div
 									class="p-3 mb-3 text-white fw-bolder fs-3 border-5 border-start">
@@ -216,7 +214,8 @@ body {
 								<div class="form-floating">
 									<input type="text" autocomplete="off"
 										class="form-control bg-light " id="inputName"
-										placeholder="Name" name="fullName"> <label
+										placeholder="Name" name="fullName" readonly="readonly"
+										value="${contract.customer.fullName }"> <label
 										for="inputName">Họ tên</label>
 								</div>
 							</div>
@@ -224,52 +223,29 @@ body {
 								<div class="form-floating">
 									<input type="text" class="form-control bg-light "
 										id="inputEmail4" placeholder="Số điện thoại: "
-										name="phonenumber"> <label for="inputEmail4">Số
-										điện thoại</label>
+										name="phonenumber" readonly="readonly"
+										value="${contract.customer.phoneNumber }"> <label
+										for="inputEmail4">Số điện thoại</label>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
 									<input type="text" class="form-control bg-light "
-										id="inputAddress" placeholder="1234 Main St" name="address">
+										id="inputAddress" placeholder="1234 Main St" name="address"
+										readonly="readonly" value="${contract.customer.address }">
 									<label for="inputAddress" class="form-label">Địa chỉ</label>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
 									<input type="email" class="form-control bg-light "
-										id="inputAddress" placeholder="1234 Main St" name="email">
-									<label for="inputAddress" class="form-label">Email</label>
+										id="inputAddress" placeholder="1234 Main St" name="email"
+										readonly="readonly"
+										value="${contract.customer.account.email }"> <label
+										for="inputAddress" class="form-label">Email</label>
 								</div>
 							</div>
 
-
-							<!-- 							<div class="col-md-4"> -->
-							<!-- 								<div class="form-floating"> -->
-							<!-- 									<select id="inputState" class="form-select bg-light"> -->
-							<!-- 										<option selected>Dọn nhà</option> -->
-							<!-- 										<option selected>Dọn nhà</option> -->
-							<!-- 										<option selected>Dọn nhà</option> -->
-							<!-- 										<option selected>Dọn nhà</option> -->
-							<!-- 									</select> <label for="inputState" class="form-label">Loại công -->
-							<!-- 										việc</label> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
-							<div class="col-md-2">
-								<div class="form-floating">
-									<input type="text" class="form-control bg-light" id="inputZip"
-										placeholder="Cep"> <label for="inputZip"
-										class="form-label">Tên nhân viên ghi nhận</label>
-								</div>
-							</div>
-							<!-- 							<div class="col-md-2"> -->
-							<!-- 								<div class="form-floating"> -->
-							<!-- 									<input type="text" class="form-control bg-light" id="inputZip" -->
-							<!-- 										placeholder="Cep" value="fulltime" disabled="disabled"> -->
-							<!-- 									<label for="inputZip" class="form-label">Nhân viên -->
-							<!-- 										fulltime</label> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 							<div class="col-12">
 								<div
 									class="p-3 mb-3 text-white fw-bolder fs-3 border-5 border-start">
@@ -279,7 +255,8 @@ body {
 								<div class="form-floating">
 									<input type="text" autocomplete="off"
 										class="form-control bg-light " id="inputName"
-										placeholder="Name" name="fullName"> <label
+										placeholder="Name" name="fullName" readonly="readonly"
+										value="${contract.maid.fullName }"> <label
 										for="inputName">Họ tên</label>
 								</div>
 							</div>
@@ -287,50 +264,36 @@ body {
 								<div class="form-floating">
 									<input type="text" class="form-control bg-light "
 										id="inputEmail4" placeholder="Số điện thoại: "
-										name="phonenumber"> <label for="inputEmail4">Số
-										điện thoại</label>
+										name="phonenumber" readonly="readonly"
+										value="${contract.maid.phoneNumber }"> <label
+										for="inputEmail4">Số điện thoại</label>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
 									<input type="text" class="form-control bg-light "
-										id="inputAddress" placeholder="1234 Main St" name="address">
+										id="inputAddress" placeholder="1234 Main St" name="address"
+										readonly="readonly" value="${contract.maid.address }">
 									<label for="inputAddress" class="form-label">Địa chỉ</label>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
 									<input type="email" class="form-control bg-light "
-										id="inputAddress" placeholder="1234 Main St" name="email">
+										id="inputAddress" placeholder="1234 Main St" name="email"
+										readonly="readonly" value="${contract.maid.account.email }">
 									<label for="inputAddress" class="form-label">Email</label>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-floating">
 									<input type="text" class="form-control bg-light "
-										id="inputCity" placeholder="Cidade" name="exp"> <label
+										id="inputCity" placeholder="Cidade" name="exp"
+										readonly="readonly" value="${contract.createAt }"> <label
 										for="inputCity" class="form-label">Kinh nghiệm</label>
 								</div>
 							</div>
-							<!-- 							<div class="col-md-4"> -->
-							<!-- 								<div class="form-floating"> -->
-							<!-- 									<select id="inputState" class="form-select bg-light"> -->
-							<!-- 										<option selected>Dọn nhà</option> -->
-							<!-- 										<option selected>Dọn nhà</option> -->
-							<!-- 										<option selected>Dọn nhà</option> -->
-							<!-- 										<option selected>Dọn nhà</option> -->
-							<!-- 									</select> <label for="inputState" class="form-label">Loại công -->
-							<!-- 										việc</label> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
-							<div class="col-md-4">
-								<div class="form-floating">
-									<input type="text" class="form-control bg-light" id="inputZip"
-										placeholder="Cep"> <label for="inputZip"
-										class="form-label">Tên nhân viên ghi nhận</label>
-								</div>
-							</div>
-							<div class="col-12">
+							<!-- 	<div class="col-12">
 								<div class="form-check">
 									<input class="form-check-input" type="checkbox" id="gridCheck">
 									<label class="form-check-label shadow-sm text-white"
@@ -338,13 +301,13 @@ body {
 										class="legacy illigla">Privacy</a>
 									</label>
 								</div>
-							</div>
-							<div class="col-12 text-end">
+							</div> -->
+							<!-- 	<div class="col-12 text-end">
 								<button type="submit"
 									class="btn bg-button-submit w-100 bg-gradient p-3 text-center mb-2 text-white fw-bolder fs-3">Xác
 									nhận hợp đồng</button>
 								<a href="#" class="text-primary shadow-sm">.</a>
-							</div>
+							</div> -->
 						</form>
 					</div>
 				</div>
@@ -413,16 +376,6 @@ body {
 
 	</main>
 	<!-- End #main -->
-
-	<!-- ======= Footer ======= 
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>E-Pariksha</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> 
-    </div>
-  </footer>End Footer -->
 
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center"><i

@@ -18,5 +18,6 @@ public interface ContractService {
 	public void createContract(ContractEntity contract);
 	public void renewContract(ContractEntity contract);
 	public List<ContractEntity> getListContractBy(Integer customerId);
+	public ContractEntity getContractById(Integer id);
 	
 }
