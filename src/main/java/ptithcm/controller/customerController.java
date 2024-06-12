@@ -291,21 +291,121 @@ public class customerController {
 	// Hiển thị trang thông tin cá nhân của customer:
 	@RequestMapping("customer/customerProfile")
 	public String showCustomerProfile() {
+
 		return "customer/customerProfile";
 	}
 
 	// Hiển thị form cập nhật thông tin cho customer:
 	@RequestMapping("customer/updateCustomer")
-	public String showCustomerUpdateProfile() {
-		return "customer/updateCustomer";
+	public String showCustomerUpdateProfile(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
+		model.addAttribute("cusEditContent", customer);
+		model.addAttribute("customerInfo", new CustomerEntity());
 
+		System.out.println("==> Open update customer profile session");
+
+		return "customer/updateCustomer";
+	}
+	
+	@RequestMapping(value = "customer/updateInfo.htm", method = RequestMethod.POST)
+	public String updateCustomerProfile(HttpServletRequest request,
+			@ModelAttribute("customerInfo") CustomerEntity customerInfo, BindingResult errors) {
+		HttpSession session = request.getSession();
+		CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
+		Boolean isValidInfo = Boolean.TRUE;
+		
+		if (customerInfo.getFullName().isEmpty()) {
+			errors.rejectValue("fullName", "customerInfo", "Tên người dùng không được để trống!");
+			isValidInfo = Boolean.FALSE;
+		} else if (customerInfo.getPhoneNumber().isEmpty()) {
+			errors.rejectValue("phoneNumber", "customerInfo", "Số điện thoại không được để trống!");
+			isValidInfo = Boolean.FALSE;
+		}
+
+		if (accountService.standardize(customerInfo.getFullName()).length() > 30) {
+			errors.rejectValue("fullName", "customerInfo", "Tên người dùng không được dài quá 30 ký tự!");
+			isValidInfo = Boolean.FALSE;
+		} else if (!accountService.isValidPhoneNumber(customerInfo.getPhoneNumber())) {
+			errors.rejectValue("phoneNumber", "customerInfo", "Số điện thoại nhập không hợp lệ, vui lòng nhập lại!");
+			isValidInfo = Boolean.FALSE;
+		}
+		
+		if(isValidInfo) {
+			try {
+				customer.setFullName(accountService.standardizeName(customerInfo.getFullName()));
+				customer.setPhoneNumber(customerInfo.getPhoneNumber());
+				customer.setAddress(customerInfo.getAddress());
+				
+				customerService.updateCustomer(customer);
+				System.out.println("==> Customer info updated successfully!");
+			}catch (Exception e) {
+				System.out.println("Error: Customer info updated unsuccessfully!");
+			}
+		}else {
+			System.out.println("Error: Customer info updated unsuccessfully!");
+			return "redirect:/customer/updateInfo.htm";
+		}
+		
+		return "customer/index";
 	}
 
 	// Hiển thị form change password:
 	@RequestMapping("customer/customerChangePassword")
-	public String showCustomerChangePassword() {
+	public String showCustomerChangePassword(Model model) {
+		System.out.println("==> Open change customer password session");
+
+		model.addAttribute("customerPass", new AccountEntity());
+
 		return "customer/customerChangePassword";
 
+	}
+
+	@RequestMapping(value = "customer/customerChangePassword.htm", method = RequestMethod.POST)
+	public String customerChangePassword(HttpServletRequest request,
+			@ModelAttribute("customerPass") AccountEntity customerPass, BindingResult errors) {
+		Boolean isValidPass = Boolean.TRUE;
+
+		HttpSession session = request.getSession();
+		AccountEntity Account = (AccountEntity) session.getAttribute("Account");
+		String newPass = request.getParameter("new-password");
+		String reEnterNewPass = request.getParameter("re-enter-new-password");
+
+		if (customerPass.getPassword().isEmpty()) {
+			errors.rejectValue("adminPass", "password", "Vui lòng nhập mật khẩu hiện tại!");
+			isValidPass = Boolean.FALSE;
+		} else if (newPass.isEmpty()) {
+			errors.rejectValue("adminPass", "new-password", "Vui lòng nhập mật khẩu mới!");
+			isValidPass = Boolean.FALSE;
+		} else if (reEnterNewPass.isEmpty()) {
+			errors.rejectValue("adminPass", "re-enter-new-password", "Vui lòng nhập lại mật khẩu mới!");
+			isValidPass = Boolean.FALSE;
+		}
+
+		if (!accountService.isExistAccount(Account.getEmail(),
+				accountService.getHashPassword(customerPass.getPassword()))) {
+			errors.rejectValue("customerPass", "password", "Mật khẩu hiện tại nhập ko đúng, vui lòng nhập lại!");
+			isValidPass = Boolean.FALSE;
+		} else if (!newPass.equals(reEnterNewPass)) {
+			errors.rejectValue("customerPass", "re-enter-new-password",
+					"Mật khẩu bạn nhập lại không trùng khớp, vui lòng nhập lại!");
+			isValidPass = Boolean.FALSE;
+		}
+
+		if (isValidPass) {
+			try {
+				Account.setPassword(accountService.getHashPassword(newPass));
+				accountService.updateAccount(Account);
+				System.out.println("==> Customer account password updated successfully!");
+			} catch (Exception e) {
+				System.out.println("Error: Customer account password updated unsuccessfully!");
+			}
+		} else {
+			System.out.println("Error: Customer account password updated unsuccessfully!");
+			return "redirect:/customer/customerChangePassword.htm";
+		}
+
+		return "customer/index";
 	}
 
 	// Hiển thị danh sách các đặt dịch vụ :
@@ -337,11 +437,12 @@ public class customerController {
 	}
 
 	@RequestMapping(value = "customer/checkoutBooking/{id}", method = RequestMethod.POST)
-	public String checkoutBooking(HttpServletRequest request, @ModelAttribute("bookingDetail") BookingDetailEntity bookingDetail, @PathVariable("id") Integer id) {
+	public String checkoutBooking(HttpServletRequest request,
+			@ModelAttribute("bookingDetail") BookingDetailEntity bookingDetail, @PathVariable("id") Integer id) {
 		Date nowDate = new Date();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 		String formattedNowDate = dateFormat.format(nowDate);
-		
+
 		BookingEntity booking = bookingService.getBookingById(id);
 		List<BookingDetailEntity> bookingDetails = bookingDetailService.getListBookingDetailsByBookingId(id);
 		String rate_str = request.getParameter("rate");
@@ -376,15 +477,15 @@ public class customerController {
 			System.out.println("Error: Bill created created unsuccessfully!");
 			return "redirect:/customer/bookingDetail/" + id + ".htm";
 		}
-		
+
 		try {
 			booking.setBookingStatus(3);
 			booking.setPaymentStatus(1);
 			bookingService.updateBooking(booking);
-			
+
 			System.out.println("==> Booking checkout successfully");
 			return "redirect:/customer/bookingManagement.htm";
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("==> Booking checkout unsuccessfully");
 			return "redirect:/customer/bookingDetail/" + id + ".htm";
@@ -424,9 +525,9 @@ public class customerController {
 		HttpSession session = request.getSession();
 		CustomerEntity customer = (CustomerEntity) session.getAttribute("customer");
 		List<BillEntity> billList = billService.getListBillBy(customer.getId());
-		
+
 		model.addAttribute("billList", billList);
-		
+
 		return "customer/billManagement";
 
 	}

@@ -350,7 +350,7 @@ public class adminController {
 			System.out.println("Error: Employee info updated unsuccessfully!");
 			return "redirect:/admin/adminEditProfile.htm";
 		}
-
+		
 		try {
 			employee.setFullName(accountService.standardizeName(employeeInfo.getFullName()));
 			employee.setPhoneNumber(employeeInfo.getPhoneNumber());
