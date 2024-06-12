@@ -184,17 +184,6 @@
 										data-bs-target="#profile-overview">Xem thông tin</button>
 								</li>
 
-								<!-- 								<li class="nav-item"> -->
-								<!-- 									<button class="nav-link" data-bs-toggle="tab" -->
-								<!-- 										data-bs-target="#profile-edit">Chỉnh sửa Profile</button> -->
-								<!-- 								</li> -->
-
-								<!-- 								<li class="nav-item"> -->
-								<!-- 									<button class="nav-link" data-bs-toggle="tab" -->
-								<!-- 										data-bs-target="#profile-change-password">Đổi mật -->
-								<!-- 										khẩu</button> -->
-								<!-- 								</li> -->
-
 							</ul>
 							<div class="tab-content pt-2">
 
@@ -207,35 +196,35 @@
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label ">Họ tên</div>
-										<div class="col-lg-9 col-md-8">Hữu Trí</div>
+										<div class="col-lg-9 col-md-8">${customer.fullName }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Số điện thoại</div>
-										<div class="col-lg-9 col-md-8">094387384</div>
+										<div class="col-lg-9 col-md-8">${customer.phoneNumber }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-										<div class="col-lg-9 col-md-8">97 Man thiện</div>
+										<div class="col-lg-9 col-md-8">${customer.address }</div>
 									</div>
-									<div class="row">
+									<!-- <div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
+										<div class="col-lg-9 col-md-8"></div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày cập nhật</div>
 										<div class="col-lg-9 col-md-8">2023-01-26</div>
-									</div>
+									</div> -->
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Email</div>
-										<div class="col-lg-9 col-md-8">customerfulltime@gmail.com</div>
+										<div class="col-lg-9 col-md-8">${customer.account.email }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Trạng thái tài
 											khoản</div>
-										<div class="col-lg-9 col-md-8">Hoạt động</div>
+										<div class="col-lg-9 col-md-8">${customer.account.status ? 'Hoạt động' : 'Bị chặn' }</div>
 									</div>
 
 								</div>

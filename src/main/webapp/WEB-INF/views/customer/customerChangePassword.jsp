@@ -111,8 +111,8 @@
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="customer/index.htm"><span>Account</span> <i
-							class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="customer/index.htm"><span>Account</span>
+							<i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
 							<li><a href="customer/updateCustomer.htm">Cập nhật thông
@@ -160,15 +160,17 @@
 
 							<div>
 								<!-- Change Password Form -->
-								<form>
+								<form:form action="customer/customerChangePassword.htm"
+									method="post" modelAttribute="customerPass">
 
 									<div class="row mb-3">
 										<label for="currentPassword"
 											class="col-md-4 col-lg-3 col-form-label">Mật khẩu
 											hiện tại</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="password" type="password" class="form-control"
-												id="currentPassword">
+											<form:input path="password" type="password"
+												class="form-control" id="currentPassword" />
+											<form:errors path="password" />
 										</div>
 									</div>
 
@@ -176,8 +178,9 @@
 										<label for="newPassword"
 											class="col-md-4 col-lg-3 col-form-label">Mật khẩu mới</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="newpassword" type="password"
-												class="form-control" id="newPassword">
+											<input name="new-password" type="password"
+												class="form-control" id="newPassword" />
+											<form:errors path="password" />
 										</div>
 									</div>
 
@@ -186,8 +189,9 @@
 											class="col-md-4 col-lg-3 col-form-label">Nhập lại mật
 											khẩu</label>
 										<div class="col-md-8 col-lg-9">
-											<input name="renewpassword" type="password"
+											<input name="re-enter-new-password" type="password"
 												class="form-control" id="renewPassword">
+											<form:errors path="password" />
 										</div>
 									</div>
 
@@ -195,7 +199,7 @@
 										<button type="submit" class="btn btn-primary">Đổi mật
 											khẩu</button>
 									</div>
-								</form>
+								</form:form>
 								<!-- End Change Password Form -->
 
 							</div>
