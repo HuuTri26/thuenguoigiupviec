@@ -272,8 +272,8 @@
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="customer/index.htm"><span>Tài khoản</span>
-							<i class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="customer/index.htm"><span>Tài
+								khoản</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
 							<li><a href="customer/updateCustomer.htm">Cập nhật thông
@@ -300,7 +300,8 @@
 			<h1>Profile booking</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="customer/index.html">Trang chủ</a></li>
+					<li class="breadcrumb-item"><a href="customer/index.html">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="customer/bookingDetail.htm">Profile booking</a></li>
 				</ol>
@@ -418,7 +419,7 @@
 			</div>
 		</section>
 		<div class="overlay" id="overlay" onclick="hidePaymentForm(event)">
-			<div class="container-card p-0" id="paymentForm">
+			<form class="container-card p-0" id="paymentForm">
 				<div class="card-payment px-4">
 					<p class="h8 py-3">Thanh toán đơn hàng</p>
 					<div class="row gx-3">
@@ -426,21 +427,20 @@
 							<div class="d-flex flex-column">
 								<p class="text mb-1">Tên gói</p>
 								<input class="form-control mb-3" type="text" placeholder="Name"
-									value="Gói dọn nhà 1 giờ" >
+									value="Gói dọn nhà 1 giờ">
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="d-flex flex-column">
 								<p class="text mb-1">Giá gói</p>
 								<input class="form-control mb-3" type="text" placeholder="Name"
-									value="3000" >
+									value="3000">
 							</div>
 						</div>
 						<div class="col-12">
 							<div class="d-flex flex-column">
 								<p class="text mb-1">Feedback</p>
-								<textarea class="form-control mb-3" placeholder="Name"
-									 >Rất tôt ....</textarea>
+								<textarea class="form-control mb-3" placeholder="Name">Rất tôt ....</textarea>
 							</div>
 						</div>
 						<div class="col-12">
@@ -459,7 +459,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- 						<div class="col-6"> -->
 						<!-- 							<div class="d-flex flex-column"> -->
 						<!-- 								<p class="text mb-1">Ngày thanh toán</p> -->
@@ -468,14 +468,14 @@
 						<!-- 							</div> -->
 						<!-- 						</div> -->
 						<div class="col-12">
-							<div class="btn btn-primary mb-3">
-								<span class="ps-3">Thanh toán $3000</span> <span
-									class="fas fa-arrow-right"></span>
-							</div>
+							<button type="submit" class="btn btn-primary mb-3">
+								<span class="ps-3">Thanh toán $3000 <span
+									class="fas fa-arrow-right"></span></span>
+							</button>
 						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</main>
 	<!-- End #main -->

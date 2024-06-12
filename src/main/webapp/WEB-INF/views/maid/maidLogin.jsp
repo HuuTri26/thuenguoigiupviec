@@ -82,7 +82,7 @@
 										</label>
 									</div>
 									<div class="w-50 text-md-right">
-										<a href="maidForgotPassword.htm">Quên mật khẩu</a>
+										<a href="maid/maidForgotPassword.htm">Quên mật khẩu</a>
 									</div>
 								</div>
 							</form:form>
