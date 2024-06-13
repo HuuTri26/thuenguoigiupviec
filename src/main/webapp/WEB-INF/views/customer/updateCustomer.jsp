@@ -112,7 +112,7 @@
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="#"><span>Account</span> <i
+					<li class="dropdown"><a href="#"><span>Tài khoản</span> <i
 							class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
@@ -125,7 +125,7 @@
 							<li><a href="customer/contractManagement.htm">Xem danh
 									sách đặt dịch vụ</a></li>
 							<li><a href="customer/billManagement.htm">Xem danh bill</a></li>
-							<li><a href="customer/logout.htm">Log out</a></li>
+							<li><a href="#">Log out</a></li>
 
 						</ul></li>
 				</ul>
@@ -143,7 +143,7 @@
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="customer/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="customerManagement.htm">customer</a></li>
+						href="customer/customerManagement.htm">customer</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -160,7 +160,8 @@
    -->
 							<!-- Browser Default Validation -->
 
-							<form class="row g-3">
+							<form:form class="row g-3" action="customer/updateInfo.htm"
+								method="post" modelAttribute="customerInfo">
 								<!-- <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">ID</label>
                                     <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
@@ -183,9 +184,10 @@
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Họ
-										tên</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="name"
-										placeholder="Subject name" required>
+										tên</label> <form:input path="fullName" type="text" class="form-control"
+										id="validationDefault01" value="${cusEditContent.fullName }" name="name"
+										placeholder="Subject name" />
+										<form:errors path="fullName"/>
 								</div>
 
 								<!-- 								<div class="col-md-6"> -->
@@ -201,37 +203,26 @@
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Số
-										điện thoại</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="price"
-										placeholder="Subject name" required>
+										điện thoại</label> <form:input path="phoneNumber" type="number" class="form-control"
+										id="validationDefault01" value="${cusEditContent.phoneNumber }" name="price"
+										placeholder="Subject name" />
+										<form:errors path="phoneNumber"/>
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Địa
-										chỉ</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="time"
-										placeholder="Subject name" required>
-								</div>
-
-								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Kinh
-										nghiệm</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="customerQuantity"
-										placeholder="Subject name" required>
+										chỉ</label> <form:input path="address" type="text" class="form-control"
+										id="validationDefault01" value="${cusEditContent.address }" name="time"
+										placeholder="Subject name" />
+										<form:errors path="address"/>
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Email</label>
-									<input type="email" class="form-control"
-										id="validationDefault01" value="" name="email"
-										placeholder="Subject name" required>
-								</div>
-
-								<div class="col-md-6">
-									<label for="validationDefault01" class="form-label">Mức
-										Lương</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="customerQuantity"
-										placeholder="Subject name" required>
+									<form:input path="account.email" type="email" class="form-control"
+										id="validationDefault01" value="${cusEditContent.account.email }" name="email"
+										placeholder="Subject name" readonly="true" />
+										<form:errors path="account.email"/>
 								</div>
 
 								<!-- <div class="col-md-6">
@@ -247,15 +238,6 @@
 								<!-- 									<textarea class="form-control" style="height: 100px"></textarea> -->
 								<!-- 								</div> -->
 
-								<div class="col-md-6">
-									<label for="validationDefault04" class="form-label">Fulltime/partime</label>
-									<select class="form-select" id="validationDefault04"
-										name="status" required>
-										<option selected value="">Fulltime</option>
-										<option>Partime</option>
-									</select>
-								</div>
-
 								<!-- <div class="col-md-6">
                                     <label for="validationDefault04" class="form-label">Subject</label>
                                     <select class="form-select" multiple  id="validationDefault04" required>
@@ -267,13 +249,10 @@
                                     </select>
                                 </div> -->
 
-
-
-
 								<div class="col-12">
 									<button class="btn btn-primary" type="submit">Update</button>
 								</div>
-							</form>
+							</form:form>
 							<!-- End Browser Default Validation -->
 
 						</div>

@@ -77,6 +77,9 @@
 <link href="<c:url value='/resources/main/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <!-- =======================================================
   * Template Name: Maxim - v4.8.0
   * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
@@ -166,8 +169,8 @@ body {
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="customer/index.htm"><span>Account</span> <i
-							class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="customer/index.htm"><span>Account</span>
+							<i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
 							<li><a href="customer/updateCustomer.htm">Cập nhật thông
@@ -193,18 +196,74 @@ body {
 
 		<!-- created by @BrCodeSnippets -->
 		<div class="container mt-5 pt-3" id="contract-form">
+
 			<div class="row">
 				<div class="col-12">
+
 					<div class="card p-3 bg-form">
+						<a href="customer/contractManagement.htm"> <i
+							class="fa fa-times" aria-hidden="true"
+							style="font-size: 50px; cursor: pointer; color: white; float: right;"></i>
+						</a>
 						<form class="row g-3  mt-5">
+
 							<div class="col-12">
+
 								<h1 class="text-center fw-bolder text-white mt-3">Hợp đồng</h1>
 								<hr>
+							</div>
+							<!-- 							<div class="col-12"> -->
+							<!-- 								<div class="form-floating"> -->
+							<!-- 									<input type="date" autocomplete="off" -->
+							<!-- 										class="form-control bg-light " id="inputName" -->
+							<!-- 										placeholder="Name" name="startAt"> <label -->
+							<!-- 										for="inputName">Ngày bắt đầu</label> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<!-- 							<div class="col-12"> -->
+							<!-- 								<div class="form-floating"> -->
+							<!-- 									<input type="date" autocomplete="off" -->
+							<!-- 										class="form-control bg-light " id="inputName" -->
+							<!-- 										placeholder="Name" name="startAt"> <label -->
+							<!-- 										for="inputName">Ngày hết hạn</label> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<div class="col-12">
+								<div class="form-floating">
+									<input type="datetime-local" autocomplete="off"
+										class="form-control bg-light " id="inputName"
+										placeholder="Name" name="createAt"> <label
+										for="inputName">Ngày tạo</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-floating">
+									<input type="datetime-local" autocomplete="off"
+										class="form-control bg-light " id="inputName"
+										placeholder="Name" name="startAt"> <label
+										for="inputName">Ngày bắt đầu</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-floating">
+									<input type="datetime-local" autocomplete="off"
+										class="form-control bg-light " id="inputName"
+										placeholder="Name" name="endAt"> <label
+										for="inputName">Ngày kết thúc</label>
+								</div>
+							</div>
+							<div class="col-12">
+								<div class="form-floating">
+									<textarea class="form-control"
+										placeholder="Leave a comment here" id="floatingTextarea"
+										style="height: 100px"></textarea>
+									<label for="floatingTextarea">Ghi chú</label>
+								</div>
 							</div>
 							<div class="col-12">
 								<div
 									class="p-3 mb-3 text-white fw-bolder fs-3 border-5 border-start">
-									Bên A</div>
+									Khách hàng</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
@@ -222,13 +281,6 @@ body {
 										điện thoại</label>
 								</div>
 							</div>
-							<!-- 							<div class="col-md-6"> -->
-							<!-- 								<div class="form-floating"> -->
-							<!-- 									<input type="password" class="form-control bg-light border-0 " -->
-							<!-- 										id="inputPassword4" placeholder="Informe uma senha segura"> -->
-							<!-- 									<label for="inputPassword4" class="form-label">Password</label> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
 							<div class="col-12">
 								<div class="form-floating">
 									<input type="text" class="form-control bg-light "
@@ -236,25 +288,26 @@ body {
 									<label for="inputAddress" class="form-label">Địa chỉ</label>
 								</div>
 							</div>
+							<div class="col-12">
+								<div class="form-floating">
+									<input type="email" class="form-control bg-light "
+										id="inputAddress" placeholder="1234 Main St" name="email">
+									<label for="inputAddress" class="form-label">Email</label>
+								</div>
+							</div>
 
-							<div class="col-md-6">
-								<div class="form-floating">
-									<input type="text" class="form-control bg-light "
-										id="inputCity" placeholder="Cidade" name="exp"> <label
-										for="inputCity" class="form-label">Kinh nghiệm</label>
-								</div>
-							</div>
-							<div class="col-md-4">
-								<div class="form-floating">
-									<select id="inputState" class="form-select bg-light">
-										<option selected>Dọn nhà</option>
-										<option selected>Dọn nhà</option>
-										<option selected>Dọn nhà</option>
-										<option selected>Dọn nhà</option>
-									</select> <label for="inputState" class="form-label">Loại công
-										việc</label>
-								</div>
-							</div>
+
+							<!-- 							<div class="col-md-4"> -->
+							<!-- 								<div class="form-floating"> -->
+							<!-- 									<select id="inputState" class="form-select bg-light"> -->
+							<!-- 										<option selected>Dọn nhà</option> -->
+							<!-- 										<option selected>Dọn nhà</option> -->
+							<!-- 										<option selected>Dọn nhà</option> -->
+							<!-- 										<option selected>Dọn nhà</option> -->
+							<!-- 									</select> <label for="inputState" class="form-label">Loại công -->
+							<!-- 										việc</label> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
 							<div class="col-md-2">
 								<div class="form-floating">
 									<input type="text" class="form-control bg-light" id="inputZip"
@@ -262,50 +315,25 @@ body {
 										class="form-label">Tên nhân viên ghi nhận</label>
 								</div>
 							</div>
-							<div class="col-md-2">
-								<div class="form-floating">
-									<input type="text" class="form-control bg-light" id="inputZip"
-										placeholder="Cep" value="fulltime" disabled="disabled">
-									<label for="inputZip" class="form-label">Nhân viên
-										fulltime</label>
-								</div>
-							</div>
-							<!-- 							<div class="col-12"> -->
+							<!-- 							<div class="col-md-2"> -->
 							<!-- 								<div class="form-floating"> -->
-							<!-- 									<textarea class="form-control" -->
-							<!-- 										placeholder="Leave a comment here" id="floatingTextarea" -->
-							<!-- 										style="height: 100px"></textarea> -->
-							<!-- 									<label for="floatingTextarea">Ghi chú</label> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
-							<!-- 							<div class="col-12"> -->
-							<!-- 								<div class="form-check"> -->
-							<!-- 									<input class="form-check-input" type="checkbox" id="gridCheck"> -->
-							<!-- 									<label class="form-check-label shadow-sm text-white" -->
-							<!-- 										for="gridCheck"> Tôi đồng ý với các điều khỏa sau.<a -->
-							<!-- 										class="legacy illigla">Privacy</a> -->
-							<!-- 									</label> -->
+							<!-- 									<input type="text" class="form-control bg-light" id="inputZip" -->
+							<!-- 										placeholder="Cep" value="fulltime" disabled="disabled"> -->
+							<!-- 									<label for="inputZip" class="form-label">Nhân viên -->
+							<!-- 										fulltime</label> -->
 							<!-- 								</div> -->
 							<!-- 							</div> -->
 							<div class="col-12">
 								<div
 									class="p-3 mb-3 text-white fw-bolder fs-3 border-5 border-start">
-									Bên B</div>
+									Maid</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
-									<input type="date" autocomplete="off"
+									<input type="text" autocomplete="off"
 										class="form-control bg-light " id="inputName"
-										placeholder="Name" name="startAt"> <label
-										for="inputName">Ngày bắt đầu</label>
-								</div>
-							</div>
-							<div class="col-12">
-								<div class="form-floating">
-									<input type="date" autocomplete="off"
-										class="form-control bg-light " id="inputName"
-										placeholder="Name" name="startAt"> <label
-										for="inputName">Ngày hết hạn</label>
+										placeholder="Name" name="fullName"> <label
+										for="inputName">Họ tên</label>
 								</div>
 							</div>
 							<div class="col-12 ">
@@ -316,30 +344,43 @@ body {
 										điện thoại</label>
 								</div>
 							</div>
-							<div class="col-md-4">
+							<div class="col-12">
 								<div class="form-floating">
-									<select id="inputState" class="form-select bg-light">
-										<option selected>Dọn nhà</option>
-										<option selected>Dọn nhà</option>
-										<option selected>Dọn nhà</option>
-										<option selected>Dọn nhà</option>
-									</select> <label for="inputState" class="form-label">Loại công
-										việc</label>
-								</div>
-							</div>
-							<div class="col-md-2">
-								<div class="form-floating">
-									<input type="text" class="form-control bg-light" id="inputZip"
-										placeholder="Cep"> <label for="inputZip"
-										class="form-label">Tên nhân viên ghi nhận</label>
+									<input type="text" class="form-control bg-light "
+										id="inputAddress" placeholder="1234 Main St" name="address">
+									<label for="inputAddress" class="form-label">Địa chỉ</label>
 								</div>
 							</div>
 							<div class="col-12">
 								<div class="form-floating">
-									<textarea class="form-control"
-										placeholder="Leave a comment here" id="floatingTextarea"
-										style="height: 100px"></textarea>
-									<label for="floatingTextarea">Ghi chú</label>
+									<input type="email" class="form-control bg-light "
+										id="inputAddress" placeholder="1234 Main St" name="email">
+									<label for="inputAddress" class="form-label">Email</label>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light "
+										id="inputCity" placeholder="Cidade" name="exp"> <label
+										for="inputCity" class="form-label">Kinh nghiệm</label>
+								</div>
+							</div>
+							<!-- 							<div class="col-md-4"> -->
+							<!-- 								<div class="form-floating"> -->
+							<!-- 									<select id="inputState" class="form-select bg-light"> -->
+							<!-- 										<option selected>Dọn nhà</option> -->
+							<!-- 										<option selected>Dọn nhà</option> -->
+							<!-- 										<option selected>Dọn nhà</option> -->
+							<!-- 										<option selected>Dọn nhà</option> -->
+							<!-- 									</select> <label for="inputState" class="form-label">Loại công -->
+							<!-- 										việc</label> -->
+							<!-- 								</div> -->
+							<!-- 							</div> -->
+							<div class="col-md-4">
+								<div class="form-floating">
+									<input type="text" class="form-control bg-light" id="inputZip"
+										placeholder="Cep"> <label for="inputZip"
+										class="form-label">Tên nhân viên ghi nhận</label>
 								</div>
 							</div>
 							<div class="col-12">

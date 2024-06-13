@@ -67,7 +67,8 @@
 <!-- Template Main CSS File -->
 <link href="<c:url value='/resources/main/assets/css/style.css'/>"
 	rel="stylesheet">
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <!-- =======================================================
   * Template Name: Maxim - v4.8.0
   * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
@@ -145,31 +146,31 @@
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 			</div>
 
-<!-- 			<nav id="navbar" class="navbar"> -->
-<!-- 				<ul> -->
-<!-- 					<li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
-<!-- 					<li><a class="nav-link scrollto" href="#about">About</a></li> -->
-<!-- 					<li><a class="nav-link scrollto" href="#services">Services</a></li> -->
+			<!-- 			<nav id="navbar" class="navbar"> -->
+			<!-- 				<ul> -->
+			<!-- 					<li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
+			<!-- 					<li><a class="nav-link scrollto" href="#about">About</a></li> -->
+			<!-- 					<li><a class="nav-link scrollto" href="#services">Services</a></li> -->
 
-<!-- 					<li class="dropdown"><a href="#"><span>Login</span> <i -->
-<!-- 							class="bi bi-chevron-down"></i></a> -->
-<!-- 						<ul> -->
-<!-- 							<li><a href="admin/adminLogin.htm">Admin</a></li> -->
-<!-- 							<li><a href="maid/maidLogin.htm">Maid</a></li> -->
-<!-- 							<li><a href="customer/customerLogin.htm">User</a></li> -->
+			<!-- 					<li class="dropdown"><a href="#"><span>Login</span> <i -->
+			<!-- 							class="bi bi-chevron-down"></i></a> -->
+			<!-- 						<ul> -->
+			<!-- 							<li><a href="admin/adminLogin.htm">Admin</a></li> -->
+			<!-- 							<li><a href="maid/maidLogin.htm">Maid</a></li> -->
+			<!-- 							<li><a href="customer/customerLogin.htm">User</a></li> -->
 
-<!-- 						</ul></li> -->
-<!-- 					<li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-<!-- 					             <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a> -->
-<!-- 					               <ul> -->
-<!-- 					              <li><a href="profile.htm">Trang cá nhân</a></li> -->
-<!-- 					              <li><a href="index.htm">Log out</a></li> -->
+			<!-- 						</ul></li> -->
+			<!-- 					<li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+			<!-- 					             <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a> -->
+			<!-- 					               <ul> -->
+			<!-- 					              <li><a href="profile.htm">Trang cá nhân</a></li> -->
+			<!-- 					              <li><a href="index.htm">Log out</a></li> -->
 
-<!-- 					            </ul> -->
-<!-- 					          </li> -->
-<!-- 				</ul> -->
-<!-- 				<i class="bi bi-list mobile-nav-toggle"></i> -->
-<!-- 			</nav> -->
+			<!-- 					            </ul> -->
+			<!-- 					          </li> -->
+			<!-- 				</ul> -->
+			<!-- 				<i class="bi bi-list mobile-nav-toggle"></i> -->
+			<!-- 			</nav> -->
 			<!-- .navbar -->
 
 		</div>
@@ -177,7 +178,7 @@
 	<!-- End Header -->
 
 	<!-- ======= Hero Section ======= -->
-		<main id="main">
+	<main id="main">
 
 		<!-- content -->
 		<section class="py-5">
@@ -224,10 +225,7 @@
 							</h4>
 							<div class="d-flex flex-row my-3">
 								<div class="text-warning mb-1 me-2">
-									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-										class="fas fa-star-half-alt"></i> <span class="ms-1">
-										4.5 </span>
+									<span class="ms-1"> 4.5 </span><i class="fa fa-star"></i>
 								</div>
 								<span class="text-muted"><i
 									class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span> <span
@@ -388,43 +386,43 @@
 	</footer>
 	<!-- End Footer -->
 
-<!-- 	<script> -->
-<!-- // 		// Lấy đối tượng "Buy now" button -->
-<!-- // 		const buyNowBtn = document.querySelector('button.btn.btn-warning'); -->
+	<!-- 	<script> -->
+	<!-- // 		// Lấy đối tượng "Buy now" button -->
+	<!-- // 		const buyNowBtn = document.querySelector('button.btn.btn-warning'); -->
 
-<!-- // 		// Thêm sự kiện click cho button -->
-<!-- // 		buyNowBtn.addEventListener('click', function(event) { -->
-<!-- // 			event.preventDefault(); // Ngăn chặn hành động mặc định của link -->
+	<!-- // 		// Thêm sự kiện click cho button -->
+	<!-- // 		buyNowBtn.addEventListener('click', function(event) { -->
+	<!-- // 			event.preventDefault(); // Ngăn chặn hành động mặc định của link -->
 
-<!-- // 			// Hiển thị div với lớp overlay và toggle -->
-<!-- // 			const formContainer = document -->
-<!-- // 					.querySelector('.container.mt-3.pt-3'); -->
-<!-- // 			formContainer.classList.remove('d-none'); -->
+	<!-- // 			// Hiển thị div với lớp overlay và toggle -->
+	<!-- // 			const formContainer = document -->
+	<!-- // 					.querySelector('.container.mt-3.pt-3'); -->
+	<!-- // 			formContainer.classList.remove('d-none'); -->
 
-<!-- // 			// Thêm lớp overlay -->
-<!-- // 			const overlay = document.createElement('div'); -->
-<!-- // 			overlay.classList.add('overlay'); -->
-<!-- // 			document.body.appendChild(overlay); -->
+	<!-- // 			// Thêm lớp overlay -->
+	<!-- // 			const overlay = document.createElement('div'); -->
+	<!-- // 			overlay.classList.add('overlay'); -->
+	<!-- // 			document.body.appendChild(overlay); -->
 
-<!-- // 			// Thêm sự kiện click cho overlay để đóng form -->
-<!-- // 			overlay.addEventListener('click', function() { -->
-<!-- // 				formContainer.classList.add('d-none'); -->
-<!-- // 				overlay.remove(); -->
-<!-- // 			}); -->
-<!-- // 		}); -->
+	<!-- // 			// Thêm sự kiện click cho overlay để đóng form -->
+	<!-- // 			overlay.addEventListener('click', function() { -->
+	<!-- // 				formContainer.classList.add('d-none'); -->
+	<!-- // 				overlay.remove(); -->
+	<!-- // 			}); -->
+	<!-- // 		}); -->
 
-<!-- // 		// Lấy đối tượng nút "X" -->
-<!-- // 		const closeBtn = document.querySelector('.close-btn'); -->
+	<!-- // 		// Lấy đối tượng nút "X" -->
+	<!-- // 		const closeBtn = document.querySelector('.close-btn'); -->
 
-<!-- // 		// Thêm sự kiện click cho nút "X" -->
-<!-- // 		closeBtn.addEventListener('click', function() { -->
-<!-- // 			const formContainer = document -->
-<!-- // 					.querySelector('.container.mt-3.pt-3'); -->
-<!-- // 			formContainer.classList.add('d-none'); -->
-<!-- // 			const overlay = document.querySelector('.overlay'); -->
-<!-- // 			overlay.remove(); -->
-<!-- // 		}); -->
-<!-- 	</script> -->
+	<!-- // 		// Thêm sự kiện click cho nút "X" -->
+	<!-- // 		closeBtn.addEventListener('click', function() { -->
+	<!-- // 			const formContainer = document -->
+	<!-- // 					.querySelector('.container.mt-3.pt-3'); -->
+	<!-- // 			formContainer.classList.add('d-none'); -->
+	<!-- // 			const overlay = document.querySelector('.overlay'); -->
+	<!-- // 			overlay.remove(); -->
+	<!-- // 		}); -->
+	<!-- 	</script> -->
 
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center"><i

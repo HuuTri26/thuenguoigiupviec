@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,7 +47,8 @@
 <!-- Template Main CSS File -->
 <link href="<c:url value='/resources/main/assets/css/style.css'/>"
 	rel="stylesheet">
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <!-- =======================================================
   * Template Name: Maxim - v4.8.0
   * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
@@ -69,31 +70,31 @@
 				<!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 			</div>
 
-<!-- 			<nav id="navbar" class="navbar"> -->
-<!-- 				<ul> -->
-<!-- 					<li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
-<!-- 					<li><a class="nav-link scrollto" href="#about">About</a></li> -->
-<!-- 					<li><a class="nav-link scrollto" href="#services">Services</a></li> -->
+			<!-- 			<nav id="navbar" class="navbar"> -->
+			<!-- 				<ul> -->
+			<!-- 					<li><a class="nav-link scrollto active" href="#hero">Home</a></li> -->
+			<!-- 					<li><a class="nav-link scrollto" href="#about">About</a></li> -->
+			<!-- 					<li><a class="nav-link scrollto" href="#services">Services</a></li> -->
 
-<!-- 					<li class="dropdown"><a href="#"><span>Login</span> <i -->
-<!-- 							class="bi bi-chevron-down"></i></a> -->
-<!-- 						<ul> -->
-<!-- 							<li><a href="admin/adminLogin.htm">Admin</a></li> -->
-<!-- 							<li><a href="maid/maidLogin.htm">Maid</a></li> -->
-<!-- 							<li><a href="customer/customerLogin.htm">User</a></li> -->
+			<!-- 					<li class="dropdown"><a href="#"><span>Login</span> <i -->
+			<!-- 							class="bi bi-chevron-down"></i></a> -->
+			<!-- 						<ul> -->
+			<!-- 							<li><a href="admin/adminLogin.htm">Admin</a></li> -->
+			<!-- 							<li><a href="maid/maidLogin.htm">Maid</a></li> -->
+			<!-- 							<li><a href="customer/customerLogin.htm">User</a></li> -->
 
-<!-- 						</ul></li> -->
-<!-- 					<li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
-<!-- 					             <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a> -->
-<!-- 					               <ul> -->
-<!-- 					              <li><a href="profile.htm">Trang cá nhân</a></li> -->
-<!-- 					              <li><a href="index.htm">Log out</a></li> -->
+			<!-- 						</ul></li> -->
+			<!-- 					<li><a class="nav-link scrollto" href="#contact">Contact</a></li> -->
+			<!-- 					             <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down"></i></a> -->
+			<!-- 					               <ul> -->
+			<!-- 					              <li><a href="profile.htm">Trang cá nhân</a></li> -->
+			<!-- 					              <li><a href="index.htm">Log out</a></li> -->
 
-<!-- 					            </ul> -->
-<!-- 					          </li> -->
-<!-- 				</ul> -->
-<!-- 				<i class="bi bi-list mobile-nav-toggle"></i> -->
-<!-- 			</nav> -->
+			<!-- 					            </ul> -->
+			<!-- 					          </li> -->
+			<!-- 				</ul> -->
+			<!-- 				<i class="bi bi-list mobile-nav-toggle"></i> -->
+			<!-- 			</nav> -->
 			<!-- .navbar -->
 
 		</div>
@@ -161,6 +162,9 @@
 							<a href="serviceDetail/${service.id }.htm" class="card-title"
 								style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;"
 								id="serviceName">${service.name }</a>
+							<div class="text-warning mb-1 me-2">
+								<span class="ms-1"> 4.5 </span><i class="fa fa-star"></i>
+							</div>
 							<p class="card-text" id="categoryName">Loại:
 								${service.category.name }</p>
 							<p class="card-text" id="serviceTime">Thời gian gói:
@@ -267,7 +271,7 @@
 	</footer>
 	<!-- End Footer -->
 
-		<script>
+	<script>
   const originalCards = Array.from(document.querySelectorAll('.serviceInfor'));
   let filteredCards = originalCards.slice(); // Sao chép danh sách card ban đầu
 

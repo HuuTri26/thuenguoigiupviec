@@ -242,7 +242,7 @@
                     									Hết hạn
                 									</c:otherwise>
 												</c:choose></td>
-											<td scope="col"><a href="contractDetail.htm"
+											<td scope="col"><a href="customer/contractDetail.htm"
 												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
 												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
 										</tr>

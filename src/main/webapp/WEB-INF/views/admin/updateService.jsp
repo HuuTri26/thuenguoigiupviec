@@ -115,63 +115,60 @@
 										</div>
 									</div>
 								</div>
+
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Tên
-										dịch vụ</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="name"
-										placeholder="Subject name" required>
+										dịch vụ</label> <input name="name" type="text" class="form-control"
+										id="validationDefault01" value="${service.name }" name="name"
+										placeholder="Subject name" required readonly="readonly"/>
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault04" class="form-label">Loại
-									</label> <select class="form-select" id="validationDefault04"
-										name="category" required>
-										<option selected value="">Dọn dẹp</option>
-										<option>Nấu ăn</option>
-										<option>Chăm trẻ</option>
-										<option>Chăm sóc người bệnh</option>
-									</select>
+									</label> <input name="categoryName" type="text" class="form-control"
+										id="validationDefault01" value="${service.category.name }"
+										name="name" placeholder="Subject name" required readonly="readonly"/>
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Giá
-										tiền</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="price"
-										placeholder="Subject name" required>
+										tiền</label> <input name="price" type="number" class="form-control"
+										id="validationDefault01"
+										value="${service.servicePrices[0].price }" name="price"
+										placeholder="Subject name" required readonly="readonly" />
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Thời
 										gian gói</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="time"
-										placeholder="Subject name" required>
+										id="validationDefault01" value="${service.time }" name="time"
+										placeholder="Subject name" required readonly="readonly">
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Số
 										lượng giúp việc</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="maidQuantity"
-										placeholder="Subject name" required>
+										id="validationDefault01" value="${service.maidQuantity }"
+										name="maidQuantity" placeholder="Subject name" required
+										readonly="readonly">
 								</div>
-								<!-- <div class="col-md-6">
-                                    <label class="form-label">Description</label>
-                                    <textarea  class="form-control" name="last_name" style="height:100px"
-                                        required>
-                                        </textarea>
-                                </div> -->
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Miêu
 										tả</label>
-									<textarea class="form-control" style="height: 100px"></textarea>
+									<textarea class="form-control" style="height: 100px" readonly="readonly">${service.description }</textarea>
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault04" class="form-label">Trạng
-										thái</label> <select class="form-select" id="validationDefault04"
+										thái</label> <input type="text" class="form-control"
+										id="validationDefault01" value="${service.status ? 'Đang hoạt động' : 'Dừng hoạt động' }"
+										name="serviceStatus" placeholder="Subject name" required
+										readonly="readonly">
+									<!-- <select class="form-select" id="validationDefault04"
 										name="status" required>
 										<option selected value="">Hoạt động</option>
 										<option>Ngưng hoạt động</option>
-									</select>
+									</select> -->
 								</div>
 								<div class="col-12">
 									<button class="btn btn-primary" type="submit">Update</button>

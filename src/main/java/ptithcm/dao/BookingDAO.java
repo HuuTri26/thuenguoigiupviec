@@ -10,4 +10,6 @@ public interface BookingDAO {
 	public void updateBooking(BookingEntity booking);
 	public BookingEntity getBookingById(int booking);
 	public List<BookingEntity> getBookingsForMaid(int maid);
+	public List<BookingEntity> getBookingListBy(Integer customerId);
+	
 }

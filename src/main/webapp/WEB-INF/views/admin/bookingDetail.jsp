@@ -12,7 +12,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>Profile booking</title>
+<title>Thông tin đặt lịch</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -74,10 +74,10 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Profile booking</h1>
+			<h1>Thông tin đặt lịch</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.html">Trang chủ</a></li>
 					<li class="breadcrumb-item  active"><a
 						href="admin/bookingManagement.htm">booking</a></li>
 					<li class="breadcrumb-item  active"><a

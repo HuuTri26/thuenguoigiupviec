@@ -93,6 +93,167 @@
 <link href="<c:url value='/resources/main/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<link
+	href="<c:url value='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'/>"
+	rel="stylesheet">
+<link
+	href="<c:url value='https://use.fontawesome.com/releases/v5.7.2/css/all.css'/>"
+	rel="stylesheet">
+<style>
+@import
+	url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap')
+	;
+
+/* * { */
+/* 	margin: 0; */
+/* 	padding: 0; */
+/* 	box-sizing: border-box; */
+/* 	font-family: 'Montserrat', sans-serif; */
+/* } */
+
+/* body { */
+/* 	display: flex; */
+/* 	justify-content: center; */
+/* 	align-items: center; */
+/* 	min-height: 100vh; */
+/* 	background-color: #0C4160; */
+/* 	padding: 30px 10px; */
+/* } */
+.card-payment {
+	max-width: 500px;
+	margin: auto;
+	color: black;
+	border-radius: 20 px;
+}
+
+.container-card {
+	display: none;
+	background-color: white;
+	border-radius: 8px;
+	padding: 20px;
+	width: 400px;
+	z-index: 1001;
+}
+
+/* p { */
+/* 	margin: 0px; */
+/* } */
+.container-card .h8 {
+	font-size: 30px;
+	font-weight: 800;
+	text-align: center;
+}
+
+.btn.btn-primary {
+	width: 100%;
+	height: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 15px;
+	background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%);
+	border: none;
+	transition: 0.5s;
+	background-size: 200% auto;
+}
+
+.btn.btn.btn-primary:hover {
+	background-position: right center;
+	color: #fff;
+	text-decoration: none;
+}
+
+.btn.btn-primary:hover .fas.fa-arrow-right {
+	transform: translate(15px);
+	transition: transform 0.2s ease-in;
+}
+
+.form-control {
+	color: white;
+	background-color: #223C60;
+	border: 2px solid transparent;
+	height: 60px;
+	padding-left: 20px;
+	vertical-align: middle;
+}
+
+.form-control:focus {
+	color: white;
+	background-color: #0C4160;
+	border: 2px solid #2d4dda;
+	box-shadow: none;
+}
+
+.text {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+::placeholder {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+/* css số sao */
+.rate {
+	float: left;
+	height: 46px;
+	padding: 0 10px;
+}
+
+.rate:not(:checked)>input {
+	position: absolute;
+	top: -9999px;
+}
+
+.rate:not(:checked)>label {
+	float: right;
+	width: 1em;
+	overflow: hidden;
+	white-space: nowrap;
+	cursor: pointer;
+	font-size: 30px;
+	color: #ccc;
+}
+
+.rate:not(:checked)>label:before {
+	content: '★ ';
+}
+
+.rate>input:checked ~ label {
+	color: #ffc700;
+}
+
+.rate:not(:checked)>label:hover, .rate:not(:checked)>label:hover ~ label
+	{
+	color: #deb217;
+}
+
+.rate>input:checked+label:hover, .rate>input:checked+label:hover ~ label,
+	.rate>input:checked ~ label:hover, .rate>input:checked ~ label:hover ~
+	label, .rate>label:hover ~ input:checked ~ label {
+	color: #c59b08;
+}
+</style>
 </head>
 
 <body>
@@ -111,8 +272,8 @@
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="customer/index.htm"><span>Account</span>
-							<i class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="customer/index.htm"><span>Tài
+								khoản</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
 							<li><a href="customer/updateCustomer.htm">Cập nhật thông
@@ -139,7 +300,8 @@
 			<h1>Profile booking</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="customer/index.html">Home</a></li>
+					<li class="breadcrumb-item"><a href="customer/index.html">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="customer/bookingDetail.htm">Profile booking</a></li>
 				</ol>
@@ -174,88 +336,252 @@
 
 								<li class="nav-item">
 									<button class="nav-link active" data-bs-toggle="tab"
-										data-bs-target="#profile-overview">Xem thông tin</button>
+										data-bs-target="#profile-overview">Danh sách người
+										giúp việc được phân công</button>
 								</li>
-
 
 							</ul>
 							<div class="tab-content pt-2">
 
+								<table class="table datatable ">
+									<thead class="thead-fixed"
+										style="background-color: #37517e; color: white">
+										<tr>
+
+											<th scope="col-1">Id</th>
+											<th scope="col-2">Họ tên</th>
+											<th scope="col-1">Số điện thoại</th>
+
+											<th scope="col-3">Địa chỉ</th>
+											<th scope="col-1">Full/Partime</th>
+											<th scope="col-1"></th>
+
+										</tr>
+									</thead>
+									<tbody id="table_maids">
+
+										<c:forEach var="maid" items="${bookingMaids}">
+											<tr>
+												<td scope="row">${maid.id }</td>
+												<td scope="col-2">${maid.fullName }</td>
+												<td scope="col-2">${maid.phoneNumber }</td>
+												<td scope="col-3">${maid.account.email }</td>
+												<td scope="col-1">${maid.employmentType ? 'Full-time':'Part-time' }</td>
+												<!-- <td scope="col-1">Part-time</td> -->
+											</tr>
+										</c:forEach>
+
+									</tbody>
+								</table>
+
 								<div class="tab-pane fade show active profile-overview"
 									id="profile-overview">
-									<h5 class="card-title">Miêu tả</h5>
-									<p class="small fst-italic">Hahahahahahaa</p>
+									<!-- 			<h5 class="card-title">Miêu tả</h5>
+									<p class="small fst-italic">Hahahahahahaa</p> -->
 
 									<h5 class="card-title">Thông tin Booking</h5>
 
 									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Id khách hàng</div>
-										<div class="col-lg-9 col-md-8">1</div>
+										<div class="col-lg-3 col-md-4 label ">Tên khách hàng</div>
+										<div class="col-lg-9 col-md-8">${booking.customer.fullName }</div>
 									</div>
-									<div class="row">
+									<!-- 	<div class="row">
 										<div class="col-lg-3 col-md-4 label ">Id người giúp việc</div>
 										<div class="col-lg-9 col-md-8">1</div>
-									</div>
+									</div> -->
 									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Id gói dịch vụ</div>
-										<div class="col-lg-9 col-md-8">2</div>
+										<div class="col-lg-3 col-md-4 label">Tên gói dịch vụ</div>
+										<div class="col-lg-9 col-md-8">${booking.service.name }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày bắt đầu</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
+										<div class="col-lg-9 col-md-8">${booking.startTime }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-										<div class="col-lg-9 col-md-8">Man thiện</div>
+										<div class="col-lg-9 col-md-8">${booking.bookingAddress }</div>
 									</div>
 
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ghi chú</div>
-										<div class="col-lg-9 col-md-8">Cần mang dao chặt cỏ</div>
+										<div class="col-lg-9 col-md-8">${booking.note }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Giá</div>
-										<div class="col-lg-9 col-md-8">350000</div>
+										<div class="col-lg-9 col-md-8">${booking.service.servicePrices[0].price }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
+										<div class="col-lg-9 col-md-8">${booking.createAt }</div>
 									</div>
 									<div class="row">
-										<div class="col-lg-3 col-md-4 label ">Id nhân viên</div>
-										<div class="col-lg-9 col-md-8">1</div>
+										<div class="col-lg-3 col-md-4 label ">Nhân viên tiếp
+											nhận</div>
+										<div class="col-lg-9 col-md-8">${booking.employee.fullName }</div>
 									</div>
-
-
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Trạng thái thanh
 											toán</div>
-										<div class="col-lg-9 col-md-8">Đã thanh toán</div>
+										<div class="col-lg-9 col-md-8">${booking.paymentStatus == 1 ? 'Đã thanh toán' : 'Chưa thanh toán' }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Trạng thái đặt lịch</div>
-										<div class="col-lg-9 col-md-8">Đã xác nhận</div>
+										<div class="col-lg-9 col-md-8">
+											<c:choose>
+												<c:when test="${booking.bookingStatus == 0}">
+                    									Đã hủy
+                									</c:when>
+												<c:when test="${booking.bookingStatus == 1}">
+                    									Chờ xác nhận
+                									</c:when>
+												<c:when test="${booking.bookingStatus == 2}">
+                										Đã xác nhận
+                									</c:when>
+												<c:otherwise>
+                    									Hoàn thành
+                									</c:otherwise>
+											</c:choose>
+										</div>
 									</div>
-									
-										<button type="submit" style="background-color: orange;"
-											class="btn bg-button-submit  p-2 text-center mb-2 text-white fw-bolder fs-3">Xác
-											nhận thanh toán</button>
-								
+
+									<button type="submit" style="background-color: orange;" ${booking.paymentStatus == 0 ? '' : 'hidden' }
+										class="btn bg-button-submit  p-2 text-center mb-2 text-white fw-bolder fs-3"
+										onclick="showPaymentForm()">Xác nhận thanh toán</button>
+
 								</div>
-
-
-								<!-- End Bordered Tabs -->
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
+
+		<form:form class="overlay" id="overlay"
+			onclick="hidePaymentForm(event)"
+			action="customer/checkoutBooking/${booking.id}.htm" method="post"
+			modelAttribute="bookingDetail">
+
+			<div class="container-card p-0" id="paymentForm">
+
+				<div class="card-payment px-4">
+					<p class="h8 py-3">Thanh toán đơn hàng</p>
+					<div class="row gx-3">
+						<div class="col-12">
+							<div class="d-flex flex-column">
+								<p class="text mb-1">Tên gói</p>
+
+								<input readonly="readonly" class="form-control mb-3" type="text"
+									placeholder="Name" value="${booking.service.name }">
+
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="d-flex flex-column">
+								<p class="text mb-1">Giá gói</p>
+
+								<input readonly="readonly" class="form-control mb-3" type="text"
+									placeholder="Name"
+									value="${booking.service.servicePrices[0].price }">
+
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="d-flex flex-column">
+								<p class="text mb-1">Feedback</p>
+
+								<form:textarea path="feedback" class="form-control mb-3"
+									placeholder="Name" />
+
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="d-flex flex-column">
+								<p class="text mb-1">Đánh giá(Rating)</p>
+								<div class="rate">
+									<input type="radio" id="star5" name="rate" value=5 /> <label
+										for="star5" title="text">5 stars</label> <input type="radio"
+										id="star4" name="rate" value=4 /> <label for="star4"
+										title="text">4 stars</label> <input type="radio" id="star3"
+										name="rate" value=3 /> <label for="star3" title="text">3
+										stars</label> <input type="radio" id="star2" name="rate" value=2 />
+									<label for="star2" title="text">2 stars</label> <input
+										type="radio" id="star1" name="rate" value=1 /> <label
+										for="star1" title="text">1 star</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-12">
+							<!-- 	<div class="btn btn-primary mb-3">
+								<span class="ps-3">Thanh toán</span> <span
+									class="fas fa-arrow-right"></span>
+							</div> -->
+							<button class="btn btn-primary mb-3" type="submit">
+								<span class="ps-3">Thanh toán</span> <span
+									class="fas fa-arrow-right"></span>
+							</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form:form>
+		<%-- <div class="overlay" id="overlay" onclick="hidePaymentForm(event)">
+			<div class="container-card p-0" id="paymentForm">
+				<div class="card-payment px-4">
+					<p class="h8 py-3">Thanh toán đơn hàng</p>
+					<div class="row gx-3">
+						<div class="col-12">
+							<div class="d-flex flex-column">
+								<p class="text mb-1">Tên gói</p>
+								<input readonly="readonly" class="form-control mb-3" type="text" placeholder="Name"
+									value="${booking.service.name }">
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="d-flex flex-column">
+								<p class="text mb-1">Giá gói</p>
+								<input readonly="readonly" class="form-control mb-3" type="text" placeholder="Name"
+									value="${booking.service.servicePrices[0].price }">
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="d-flex flex-column">
+								<p class="text mb-1">Feedback</p>
+								<textarea name="feedback" class="form-control mb-3" placeholder="Name"></textarea>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="d-flex flex-column">
+								<p class="text mb-1">Đánh giá(Rating)</p>
+								<div class="rate">
+									<input type="radio" id="star5" name="rate" value="5" /> <label
+										for="star5" title="text">5 stars</label> <input type="radio"
+										id="star4" name="rate" value="4" /> <label for="star4"
+										title="text">4 stars</label> <input type="radio" id="star3"
+										name="rate" value="3" /> <label for="star3" title="text">3
+										stars</label> <input type="radio" id="star2" name="rate" value="2" />
+									<label for="star2" title="text">2 stars</label> <input
+										type="radio" id="star1" name="rate" value="1" /> <label
+										for="star1" title="text">1 star</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12">
+							<div class="btn btn-primary mb-3">
+								<a href="customer/checkoutBooking/${booking.id}.htm" class="ps-3">Thanh toán</a> <span
+									class="fas fa-arrow-right"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> --%>
 
 	</main>
 	<!-- End #main -->
@@ -273,7 +599,19 @@
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center"><i
 		class="bi bi-arrow-up-short"></i></a>
+	<script>
+        function showPaymentForm() {
+            document.getElementById('overlay').style.display = 'flex';
+            document.getElementById('paymentForm').style.display = 'block';
+        }
 
+        function hidePaymentForm(event) {
+            if (event.target.id === 'overlay') {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('paymentForm').style.display = 'none';
+            }
+        }
+    </script>
 	<!-- Vendor JS Files -->
 	<script
 		src="<c:url value='/resources/admin/assets/vendor/apexcharts/apexcharts.min.js'/>"></script>

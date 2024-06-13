@@ -78,7 +78,8 @@
 			<h1>Thông tin hợp đồng</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="admin/contractManagement.htm">Danh sách hợp đồng</a></li>
 				</ol>
@@ -93,8 +94,8 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="card-title">
-								<a href="admin/addContract.htm" class="btn btn-primary">Add
-									Contract</a>
+								<a href="admin/addContract.htm" class="btn btn-primary">Thêm
+									hợp đồng</a>
 							</div>
 							<!--       <h5 class="card-title">Datatables</h5>
               <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>

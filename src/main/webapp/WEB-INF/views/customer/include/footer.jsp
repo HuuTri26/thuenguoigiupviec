@@ -12,8 +12,8 @@
 						<h3>BookMyMaid</h3>
 						<p>
 						<p>
-							A-123 MG Road, <br> Pune, PU 535022 <br> <strong>Phone:</strong>
-							+91 9988452631<br> <strong>Email:</strong>
+							None <br>None <br> <strong>Phone:0123456</strong>
+							JQK<br> <strong>Email:noreply@gmail.com</strong>
 							bookmymaid@gmail.com<br>
 						</p>
 
@@ -21,43 +21,27 @@
 				</div>
 
 				<div class="col-lg-2 col-md-6 footer-links">
-					<h4>Useful Links</h4>
+					<h4>Link</h4>
 					<ul>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">About
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Trang chủ</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">about
 								us</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Terms
-								of service</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Privacy
-								policy</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Các gói dịch vụ</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Danh sách maid</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#"></a>Chính sách người dùng</li>
 					</ul>
 				</div>
 
 				<div class="col-lg-3 col-md-6 footer-links">
 					<h4>Design by</h4>
 					<ul>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">AkshayKumar
-								Girmal</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Atharva
-								Bondre</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Tejas
-								Jawale</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Mayur
-								Nigade</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Pankaj
-								Desai</a></li>
-						<li><i class="bx bx-chevron-right"></i> <a href="#">Ruchita
-								Patil</a></li>
+						<li><i class="bx bx-chevron-right"></i> <a href="#">Nhóm 16</a></li>
 					</ul>
 				</div>
 
 				<div class="col-lg-3 col-md-6 footer-links">
 					<h3>BookMyMaid</h3>
-					<p>A web-based application that provides facility to book maid
-						online. It provides a common platform where user can book maid
-						according to need and maid can get a job assigned.</p>
-					<h4>Our Social Networks</h4>
+					<p> Website booking maid</h4>
 					<div class="social-links mt-3">
 						<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a> <a
 							href="#" class="facebook"><i class="bx bxl-facebook"></i></a> <a
@@ -80,7 +64,7 @@
 			<!-- You can delete the links only if you purchased the pro version. -->
 			<!-- Licensing information: https://bootstrapmade.com/license/ -->
 			<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/ -->
-			Designed by <a href="https://bootstrapmade.com/">Developers</a>
+			Designed by <a href="https://bootstrapmade.com/"></a>
 		</div>
 	</div>
 </footer>

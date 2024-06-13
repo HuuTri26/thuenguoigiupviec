@@ -49,6 +49,9 @@
 <link href="<c:url value='/resources/main/assets/css/style.css'/>"
 	rel="stylesheet">
 
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <!-- =======================================================
   * Template Name: Maxim - v4.8.0
   * Template URL: https://bootstrapmade.com/maxim-free-onepage-bootstrap-theme/
@@ -98,7 +101,7 @@
 		<!-- 				</div> -->
 		<%-- 			</form> --%>
 		<!-- 		</div> -->
-		<div class="container "style="margin-top: 70px;">
+		<div class="container " style="margin-top: 70px;">
 			<div class="row">
 				<div class="col-md-4">
 					<label for="filterBy">Lọc theo thuộc tính:</label> <select
@@ -131,9 +134,13 @@
 							src="https://images.squarespace-cdn.com/content/v1/5692fb8a5a566828b96c5bf0/1453150819608-Z0SGDXSAFJGZDY5RHERW/hire-maid-cleaning-lady-toronto-north-york.jpg?format=1500w"
 							class="card-img-top" alt="Hollywood Sign on The Hill">
 						<div class="card-body">
-							<a href="customer/serviceList/serviceDetail/${service.id }.htm" class="card-title"
+							<a href="customer/serviceList/serviceDetail/${service.id }.htm"
+								class="card-title"
 								style="color: black; font-size: 24px; font-weight: bold; cursor: pointer;"
 								id="serviceName">${service.name }</a>
+							<div class="text-warning mb-1 me-2">
+								<span class="ms-1"> 4.5 </span><i class="fa fa-star"></i>
+							</div>
 							<p class="card-text" id="categoryName">Loại:
 								${service.category.name }</p>
 							<p class="card-text" id="serviceTime">Thời gian gói:

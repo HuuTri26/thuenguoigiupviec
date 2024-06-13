@@ -111,8 +111,8 @@
 			</div>
 			<nav id="navbar" class="navbar">
 				<ul>
-					<li class="dropdown"><a href="customer/index.htm"><span>Account</span>
-							<i class="bi bi-chevron-down"></i></a>
+					<li class="dropdown"><a href="customer/index.htm"><span>Tài
+								khoản</span> <i class="bi bi-chevron-down"></i></a>
 						<ul>
 							<li><a href="customer/customerProfile.htm">Trang cá nhân</a></li>
 							<li><a href="customer/updateCustomer.htm">Cập nhật thông
@@ -139,7 +139,8 @@
 			<h1>Thông tin Bill</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="customer/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="customer/index.htm">Trang
+							chủ</a></li>
 					<li class="breadcrumb-item active"><a
 						href="customer/bookingManagement.htm">Thông tin bill</a></li>
 				</ol>
@@ -182,66 +183,22 @@
 									</tr>
 								</thead>
 								<tbody id="table_bills">
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col"><fmt:formatNumber value="2500"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><a href="customer/billDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col"><fmt:formatNumber value="50078"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><a href="customer/billDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col"><fmt:formatNumber value="250000"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><a href="customer/billDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col"><fmt:formatNumber value="1500"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><a href="customer/billDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col"><fmt:formatNumber value="7500"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><a href="customer/billDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
-									<tr>
-										<td scope="row">1</td>
-										<td scope="col">2022-12-24</td>
-										<td scope="col"><fmt:formatNumber value="264500"
-												pattern="#,###.## VND;VND -#,###.##" type="currency"
-												currencySymbol="VND" /></td>
-										<td scope="col"><a href="customer/billDetail.htm"
-											class="btn btn-primary"><i class="bi bi-eye"></i></a><a
-											href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
-									</tr>
+
+									<c:forEach var="bill" items="${billList }">
+
+										<tr>
+											<td scope="row">${bill.booking.id }</td>
+											<td scope="col">${bill.paymentTime }</td>
+											<td scope="col"><fmt:formatNumber value="${bill.total }"
+													pattern="#,###.## VND;VND -#,###.##" type="currency"
+													currencySymbol="VND" /></td>
+											<td scope="col"><a href="customer/billDetail.htm"
+												class="btn btn-primary"><i class="bi bi-eye"></i></a><a
+												href="#" class="btn btn-danger"><i class="bi-trash"></i></a></td>
+										</tr>
+
+									</c:forEach>
+
 								</tbody>
 							</table>
 							<div class="pagination-container pt-5"

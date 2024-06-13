@@ -69,14 +69,14 @@
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Category</h1>
+			<h1>Loại dịch vụ</h1>
 			<nav>
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="admin/index.htm">Home</a></li>
+					<li class="breadcrumb-item"><a href="admin/index.htm">Trang chủ</a></li>
 					<li class="breadcrumb-item active"><a
-						href="admin/categoryManagement.htm">Category</a></li>
+						href="admin/categoryManagement.htm">Loại dịch vụ</a></li>
 					<li class="breadcrumb-item active"><a
-						href="admin/addCategory.htm">Add Category</a></li>
+						href="admin/addCategory.htm">Thêm</a></li>
 				</ol>
 			</nav>
 		</div>
