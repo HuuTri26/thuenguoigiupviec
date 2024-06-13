@@ -32,6 +32,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import ptithcm.bean.Mailer;
 import ptithcm.dao.ServiceDAO;
 import ptithcm.entity.AccountEntity;
+import ptithcm.entity.BillEntity;
 import ptithcm.entity.BookingDetailEntity;
 import ptithcm.entity.BookingEntity;
 import ptithcm.entity.CategoryEntity;
@@ -43,6 +44,7 @@ import ptithcm.entity.ServiceEntity;
 import ptithcm.entity.ServicePriceEntity;
 import ptithcm.entity.RoleEntity;
 import ptithcm.service.AccountService;
+import ptithcm.service.BillService;
 import ptithcm.service.BookingDetailService;
 import ptithcm.service.BookingService;
 import ptithcm.service.CategoryService;
@@ -90,11 +92,16 @@ public class adminController {
 
 	@Autowired
 	BookingService bookingService;
+	
 	@Autowired
 	BookingDetailService bookingDetailService;
+	
+	@Autowired
+	BillService billService;
+	
 	@Autowired
 	Mailer mailer;
-
+	
 	// Trang đăng nhập cho admin
 	@RequestMapping("admin/adminLogin")
 	public String showLoginForm(Model model) {
@@ -343,7 +350,7 @@ public class adminController {
 			System.out.println("Error: Employee info updated unsuccessfully!");
 			return "redirect:/admin/adminEditProfile.htm";
 		}
-
+		
 		try {
 			employee.setFullName(accountService.standardizeName(employeeInfo.getFullName()));
 			employee.setPhoneNumber(employeeInfo.getPhoneNumber());
@@ -616,8 +623,12 @@ public class adminController {
 	}
 
 	// Hiển thị form cập nhật dịch vụ:
-	@RequestMapping("admin/updateService")
-	public String showUpdateServiceForm() {
+	@RequestMapping("admin/updateService/{id}")
+	public String showUpdateServiceForm(Model model, @PathVariable("id") Integer id) {
+		ServiceEntity service = maidServiceService.getServiceById(id);
+		
+		model.addAttribute("service", service);
+		
 		return "admin/updateService";
 	}
 
@@ -760,16 +771,18 @@ public class adminController {
 	    return "redirect:/admin/bookingDetail/{bookingId}.htm";
 	}
 	@RequestMapping(value="admin/bookingDetail/confirmBooking/{bookingId}")
-	public String confirmBooking(@PathVariable("bookingId") int bookingId, ModelMap model) {
+	public String confirmBooking(HttpServletRequest request, @PathVariable("bookingId") int bookingId, ModelMap model) {
 		List<BookingDetailEntity> bookingDetails= bookingDetailService.getListBookingDetailsByBookingId(bookingId);
 		List<MaidEntity> maidsSelected = maidService.getListMaidSelectedListByBookingId(bookingId);
 		List<MaidEntity> maidsAvailable = maidService.getListMaidPartTime();
 		BookingEntity booking = bookingService.getBookingById(bookingId);
 		ServiceEntity service = maidServiceService.getServiceById(booking.getService().getId());
 		
-		
 		// Handle
+		HttpSession session = request.getSession();
+		EmployeeEntity employee = (EmployeeEntity) session.getAttribute("employee");
 		booking.setBookingStatus(2);// 0: đã hủy, 1: chờ xác nhận, 2 đã xác nhận, 3: đã hoàn thành
+		booking.setEmployee(employee);
 		bookingService.updateBooking(booking);
 		
 		model.addAttribute("maidsAvailable", maidsAvailable);
@@ -956,14 +969,20 @@ public class adminController {
 
 	// Hiển thị thông tin hợp đồng:
 	@RequestMapping("admin/contractDetail/{contractId}")
-	public String showContractDetail(@PathVariable("contractId") int contractId) {
+	public String showContractDetail(Model model ,@PathVariable("contractId") int contractId) {
+		ContractEntity contract = contractService.getContractById(contractId);
+		
+		model.addAttribute("contract", contract);
 		
 		return "admin/contractDetail";
 	}
 
 	// Hiển thị danh sách bill:
 	@RequestMapping("admin/billManagement")
-	public String showBillManagement() {
+	public String showBillManagement(Model model) {
+		List<BillEntity> billList = billService.getListBill();
+		
+		model.addAttribute("billList", billList);
 		return "admin/billManagement";
 	}
 

@@ -39,6 +39,7 @@ public class BookingEntity {
 	@Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     private Date startTime;
+	
 	@Column(name = "Address")
 	private String bookingAddress;
 	
@@ -48,10 +49,10 @@ public class BookingEntity {
 	@Column(name = "Price")
 	private Double price;
 	
-	@Column(name = "BookingStatus", nullable = false, columnDefinition = "INT DEFAULT 0")
+	@Column(name = "BookingStatus")
 	private Integer bookingStatus;
 	
-	@Column(name = "PaymentStatus", nullable = false, columnDefinition = "INT DEFAULT 1")
+	@Column(name = "PaymentStatus")
 	private Integer paymentStatus;
 	
 	@Temporal(TemporalType.DATE)
@@ -73,6 +74,9 @@ public class BookingEntity {
 	
 	@OneToMany(mappedBy = "booking", fetch = FetchType.LAZY)
 	private List<BookingDetailEntity> bookingDetails;
+	
+	@OneToOne(mappedBy = "booking", fetch = FetchType.LAZY)
+	private BillEntity bill;
 
 	public Integer getId() {
 		return id;
@@ -169,4 +173,13 @@ public class BookingEntity {
 	public void setBookingDetails(List<BookingDetailEntity> bookingDetails) {
 		this.bookingDetails = bookingDetails;
 	}
+
+	public BillEntity getBill() {
+		return bill;
+	}
+
+	public void setBill(BillEntity bill) {
+		this.bill = bill;
+	}
+	
 }
