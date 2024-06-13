@@ -74,4 +74,19 @@ public class BookingDAOImpl implements BookingDAO {
         return bookings;
 	}
 
+	@Override
+	public List<BookingEntity> getActiveBookingListByMaidId(Integer maidId) {
+		Session session = factory.getCurrentSession();
+        String hql = "SELECT b FROM BookingEntity b " +
+                     "JOIN b.bookingDetails bd " +
+                     "JOIN bd.maid m " +
+                     "WHERE m.id = :maidId AND b.paymentStatus = 0";
+        Query query = session.createQuery(hql);
+        query.setParameter("maidId", maidId);
+        List<BookingEntity> bookings = query.list();
+        
+        return bookings;
+	}
+
+
 }

@@ -17,4 +17,5 @@ public interface BookingService {
 	public BookingEntity getBookingById(int bookingId);
 	public List<BookingEntity> getBookingsForMaid(int maidId);
 	public List<BookingEntity> getBookingListBy(Integer customerId);
+	public List<BookingEntity> getActiveBookingListByMaidId(Integer maidId);
 }
