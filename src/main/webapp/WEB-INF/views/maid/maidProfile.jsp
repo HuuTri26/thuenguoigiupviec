@@ -76,7 +76,7 @@
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="maid/index.htm">Home</a></li>
 					<li class="breadcrumb-item active"><a
-						href="maid/maidProfile.htm">Profile Maid</a></li>
+						href="maid/maidProfile.htm">Thông tin người giúp việc</a></li>
 				</ol>
 			</nav>
 		</div>
@@ -141,52 +141,48 @@
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label ">Họ tên</div>
-										<div class="col-lg-9 col-md-8">Hữu Trí</div>
+										<div class="col-lg-9 col-md-8">${maid.fullName }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Số điện thoại</div>
-										<div class="col-lg-9 col-md-8">094387384</div>
+										<div class="col-lg-9 col-md-8">${maid.phoneNumber }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Địa chỉ</div>
-										<div class="col-lg-9 col-md-8">97 Man thiện</div>
+										<div class="col-lg-9 col-md-8">${maid.address }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Kinh nghiệm</div>
-										<div class="col-lg-9 col-md-8">31/02/2099</div>
+										<div class="col-lg-9 col-md-8">${maid.experience }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Salary</div>
-										<div class="col-lg-9 col-md-8">300$</div>
+										<div class="col-lg-9 col-md-8">${maid.salary } VNĐ</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày tạo</div>
-										<div class="col-lg-9 col-md-8">2022-12-26</div>
+										<div class="col-lg-9 col-md-8">${maid.createAt }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Ngày cập nhật</div>
-										<div class="col-lg-9 col-md-8">2023-01-26</div>
+										<div class="col-lg-9 col-md-8">${maid.updateAt }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Full/Partime</div>
-										<div class="col-lg-9 col-md-8">Fulltime</div>
-									</div>
-									<div class="row">
-										<div class="col-lg-3 col-md-4 label">Id nhân viên</div>
-										<div class="col-lg-9 col-md-8">1</div>
+										<div class="col-lg-9 col-md-8">${maid.employmentType ? 'PartTime' : 'FullTime' }</div>
 									</div>
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Email</div>
-										<div class="col-lg-9 col-md-8">maidfulltime@gmail.com</div>
+										<div class="col-lg-9 col-md-8">${maid.account.email }</div>
 									</div>
 
 									<div class="row">
 										<div class="col-lg-3 col-md-4 label">Trạng thái tài
 											khoản</div>
-										<div class="col-lg-9 col-md-8">Hoạt động</div>
+										<div class="col-lg-9 col-md-8">${maid.status }</div>
 									</div>
 
 								</div>

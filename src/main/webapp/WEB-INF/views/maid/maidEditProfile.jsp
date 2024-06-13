@@ -93,7 +93,8 @@
    -->
 							<!-- Browser Default Validation -->
 
-							<form class="row g-3">
+							<form:form class="row g-3" action="maid/maidEditProfile.htm"
+								method="post" modelAttribute="maidInfo">
 								<!-- <div class="col-md-6">
                                     <label for="validationDefault01" class="form-label">ID</label>
                                     <input type="hidden" class="form-control" id="validationDefault01" value="id" name="id" placeholder="Id"
@@ -116,84 +117,73 @@
 								</div>
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Họ
-										tên</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="name"
-										placeholder="Subject name" required>
+										tên</label>
+									<form:input path="fullName" type="text" class="form-control"
+										id="validationDefault01" value="${maid.fullName }" name="name"
+										placeholder="Subject name" />
+									<form:errors path="fullName" />
 								</div>
-
-								<!-- 								<div class="col-md-6"> -->
-								<!-- 									<label for="validationDefault04" class="form-label">Loại -->
-								<!-- 									</label> <select class="form-select" id="validationDefault04" -->
-								<!-- 										name="category" required> -->
-								<!-- 										<option selected value="">Dọn dẹp</option> -->
-								<!-- 										<option>Nấu ăn</option> -->
-								<!-- 										<option>Chăm trẻ</option> -->
-								<!-- 										<option>Chăm sóc người bệnh</option> -->
-								<!-- 									</select> -->
-								<!-- 								</div> -->
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Số
-										điện thoại</label> <input type="number" class="form-control"
-										id="validationDefault01" value="" name="price"
-										placeholder="Subject name" required>
+										điện thoại</label>
+									<form:input path="phoneNumber" type="number"
+										class="form-control" id="validationDefault01"
+										value="${maid.phoneNumber }" name="price"
+										placeholder="Subject name" />
+									<form:errors path="phoneNumber" />
 								</div>
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Địa
-										chỉ</label> <input type="text" class="form-control"
-										id="validationDefault01" value="" name="time"
-										placeholder="Subject name" required>
+										chỉ</label>
+									<form:input path="address" type="text" class="form-control"
+										id="validationDefault01" value="${maid.address }" name="time"
+										placeholder="Subject name" />
+									<form:errors path="address" />
 								</div>
 
 
 								<div class="col-md-6">
 									<label for="validationDefault01" class="form-label">Email</label>
 									<input type="email" class="form-control"
-										id="validationDefault01" value="" name="email"
-										placeholder="Subject name" required>
+										id="validationDefault01" value="${maid.account.email }"
+										name="email" placeholder="Subject name" readonly="readonly" >
 								</div>
 
 								<div class="row mb-3">
 									<label for="Country" class="col-md-4 col-lg-3 col-form-label">Kinh
 										nghiệm</label>
 									<div class="col-md-8 col-lg-9">
-										<input name="exp" type="number" class="form-control"
-											id="Country" value="2">
+										<form:input path="experience" name="exp" type="number"
+											class="form-control" id="Country" value="${maid.experience }" />
+										<form:errors path="experience" />
 									</div>
 								</div>
 
 								<div class="row mb-3">
 									<label for="Address" class="col-md-4 col-lg-3 col-form-label">Salary</label>
 									<div class="col-md-8 col-lg-9">
-										<input name="salary" type="number" class="form-control"
-											id="Address" value="3000">
+										<form:input path="salary" type="number" class="form-control"
+											id="Address" value="${maid.salary }" />
+										<form:errors path="salary" />
 									</div>
 								</div>
 
 								<div class="row mb-3">
-									<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Id
-										nhân viên</label>
-									<div class="col-md-8 col-lg-9">
-										<input name="employmentId" disabled="disabled" type="number"
-											class="form-control" id="Phone" value="1">
-									</div>
-								</div>
-								<div class="row mb-3">
 									<label for="validationDefault04"
 										class="col-md-4 col-lg-3 col-form-label">Full/Partime</label>
-									<select class="form-select" id="validationDefault04"
-										name="employmentType" required>
-										<option selected value="">Fulltime</option>
-										<option>Partime</option>
-									</select>
+									<input name="emplomentType" type="number" class="form-control"
+										id="Address" value="${maid.employmentType ? 'PartTime' : 'FullTime'}"
+										readonly="readonly" />
 								</div>
 								<div class="row mb-3">
 									<label for="Phone" class="col-md-4 col-lg-3 col-form-label">Trạng
 										thái tài khoản</label>
 									<div class="col-md-8 col-lg-9">
-										<input disabled="disabled" name="status" type="text"
-											class="form-control" id="Phone" value="Hoạt động">
+										<input name="status" type="text" value="${maid.status }"
+											class="form-control" id="Phone" value="Hoạt động"
+											readonly="readonly">
 									</div>
 								</div>
 
@@ -228,7 +218,7 @@
 								<div class="col-12">
 									<button class="btn btn-primary" type="submit">Update</button>
 								</div>
-							</form>
+							</form:form>
 							<!-- End Browser Default Validation -->
 
 						</div>

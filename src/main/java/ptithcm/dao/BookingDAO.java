@@ -11,5 +11,6 @@ public interface BookingDAO {
 	public BookingEntity getBookingById(int booking);
 	public List<BookingEntity> getBookingsForMaid(int maid);
 	public List<BookingEntity> getBookingListBy(Integer customerId);
+	public List<BookingEntity> getActiveBookingListByMaidId(Integer maidId);
 	
 }

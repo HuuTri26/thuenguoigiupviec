@@ -77,7 +77,7 @@
 					<li class="breadcrumb-item"><a href="admin/index.htm">Trang
 							chủ</a></li>
 					<li class="breadcrumb-item active"><a
-						href="admin/adminProfile.htm">Thông tin</a></li>
+						href="admin/adminProfile.htm">Thông tin nhân viên</a></li>
 					<!-- link này định trỏ tới đâu vậy -->
 				</ol>
 			</nav>

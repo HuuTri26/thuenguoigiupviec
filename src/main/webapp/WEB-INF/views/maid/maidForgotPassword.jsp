@@ -45,45 +45,28 @@
 									<h4 class="mb-12">Quên mật khẩu</h4>
 								</div>
 								<div class="w-100">
-									<p class="social-media d-flex justify-content-end">
-										<!-- <a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
-										<a href="#" class="social-icon d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a> -->
-									</p>
+									<p class="social-media d-flex justify-content-end"></p>
 								</div>
 							</div>
-							<form action="adminForgotPassword.htm" class="signin-form">
-								<div>Forgot your password? No problem, we will fix it.
-									Just type your email below and we will send you password
-									recovery instructions to your email. Follow easy steps to get
-									back to your account.</div>
+							<form:form action="adminForgotPassword.htm" class="signin-form">
+								<div>Quên mật khẩu? Không thành vấn đề, chúng tôi sẽ lấy
+									lại nó cho bạn Hãy nhập email mà bạn thiết lập làm tài khoản
+									xuống dưới đây để xác nhận và thực hiện xác thực OTP qua email
+									của bạn. Khi hoàn tất bạn sẽ có thể thiết lập mật khẩu mới cho
+									tài khoản này.</div>
 								<br />
 								<div class="form-group mb-3">
-									<label class="label" for="name">Email</label> <input
-										type="email" class="form-control" placeholder="Email" required>
+									<label class="label" for="name">Email</label>
+									<form:input path="email" type="text" class="form-control"
+										placeholder="Email" />
+									<form:errors path="email" />
 								</div>
-								<!-- <div class="form-group mb-3">
-									<label class="label" for="password">Password</label>
-									<input type="password" class="form-control" placeholder="Password" required>
-								</div>
-                                <div class="form-group mb-3">
-									<label class="label" for="changepassword">Confirm Password</label>
-									<input type="changepassword" class="form-control" placeholder="Confirm Password" required>
-								</div> -->
 								<div class="form-group">
 									<button type="submit"
 										class="form-control btn btn-primary rounded submit px-3">
-										<a href="maid/forgotPasswordOTP.htm">Xác nhận</a>
-									</button>
+										Xác nhận</button>
 								</div>
-								<!-- <div class="form-group d-md-flex">
-									<div class="w-100 text-left">
-										<label class="checkbox-wrap checkbox-primary mb-0">I Agree To The Terms & Conditions
-											<input type="checkbox" checked>
-											<span class="checkmark"></span>
-										</label>
-									</div>
-								</div> -->
-							</form>
+							</form:form>
 						</div>
 					</div>
 				</div>
