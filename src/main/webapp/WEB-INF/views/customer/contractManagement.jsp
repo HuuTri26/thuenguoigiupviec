@@ -162,9 +162,9 @@
 									aria-label="Default select example">
 									<option value="all">Tất cả</option>
 									<option value="id">Id</option>
-									<option value="customerId">Id khách hàng</option>
-									<option value="maidId">Id người giúp việc</option>
-									<option value="employeeId">Id nhân viên</option>
+									<option value="customerId">Tên khách hàng</option>
+									<option value="maidId">Tên người giúp việc</option>
+									<option value="employeeId">Tên nhân viên</option>
 									<option value="description">Miêu tả</option>
 									<option value="startAt">Ngày bắt đầu có hiệu lực</option>
 									<option value="endAt">Ngày hết hạn</option>
@@ -182,15 +182,15 @@
 										<th scope="col">Id <i class="bi bi-arrow-up-short"
 											data-sort="id" data-order="asc"></i>
 										</th>
-										<th scope="col">Id khách hàng <i
+										<th scope="col">Tên khách hàng <i
 											class="bi bi-arrow-up-short" data-sort="customerId"
 											data-order="asc"></i>
 										</th>
-										<th scope="col">Id người giúp việc <i
+										<th scope="col">Tên người giúp việc <i
 											class="bi bi-arrow-up-short" data-sort="maidId"
 											data-order="asc"></i>
 										</th>
-										<th scope="col">Id nhân viên <i
+										<th scope="col">Tên nhân viên <i
 											class="bi bi-arrow-up-short" data-sort="employeeId"
 											data-order="asc"></i>
 										</th>
@@ -223,9 +223,9 @@
 									<c:forEach var="contract" items="${contractList }">
 										<tr>
 											<td scope="row">${contract.id }</td>
-											<td scope="col">${contract.customer.id }</td>
-											<td scope="col">${contract.maid.id }</td>
-											<td scope="col">${contract.employee.id }</td>
+											<td scope="col">${contract.customer.fullName }</td>
+											<td scope="col">${contract.maid.fullName }</td>
+											<td scope="col">${contract.employee.fullName }</td>
 											<td scope="col">${contract.description }</td>
 											<td scope="col">${contract.startAt }</td>
 											<td scope="col">${contract.endAt }</td>
