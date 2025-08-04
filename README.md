@@ -72,19 +72,11 @@ Spring Mail is integrated to send email notifications to users about booking sta
 - JDK 8 or higher  
 - Apache Tomcat 8.5 or higher  
 - SQL Server 2012 or higher  
-- Python 3.6 or higher with the following libraries:
-  - `pandas`
-  - `numpy`
-  - `scikit-learn`
-  - `sqlalchemy`
 
 ### Setup Instructions
 1. **Clone** the repository  
 2. **Configure database connection** in `spring-config-hibernate.xml`  
 3. **Configure email settings** in `spring-config-gmail.xml`  
-4. **Install required Python libraries**:
-   ```bash
-   pip install pandas numpy scikit-learn sqlalchemy
-5. **Deploy the application to Tomcat server**
+4. **Deploy the application to Tomcat server**
 
 
